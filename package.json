@@ -1,22 +1,22 @@
 {
   "env": {
-      "browser": false
+    "browser": false
   },
   "extends": [
-      "airbnb",
-      "airbnb-typescript"
+    "airbnb",
+    "airbnb-typescript"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-      "ecmaFeatures": {
-          "jsx": false
-      },
-      "ecmaVersion": "latest",
-      "sourceType": "module",
-      "project": "./tsconfig.json"
+    "ecmaFeatures": {
+      "jsx": false
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
   "plugins": [
-      "@typescript-eslint"
+    "@typescript-eslint"
   ],
   "rules": {
     "import/no-extraneous-dependencies": "off",
@@ -24,5 +24,8 @@
     "no-underscore-dangle": "off",
     "@typescript-eslint/naming-convention": "off",
     "linebreak-style": "off"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
   }
 }
