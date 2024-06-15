@@ -1,11 +1,28 @@
 {
-  "name": "unitedhoops",
-  "version": "0.0.1",
-  "description": "UnitedHoops Project",
-  "main": "src/apps",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "env": {
+      "browser": false
   },
-  "author": "manuelh_ra",
-  "license": "UNLICENSED"
+  "extends": [
+      "airbnb",
+      "airbnb-typescript"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": false
+      },
+      "ecmaVersion": "latest",
+      "sourceType": "module",
+      "project": "./tsconfig.json"
+  },
+  "plugins": [
+      "@typescript-eslint"
+  ],
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "class-methods-use-this": "off",
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "linebreak-style": "off"
+  }
 }
