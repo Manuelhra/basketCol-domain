@@ -28,7 +28,7 @@ abstract class EmailValueObject extends ObjectValueObject<{ value: string; verif
 
   private ensureVerifiedIsDefined(verified: boolean): void {
     if (verified === null || verified === undefined) {
-      throw new InvalidArgumentError('Verified must be defined');
+      throw new InvalidArgumentError('verified must be defined');
     }
   }
 }
