@@ -17,36 +17,34 @@ class LeagueName extends ObjectValueObject<{ short: string; official: string; }>
   constructor(value: { short: string; official: string; }) {
     super(value, 'LeagueName');
 
-    this.ensureIsValidShortNameValue(value.short);
-    this.ensureIsValidOfficialNameValue(value.official);
+    this.ensureIsValidValue(value.short, { min: this.shortNameLength.min, max: this.shortNameLength.max }, 'short name');
+    this.ensureIsValidValue(value.official, { min: this.officialNameLength.min, max: this.officialNameLength.max }, 'official name');
   }
 
-  private ensureIsValidShortNameValue(value: string): void {
+  private ensureIsValidValue(
+    value: string,
+    length: { min:number; max: number; },
+    label: string,
+  ): void {
     if (value === null || value === undefined) {
-      throw new InvalidArgumentError("The league's short name is required");
+      throw new InvalidArgumentError(`The league's ${label} is required`);
     }
 
-    if (value.length < this.shortNameLength.min) {
-      throw new MinimumLengthNotMetError('Short name');
+    if (value.length < length.min) {
+      throw new MinimumLengthNotMetError(this.capitalizeFirstLetter(label));
     }
 
-    if (value.length > this.shortNameLength.max) {
-      throw new LengthExceededError('Short name');
+    if (value.length > length.max) {
+      throw new LengthExceededError(this.capitalizeFirstLetter(label));
     }
   }
 
-  private ensureIsValidOfficialNameValue(value: string): void {
-    if (value === null || value === undefined) {
-      throw new InvalidArgumentError("The league's official name is required");
+  private capitalizeFirstLetter(str: string): string {
+    if (str.length === 0) {
+      return str;
     }
 
-    if (value.length < this.officialNameLength.min) {
-      throw new MinimumLengthNotMetError('Official name');
-    }
-
-    if (value.length > this.officialNameLength.max) {
-      throw new LengthExceededError('Official name');
-    }
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 }
 
