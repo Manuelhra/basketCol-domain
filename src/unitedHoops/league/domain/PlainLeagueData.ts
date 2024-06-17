@@ -1,3 +1,5 @@
+import { LeagueLocationProps } from './value-objects/LeagueLocation';
+
 export interface PlainLeagueData {
   id: string;
   name: {
@@ -10,11 +12,7 @@ export interface PlainLeagueData {
   };
   rules: string;
   level: string;
-  location: {
-    country: string;
-    department: string;
-    city: string;
-  };
+  location: LeagueLocationProps;
   creationDate: string;
   isActive: boolean;
 }
