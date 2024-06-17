@@ -10,7 +10,7 @@ abstract class StringValueObject extends PrimitiveValueObject<string> {
 
   private ensureValueTypeIsCorrect(value: any, valueObjectName: string) {
     if (typeof value !== 'string') {
-      throw new InvalidArgumentError(`${valueObjectName} must be type string.`);
+      throw new InvalidArgumentError(`${valueObjectName} must be type string`);
     }
   }
 }
