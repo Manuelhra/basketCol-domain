@@ -25,6 +25,9 @@
     "@typescript-eslint/naming-convention": "off",
     "linebreak-style": "off"
   },
+  "scripts": {
+    "tsc": "tsc --watch"
+  },
   "devDependencies": {
     "@types/uuid": "^9.0.8",
     "@types/uuid-validate": "^0.0.3",

@@ -23,7 +23,7 @@ class LeagueLocation extends ObjectValueObject<LeagueLocationProps> {
     this.ensureCoordsIsDefined(value.coords);
   }
 
-  private ensurePropIsDefined(propValue: Item, propName: string) {
+  private ensurePropIsDefined(propValue: Item, propName: string): void {
     if (propValue === null || propValue === undefined) {
       throw new InvalidArgumentError(`The ${propName} property of Location must be defined`);
     }
@@ -45,7 +45,7 @@ class LeagueLocation extends ObjectValueObject<LeagueLocationProps> {
     }
   }
 
-  private ensureCoordsIsDefined(coords: { lat: number; lng: number; }) {
+  private ensureCoordsIsDefined(coords: { lat: number; lng: number; }): void {
     if (coords === null || coords === undefined) {
       throw new InvalidArgumentError('Coords must be defined');
     }
