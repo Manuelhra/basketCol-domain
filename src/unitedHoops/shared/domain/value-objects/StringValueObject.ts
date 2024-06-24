@@ -1,16 +1,16 @@
-import InvalidArgumentError from '../exceptions/InvalidArgumentError';
+import InvalidPropertyTypeError from '../exceptions/InvalidPropertyTypeError';
 import { PrimitiveValueObject } from './PrimitiveValueObject';
 
 abstract class StringValueObject extends PrimitiveValueObject<string> {
-  constructor(value: string, valueObjectName: string) {
-    super(value, valueObjectName);
+  constructor(value: string, propertyName: string) {
+    super(value, propertyName);
 
-    this.ensureValueTypeIsCorrect(value, valueObjectName);
+    this.ensureValueTypeIsCorrect(value, propertyName);
   }
 
-  private ensureValueTypeIsCorrect(value: any, valueObjectName: string) {
+  private ensureValueTypeIsCorrect(value: any, propertyName: string): void {
     if (typeof value !== 'string') {
-      throw new InvalidArgumentError(`${valueObjectName} must be type string`);
+      throw new InvalidPropertyTypeError(propertyName, 'string', typeof value);
     }
   }
 }

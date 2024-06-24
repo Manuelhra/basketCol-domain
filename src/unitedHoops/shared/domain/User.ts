@@ -9,6 +9,8 @@ abstract class User extends AggregateRoot {
 
   protected password: PrimitiveValueObject<string>;
 
+  protected userType: 
+
   protected readonly active: BooleanValueObject;
 
   constructor(

@@ -1,4 +1,4 @@
-class DateHandler {
+class DomainDateService {
   public generateCurrentDate(): string {
     const currentDate = new Date();
     const day = String(currentDate.getDate()).padStart(2, '0');
@@ -9,4 +9,4 @@ class DateHandler {
   }
 }
 
-export default DateHandler;
+export default DomainDateService;
