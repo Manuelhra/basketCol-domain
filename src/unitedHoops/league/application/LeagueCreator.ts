@@ -2,6 +2,7 @@ import DateHandler from '../../shared/domain/utils/DateHandler';
 import League from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
 import LeagueValidationNameService from '../domain/services/LeagueValidationNameService';
+import LeagueName from '../domain/value-objects/LeagueName';
 import { LeagueCreatorPayload } from './LeagueCreatorPayload';
 
 class LeagueCreator {
@@ -31,8 +32,10 @@ class LeagueCreator {
       location,
     } = payload;
 
-    await this.#leagueValidationNameService.ensureIsValidShortName(name.short);
-    await this.#leagueValidationNameService.ensureIsValidOfficialName(name.official);
+    const leagueName: LeagueName = new LeagueName(name);
+
+    await this.#leagueValidationNameService.ensureIsValidShortName(leagueName);
+    await this.#leagueValidationNameService.ensureIsValidOfficialName(leagueName);
 
     const creationDate: string = this.#dateHandler.generateCurrentDate();
     const isActive: boolean = true;

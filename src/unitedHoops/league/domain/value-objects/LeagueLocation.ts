@@ -1,4 +1,4 @@
-import InvalidArgumentError from '../../../shared/domain/exceptions/InvalidArgumentError';
+import InvalidPropertyTypeError from '../../../shared/domain/exceptions/InvalidPropertyTypeError';
 import ObjectValueObject from '../../../shared/domain/value-objects/ObjectValueObject';
 
 interface Item {
@@ -17,53 +17,37 @@ class LeagueLocation extends ObjectValueObject<LeagueLocationProps> {
   constructor(value: LeagueLocationProps) {
     super(value, 'LeagueLocation');
 
-    this.ensurePropIsDefined(value.country, 'Country');
-    this.ensurePropIsDefined(value.department, 'Department');
-    this.ensurePropIsDefined(value.city, 'City');
+    this.ensurePropIsDefined(value.country, 'country');
+    this.ensurePropIsDefined(value.department, 'department');
+    this.ensurePropIsDefined(value.city, 'city');
     this.ensureCoordsIsDefined(value.coords);
   }
 
-  private ensurePropIsDefined(propValue: Item, propName: string): void {
-    if (propValue === null || propValue === undefined) {
-      throw new InvalidArgumentError(`The ${propName} property of Location must be defined`);
+  private ensurePropIsDefined(propertyValue: Item, propertyName: string): void {
+    if (propertyValue === null || propertyValue === undefined) {
+      throw new InvalidPropertyTypeError(propertyName, '{ code: string; label: string }', typeof propertyValue);
     }
 
-    if (propValue.code === null || propValue.code === undefined) {
-      throw new InvalidArgumentError(`The code property of ${propName} must be defined`);
+    if (propertyValue.code === null || propertyValue.code === undefined || typeof propertyValue.code !== 'string') {
+      throw new InvalidPropertyTypeError(`${propertyName}.code`, 'string', typeof propertyValue);
     }
 
-    if (propValue.label === null || propValue.label === undefined) {
-      throw new InvalidArgumentError(`The label property of ${propName} must be defined`);
-    }
-
-    if (typeof propValue.code !== 'string') {
-      throw new InvalidArgumentError(`The code property of ${propName} must be of type string`);
-    }
-
-    if (typeof propValue.label !== 'string') {
-      throw new InvalidArgumentError(`The label property of ${propName} must be of type string`);
+    if (propertyValue.label === null || propertyValue.label === undefined || typeof propertyValue.label !== 'string') {
+      throw new InvalidPropertyTypeError(`${propertyName}.label`, 'string', typeof propertyValue);
     }
   }
 
   private ensureCoordsIsDefined(coords: { lat: number; lng: number; }): void {
     if (coords === null || coords === undefined) {
-      throw new InvalidArgumentError('Coords must be defined');
+      throw new InvalidPropertyTypeError('coords', '{ lat: number; lng: number; }', typeof coords);
     }
 
-    if (coords.lat === null || coords.lat === undefined) {
-      throw new InvalidArgumentError('The lat property of Coords must be defined');
+    if (coords.lat === null || coords.lat === undefined || typeof coords.lat !== 'number') {
+      throw new InvalidPropertyTypeError('coords.lat', 'number', typeof coords.lat);
     }
 
-    if (coords.lng === null || coords.lng === undefined) {
-      throw new InvalidArgumentError('The lng property of Coords must be defined');
-    }
-
-    if (typeof coords.lat !== 'number') {
-      throw new InvalidArgumentError('The lat field must be of type string');
-    }
-
-    if (typeof coords.lng !== 'number') {
-      throw new InvalidArgumentError('The lng field must be of type string');
+    if (coords.lng === null || coords.lng === undefined || typeof coords.lng !== 'number') {
+      throw new InvalidPropertyTypeError('coords.lng', 'number', typeof coords.lng);
     }
   }
 }

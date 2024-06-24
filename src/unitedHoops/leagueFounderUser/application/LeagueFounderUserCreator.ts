@@ -1,0 +1,64 @@
+import EmailUniquenessValidatorService from '../../shared/domain/services/EmailUniquenessValidatorService';
+import IdUniquenessValidatorService from '../../shared/domain/services/IdUniquenessValidatorService';
+import SecurePasswordCreationService from '../../shared/domain/services/SecurePasswordCreationService';
+import LeagueFounderUser from '../domain/LeagueFounderUser';
+import { LeagueFounderUserRepository } from '../domain/repository/LeagueFounderUserRepository';
+import LeagueFounderUserEmail from '../domain/value-objects/LeagueFounderUserEmail';
+import LeagueFounderUserId from '../domain/value-objects/LeagueFounderUserId';
+import { LeagueFounderUserCreatorPayload } from './LeagueFounderUserCreatorPayload';
+
+class LeagueFounderUserCreator {
+  readonly #emailUniquenessValidatorService: EmailUniquenessValidatorService<LeagueFounderUser>;
+
+  readonly #idUniquenessValidatorService: IdUniquenessValidatorService<LeagueFounderUser>;
+
+  readonly #securePasswordCreationService: SecurePasswordCreationService;
+
+  readonly #leagueFounderUserRepository: LeagueFounderUserRepository;
+
+  constructor(dependencies: {
+    emailUniquenessValidatorService: EmailUniquenessValidatorService<LeagueFounderUser>;
+    idUniquenessValidatorService: IdUniquenessValidatorService<LeagueFounderUser>;
+    securePasswordCreationService: SecurePasswordCreationService;
+    leagueFounderUserRepository: LeagueFounderUserRepository;
+  }) {
+    this.#emailUniquenessValidatorService = dependencies.emailUniquenessValidatorService;
+    this.#idUniquenessValidatorService = dependencies.idUniquenessValidatorService;
+    this.#securePasswordCreationService = dependencies.securePasswordCreationService;
+    this.#leagueFounderUserRepository = dependencies.leagueFounderUserRepository;
+  }
+
+  public async run(leagueFounderUserCreatorPayload: LeagueFounderUserCreatorPayload): Promise<void> {
+    const {
+      id,
+      email,
+      name,
+      biography,
+      password,
+    } = leagueFounderUserCreatorPayload;
+
+    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id);
+    const leagueFounderUserEmail: LeagueFounderUserEmail = new LeagueFounderUserEmail({ value: email.value, verified: false });
+
+    await this.#idUniquenessValidatorService.ensureUiqueId<LeagueFounderUserId>(leagueFounderUserId);
+    await this.#emailUniquenessValidatorService.ensureUniqueEmail<LeagueFounderUserEmail>(leagueFounderUserEmail);
+
+    const active: boolean = true;
+
+    const leagueFounderUser: LeagueFounderUser = new LeagueFounderUser(
+      id,
+      name,
+      biography,
+      { value: email.value, verified: false },
+      this.#securePasswordCreationService.createFromPlainText(password),
+      active,
+    );
+
+    return this.#leagueFounderUserRepository.save(leagueFounderUser);
+  }
+}
+
+// Agregar una propiedad a la entidad abstracta usuario que sea role o type para saber que tipo de usuario es
+// Crear un manejador de roles de la app
+
+export default LeagueFounderUserCreator;

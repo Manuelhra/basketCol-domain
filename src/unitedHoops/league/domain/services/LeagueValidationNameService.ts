@@ -2,6 +2,7 @@ import { Nullable } from '../../../shared/domain/Nullable';
 import League from '../League';
 import DuplicateLeagueNameError from '../exceptions/DuplicateLeagueNameError';
 import { LeagueRepository } from '../repository/LeagueRepository';
+import LeagueName from '../value-objects/LeagueName';
 
 class LeagueValidationNameService {
   readonly #leagueRepository: LeagueRepository;
@@ -12,19 +13,19 @@ class LeagueValidationNameService {
     this.#leagueRepository = dependencies.leagueRepository;
   }
 
-  public async ensureIsValidShortName(shortName: string): Promise<void> {
-    const league: Nullable<League> = await this.#leagueRepository.searchByShortName(shortName);
+  public async ensureIsValidShortName(leagueName: LeagueName): Promise<void> {
+    const leagueFound: Nullable<League> = await this.#leagueRepository.searchByShortName(leagueName);
 
-    if (league) {
-      throw new DuplicateLeagueNameError(shortName, 'SHORT_NAME');
+    if (leagueFound) {
+      throw new DuplicateLeagueNameError(leagueName, 'SHORT_NAME');
     }
   }
 
-  public async ensureIsValidOfficialName(officialName: string): Promise<void> {
-    const league: Nullable<League> = await this.#leagueRepository.searchByOfficialName(officialName);
+  public async ensureIsValidOfficialName(leagueName: LeagueName): Promise<void> {
+    const leagueFound: Nullable<League> = await this.#leagueRepository.searchByOfficialName(leagueName);
 
-    if (league) {
-      throw new DuplicateLeagueNameError(officialName, 'OFFICIAL_NAME');
+    if (leagueFound) {
+      throw new DuplicateLeagueNameError(leagueName, 'OFFICIAL_NAME');
     }
   }
 }

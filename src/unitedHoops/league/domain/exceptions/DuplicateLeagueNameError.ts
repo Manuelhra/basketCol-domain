@@ -1,6 +1,24 @@
+import LeagueName from '../value-objects/LeagueName';
+
 class DuplicateLeagueNameError extends Error {
-  constructor(value: string, label: 'SHORT_NAME' | 'OFFICIAL_NAME') {
-    super(`The league ${label} name <${value}> is already registered. Please choose a different name for the league.`);
+  constructor(leagueName: LeagueName, label: 'SHORT_NAME' | 'OFFICIAL_NAME') {
+    let feedback: string;
+    const { short, official } = leagueName.getValue();
+
+    switch (label) {
+      case 'SHORT_NAME':
+        feedback = `Uniqueness violation: league short name <${short}> already exists in the repository`;
+
+        break;
+      case 'OFFICIAL_NAME':
+        feedback = `Uniqueness violation: league short name <${official}> already exists in the repository`;
+
+        break;
+      default: throw new Error(`Invalid action: The exception DuplicateLeagueNameError does not allow this value <${label}> as the second parameter`);
+    }
+
+    super(feedback);
+    this.name = 'DuplicateLeagueNameError';
   }
 }
 

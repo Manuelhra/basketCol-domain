@@ -15,8 +15,8 @@ class HostUser extends User {
     super(
       new HostUserId(id),
       new HostUserEmail(email),
-      new HostUserPassword(password, 'Password'),
-      new HostUserActive(active, 'Active'),
+      new HostUserPassword(password, 'HostUserPassword'),
+      new HostUserActive(active, 'HostUserActive'),
     );
   }
 

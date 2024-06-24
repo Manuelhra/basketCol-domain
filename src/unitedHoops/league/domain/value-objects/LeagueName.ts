@@ -1,6 +1,6 @@
-import InvalidArgumentError from '../../../shared/domain/exceptions/InvalidArgumentError';
-import LengthExceededError from '../../../shared/domain/exceptions/LengthExceededError';
-import MinimumLengthNotMetError from '../../../shared/domain/exceptions/MinimumLengthNotMetError';
+import InvalidPropertyTypeError from '../../../shared/domain/exceptions/InvalidPropertyTypeError';
+import PropertyLengthExceededError from '../../../shared/domain/exceptions/PropertyLengthExceededError';
+import PropertyLengthTooShortError from '../../../shared/domain/exceptions/PropertyLengthTooShortError';
 import ObjectValueObject from '../../../shared/domain/value-objects/ObjectValueObject';
 
 class LeagueName extends ObjectValueObject<{ short: string; official: string; }> {
@@ -17,34 +17,26 @@ class LeagueName extends ObjectValueObject<{ short: string; official: string; }>
   constructor(value: { short: string; official: string; }) {
     super(value, 'LeagueName');
 
-    this.ensureIsValidValue(value.short, { min: this.shortNameLength.min, max: this.shortNameLength.max }, 'short name');
-    this.ensureIsValidValue(value.official, { min: this.officialNameLength.min, max: this.officialNameLength.max }, 'official name');
+    this.ensureIsValidValue(value.short, { min: this.shortNameLength.min, max: this.shortNameLength.max }, 'short');
+    this.ensureIsValidValue(value.official, { min: this.officialNameLength.min, max: this.officialNameLength.max }, 'official');
   }
 
   private ensureIsValidValue(
     value: string,
     length: { min:number; max: number; },
-    label: string,
+    propertyName: string,
   ): void {
-    if (value === null || value === undefined) {
-      throw new InvalidArgumentError(`The league's ${label} is required`);
+    if (value === null || value === undefined || typeof value !== 'string') {
+      throw new InvalidPropertyTypeError(`name.${propertyName}`, 'string', typeof value);
     }
 
     if (value.length < length.min) {
-      throw new MinimumLengthNotMetError(this.capitalizeFirstLetter(label));
+      throw new PropertyLengthTooShortError(`name.${propertyName}`, length.min, value.length);
     }
 
     if (value.length > length.max) {
-      throw new LengthExceededError(this.capitalizeFirstLetter(label));
+      throw new PropertyLengthExceededError(`name.${propertyName}`, length.max, value.length);
     }
-  }
-
-  private capitalizeFirstLetter(str: string): string {
-    if (str.length === 0) {
-      return str;
-    }
-
-    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 }
 

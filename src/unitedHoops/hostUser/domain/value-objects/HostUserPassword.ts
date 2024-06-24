@@ -1,4 +1,4 @@
-import { PrimitiveValueObject } from '../../../shared/domain/value-objects/PrimitiveValueObject';
+import StringValueObject from '../../../shared/domain/value-objects/StringValueObject';
 
-class HostUserPassword extends PrimitiveValueObject<string> {}
+class HostUserPassword extends StringValueObject {}
 export default HostUserPassword;

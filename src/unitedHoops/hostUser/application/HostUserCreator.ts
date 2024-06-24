@@ -1,35 +1,35 @@
 import { Nullable } from '../../shared/domain/Nullable';
-import PasswordValueObjectFactory from '../../shared/domain/PasswordValueObjectFactory';
+import SecurePasswordCreationService from '../../shared/domain/services/SecurePasswordCreationService';
 import HostUser from '../domain/HostUser';
-import PreExistingHostUser from '../domain/exceptions/PreExistingHostUser';
+import MultipleHostUsersException from '../domain/exceptions/MultipleHostUsersException';
 import { HostUserRepository } from '../domain/repository/HostUserRepository';
 import { HostUserCreatorPayload } from './HostUserCreatorPayload';
 
 class HostUserCreator {
   readonly #hostUserRepository: HostUserRepository;
 
-  readonly #passworHostUserFactory: PasswordValueObjectFactory;
+  readonly #securePasswordCreationService: SecurePasswordCreationService;
 
   constructor(dependencies: {
     hostUserRepository: HostUserRepository;
-    passwordHostUserFactory: PasswordValueObjectFactory;
+    securePasswordCreationService: SecurePasswordCreationService;
   }) {
     this.#hostUserRepository = dependencies.hostUserRepository;
-    this.#passworHostUserFactory = dependencies.passwordHostUserFactory;
+    this.#securePasswordCreationService = dependencies.securePasswordCreationService;
   }
 
   public async run(payload: HostUserCreatorPayload): Promise<void> {
     const hostUserFound: Nullable<HostUser> = await this.#hostUserRepository.search();
 
     if (hostUserFound) {
-      throw new PreExistingHostUser();
+      throw new MultipleHostUsersException();
     }
 
     const { id, email, password } = payload;
     const hostUser: HostUser = new HostUser(
       id,
       { value: email.value, verified: false },
-      this.#passworHostUserFactory.createFromPlainText(password),
+      this.#securePasswordCreationService.createFromPlainText(password),
       true,
     );
 
