@@ -7,7 +7,7 @@ import UuidValueObject from './value-objects/UuidValueObject';
 abstract class User extends AggregateRoot {
   protected readonly email: EmailValueObject;
 
-  protected readonly password: PrimitiveValueObject<string>;
+  protected password: PrimitiveValueObject<string>;
 
   protected readonly active: BooleanValueObject;
 

@@ -23,6 +23,8 @@
     "class-methods-use-this": "off",
     "no-underscore-dangle": "off",
     "@typescript-eslint/naming-convention": "off",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "consistent-return": "error",
+    "max-len":"off"
   }
 }
