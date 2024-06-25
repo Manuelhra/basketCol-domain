@@ -1,10 +1,10 @@
-import InvalidArgumentError from '../exceptions/InvalidArgumentError';
+import InvalidPropertyTypeError from '../exceptions/InvalidPropertyTypeError';
 
 abstract class ValueObject<T> {
   readonly #value: T;
 
-  constructor(value: T, valueObjectName: string) {
-    this.ensureValueIsDefined(value, valueObjectName);
+  constructor(value: T, propertyName: string, expectedType: string) {
+    this.ensureValueIsDefined(value, propertyName, expectedType);
 
     this.#value = value;
   }
@@ -17,9 +17,9 @@ abstract class ValueObject<T> {
     return this.#value;
   }
 
-  private ensureValueIsDefined(value: T, valueObjectName: string): void {
+  private ensureValueIsDefined(value: T, propertyName: string, expectedType: string): void {
     if (value === null || value === undefined) {
-      throw new InvalidArgumentError(`${valueObjectName} must be defined.`);
+      throw new InvalidPropertyTypeError(propertyName, expectedType, typeof value);
     }
   }
 }

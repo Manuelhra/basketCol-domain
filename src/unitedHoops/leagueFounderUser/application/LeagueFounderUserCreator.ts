@@ -37,7 +37,7 @@ class LeagueFounderUserCreator {
       password,
     } = leagueFounderUserCreatorPayload;
 
-    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id);
+    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id, 'id');
     const leagueFounderUserEmail: LeagueFounderUserEmail = new LeagueFounderUserEmail({ value: email.value, verified: false });
 
     await this.#idUniquenessValidatorService.ensureUiqueId<LeagueFounderUserId>(leagueFounderUserId);
@@ -50,15 +50,13 @@ class LeagueFounderUserCreator {
       name,
       biography,
       { value: email.value, verified: false },
-      this.#securePasswordCreationService.createFromPlainText(password),
+      this.#securePasswordCreationService.createFromPlainText(password).getValue(),
+      'LEAGUE_FOUNDER_USER',
       active,
     );
 
     return this.#leagueFounderUserRepository.save(leagueFounderUser);
   }
 }
-
-// Agregar una propiedad a la entidad abstracta usuario que sea role o type para saber que tipo de usuario es
-// Crear un manejador de roles de la app
 
 export default LeagueFounderUserCreator;

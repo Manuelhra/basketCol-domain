@@ -14,5 +14,6 @@ export interface PlainLeagueData {
   level: string;
   location: LeagueLocationProps;
   creationDate: string;
+  founderUserId: string;
   isActive: boolean;
 }

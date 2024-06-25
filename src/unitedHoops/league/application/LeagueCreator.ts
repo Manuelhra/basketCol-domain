@@ -1,4 +1,6 @@
-import DateHandler from '../../shared/domain/utils/DateHandler';
+import LeagueFounderUserValidationService from '../../leagueFounderUser/domain/services/LeagueFounderUserValidationService';
+import LeagueFounderUserId from '../../leagueFounderUser/domain/value-objects/LeagueFounderUserId';
+import BusinessDateService from '../../shared/domain/services/BusinessDateService';
 import League from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
 import LeagueValidationNameService from '../domain/services/LeagueValidationNameService';
@@ -6,20 +8,24 @@ import LeagueName from '../domain/value-objects/LeagueName';
 import { LeagueCreatorPayload } from './LeagueCreatorPayload';
 
 class LeagueCreator {
-  readonly #dateHandler: DateHandler;
+  readonly #businessDateService: BusinessDateService;
 
   readonly #leagueValidationNameService: LeagueValidationNameService;
 
   readonly #leagueRepository: LeagueRepository;
 
+  readonly #leagueFounderUserValidationService: LeagueFounderUserValidationService;
+
   constructor(dependencies: {
-    dateHandler: DateHandler;
+    BusinessDateService: BusinessDateService;
     leagueValidationNameService: LeagueValidationNameService;
     leagueRepository: LeagueRepository;
+    leagueFounderUserValidationService: LeagueFounderUserValidationService;
   }) {
-    this.#dateHandler = dependencies.dateHandler;
+    this.#businessDateService = dependencies.BusinessDateService;
     this.#leagueValidationNameService = dependencies.leagueValidationNameService;
     this.#leagueRepository = dependencies.leagueRepository;
+    this.#leagueFounderUserValidationService = dependencies.leagueFounderUserValidationService;
   }
 
   public async run(payload: LeagueCreatorPayload): Promise<void> {
@@ -30,14 +36,18 @@ class LeagueCreator {
       level,
       rules,
       location,
+      founderUserId,
     } = payload;
 
     const leagueName: LeagueName = new LeagueName(name);
+    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(founderUserId, 'founderUserId');
 
     await this.#leagueValidationNameService.ensureIsValidShortName(leagueName);
     await this.#leagueValidationNameService.ensureIsValidOfficialName(leagueName);
 
-    const creationDate: string = this.#dateHandler.generateCurrentDate();
+    await this.#leagueFounderUserValidationService.ensureFounderUserExists(leagueFounderUserId);
+
+    const creationDate: string = this.#businessDateService.getCurrentDate('creationDate').getValue();
     const isActive: boolean = true;
 
     const league: League = new League(
@@ -47,6 +57,7 @@ class LeagueCreator {
       rules,
       level,
       location,
+      founderUserId,
       creationDate,
       isActive,
     );

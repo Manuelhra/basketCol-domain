@@ -2,7 +2,8 @@ import StringValueObject from '../../../shared/domain/value-objects/StringValueO
 
 class LeagueRules extends StringValueObject {
   constructor(value: string) {
-    super(value, 'LeagueRules');
+    super(value, 'rules');
   }
 }
+
 export default LeagueRules;

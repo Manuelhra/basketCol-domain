@@ -1,34 +1,32 @@
-import InvalidArgumentError from '../exceptions/InvalidArgumentError';
+import InvalidEmailPolicyError from '../exceptions/InvalidEmailPolicyError';
+import InvalidPropertyTypeError from '../exceptions/InvalidPropertyTypeError';
 import ObjectValueObject from './ObjectValueObject';
 
-abstract class EmailValueObject extends ObjectValueObject<{ value: string; verified: boolean }> {
-  readonly #emailRegex: RegExp;
+class EmailValueObject extends ObjectValueObject<{ value: string; verified: boolean }> {
+  readonly #EMAIL_REG_EXP: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  constructor(
-    value: { value: string; verified: boolean; },
-    regex: RegExp,
-  ) {
-    super(value, 'Email');
+  constructor(value: { value: string; verified: boolean; }) {
+    const expectedType: string = '{ value: string; verified: boolean; }';
 
-    this.#emailRegex = regex;
+    super(value, 'email', expectedType);
 
     this.ensureIsValidEmailValue(value.value);
     this.ensureVerifiedIsDefined(value.verified);
   }
 
-  private ensureIsValidEmailValue(emailValue: string): void {
-    if (emailValue === null || emailValue === undefined) {
-      throw new InvalidArgumentError('email value must be defined');
+  private ensureIsValidEmailValue(value: string): void {
+    if (value === null || value === undefined) {
+      throw new InvalidPropertyTypeError('email.value', 'string', typeof value);
     }
 
-    if (!this.#emailRegex.test(emailValue)) {
-      throw new InvalidArgumentError(`<${this.constructor.name}> does not allow the value <${emailValue}>`);
+    if (!this.#EMAIL_REG_EXP.test(value)) {
+      throw new InvalidEmailPolicyError(value);
     }
   }
 
   private ensureVerifiedIsDefined(verified: boolean): void {
     if (verified === null || verified === undefined) {
-      throw new InvalidArgumentError('verified must be defined');
+      throw new InvalidPropertyTypeError('email.active', 'boolean', typeof verified);
     }
   }
 }

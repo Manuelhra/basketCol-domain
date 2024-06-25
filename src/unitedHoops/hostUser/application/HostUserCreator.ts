@@ -29,7 +29,8 @@ class HostUserCreator {
     const hostUser: HostUser = new HostUser(
       id,
       { value: email.value, verified: false },
-      this.#securePasswordCreationService.createFromPlainText(password),
+      this.#securePasswordCreationService.createFromPlainText(password).getValue(),
+      'HOST_USER',
       true,
     );
 

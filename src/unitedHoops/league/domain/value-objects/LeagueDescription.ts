@@ -4,21 +4,21 @@ import PropertyLengthTooShortError from '../../../shared/domain/exceptions/Prope
 import ObjectValueObject from '../../../shared/domain/value-objects/ObjectValueObject';
 
 class LeagueDescription extends ObjectValueObject<{ short: string; complete: string; }> {
-  private readonly shortDescriptionLength: { min: number; max: number; } = {
+  private readonly SHORT_DESCRIPTION_LENGTH: { min: number; max: number; } = {
     min: 20,
     max: 30,
   };
 
-  private readonly completeDescriptionLength: { min: number; max: number; } = {
-    min: this.shortDescriptionLength.max + 10,
+  private readonly COMPLETE_DESCRIPTION_LENGTH: { min: number; max: number; } = {
+    min: this.SHORT_DESCRIPTION_LENGTH.max + 10,
     max: 300,
   };
 
   constructor(value: { short: string; complete: string; }) {
-    super(value, 'LeagueDescription');
+    super(value, 'description', '{ short: string; complete: string; }');
 
-    this.ensureIsValidValue(value.short, { min: this.shortDescriptionLength.min, max: this.shortDescriptionLength.max }, 'description.short');
-    this.ensureIsValidValue(value.short, { min: this.completeDescriptionLength.min, max: this.completeDescriptionLength.max }, 'description.complete');
+    this.ensureIsValidValue(value.short, { min: this.SHORT_DESCRIPTION_LENGTH.min, max: this.SHORT_DESCRIPTION_LENGTH.max }, 'description.short');
+    this.ensureIsValidValue(value.short, { min: this.COMPLETE_DESCRIPTION_LENGTH.min, max: this.COMPLETE_DESCRIPTION_LENGTH.max }, 'description.complete');
   }
 
   private ensureIsValidValue(

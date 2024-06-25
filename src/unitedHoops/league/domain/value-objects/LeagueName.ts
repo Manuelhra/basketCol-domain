@@ -15,7 +15,7 @@ class LeagueName extends ObjectValueObject<{ short: string; official: string; }>
   };
 
   constructor(value: { short: string; official: string; }) {
-    super(value, 'LeagueName');
+    super(value, 'name', '{ short: string; official: string; }');
 
     this.ensureIsValidValue(value.short, { min: this.shortNameLength.min, max: this.shortNameLength.max }, 'short');
     this.ensureIsValidValue(value.official, { min: this.officialNameLength.min, max: this.officialNameLength.max }, 'official');
