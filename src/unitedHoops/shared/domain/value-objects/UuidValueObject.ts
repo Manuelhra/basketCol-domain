@@ -1,17 +1,13 @@
-import { v4 as uuid } from 'uuid';
 import validate from 'uuid-validate';
 
 import StringValueObject from './StringValueObject';
 import InvalidDomainIdError from '../exceptions/InvalidDomainIdError';
 
 class UuidValueObject extends StringValueObject {
-  constructor(value: string) {
-    super(value, 'id');
-    this.ensureIsValidUuid(value);
-  }
+  constructor(value: string, propertyName: string) {
+    super(value, propertyName);
 
-  public static random(): UuidValueObject {
-    return new UuidValueObject(uuid());
+    this.ensureIsValidUuid(value);
   }
 
   private ensureIsValidUuid(id: string): void {

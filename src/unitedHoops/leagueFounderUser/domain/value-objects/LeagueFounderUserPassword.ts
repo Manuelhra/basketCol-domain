@@ -1,4 +1,4 @@
-import StringValueObject from '../../../shared/domain/value-objects/StringValueObject';
+import PasswordValueObject from '../../../shared/domain/value-objects/PasswordValueObject';
 
-class LeagueFounderUserPassword extends StringValueObject {}
+class LeagueFounderUserPassword extends PasswordValueObject {}
 export default LeagueFounderUserPassword;

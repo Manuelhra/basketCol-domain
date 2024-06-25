@@ -6,6 +6,7 @@ import LeagueFounderUserEmail from './value-objects/LeagueFounderUserEmail';
 import LeagueFounderUserId from './value-objects/LeagueFounderUserId';
 import LeagueFounderUserName from './value-objects/LeagueFounderUserName';
 import LeagueFounderUserPassword from './value-objects/LeagueFounderUserPassword';
+import LeagueFounderUserType from './value-objects/LeagueFounderUserType';
 
 class LeagueFounderUser extends User {
   readonly #name: LeagueFounderUserName;
@@ -18,13 +19,15 @@ class LeagueFounderUser extends User {
     biography: string,
     email: { value: string; verified: boolean; },
     password: string,
+    type: string,
     active: boolean,
   ) {
     super(
       new LeagueFounderUserId(id),
       new LeagueFounderUserEmail(email),
-      new LeagueFounderUserPassword(password, 'LeagueFounderUserPassword'),
-      new LeagueFounderUserActive(active, 'LeagueFounderUserActive'),
+      new LeagueFounderUserPassword(password),
+      new LeagueFounderUserType(type),
+      new LeagueFounderUserActive(active),
     );
 
     this.#name = new LeagueFounderUserName(name);
@@ -38,6 +41,7 @@ class LeagueFounderUser extends User {
       biography: this.#biography.getValue(),
       email: this.email.getValue(),
       password: this.password.getValue(),
+      type: this.type.getValue(),
       active: this.active.getValue(),
     };
   }

@@ -1,30 +1,18 @@
-import InvalidArgumentError from '../../../shared/domain/exceptions/InvalidArgumentError';
+import InvalidPropertyTypeError from '../../../shared/domain/exceptions/InvalidPropertyTypeError';
 import ValueObject from '../../../shared/domain/value-objects/ValueObject';
 
 class LeagueFounderUserName extends ValueObject<{ firstName: string; lastName: string; }> {
   constructor(value: { firstName: string; lastName: string; }) {
-    super(value, 'LeagueFounderUserName');
+    super(value, 'name', '{ firstName: string; lastName: string; }');
 
-    this.ensureIsValidValue(value.firstName, 'first');
-    this.ensureIsValidValue(value.lastName, 'last');
+    this.ensureIsValidValue(value.firstName, 'firstName');
+    this.ensureIsValidValue(value.lastName, 'lastName');
   }
 
-  private ensureIsValidValue(value: string, label: 'first' | 'last'): void {
-    if (value === null || value === undefined) {
-      throw new InvalidArgumentError(`The founder's ${label} name is required`);
+  private ensureIsValidValue(value: string, propertyName: string): void {
+    if (value === null || value === undefined || typeof value !== 'string') {
+      throw new InvalidPropertyTypeError(propertyName, 'string', typeof value);
     }
-
-    if (typeof value !== 'string') {
-      throw new InvalidArgumentError(`${this.capitalizeFirstLetter(label)} must be type string`);
-    }
-  }
-
-  private capitalizeFirstLetter(str: string): string {
-    if (str.length === 0) {
-      return str;
-    }
-
-    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 }
 
