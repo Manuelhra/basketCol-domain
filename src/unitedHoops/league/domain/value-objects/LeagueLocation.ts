@@ -15,7 +15,7 @@ export interface LeagueLocationProps {
 
 class LeagueLocation extends ObjectValueObject<LeagueLocationProps> {
   constructor(value: LeagueLocationProps) {
-    super(value, 'LeagueLocation');
+    super(value, 'location', '{ country: Item; department: Item; city: Item; coords: { lat: number; lng: number } } - Item { code: string; label: string; } ');
 
     this.ensurePropIsDefined(value.country, 'country');
     this.ensurePropIsDefined(value.department, 'department');

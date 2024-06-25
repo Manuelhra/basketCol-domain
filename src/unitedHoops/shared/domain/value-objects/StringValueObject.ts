@@ -3,7 +3,7 @@ import { PrimitiveValueObject } from './PrimitiveValueObject';
 
 abstract class StringValueObject extends PrimitiveValueObject<string> {
   constructor(value: string, propertyName: string) {
-    super(value, propertyName);
+    super(value, propertyName, 'string');
 
     this.ensureValueTypeIsCorrect(value, propertyName);
   }

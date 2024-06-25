@@ -1,12 +1,12 @@
 import { v4 as uuid } from 'uuid';
 import validate from 'uuid-validate';
 
-import InvalidArgumentError from '../exceptions/InvalidArgumentError';
 import StringValueObject from './StringValueObject';
+import InvalidDomainIdError from '../exceptions/InvalidDomainIdError';
 
 class UuidValueObject extends StringValueObject {
   constructor(value: string) {
-    super(value, 'Id');
+    super(value, 'id');
     this.ensureIsValidUuid(value);
   }
 
@@ -16,7 +16,7 @@ class UuidValueObject extends StringValueObject {
 
   private ensureIsValidUuid(id: string): void {
     if (!validate(id)) {
-      throw new InvalidArgumentError(`<${this.constructor.name}> does not allow the value <${id}>`);
+      throw new InvalidDomainIdError(id);
     }
   }
 }

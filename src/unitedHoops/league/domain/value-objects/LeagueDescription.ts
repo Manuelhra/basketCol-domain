@@ -15,7 +15,7 @@ class LeagueDescription extends ObjectValueObject<{ short: string; complete: str
   };
 
   constructor(value: { short: string; complete: string; }) {
-    super(value, 'LeagueDescription');
+    super(value, 'description', '{ short: string; complete: string; }');
 
     this.ensureIsValidValue(value.short, { min: this.shortDescriptionLength.min, max: this.shortDescriptionLength.max }, 'description.short');
     this.ensureIsValidValue(value.short, { min: this.completeDescriptionLength.min, max: this.completeDescriptionLength.max }, 'description.complete');

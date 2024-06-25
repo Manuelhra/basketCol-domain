@@ -42,7 +42,7 @@ class League extends AggregateRoot {
     this.#level = new LeagueLevel(level);
     this.#location = new LeagueLocation(location);
     this.#creationDate = new LeagueCreationDate(creationDate);
-    this.#isActive = new LeagueIsActive(isActive, 'LeagueIsActive');
+    this.#isActive = new LeagueIsActive(isActive);
   }
 
   public toPrimitives(): PlainLeagueData {

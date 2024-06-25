@@ -1,34 +1,18 @@
-import PasswordPolicyViolationError from '../exceptions/PasswordPolicyViolationError';
+import PasswordValueObject from '../value-objects/PasswordValueObject';
 import { PasswordEncrypterService } from './PasswordEncrypterService';
 
 class SecurePasswordCreationService {
   readonly #passwordEncrypterService: PasswordEncrypterService;
 
-  readonly #regex: RegExp;
-
-  readonly #requirements: string[];
-
   constructor(dependencies: {
-    regex: RegExp;
-    requirements: string[];
     passwordEncrypterService: PasswordEncrypterService;
   }) {
-    this.#regex = dependencies.regex;
-    this.#requirements = dependencies.requirements;
     this.#passwordEncrypterService = dependencies.passwordEncrypterService;
   }
 
-  public createFromPlainText(value: string): string {
-    this.ensureIsValidPassword(value);
-
+  public createFromPlainText(value: string): PasswordValueObject {
     const encryptedPassword = this.#passwordEncrypterService.encrypt(value);
-    return encryptedPassword;
-  }
-
-  private ensureIsValidPassword(password: string): void {
-    if (!this.#regex.test(password)) {
-      throw new PasswordPolicyViolationError(`The password does not allow the value <${password}>: ${this.#requirements}`);
-    }
+    return new PasswordValueObject(encryptedPassword);
   }
 }
 

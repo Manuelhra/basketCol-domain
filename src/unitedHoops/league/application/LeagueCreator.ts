@@ -1,4 +1,4 @@
-import DateHandler from '../../shared/domain/utils/DateHandler';
+import BusinessDateService from '../../shared/domain/services/BusinessDateService';
 import League from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
 import LeagueValidationNameService from '../domain/services/LeagueValidationNameService';
@@ -6,18 +6,18 @@ import LeagueName from '../domain/value-objects/LeagueName';
 import { LeagueCreatorPayload } from './LeagueCreatorPayload';
 
 class LeagueCreator {
-  readonly #dateHandler: DateHandler;
+  readonly #businessDateService: BusinessDateService;
 
   readonly #leagueValidationNameService: LeagueValidationNameService;
 
   readonly #leagueRepository: LeagueRepository;
 
   constructor(dependencies: {
-    dateHandler: DateHandler;
+    BusinessDateService: BusinessDateService;
     leagueValidationNameService: LeagueValidationNameService;
     leagueRepository: LeagueRepository;
   }) {
-    this.#dateHandler = dependencies.dateHandler;
+    this.#businessDateService = dependencies.BusinessDateService;
     this.#leagueValidationNameService = dependencies.leagueValidationNameService;
     this.#leagueRepository = dependencies.leagueRepository;
   }
@@ -37,7 +37,7 @@ class LeagueCreator {
     await this.#leagueValidationNameService.ensureIsValidShortName(leagueName);
     await this.#leagueValidationNameService.ensureIsValidOfficialName(leagueName);
 
-    const creationDate: string = this.#dateHandler.generateCurrentDate();
+    const creationDate: string = this.#businessDateService.getCurrentDate('creationDate').getValue();
     const isActive: boolean = true;
 
     const league: League = new League(
