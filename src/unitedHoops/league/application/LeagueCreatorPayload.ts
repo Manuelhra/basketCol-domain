@@ -21,4 +21,5 @@ export interface LeagueCreatorPayload {
     city: Item;
     coords: { lat: number; lng: number; };
   };
+  founderUserId: string;
 }

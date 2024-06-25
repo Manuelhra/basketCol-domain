@@ -1,3 +1,5 @@
+import LeagueFounderUserValidationService from '../../leagueFounderUser/domain/services/LeagueFounderUserValidationService';
+import LeagueFounderUserId from '../../leagueFounderUser/domain/value-objects/LeagueFounderUserId';
 import BusinessDateService from '../../shared/domain/services/BusinessDateService';
 import League from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
@@ -12,14 +14,18 @@ class LeagueCreator {
 
   readonly #leagueRepository: LeagueRepository;
 
+  readonly #leagueFounderUserValidationService: LeagueFounderUserValidationService;
+
   constructor(dependencies: {
     BusinessDateService: BusinessDateService;
     leagueValidationNameService: LeagueValidationNameService;
     leagueRepository: LeagueRepository;
+    leagueFounderUserValidationService: LeagueFounderUserValidationService;
   }) {
     this.#businessDateService = dependencies.BusinessDateService;
     this.#leagueValidationNameService = dependencies.leagueValidationNameService;
     this.#leagueRepository = dependencies.leagueRepository;
+    this.#leagueFounderUserValidationService = dependencies.leagueFounderUserValidationService;
   }
 
   public async run(payload: LeagueCreatorPayload): Promise<void> {
@@ -30,12 +36,16 @@ class LeagueCreator {
       level,
       rules,
       location,
+      founderUserId,
     } = payload;
 
     const leagueName: LeagueName = new LeagueName(name);
+    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(founderUserId, 'founderUserId');
 
     await this.#leagueValidationNameService.ensureIsValidShortName(leagueName);
     await this.#leagueValidationNameService.ensureIsValidOfficialName(leagueName);
+
+    await this.#leagueFounderUserValidationService.ensureFounderUserExists(leagueFounderUserId);
 
     const creationDate: string = this.#businessDateService.getCurrentDate('creationDate').getValue();
     const isActive: boolean = true;
@@ -47,6 +57,7 @@ class LeagueCreator {
       rules,
       level,
       location,
+      founderUserId,
       creationDate,
       isActive,
     );

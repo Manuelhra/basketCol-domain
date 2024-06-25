@@ -1,8 +1,8 @@
-import LeagueFounderUser from '../../../leagueFounderUser/domain/LeagueFounderUser';
-import LeagueFounderUserNotFoundError from '../../../leagueFounderUser/domain/exceptions/LeagueFounderUserNotFoundError';
-import { LeagueFounderUserRepository } from '../../../leagueFounderUser/domain/repository/LeagueFounderUserRepository';
-import LeagueFounderUserId from '../../../leagueFounderUser/domain/value-objects/LeagueFounderUserId';
 import { Nullable } from '../../../shared/domain/Nullable';
+import LeagueFounderUser from '../LeagueFounderUser';
+import LeagueFounderUserNotFoundError from '../exceptions/LeagueFounderUserNotFoundError';
+import { LeagueFounderUserRepository } from '../repository/LeagueFounderUserRepository';
+import LeagueFounderUserId from '../value-objects/LeagueFounderUserId';
 
 class LeagueFounderUserValidationService {
   readonly #leagueFounderUserRepository: LeagueFounderUserRepository;
