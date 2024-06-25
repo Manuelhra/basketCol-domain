@@ -37,7 +37,7 @@ class LeagueFounderUserCreator {
       password,
     } = leagueFounderUserCreatorPayload;
 
-    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id);
+    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id, 'id');
     const leagueFounderUserEmail: LeagueFounderUserEmail = new LeagueFounderUserEmail({ value: email.value, verified: false });
 
     await this.#idUniquenessValidatorService.ensureUiqueId<LeagueFounderUserId>(leagueFounderUserId);

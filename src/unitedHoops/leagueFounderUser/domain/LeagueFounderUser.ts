@@ -23,7 +23,7 @@ class LeagueFounderUser extends User {
     active: boolean,
   ) {
     super(
-      new LeagueFounderUserId(id),
+      new LeagueFounderUserId(id, 'id'),
       new LeagueFounderUserEmail(email),
       new LeagueFounderUserPassword(password),
       new LeagueFounderUserType(type),
