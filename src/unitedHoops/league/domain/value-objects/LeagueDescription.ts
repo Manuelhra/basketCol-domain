@@ -4,24 +4,24 @@ import PropertyLengthTooShortError from '../../../shared/domain/exceptions/Prope
 import ObjectValueObject from '../../../shared/domain/value-objects/ObjectValueObject';
 
 class LeagueDescription extends ObjectValueObject<{ short: string; complete: string; }> {
-  private readonly SHORT_DESCRIPTION_LENGTH: { min: number; max: number; } = {
+  static readonly #SHORT_DESCRIPTION_LENGTH: { min: number; max: number; } = {
     min: 20,
     max: 30,
-  };
+  } as const;
 
-  private readonly COMPLETE_DESCRIPTION_LENGTH: { min: number; max: number; } = {
-    min: this.SHORT_DESCRIPTION_LENGTH.max + 10,
+  static readonly #COMPLETE_DESCRIPTION_LENGTH: { min: number; max: number; } = {
+    min: LeagueDescription.#SHORT_DESCRIPTION_LENGTH.max + 10,
     max: 300,
-  };
+  } as const;
 
   constructor(value: { short: string; complete: string; }) {
     super(value, 'description', '{ short: string; complete: string; }');
 
-    this.ensureIsValidValue(value.short, { min: this.SHORT_DESCRIPTION_LENGTH.min, max: this.SHORT_DESCRIPTION_LENGTH.max }, 'description.short');
-    this.ensureIsValidValue(value.short, { min: this.COMPLETE_DESCRIPTION_LENGTH.min, max: this.COMPLETE_DESCRIPTION_LENGTH.max }, 'description.complete');
+    LeagueDescription.ensureIsValidValue(value.short, { min: LeagueDescription.#SHORT_DESCRIPTION_LENGTH.min, max: LeagueDescription.#SHORT_DESCRIPTION_LENGTH.max }, 'description.short');
+    LeagueDescription.ensureIsValidValue(value.short, { min: LeagueDescription.#COMPLETE_DESCRIPTION_LENGTH.min, max: LeagueDescription.#COMPLETE_DESCRIPTION_LENGTH.max }, 'description.complete');
   }
 
-  private ensureIsValidValue(
+  private static ensureIsValidValue(
     value: string,
     length: { min:number; max: number; },
     propertyName: string,

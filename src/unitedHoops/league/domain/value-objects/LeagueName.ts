@@ -4,24 +4,24 @@ import PropertyLengthTooShortError from '../../../shared/domain/exceptions/Prope
 import ObjectValueObject from '../../../shared/domain/value-objects/ObjectValueObject';
 
 class LeagueName extends ObjectValueObject<{ short: string; official: string; }> {
-  private readonly shortNameLength: { min: number; max: number; } = {
+  static readonly #SHORT_NAME_LENGTH: { min: number; max: number; } = {
     min: 5,
     max: 10,
-  };
+  } as const;
 
-  private readonly officialNameLength: { min: number; max: number; } = {
-    min: this.shortNameLength.max + 10,
+  static readonly #OFFICIAL_NAME_LENGTH: { min: number; max: number; } = {
+    min: LeagueName.#SHORT_NAME_LENGTH.max + 10,
     max: 100,
-  };
+  } as const;
 
   constructor(value: { short: string; official: string; }) {
     super(value, 'name', '{ short: string; official: string; }');
 
-    this.ensureIsValidValue(value.short, { min: this.shortNameLength.min, max: this.shortNameLength.max }, 'short');
-    this.ensureIsValidValue(value.official, { min: this.officialNameLength.min, max: this.officialNameLength.max }, 'official');
+    LeagueName.ensureIsValidValue(value.short, { min: LeagueName.#SHORT_NAME_LENGTH.min, max: LeagueName.#SHORT_NAME_LENGTH.max }, 'short');
+    LeagueName.ensureIsValidValue(value.official, { min: LeagueName.#OFFICIAL_NAME_LENGTH.min, max: LeagueName.#OFFICIAL_NAME_LENGTH.max }, 'official');
   }
 
-  private ensureIsValidValue(
+  private static ensureIsValidValue(
     value: string,
     length: { min:number; max: number; },
     propertyName: string,
