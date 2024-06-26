@@ -3,21 +3,21 @@ import PropertyLengthTooShortError from '../../../shared/domain/exceptions/Prope
 import StringValueObject from '../../../shared/domain/value-objects/StringValueObject';
 
 class LeagueSeasonName extends StringValueObject {
-  readonly #LENGTH: { min: number; max: number } = { min: 8, max: 20 } as const;
+  static readonly #LENGTH: { min: number; max: number } = { min: 8, max: 20 } as const;
 
   constructor(value: string) {
     super(value, 'name');
 
-    this.ensureIsValidName(value, 'name');
+    LeagueSeasonName.ensureIsValidName(value, 'name');
   }
 
-  private ensureIsValidName(value: string, propertyName: string): void {
-    if (value.length < this.#LENGTH.min) {
-      throw new PropertyLengthTooShortError(propertyName, this.#LENGTH.min, value.length);
+  private static ensureIsValidName(value: string, propertyName: string): void {
+    if (value.length < LeagueSeasonName.#LENGTH.min) {
+      throw new PropertyLengthTooShortError(propertyName, LeagueSeasonName.#LENGTH.min, value.length);
     }
 
-    if (value.length > this.#LENGTH.max) {
-      throw new PropertyLengthExceededError(propertyName, this.#LENGTH.max, value.length);
+    if (value.length > LeagueSeasonName.#LENGTH.max) {
+      throw new PropertyLengthExceededError(propertyName, LeagueSeasonName.#LENGTH.max, value.length);
     }
   }
 }
