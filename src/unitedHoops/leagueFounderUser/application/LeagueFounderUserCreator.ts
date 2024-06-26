@@ -5,6 +5,7 @@ import LeagueFounderUser from '../domain/LeagueFounderUser';
 import { LeagueFounderUserRepository } from '../domain/repository/LeagueFounderUserRepository';
 import LeagueFounderUserEmail from '../domain/value-objects/LeagueFounderUserEmail';
 import LeagueFounderUserId from '../domain/value-objects/LeagueFounderUserId';
+import LeagueFounderUserPassword from '../domain/value-objects/LeagueFounderUserPassword';
 import { LeagueFounderUserCreatorPayload } from './LeagueFounderUserCreatorPayload';
 
 class LeagueFounderUserCreator {
@@ -50,7 +51,7 @@ class LeagueFounderUserCreator {
       name,
       biography,
       { value: email.value, verified: false },
-      this.#securePasswordCreationService.createFromPlainText(password).getValue(),
+      this.#securePasswordCreationService.createFromPlainText<LeagueFounderUserPassword>(password).getValue(),
       'LEAGUE_FOUNDER_USER',
       active,
     );

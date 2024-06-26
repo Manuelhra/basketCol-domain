@@ -2,7 +2,7 @@ import InvalidEmailPolicyError from '../exceptions/InvalidEmailPolicyError';
 import InvalidPropertyTypeError from '../exceptions/InvalidPropertyTypeError';
 import ObjectValueObject from './ObjectValueObject';
 
-class EmailValueObject extends ObjectValueObject<{ value: string; verified: boolean }> {
+abstract class EmailValueObject extends ObjectValueObject<{ value: string; verified: boolean }> {
   readonly #EMAIL_REG_EXP: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   constructor(value: { value: string; verified: boolean; }) {

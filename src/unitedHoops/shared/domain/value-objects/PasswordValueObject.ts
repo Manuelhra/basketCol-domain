@@ -1,7 +1,7 @@
 import PasswordPolicyViolationError from '../exceptions/PasswordPolicyViolationError';
 import StringValueObject from './StringValueObject';
 
-class PasswordValueObject extends StringValueObject {
+abstract class PasswordValueObject extends StringValueObject {
   static readonly #PASSWORD_REG_EXP: RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
   static readonly #REQUIREMENTS: string[] = [

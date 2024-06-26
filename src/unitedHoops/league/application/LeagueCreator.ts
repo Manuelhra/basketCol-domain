@@ -4,6 +4,7 @@ import BusinessDateService from '../../shared/domain/services/BusinessDateServic
 import League from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
 import LeagueValidationNameService from '../domain/services/LeagueValidationNameService';
+import LeagueCreationDate from '../domain/value-objects/LeagueCreationDate';
 import LeagueName from '../domain/value-objects/LeagueName';
 import { LeagueCreatorPayload } from './LeagueCreatorPayload';
 
@@ -47,7 +48,7 @@ class LeagueCreator {
 
     await this.#leagueFounderUserValidationService.ensureFounderUserExists(leagueFounderUserId);
 
-    const creationDate: string = this.#businessDateService.getCurrentDate('creationDate').getValue();
+    const creationDate: string = this.#businessDateService.getCurrentDate<LeagueCreationDate>().getValue();
     const isActive: boolean = true;
 
     const league: League = new League(
