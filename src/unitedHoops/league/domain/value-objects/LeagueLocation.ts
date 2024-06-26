@@ -17,13 +17,13 @@ class LeagueLocation extends ObjectValueObject<LeagueLocationProps> {
   constructor(value: LeagueLocationProps) {
     super(value, 'location', '{ country: Item; department: Item; city: Item; coords: { lat: number; lng: number } } - Item { code: string; label: string; } ');
 
-    this.ensurePropIsDefined(value.country, 'country');
-    this.ensurePropIsDefined(value.department, 'department');
-    this.ensurePropIsDefined(value.city, 'city');
-    this.ensureCoordsIsDefined(value.coords);
+    LeagueLocation.ensurePropIsDefined(value.country, 'country');
+    LeagueLocation.ensurePropIsDefined(value.department, 'department');
+    LeagueLocation.ensurePropIsDefined(value.city, 'city');
+    LeagueLocation.ensureCoordsIsDefined(value.coords);
   }
 
-  private ensurePropIsDefined(propertyValue: Item, propertyName: string): void {
+  private static ensurePropIsDefined(propertyValue: Item, propertyName: string): void {
     if (propertyValue === null || propertyValue === undefined) {
       throw new InvalidPropertyTypeError(propertyName, '{ code: string; label: string }', typeof propertyValue);
     }
@@ -37,7 +37,7 @@ class LeagueLocation extends ObjectValueObject<LeagueLocationProps> {
     }
   }
 
-  private ensureCoordsIsDefined(coords: { lat: number; lng: number; }): void {
+  private static ensureCoordsIsDefined(coords: { lat: number; lng: number; }): void {
     if (coords === null || coords === undefined) {
       throw new InvalidPropertyTypeError('coords', '{ lat: number; lng: number; }', typeof coords);
     }

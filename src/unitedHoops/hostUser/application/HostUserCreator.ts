@@ -3,6 +3,7 @@ import SecurePasswordCreationService from '../../shared/domain/services/SecurePa
 import HostUser from '../domain/HostUser';
 import MultipleHostUsersException from '../domain/exceptions/MultipleHostUsersException';
 import { HostUserRepository } from '../domain/repository/HostUserRepository';
+import HostUserPassword from '../domain/value-objects/HostUserPassword';
 import { HostUserCreatorPayload } from './HostUserCreatorPayload';
 
 class HostUserCreator {
@@ -29,7 +30,7 @@ class HostUserCreator {
     const hostUser: HostUser = new HostUser(
       id,
       { value: email.value, verified: false },
-      this.#securePasswordCreationService.createFromPlainText(password).getValue(),
+      this.#securePasswordCreationService.createFromPlainText<HostUserPassword>(password).getValue(),
       'HOST_USER',
       true,
     );

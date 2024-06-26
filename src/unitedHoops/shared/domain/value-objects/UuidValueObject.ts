@@ -3,14 +3,14 @@ import validate from 'uuid-validate';
 import StringValueObject from './StringValueObject';
 import InvalidDomainIdError from '../exceptions/InvalidDomainIdError';
 
-class UuidValueObject extends StringValueObject {
+abstract class UuidValueObject extends StringValueObject {
   constructor(value: string, propertyName: string) {
     super(value, propertyName);
 
-    this.ensureIsValidUuid(value);
+    UuidValueObject.ensureIsValidUuid(value);
   }
 
-  private ensureIsValidUuid(id: string): void {
+  private static ensureIsValidUuid(id: string): void {
     if (!validate(id)) {
       throw new InvalidDomainIdError(id);
     }

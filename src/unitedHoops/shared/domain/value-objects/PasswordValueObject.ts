@@ -1,10 +1,10 @@
 import PasswordPolicyViolationError from '../exceptions/PasswordPolicyViolationError';
 import StringValueObject from './StringValueObject';
 
-class PasswordValueObject extends StringValueObject {
-  readonly #PASSWORD_REG_EXP: RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+abstract class PasswordValueObject extends StringValueObject {
+  static readonly #PASSWORD_REG_EXP: RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
-  readonly #REQUIREMENTS: string[] = [
+  static readonly #REQUIREMENTS: string[] = [
     'At least 8 characters in length.',
     'At least one uppercase or lowercase letter.',
     'At least one numeric digit.',
@@ -14,12 +14,12 @@ class PasswordValueObject extends StringValueObject {
   constructor(value: string) {
     super(value, 'password');
 
-    this.ensureIsValidPassword(value);
+    PasswordValueObject.ensureIsValidPassword(value);
   }
 
-  private ensureIsValidPassword(password: string): void {
-    if (!this.#PASSWORD_REG_EXP.test(password)) {
-      throw new PasswordPolicyViolationError(`The password does not allow the value <${password}>: ${this.#REQUIREMENTS.join(', ')}`);
+  private static ensureIsValidPassword(password: string): void {
+    if (!PasswordValueObject.#PASSWORD_REG_EXP.test(password)) {
+      throw new PasswordPolicyViolationError(`The password does not allow the value <${password}>: ${PasswordValueObject.#REQUIREMENTS.join(', ')}`);
     }
   }
 }
