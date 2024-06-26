@@ -10,10 +10,10 @@ class DateValueObject extends StringValueObject {
   constructor(value: string, propertyName: string) {
     super(value, propertyName);
 
-    this.ensureIsValidDate(value, propertyName);
+    this.ensureIsValidDateFormat(value, propertyName);
   }
 
-  private ensureIsValidDate(value: string, propertyName: string) {
+  private ensureIsValidDateFormat(value: string, propertyName: string) {
     if (value === null || value === undefined) {
       throw new InvalidPropertyTypeError(propertyName, 'string', typeof value);
     }
