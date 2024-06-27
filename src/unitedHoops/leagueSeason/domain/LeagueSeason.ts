@@ -1,5 +1,10 @@
 import AggregateRoot from '../../shared/domain/AggregateRoot';
 import { PlainLeagueSeasonData } from './PlainLeagueSeasonData';
+import LeagueSeasonEndDateBeforeStartDateError from './exceptions/LeagueSeasonEndDateBeforeStartDateError';
+import LeagueSeasonEndDateInPastError from './exceptions/LeagueSeasonEndDateInPastError';
+import LeagueSeasonInsufficientDurationError from './exceptions/LeagueSeasonInsufficientDurationError';
+import LeagueSeasonInsufficientPreparationTimeError from './exceptions/LeagueSeasonInsufficientPreparationTimeError';
+import LeagueSeasonStartDateInPastError from './exceptions/LeagueSeasonStartDateInPastError';
 import LeagueSeasonEndDate from './value-objects/LeagueSeasonEndDate';
 import LeagueSeasonId from './value-objects/LeagueSeasonId';
 import LeagueSeasonName from './value-objects/LeagueSeasonName';
@@ -27,14 +32,12 @@ class LeagueSeason extends AggregateRoot {
     status: string,
   ) {
     super(new LeagueSeasonId(id));
-
-    // TODO: Agregar validación para saber que le fecha end es porterior a la actual
-    // y que la fecha start es posterior a la presente
-
     this.#name = new LeagueSeasonName(name);
     this.#startDate = new LeagueSeasonStartDate(startDate);
     this.#endDate = new LeagueSeasonEndDate(endDate);
     this.#status = new LeagueSeasonStatus(status);
+
+    this.validateDates();
   }
 
   public toPrimitives(): PlainLeagueSeasonData {
@@ -49,6 +52,7 @@ class LeagueSeason extends AggregateRoot {
 
   private validateDates(): void {
     const now = this.getCurrentDateString();
+
     this.validateStartDateAfterPresent(now);
     this.validateEndDateAfterPresent(now);
     this.validateStartDateHasPreparationTime(now);
@@ -58,33 +62,33 @@ class LeagueSeason extends AggregateRoot {
 
   private validateStartDateAfterPresent(now: string): void {
     if (this.compareDates(this.#startDate.getValue(), now) <= 0) {
-      throw new Error('Start date must be in the future');
+      throw new LeagueSeasonStartDateInPastError(this.#startDate.getValue(), now);
     }
   }
 
   private validateEndDateAfterPresent(now: string): void {
     if (this.compareDates(this.#endDate.getValue(), now) <= 0) {
-      throw new Error('End date must be in the future');
+      throw new LeagueSeasonEndDateInPastError(this.#endDate.getValue(), now);
     }
   }
 
   private validateStartDateHasPreparationTime(now: string): void {
     const minimumStartDate = this.addDaysToDateString(now, LeagueSeason.#MINIMUM_PREPARATION_DAYS);
     if (this.compareDates(this.#startDate.getValue(), minimumStartDate) < 0) {
-      throw new Error(`Start date must be at least ${LeagueSeason.#MINIMUM_PREPARATION_DAYS} days in the future`);
+      throw new LeagueSeasonInsufficientPreparationTimeError(this.#startDate.getValue(), minimumStartDate, LeagueSeason.#MINIMUM_PREPARATION_DAYS);
     }
   }
 
   private validateEndDateAfterStartDate(): void {
     if (this.compareDates(this.#endDate.getValue(), this.#startDate.getValue()) <= 0) {
-      throw new Error('End date must be after start date');
+      throw new LeagueSeasonEndDateBeforeStartDateError(this.#startDate.getValue(), this.#endDate.getValue());
     }
   }
 
   private validateMinimumSeasonDuration(): void {
     const minimumEndDate = this.addDaysToDateString(this.#startDate.getValue(), LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS);
     if (this.compareDates(this.#endDate.getValue(), minimumEndDate) < 0) {
-      throw new Error(`Season must last at least ${LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS} days`);
+      throw new LeagueSeasonInsufficientDurationError(this.#startDate.getValue(), this.#endDate.getValue(), LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS);
     }
   }
 
