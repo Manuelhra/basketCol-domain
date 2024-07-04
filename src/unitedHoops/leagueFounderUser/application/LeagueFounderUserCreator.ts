@@ -9,7 +9,7 @@ import LeagueFounderUserPassword from '../domain/value-objects/LeagueFounderUser
 import { LeagueFounderUserCreatorPayload } from './LeagueFounderUserCreatorPayload';
 
 class LeagueFounderUserCreator {
-  readonly #emailUniquenessValidatorService: EmailUniquenessValidatorService<LeagueFounderUser>;
+  readonly #emailUniquenessValidatorService: EmailUniquenessValidatorService;
 
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
 
@@ -18,7 +18,7 @@ class LeagueFounderUserCreator {
   readonly #leagueFounderUserRepository: LeagueFounderUserRepository;
 
   constructor(dependencies: {
-    emailUniquenessValidatorService: EmailUniquenessValidatorService<LeagueFounderUser>;
+    emailUniquenessValidatorService: EmailUniquenessValidatorService
     idUniquenessValidatorService: IdUniquenessValidatorService;
     securePasswordCreationService: SecurePasswordCreationService;
     leagueFounderUserRepository: LeagueFounderUserRepository;
@@ -42,7 +42,7 @@ class LeagueFounderUserCreator {
     const leagueFounderUserEmail: LeagueFounderUserEmail = new LeagueFounderUserEmail({ value: email.value, verified: false });
 
     await this.#idUniquenessValidatorService.ensureUniqueId<LeagueFounderUserId, LeagueFounderUser>(leagueFounderUserId);
-    await this.#emailUniquenessValidatorService.ensureUniqueEmail<LeagueFounderUserEmail>(leagueFounderUserEmail);
+    await this.#emailUniquenessValidatorService.ensureUniqueEmail<LeagueFounderUserEmail, LeagueFounderUser>(leagueFounderUserEmail);
 
     const active: boolean = true;
 
