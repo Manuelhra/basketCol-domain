@@ -3,19 +3,19 @@ import { Nullable } from '../Nullable';
 import EmailAlreadyExistsError from '../exceptions/EmailAlreadyExistsError';
 import EmailValueObject from '../value-objects/EmailValueObject';
 
-interface Repository<T extends AggregateRoot> {
-  searchByEmail<N extends EmailValueObject>(emailValueObject: N): Promise<Nullable<T>>;
+interface Repository {
+  searchByEmail<N extends EmailValueObject, ES extends AggregateRoot>(emailValueObject: N): Promise<Nullable<ES>>;
 }
 
-class EmailUniquenessValidatorService<T extends AggregateRoot> {
-  readonly #repository: Repository<T>;
+class EmailUniquenessValidatorService {
+  readonly #repository: Repository;
 
-  constructor(dependencies: { repository: Repository<T> }) {
+  constructor(dependencies: { repository: Repository }) {
     this.#repository = dependencies.repository;
   }
 
-  public async ensureUniqueEmail<N extends EmailValueObject>(emailValueObject: N): Promise<void> {
-    const itemFound: Nullable<T> = await this.#repository.searchByEmail<N>(emailValueObject);
+  public async ensureUniqueEmail<T extends EmailValueObject, ES extends AggregateRoot>(emailValueObject: T): Promise<void> {
+    const itemFound: Nullable<ES> = await this.#repository.searchByEmail<T, ES>(emailValueObject);
 
     if (itemFound) {
       throw new EmailAlreadyExistsError(emailValueObject);

@@ -9,17 +9,17 @@ import LeagueFounderUserPassword from '../domain/value-objects/LeagueFounderUser
 import { LeagueFounderUserCreatorPayload } from './LeagueFounderUserCreatorPayload';
 
 class LeagueFounderUserCreator {
-  readonly #emailUniquenessValidatorService: EmailUniquenessValidatorService<LeagueFounderUser>;
+  readonly #emailUniquenessValidatorService: EmailUniquenessValidatorService;
 
-  readonly #idUniquenessValidatorService: IdUniquenessValidatorService<LeagueFounderUser>;
+  readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
 
   readonly #securePasswordCreationService: SecurePasswordCreationService;
 
   readonly #leagueFounderUserRepository: LeagueFounderUserRepository;
 
   constructor(dependencies: {
-    emailUniquenessValidatorService: EmailUniquenessValidatorService<LeagueFounderUser>;
-    idUniquenessValidatorService: IdUniquenessValidatorService<LeagueFounderUser>;
+    emailUniquenessValidatorService: EmailUniquenessValidatorService
+    idUniquenessValidatorService: IdUniquenessValidatorService;
     securePasswordCreationService: SecurePasswordCreationService;
     leagueFounderUserRepository: LeagueFounderUserRepository;
   }) {
@@ -38,11 +38,11 @@ class LeagueFounderUserCreator {
       password,
     } = leagueFounderUserCreatorPayload;
 
-    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id, 'id');
+    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id);
     const leagueFounderUserEmail: LeagueFounderUserEmail = new LeagueFounderUserEmail({ value: email.value, verified: false });
 
-    await this.#idUniquenessValidatorService.ensureUiqueId<LeagueFounderUserId>(leagueFounderUserId);
-    await this.#emailUniquenessValidatorService.ensureUniqueEmail<LeagueFounderUserEmail>(leagueFounderUserEmail);
+    await this.#idUniquenessValidatorService.ensureUniqueId<LeagueFounderUserId, LeagueFounderUser>(leagueFounderUserId);
+    await this.#emailUniquenessValidatorService.ensureUniqueEmail<LeagueFounderUserEmail, LeagueFounderUser>(leagueFounderUserEmail);
 
     const active: boolean = true;
 

@@ -1,4 +1,5 @@
 export interface PlainLeagueSeasonAwardsData {
+  id: string;
   bestThreePointShooterId: string;
   bestTwoPointShooterId: string;
   bestFreeThrowShooterId: string;
