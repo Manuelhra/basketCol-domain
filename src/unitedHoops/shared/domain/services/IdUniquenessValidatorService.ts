@@ -15,7 +15,7 @@ class IdUniquenessValidatorService<T> {
     this.#domainEntityRepository = depedencies.domainEntityRepository;
   }
 
-  public async ensureUiqueId<N extends UuidValueObject>(idValueObject: N): Promise<void> {
+  public async ensureUniqueId<N extends UuidValueObject>(idValueObject: N): Promise<void> {
     const itemFound: Nullable<T> = await this.#domainEntityRepository.searchById<N>(idValueObject);
 
     if (itemFound) {
