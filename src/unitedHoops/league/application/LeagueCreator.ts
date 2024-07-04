@@ -58,7 +58,7 @@ class LeagueCreator {
       rules,
       level,
       location,
-      founderUserId,
+      leagueFounderUserId.getValue(),
       creationDate,
       isActive,
     );
