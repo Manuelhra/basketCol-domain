@@ -1,10 +1,12 @@
 import LeagueFounderUserValidationService from '../../leagueFounderUser/domain/services/LeagueFounderUserValidationService';
 import LeagueFounderUserId from '../../leagueFounderUser/domain/value-objects/LeagueFounderUserId';
 import BusinessDateService from '../../shared/domain/services/BusinessDateService';
+import IdUniquenessValidatorService from '../../shared/domain/services/IdUniquenessValidatorService';
 import League from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
 import LeagueValidationNameService from '../domain/services/LeagueValidationNameService';
 import LeagueCreationDate from '../domain/value-objects/LeagueCreationDate';
+import LeagueId from '../domain/value-objects/LeagueId';
 import LeagueName from '../domain/value-objects/LeagueName';
 import { LeagueCreatorPayload } from './LeagueCreatorPayload';
 
@@ -17,16 +19,20 @@ class LeagueCreator {
 
   readonly #leagueFounderUserValidationService: LeagueFounderUserValidationService;
 
+  readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
+
   constructor(dependencies: {
     BusinessDateService: BusinessDateService;
     leagueValidationNameService: LeagueValidationNameService;
     leagueRepository: LeagueRepository;
     leagueFounderUserValidationService: LeagueFounderUserValidationService;
+    idUniquenessValidatorService: IdUniquenessValidatorService;
   }) {
     this.#businessDateService = dependencies.BusinessDateService;
     this.#leagueValidationNameService = dependencies.leagueValidationNameService;
     this.#leagueRepository = dependencies.leagueRepository;
     this.#leagueFounderUserValidationService = dependencies.leagueFounderUserValidationService;
+    this.#idUniquenessValidatorService = dependencies.idUniquenessValidatorService;
   }
 
   public async run(payload: LeagueCreatorPayload): Promise<void> {
@@ -40,9 +46,11 @@ class LeagueCreator {
       founderUserId,
     } = payload;
 
+    const leagueId: LeagueId = new LeagueId(id);
     const leagueName: LeagueName = new LeagueName(name);
     const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(founderUserId, 'founderUserId');
 
+    await this.#idUniquenessValidatorService.ensureUniqueId<LeagueId, League>(leagueId);
     await this.#leagueValidationNameService.ensureIsValidShortName(leagueName);
     await this.#leagueValidationNameService.ensureIsValidOfficialName(leagueName);
 

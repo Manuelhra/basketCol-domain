@@ -11,7 +11,7 @@ import { LeagueFounderUserCreatorPayload } from './LeagueFounderUserCreatorPaylo
 class LeagueFounderUserCreator {
   readonly #emailUniquenessValidatorService: EmailUniquenessValidatorService<LeagueFounderUser>;
 
-  readonly #idUniquenessValidatorService: IdUniquenessValidatorService<LeagueFounderUser>;
+  readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
 
   readonly #securePasswordCreationService: SecurePasswordCreationService;
 
@@ -19,7 +19,7 @@ class LeagueFounderUserCreator {
 
   constructor(dependencies: {
     emailUniquenessValidatorService: EmailUniquenessValidatorService<LeagueFounderUser>;
-    idUniquenessValidatorService: IdUniquenessValidatorService<LeagueFounderUser>;
+    idUniquenessValidatorService: IdUniquenessValidatorService;
     securePasswordCreationService: SecurePasswordCreationService;
     leagueFounderUserRepository: LeagueFounderUserRepository;
   }) {
@@ -38,10 +38,10 @@ class LeagueFounderUserCreator {
       password,
     } = leagueFounderUserCreatorPayload;
 
-    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id, 'id');
+    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id);
     const leagueFounderUserEmail: LeagueFounderUserEmail = new LeagueFounderUserEmail({ value: email.value, verified: false });
 
-    await this.#idUniquenessValidatorService.ensureUniqueId<LeagueFounderUserId>(leagueFounderUserId);
+    await this.#idUniquenessValidatorService.ensureUniqueId<LeagueFounderUserId, LeagueFounderUser>(leagueFounderUserId);
     await this.#emailUniquenessValidatorService.ensureUniqueEmail<LeagueFounderUserEmail>(leagueFounderUserEmail);
 
     const active: boolean = true;
