@@ -4,4 +4,5 @@ export interface PlainLeagueSeasonData {
   startDate: string;
   endDate: string;
   status: string;
+  leagueId: string;
 }

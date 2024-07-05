@@ -31,7 +31,6 @@ class HostUserCreator {
       id,
       { value: email.value, verified: false },
       this.#securePasswordCreationService.createFromPlainText<HostUserPassword>(password).getValue(),
-      'HOST_USER',
       true,
     );
 

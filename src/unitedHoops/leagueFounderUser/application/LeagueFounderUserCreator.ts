@@ -52,7 +52,6 @@ class LeagueFounderUserCreator {
       biography,
       { value: email.value, verified: false },
       this.#securePasswordCreationService.createFromPlainText<LeagueFounderUserPassword>(password).getValue(),
-      'LEAGUE_FOUNDER_USER',
       active,
     );
 

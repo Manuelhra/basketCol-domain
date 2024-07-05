@@ -11,14 +11,13 @@ class HostUser extends User {
     id: string,
     email: { value: string; verified: boolean },
     password: string,
-    type: string,
     active: boolean,
   ) {
     super(
       new HostUserId(id),
       new HostUserEmail(email),
       new HostUserPassword(password),
-      new HostUserType(type),
+      new HostUserType(),
       new HostUserActive(active),
     );
   }
