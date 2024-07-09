@@ -1,3 +1,5 @@
+import LeagueValidationService from '../../league/domain/services/LeagueValidationService';
+import LeagueId from '../../league/domain/value-objects/LeagueId';
 import IdUniquenessValidatorService from '../../shared/domain/services/IdUniquenessValidatorService';
 import LeagueSeason from '../domain/LeagueSeason';
 import { LeagueSeasonRepository } from '../domain/repository/LeagueSeasonRepository';
@@ -10,12 +12,16 @@ class LeagueSeasonCreator {
 
   readonly #leagueSeasonRepository: LeagueSeasonRepository;
 
+  readonly #leagueValidationService: LeagueValidationService;
+
   constructor(depedencies: {
     idUniquenessValidatorService: IdUniquenessValidatorService,
-    leagueSeasonRepository: LeagueSeasonRepository
+    leagueSeasonRepository: LeagueSeasonRepository,
+    leagueValidationService: LeagueValidationService,
   }) {
     this.#idUniquenessValidatorService = depedencies.idUniquenessValidatorService;
     this.#leagueSeasonRepository = depedencies.leagueSeasonRepository;
+    this.#leagueValidationService = depedencies.leagueValidationService;
   }
 
   public async run(payload: LeagueSeasonCreatorPayload) : Promise<void> {
@@ -24,15 +30,14 @@ class LeagueSeasonCreator {
       name,
       startDate,
       endDate,
-      leagueId,
     } = payload;
-
-    // TODO: Validar que existe la liga, crear el servicio de dominio en la carpeta de liga
 
     const leagueSeasonId: LeagueSeasonId = new LeagueSeasonId(id);
     const leagueSeasonStatus: LeagueSeasonStatus = LeagueSeasonStatus.createUpcoming();
+    const leagueId: LeagueId = new LeagueId(payload.leagueId);
 
     await this.#idUniquenessValidatorService.ensureUniqueId<LeagueSeasonId, LeagueSeason>(leagueSeasonId);
+    await this.#leagueValidationService.ensureLeagueExist(leagueId);
 
     const leagueSeason: LeagueSeason = new LeagueSeason(
       leagueSeasonId.getValue(),
@@ -40,6 +45,7 @@ class LeagueSeasonCreator {
       startDate,
       endDate,
       leagueSeasonStatus.getValue(),
+      leagueId.getValue(),
     );
 
     return this.#leagueSeasonRepository.save(leagueSeason);
