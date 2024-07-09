@@ -24,7 +24,10 @@ class LeagueSeasonCreator {
       name,
       startDate,
       endDate,
+      leagueId,
     } = payload;
+
+    // TODO: Validar que existe la liga, crear el servicio de dominio en la carpeta de liga
 
     const leagueSeasonId: LeagueSeasonId = new LeagueSeasonId(id);
     const leagueSeasonStatus: LeagueSeasonStatus = LeagueSeasonStatus.createUpcoming();

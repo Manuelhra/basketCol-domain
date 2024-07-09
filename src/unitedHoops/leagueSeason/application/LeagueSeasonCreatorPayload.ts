@@ -3,4 +3,5 @@ export interface LeagueSeasonCreatorPayload {
   name: string;
   startDate: string;
   endDate: string;
+  leagueId: string;
 }
