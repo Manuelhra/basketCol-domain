@@ -4,7 +4,7 @@ abstract class RootError extends Error {
     this.name = this.constructor.name;
   }
 
-  abstract logError(): string;
+  public abstract logError(): string;
 }
 
 export default RootError;

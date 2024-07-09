@@ -1,3 +1,4 @@
+import LeagueId from '../../league/domain/value-objects/LeagueId';
 import AggregateRoot from '../../shared/domain/AggregateRoot';
 import { PlainLeagueSeasonData } from './PlainLeagueSeasonData';
 import LeagueSeasonEndDateBeforeStartDateError from './exceptions/LeagueSeasonEndDateBeforeStartDateError';
@@ -24,18 +25,22 @@ class LeagueSeason extends AggregateRoot {
 
   readonly #status: LeagueSeasonStatus;
 
+  readonly #leagueId: LeagueId;
+
   constructor(
     id: string,
     name: string,
     startDate: string,
     endDate: string,
     status: string,
+    leagueId: string,
   ) {
     super(new LeagueSeasonId(id));
     this.#name = new LeagueSeasonName(name);
     this.#startDate = new LeagueSeasonStartDate(startDate);
     this.#endDate = new LeagueSeasonEndDate(endDate);
     this.#status = new LeagueSeasonStatus(status);
+    this.#leagueId = new LeagueId(leagueId);
 
     this.validateDates();
   }
@@ -47,6 +52,7 @@ class LeagueSeason extends AggregateRoot {
       startDate: this.#startDate.getValue(),
       endDate: this.#endDate.getValue(),
       status: this.#status.getValue(),
+      leagueId: this.#leagueId.getValue(),
     };
   }
 

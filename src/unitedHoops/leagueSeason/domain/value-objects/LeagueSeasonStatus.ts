@@ -10,6 +10,10 @@ class LeagueSeasonStatus extends StringValueObject {
     LeagueSeasonStatus.ensureIsValidStatus(value);
   }
 
+  public static createUpcoming(): LeagueSeasonStatus {
+    return new LeagueSeasonStatus('UPCOMING');
+  }
+
   private static ensureIsValidStatus(status: string): void {
     if (!LeagueSeasonStatus.#VALID_STATUSES.includes(status)) {
       throw new InvalidLeagueSeasonStatusError(status, LeagueSeasonStatus.#VALID_STATUSES);

@@ -19,14 +19,13 @@ class LeagueFounderUser extends User {
     biography: string,
     email: { value: string; verified: boolean; },
     password: string,
-    type: string,
     active: boolean,
   ) {
     super(
       new LeagueFounderUserId(id, 'id'),
       new LeagueFounderUserEmail(email),
       new LeagueFounderUserPassword(password),
-      new LeagueFounderUserType(type),
+      new LeagueFounderUserType(),
       new LeagueFounderUserActive(active),
     );
 

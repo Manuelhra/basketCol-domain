@@ -1,8 +1,7 @@
-export interface PlainLeagueSeasonData {
+export interface LeagueSeasonCreatorPayload {
   id: string;
   name: string;
   startDate: string;
   endDate: string;
-  status: string;
   leagueId: string;
 }
