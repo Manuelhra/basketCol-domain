@@ -14,6 +14,6 @@ export interface ILeague {
   level: string;
   location: LeagueLocationProps;
   creationDate: string;
-  founderUserId: string;
+  leagueFounderUserId: string;
   isActive: boolean;
 }

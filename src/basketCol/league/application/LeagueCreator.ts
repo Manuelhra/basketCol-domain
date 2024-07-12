@@ -43,12 +43,11 @@ class LeagueCreator {
       level,
       rules,
       location,
-      founderUserId,
     } = payload;
 
     const leagueId: LeagueId = new LeagueId(id);
     const leagueName: LeagueName = new LeagueName(name);
-    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(founderUserId, 'founderUserId');
+    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(payload.leagueFounderUserId, 'leagueFounderUserId');
 
     await this.#idUniquenessValidatorService.ensureUniqueId<LeagueId, League>(leagueId);
     await this.#leagueValidationNameService.ensureIsValidShortName(leagueName);

@@ -21,7 +21,7 @@ class League extends AggregateRoot {
 
   readonly #location: LeagueLocation;
 
-  readonly #founderUserId: LeagueFounderUserId;
+  readonly #leagueFounderUserId: LeagueFounderUserId;
 
   readonly #creationDate: LeagueCreationDate;
 
@@ -34,7 +34,7 @@ class League extends AggregateRoot {
     rules: string,
     level: string,
     location: LeagueLocationProps,
-    founderUserId: string,
+    leagueFounderUserId: string,
     creationDate: string,
     isActive: boolean,
   ) {
@@ -45,7 +45,7 @@ class League extends AggregateRoot {
     this.#rules = new LeagueRules(rules);
     this.#level = new LeagueLevel(level);
     this.#location = new LeagueLocation(location);
-    this.#founderUserId = new LeagueFounderUserId(founderUserId, 'founderUserId');
+    this.#leagueFounderUserId = new LeagueFounderUserId(leagueFounderUserId, 'leagueFounderUserId');
     this.#creationDate = new LeagueCreationDate(creationDate);
     this.#isActive = new LeagueIsActive(isActive);
   }
@@ -58,7 +58,7 @@ class League extends AggregateRoot {
       rules: this.#rules.getValue(),
       level: this.#level.getValue(),
       location: this.#location.getValue(),
-      founderUserId: this.#founderUserId.getValue(),
+      leagueFounderUserId: this.#leagueFounderUserId.getValue(),
       creationDate: this.#creationDate.getValue(),
       isActive: this.#isActive.getValue(),
     };
