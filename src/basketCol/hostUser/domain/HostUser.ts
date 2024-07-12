@@ -1,5 +1,5 @@
 import User from '../../shared/domain/User';
-import { PlainHostUserData } from './PlainHostUserData';
+import { IHostUser } from './IHostUser';
 import HostUserActive from './value-objects/HostUserActive';
 import HostUserEmail from './value-objects/HostUserEmail';
 import HostUserId from './value-objects/HostUserId';
@@ -22,7 +22,7 @@ class HostUser extends User {
     );
   }
 
-  public toPrimitives(): PlainHostUserData {
+  public toPrimitives(): IHostUser {
     return {
       id: this.id.getValue(),
       email: this.email.getValue(),
