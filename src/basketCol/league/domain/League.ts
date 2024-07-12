@@ -1,5 +1,5 @@
-import LeagueFounderUserId from '../../leagueFounderUser/domain/value-objects/LeagueFounderUserId';
 import AggregateRoot from '../../shared/domain/AggregateRoot';
+import LeagueFounderUserId from '../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
 import { ILeague } from './ILeague';
 import LeagueCreationDate from './value-objects/LeagueCreationDate';
 import LeagueDescription from './value-objects/LeagueDescription';

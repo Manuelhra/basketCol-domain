@@ -1,7 +1,7 @@
-import LeagueFounderUserValidationService from '../../leagueFounderUser/domain/services/LeagueFounderUserValidationService';
-import LeagueFounderUserId from '../../leagueFounderUser/domain/value-objects/LeagueFounderUserId';
 import BusinessDateService from '../../shared/domain/services/BusinessDateService';
 import IdUniquenessValidatorService from '../../shared/domain/services/IdUniquenessValidatorService';
+import LeagueFounderUserValidationService from '../../users/leagueFounder/domain/services/LeagueFounderUserValidationService';
+import LeagueFounderUserId from '../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
 import League from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
 import LeagueValidationNameService from '../domain/services/LeagueValidationNameService';
