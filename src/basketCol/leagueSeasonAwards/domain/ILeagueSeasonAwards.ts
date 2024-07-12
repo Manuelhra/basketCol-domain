@@ -1,4 +1,4 @@
-export interface PlainLeagueSeasonAwardsData {
+export interface ILeagueSeasonAwards {
   id: string;
   bestThreePointShooterId: string;
   bestTwoPointShooterId: string;

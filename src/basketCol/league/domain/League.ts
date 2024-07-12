@@ -1,6 +1,6 @@
 import LeagueFounderUserId from '../../leagueFounderUser/domain/value-objects/LeagueFounderUserId';
 import AggregateRoot from '../../shared/domain/AggregateRoot';
-import { PlainLeagueData } from './PlainLeagueData';
+import { ILeague } from './ILeague';
 import LeagueCreationDate from './value-objects/LeagueCreationDate';
 import LeagueDescription from './value-objects/LeagueDescription';
 import LeagueId from './value-objects/LeagueId';
@@ -50,7 +50,7 @@ class League extends AggregateRoot {
     this.#isActive = new LeagueIsActive(isActive);
   }
 
-  public toPrimitives(): PlainLeagueData {
+  public toPrimitives(): ILeague {
     return {
       id: this.id.getValue(),
       name: this.#name.getValue(),

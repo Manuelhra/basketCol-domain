@@ -1,4 +1,4 @@
-export interface PlainPlayerOffensiveAttributesData {
+export interface IPlayerOffensiveAttributes {
   id: string;
   closeShot: number;
   drivingLayup: number;

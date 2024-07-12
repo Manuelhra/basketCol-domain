@@ -1,6 +1,6 @@
 import { LeagueLocationProps } from './value-objects/LeagueLocation';
 
-export interface PlainLeagueData {
+export interface ILeague {
   id: string;
   name: {
     short: string;

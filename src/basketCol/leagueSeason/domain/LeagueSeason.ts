@@ -1,6 +1,6 @@
 import LeagueId from '../../league/domain/value-objects/LeagueId';
 import AggregateRoot from '../../shared/domain/AggregateRoot';
-import { PlainLeagueSeasonData } from './PlainLeagueSeasonData';
+import { ILeagueSeason } from './ILeagueSeason';
 import LeagueSeasonEndDateBeforeStartDateError from './exceptions/LeagueSeasonEndDateBeforeStartDateError';
 import LeagueSeasonEndDateInPastError from './exceptions/LeagueSeasonEndDateInPastError';
 import LeagueSeasonInsufficientDurationError from './exceptions/LeagueSeasonInsufficientDurationError';
@@ -45,7 +45,7 @@ class LeagueSeason extends AggregateRoot {
     this.validateDates();
   }
 
-  public toPrimitives(): PlainLeagueSeasonData {
+  public toPrimitives(): ILeagueSeason {
     return {
       id: this.id.getValue(),
       name: this.#name.getValue(),

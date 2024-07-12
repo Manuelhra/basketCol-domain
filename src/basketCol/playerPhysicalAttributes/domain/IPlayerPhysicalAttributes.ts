@@ -1,4 +1,4 @@
-export interface PlainPlayerPhysicalAttributesData {
+export interface IPlayerPhysicalAttributes {
   id: string;
   speed: number;
   acceleration: number;

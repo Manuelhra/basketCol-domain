@@ -1,4 +1,4 @@
-export interface PlainShootingAttributesData {
+export interface IShootingAttributes {
   id: string;
   midRangeShot: number;
   threePointShot: number;

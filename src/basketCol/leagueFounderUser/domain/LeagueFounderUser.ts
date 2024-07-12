@@ -1,5 +1,5 @@
 import User from '../../shared/domain/User';
-import { PlainLeagueFounderUserData } from './PlainLeagueFounderUserData';
+import { ILeagueFounderUser } from './ILeagueFounderUser';
 import LeagueFounderUserActive from './value-objects/LeagueFounderUserActive';
 import LeagueFounderUserBiography from './value-objects/LeagueFounderUserBiography';
 import LeagueFounderUserEmail from './value-objects/LeagueFounderUserEmail';
@@ -33,7 +33,7 @@ class LeagueFounderUser extends User {
     this.#biography = new LeagueFounderUserBiography(biography);
   }
 
-  public toPrimitives(): PlainLeagueFounderUserData {
+  public toPrimitives(): ILeagueFounderUser {
     return {
       id: this.id.getValue(),
       name: this.#name.getValue(),

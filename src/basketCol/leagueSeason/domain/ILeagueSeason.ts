@@ -1,4 +1,4 @@
-export interface PlainLeagueSeasonData {
+export interface ILeagueSeason {
   id: string;
   name: string;
   startDate: string;

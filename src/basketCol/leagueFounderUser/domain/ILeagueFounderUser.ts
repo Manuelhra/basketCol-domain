@@ -1,4 +1,4 @@
-export interface PlainLeagueFounderUserData {
+export interface ILeagueFounderUser {
   id: string;
   name: { firstName: string; lastName: string; };
   biography: string;
