@@ -5,4 +5,5 @@ export interface IPlayerPhysicalAttributes {
   strength: number;
   vertical: number;
   stamina: number;
+  playerUserId: string;
 }

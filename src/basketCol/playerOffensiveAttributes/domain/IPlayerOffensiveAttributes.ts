@@ -5,4 +5,5 @@ export interface IPlayerOffensiveAttributes {
   drivingDunk: number;
   standingDunk: number;
   postControl: number;
+  playerUserId: string;
 }

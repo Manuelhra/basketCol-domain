@@ -3,4 +3,5 @@ export interface IPlayerSkillAttributes {
   passAccuracy: number;
   ballHandle: number;
   speedWithBall: number;
+  playerUserId: string;
 }

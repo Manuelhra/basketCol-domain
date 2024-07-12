@@ -6,4 +6,5 @@ export interface IPlayerDefensiveAttributes {
   block: number;
   offensiveRebound: number;
   defensiveRebound: number;
+  playerUserId: string;
 }

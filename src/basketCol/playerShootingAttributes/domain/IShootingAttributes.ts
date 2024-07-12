@@ -3,4 +3,5 @@ export interface IShootingAttributes {
   midRangeShot: number;
   threePointShot: number;
   freeThrow: number;
+  playerUserId: string;
 }
