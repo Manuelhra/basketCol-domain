@@ -4,7 +4,5 @@ export interface IDefensiveAttributes {
   perimeterDefense: number;
   steal: number;
   block: number;
-  offensiveRebound: number;
-  defensiveRebound: number;
   playerUserId: string;
 }

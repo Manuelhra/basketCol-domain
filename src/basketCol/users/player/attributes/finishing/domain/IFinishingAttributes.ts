@@ -1,6 +1,5 @@
-export interface IOffensiveAttributes {
+export interface IFinishingAttributes {
   id: string;
-  closeShot: number;
   drivingLayup: number;
   drivingDunk: number;
   standingDunk: number;
