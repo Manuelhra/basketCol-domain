@@ -1,8 +1,8 @@
 import UuidValueObject from '../../../../shared/domain/value-objects/UuidValueObject';
 
 abstract class UserId extends UuidValueObject {
-  constructor(value: string) {
-    super(value, 'id');
+  constructor(value: string, propertyName = 'id') {
+    super(value, propertyName);
   }
 }
 

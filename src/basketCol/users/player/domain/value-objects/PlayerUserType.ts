@@ -1,6 +1,6 @@
 import UserType from '../../../shared/domain/value-objects/UserType';
 
-class HostUserType extends UserType {
+class PlayerUserType extends UserType {
   protected readonly TYPE: string;
 
   constructor() {
@@ -11,4 +11,4 @@ class HostUserType extends UserType {
   }
 }
 
-export default HostUserType;
+export default PlayerUserType;
