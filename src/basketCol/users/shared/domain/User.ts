@@ -1,25 +1,27 @@
 import AggregateRoot from '../../../shared/domain/AggregateRoot';
-import BooleanValueObject from '../../../shared/domain/value-objects/BooleanValueObject';
 import { PrimitiveValueObject } from '../../../shared/domain/value-objects/PrimitiveValueObject';
-import UuidValueObject from '../../../shared/domain/value-objects/UuidValueObject';
-import EmailValueObject from './value-objects/EmailValueObject';
-import TypeValueObject from './value-objects/TypeValueObject';
+import { IUser } from './IUser';
+import UserActive from './value-objects/UserActive';
+import UserEmail from './value-objects/UserEmail';
+import UserId from './value-objects/UserId';
+import UserPassword from './value-objects/UserPassword';
+import UserType from './value-objects/UserType';
 
-abstract class User extends AggregateRoot {
-  protected readonly email: EmailValueObject;
+abstract class User extends AggregateRoot<IUser> {
+  protected readonly email: UserEmail;
 
   protected password: PrimitiveValueObject<string>;
 
-  protected type: TypeValueObject;
+  protected type: UserType;
 
-  protected readonly active: BooleanValueObject;
+  protected readonly active: UserActive;
 
   constructor(
-    id: UuidValueObject,
-    email: EmailValueObject,
-    password: PrimitiveValueObject<string>,
-    type: TypeValueObject,
-    active: BooleanValueObject,
+    id: UserId,
+    email: UserEmail,
+    password: UserPassword,
+    type: UserType,
+    active: UserActive,
   ) {
     super(id);
 

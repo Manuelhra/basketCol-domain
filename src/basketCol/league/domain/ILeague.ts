@@ -1,4 +1,4 @@
-import { LeagueLocationProps } from './value-objects/LeagueLocation';
+import { ILeagueLocationProps } from './value-objects/LeagueLocation';
 
 export interface ILeague {
   id: string;
@@ -12,7 +12,7 @@ export interface ILeague {
   };
   rules: string;
   level: string;
-  location: LeagueLocationProps;
+  location: ILeagueLocationProps;
   creationDate: string;
   leagueFounderUserId: string;
   isActive: boolean;

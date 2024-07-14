@@ -2,7 +2,7 @@ import InvalidPropertyTypeError from '../../../../shared/domain/exceptions/Inval
 import ObjectValueObject from '../../../../shared/domain/value-objects/ObjectValueObject';
 import InvalidEmailPolicyError from '../exceptions/InvalidEmailPolicyError';
 
-abstract class EmailValueObject extends ObjectValueObject<{ value: string; verified: boolean }> {
+abstract class UserEmail extends ObjectValueObject<{ value: string; verified: boolean }> {
   static readonly #EMAIL_REG_EXP: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   constructor(value: { value: string; verified: boolean; }) {
@@ -10,8 +10,8 @@ abstract class EmailValueObject extends ObjectValueObject<{ value: string; verif
 
     super(value, 'email', expectedType);
 
-    EmailValueObject.ensureIsValidEmailValue(value.value);
-    EmailValueObject.ensureVerifiedIsDefined(value.verified);
+    UserEmail.ensureIsValidEmailValue(value.value);
+    UserEmail.ensureVerifiedIsDefined(value.verified);
   }
 
   private static ensureIsValidEmailValue(value: string): void {
@@ -19,7 +19,7 @@ abstract class EmailValueObject extends ObjectValueObject<{ value: string; verif
       throw new InvalidPropertyTypeError('email.value', 'string', typeof value);
     }
 
-    if (!EmailValueObject.#EMAIL_REG_EXP.test(value)) {
+    if (!UserEmail.#EMAIL_REG_EXP.test(value)) {
       throw new InvalidEmailPolicyError(value);
     }
   }
@@ -31,6 +31,6 @@ abstract class EmailValueObject extends ObjectValueObject<{ value: string; verif
   }
 }
 
-export default EmailValueObject;
+export default UserEmail;
 
 // TODO: Validar si se envía un tipo de dato que no es sin usar capa infrastructure

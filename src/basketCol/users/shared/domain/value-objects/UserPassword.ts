@@ -1,7 +1,7 @@
 import StringValueObject from '../../../../shared/domain/value-objects/StringValueObject';
 import PasswordPolicyViolationError from '../exceptions/PasswordPolicyViolationError';
 
-abstract class PasswordValueObject extends StringValueObject {
+abstract class UserPassword extends StringValueObject {
   static readonly #PASSWORD_REG_EXP: RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
   static readonly #REQUIREMENTS: string[] = [
@@ -14,14 +14,14 @@ abstract class PasswordValueObject extends StringValueObject {
   constructor(value: string) {
     super(value, 'password');
 
-    PasswordValueObject.ensureIsValidPassword(value);
+    UserPassword.ensureIsValidPassword(value);
   }
 
   private static ensureIsValidPassword(password: string): void {
-    if (!PasswordValueObject.#PASSWORD_REG_EXP.test(password)) {
-      throw new PasswordPolicyViolationError(`The password does not allow the value <${password}>: ${PasswordValueObject.#REQUIREMENTS.join(', ')}`);
+    if (!UserPassword.#PASSWORD_REG_EXP.test(password)) {
+      throw new PasswordPolicyViolationError(`The password does not allow the value <${password}>: ${UserPassword.#REQUIREMENTS.join(', ')}`);
     }
   }
 }
 
-export default PasswordValueObject;
+export default UserPassword;

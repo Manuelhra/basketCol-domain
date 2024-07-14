@@ -6,11 +6,11 @@ import LeagueDescription from './value-objects/LeagueDescription';
 import LeagueId from './value-objects/LeagueId';
 import LeagueIsActive from './value-objects/LeagueIsActive';
 import LeagueLevel from './value-objects/LeagueLevel';
-import LeagueLocation, { LeagueLocationProps } from './value-objects/LeagueLocation';
+import LeagueLocation, { ILeagueLocationProps } from './value-objects/LeagueLocation';
 import LeagueName from './value-objects/LeagueName';
 import LeagueRules from './value-objects/LeagueRules';
 
-class League extends AggregateRoot {
+class League extends AggregateRoot<ILeague> {
   readonly #name: LeagueName;
 
   readonly #description: LeagueDescription;
@@ -33,7 +33,7 @@ class League extends AggregateRoot {
     description: { short: string; complete: string; },
     rules: string,
     level: string,
-    location: LeagueLocationProps,
+    location: ILeagueLocationProps,
     leagueFounderUserId: string,
     creationDate: string,
     isActive: boolean,

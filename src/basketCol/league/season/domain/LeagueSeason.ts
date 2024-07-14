@@ -12,7 +12,7 @@ import LeagueSeasonName from './value-objects/LeagueSeasonName';
 import LeagueSeasonStartDate from './value-objects/LeagueSeasonStartDate';
 import LeagueSeasonStatus from './value-objects/LeagueSeasonStatus';
 
-class LeagueSeason extends AggregateRoot {
+class LeagueSeason extends AggregateRoot<ILeagueSeason> {
   static readonly #MINIMUM_PREPARATION_DAYS = 10 as const;
 
   static readonly #MINIMUM_SEASON_DURATION_DAYS = 5 as const;
