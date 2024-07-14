@@ -1,4 +1,5 @@
 import AggregateRoot from '../../../../../shared/domain/AggregateRoot';
+import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
 import { IDefensiveAttributes } from './IDefensiveAttributes';
 import Block from './value-objects/Block';
 import DefensiveAttributesId from './value-objects/DefensiveAttributesId';
@@ -15,12 +16,15 @@ class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
 
   readonly #block: Block;
 
+  readonly #playerUserId: PlayerUserId;
+
   constructor(
     id: string,
     interiorDefense: number,
     perimeterDefense: number,
     steal: number,
     block: number,
+    playerUserId: string,
   ) {
     super(new DefensiveAttributesId(id));
 
@@ -28,6 +32,7 @@ class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
     this.#perimeterDefense = new PerimeterDefense(perimeterDefense);
     this.#steal = new Steal(steal);
     this.#block = new Block(block);
+    this.#playerUserId = new PlayerUserId(playerUserId, 'playerUserId');
   }
 
   public toPrimitives(): IDefensiveAttributes {
@@ -37,6 +42,7 @@ class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
       perimeterDefense: this.#perimeterDefense.getValue(),
       steal: this.#steal.getValue(),
       block: this.#block.getValue(),
+      playerUserId: this.#playerUserId.getValue(),
     };
   }
 }
