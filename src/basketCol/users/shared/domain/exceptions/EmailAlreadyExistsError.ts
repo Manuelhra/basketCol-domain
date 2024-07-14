@@ -1,9 +1,9 @@
 import RootError from '../../../../shared/domain/exceptions/RootError';
-import EmailValueObject from '../value-objects/EmailValueObject';
+import UserEmail from '../value-objects/UserEmail';
 
 class EmailAlreadyExistsError extends RootError {
-  constructor(emailValueObject: EmailValueObject) {
-    const { value } = emailValueObject.getValue();
+  constructor(userEmail: UserEmail) {
+    const { value } = userEmail.getValue();
 
     const message = `Uniqueness constraint violation: email '${value}' already exists in the system.`;
     super(message);

@@ -6,7 +6,7 @@ import InteriorDefense from './value-objects/InteriorDefense';
 import PerimeterDefense from './value-objects/PerimeterDefense';
 import Steal from './value-objects/Steal';
 
-class DefensiveAttributes extends AggregateRoot {
+class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
   readonly #interiorDefense: InteriorDefense;
 
   readonly #perimeterDefense: PerimeterDefense;

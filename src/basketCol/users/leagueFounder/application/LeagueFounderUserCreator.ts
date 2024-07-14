@@ -1,6 +1,7 @@
 import IdUniquenessValidatorService from '../../../shared/domain/services/IdUniquenessValidatorService';
 import EmailUniquenessValidatorService from '../../shared/domain/services/EmailUniquenessValidatorService';
 import SecurePasswordCreationService from '../../shared/domain/services/SecurePasswordCreationService';
+import { ILeagueFounderUser } from '../domain/ILeagueFounderUser';
 import LeagueFounderUser from '../domain/LeagueFounderUser';
 import { LeagueFounderUserRepository } from '../domain/repository/LeagueFounderUserRepository';
 import LeagueFounderUserEmail from '../domain/value-objects/LeagueFounderUserEmail';
@@ -41,8 +42,8 @@ class LeagueFounderUserCreator {
     const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id);
     const leagueFounderUserEmail: LeagueFounderUserEmail = new LeagueFounderUserEmail({ value: email.value, verified: false });
 
-    await this.#idUniquenessValidatorService.ensureUniqueId<LeagueFounderUserId, LeagueFounderUser>(leagueFounderUserId);
-    await this.#emailUniquenessValidatorService.ensureUniqueEmail<LeagueFounderUserEmail, LeagueFounderUser>(leagueFounderUserEmail);
+    await this.#idUniquenessValidatorService.ensureUniqueId<LeagueFounderUserId, ILeagueFounderUser, LeagueFounderUser>(leagueFounderUserId);
+    await this.#emailUniquenessValidatorService.ensureUniqueEmail<LeagueFounderUserEmail, ILeagueFounderUser, LeagueFounderUser>(leagueFounderUserEmail);
 
     const active: boolean = true;
 

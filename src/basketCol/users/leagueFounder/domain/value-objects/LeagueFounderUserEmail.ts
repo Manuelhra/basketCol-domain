@@ -1,4 +1,4 @@
-import EmailValueObject from '../../../shared/domain/value-objects/EmailValueObject';
+import UserEmail from '../../../shared/domain/value-objects/UserEmail';
 
-class LeagueFounderUserEmail extends EmailValueObject {}
+class LeagueFounderUserEmail extends UserEmail {}
 export default LeagueFounderUserEmail;

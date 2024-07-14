@@ -1,6 +1,6 @@
-import TypeValueObject from '../../../shared/domain/value-objects/TypeValueObject';
+import UserType from '../../../shared/domain/value-objects/UserType';
 
-class HostUserType extends TypeValueObject {
+class HostUserType extends UserType {
   readonly TYPE: string;
 
   constructor() {

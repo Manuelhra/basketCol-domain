@@ -1,8 +1,8 @@
-import PasswordValueObject from '../value-objects/PasswordValueObject';
+import UserPassword from '../value-objects/UserPassword';
 import { PasswordEncrypterService } from './PasswordEncrypterService';
 
 interface CreatePasswordValueObject {
-  run<T extends PasswordValueObject>(encryptedPassword: string): T;
+  run<T extends UserPassword>(encryptedPassword: string): T;
 }
 
 class SecurePasswordCreationService {
@@ -18,7 +18,7 @@ class SecurePasswordCreationService {
     this.#createPasswordValueObject = dependencies.createPasswordValueObject;
   }
 
-  public createFromPlainText<T extends PasswordValueObject>(value: string): T {
+  public createFromPlainText<T extends UserPassword>(value: string): T {
     const encryptedPassword = this.#passwordEncrypterService.encrypt(value);
     return this.#createPasswordValueObject.run<T>(encryptedPassword);
   }

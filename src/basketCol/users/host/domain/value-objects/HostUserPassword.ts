@@ -1,4 +1,4 @@
-import PasswordValueObject from '../../../shared/domain/value-objects/PasswordValueObject';
+import UserPassword from '../../../shared/domain/value-objects/UserPassword';
 
-class HostUserPassword extends PasswordValueObject {}
+class HostUserPassword extends UserPassword {}
 export default HostUserPassword;
