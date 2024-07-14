@@ -1,7 +1,7 @@
+import { IAggregateRoot } from '../../shared/domain/IAggregateRoot';
 import { ILeagueLocationProps } from './value-objects/LeagueLocation';
 
-export interface ILeague {
-  id: string;
+export interface ILeague extends IAggregateRoot {
   name: {
     short: string;
     official: string;
