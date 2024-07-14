@@ -2,6 +2,8 @@ import AggregateRoot from '../../../../../shared/domain/AggregateRoot';
 import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
 import { IDefensiveAttributes } from './IDefensiveAttributes';
 import Block from './value-objects/Block';
+import DACreatedAt from './value-objects/DACreatedAt';
+import DAUpdatedAt from './value-objects/DAUpdatedAt';
 import DefensiveAttributesId from './value-objects/DefensiveAttributesId';
 import InteriorDefense from './value-objects/InteriorDefense';
 import PerimeterDefense from './value-objects/PerimeterDefense';
@@ -25,8 +27,14 @@ class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
     steal: number,
     block: number,
     playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
   ) {
-    super(new DefensiveAttributesId(id));
+    const defensiveAttributesId: DefensiveAttributesId = new DefensiveAttributesId(id);
+    const dACreatedAt: DACreatedAt = new DACreatedAt(createdAt);
+    const dAUpdatedAt: DAUpdatedAt = new DAUpdatedAt(updatedAt);
+
+    super(defensiveAttributesId, dACreatedAt, dAUpdatedAt);
 
     this.#interiorDefense = new InteriorDefense(interiorDefense);
     this.#perimeterDefense = new PerimeterDefense(perimeterDefense);
@@ -43,6 +51,8 @@ class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
       steal: this.#steal.getValue(),
       block: this.#block.getValue(),
       playerUserId: this.#playerUserId.getValue(),
+      createdAt: this.createdAt.getValue(),
+      updatedAt: this.updatedAt.getValue(),
     };
   }
 }
