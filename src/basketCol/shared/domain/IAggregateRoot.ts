@@ -1,6 +1,6 @@
 interface IAuditableEntity {
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface IAggregateRoot extends IAuditableEntity {
