@@ -6,15 +6,15 @@ interface Item {
   label: string;
 }
 
-export interface LeagueLocationProps {
+export interface ILeagueLocationProps {
   country: Item;
   department: Item;
   city: Item;
   coords: { lat: number; lng: number; };
 }
 
-class LeagueLocation extends ObjectValueObject<LeagueLocationProps> {
-  constructor(value: LeagueLocationProps) {
+class LeagueLocation extends ObjectValueObject<ILeagueLocationProps> {
+  constructor(value: ILeagueLocationProps) {
     super(value, 'location', '{ country: Item; department: Item; city: Item; coords: { lat: number; lng: number } } - Item { code: string; label: string; } ');
 
     LeagueLocation.ensurePropIsDefined(value.country, 'country');

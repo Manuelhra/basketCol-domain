@@ -1,16 +1,16 @@
-import LeagueFounderUserId from '../../leagueFounderUser/domain/value-objects/LeagueFounderUserId';
 import AggregateRoot from '../../shared/domain/AggregateRoot';
-import { PlainLeagueData } from './PlainLeagueData';
+import LeagueFounderUserId from '../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
+import { ILeague } from './ILeague';
 import LeagueCreationDate from './value-objects/LeagueCreationDate';
 import LeagueDescription from './value-objects/LeagueDescription';
 import LeagueId from './value-objects/LeagueId';
 import LeagueIsActive from './value-objects/LeagueIsActive';
 import LeagueLevel from './value-objects/LeagueLevel';
-import LeagueLocation, { LeagueLocationProps } from './value-objects/LeagueLocation';
+import LeagueLocation, { ILeagueLocationProps } from './value-objects/LeagueLocation';
 import LeagueName from './value-objects/LeagueName';
 import LeagueRules from './value-objects/LeagueRules';
 
-class League extends AggregateRoot {
+class League extends AggregateRoot<ILeague> {
   readonly #name: LeagueName;
 
   readonly #description: LeagueDescription;
@@ -21,7 +21,7 @@ class League extends AggregateRoot {
 
   readonly #location: LeagueLocation;
 
-  readonly #founderUserId: LeagueFounderUserId;
+  readonly #leagueFounderUserId: LeagueFounderUserId;
 
   readonly #creationDate: LeagueCreationDate;
 
@@ -33,8 +33,8 @@ class League extends AggregateRoot {
     description: { short: string; complete: string; },
     rules: string,
     level: string,
-    location: LeagueLocationProps,
-    founderUserId: string,
+    location: ILeagueLocationProps,
+    leagueFounderUserId: string,
     creationDate: string,
     isActive: boolean,
   ) {
@@ -45,12 +45,12 @@ class League extends AggregateRoot {
     this.#rules = new LeagueRules(rules);
     this.#level = new LeagueLevel(level);
     this.#location = new LeagueLocation(location);
-    this.#founderUserId = new LeagueFounderUserId(founderUserId, 'founderUserId');
+    this.#leagueFounderUserId = new LeagueFounderUserId(leagueFounderUserId, 'leagueFounderUserId');
     this.#creationDate = new LeagueCreationDate(creationDate);
     this.#isActive = new LeagueIsActive(isActive);
   }
 
-  public toPrimitives(): PlainLeagueData {
+  public toPrimitives(): ILeague {
     return {
       id: this.id.getValue(),
       name: this.#name.getValue(),
@@ -58,7 +58,7 @@ class League extends AggregateRoot {
       rules: this.#rules.getValue(),
       level: this.#level.getValue(),
       location: this.#location.getValue(),
-      founderUserId: this.#founderUserId.getValue(),
+      leagueFounderUserId: this.#leagueFounderUserId.getValue(),
       creationDate: this.#creationDate.getValue(),
       isActive: this.#isActive.getValue(),
     };

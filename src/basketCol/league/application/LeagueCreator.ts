@@ -1,7 +1,8 @@
-import LeagueFounderUserValidationService from '../../leagueFounderUser/domain/services/LeagueFounderUserValidationService';
-import LeagueFounderUserId from '../../leagueFounderUser/domain/value-objects/LeagueFounderUserId';
 import BusinessDateService from '../../shared/domain/services/BusinessDateService';
 import IdUniquenessValidatorService from '../../shared/domain/services/IdUniquenessValidatorService';
+import LeagueFounderUserValidationService from '../../users/leagueFounder/domain/services/LeagueFounderUserValidationService';
+import LeagueFounderUserId from '../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
+import { ILeague } from '../domain/ILeague';
 import League from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
 import LeagueValidationNameService from '../domain/services/LeagueValidationNameService';
@@ -43,14 +44,13 @@ class LeagueCreator {
       level,
       rules,
       location,
-      founderUserId,
     } = payload;
 
     const leagueId: LeagueId = new LeagueId(id);
     const leagueName: LeagueName = new LeagueName(name);
-    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(founderUserId, 'founderUserId');
+    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(payload.leagueFounderUserId, 'leagueFounderUserId');
 
-    await this.#idUniquenessValidatorService.ensureUniqueId<LeagueId, League>(leagueId);
+    await this.#idUniquenessValidatorService.ensureUniqueId<LeagueId, ILeague, League>(leagueId);
     await this.#leagueValidationNameService.ensureIsValidShortName(leagueName);
     await this.#leagueValidationNameService.ensureIsValidOfficialName(leagueName);
 
