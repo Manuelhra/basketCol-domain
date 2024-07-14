@@ -1,5 +1,6 @@
-export interface IShootingAttributes {
-  id: string;
+import { IAggregateRoot } from '../../../../../shared/domain/IAggregateRoot';
+
+export interface IShootingAttributes extends IAggregateRoot {
   closeShot: number;
   midRangeShot: number;
   threePointShot: number;

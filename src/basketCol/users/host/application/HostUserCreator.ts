@@ -1,9 +1,12 @@
 import { Nullable } from '../../../shared/domain/Nullable';
+import BusinessDateService from '../../../shared/domain/services/BusinessDateService';
 import SecurePasswordCreationService from '../../shared/domain/services/SecurePasswordCreationService';
 import MultipleHostUsersException from '../domain/exceptions/MultipleHostUsersException';
 import HostUser from '../domain/HostUser';
 import { HostUserRepository } from '../domain/repository/HostUserRepository';
+import HostUserCreatedAt from '../domain/value-objects/HostUserCreatedAt';
 import HostUserPassword from '../domain/value-objects/HostUserPassword';
+import HostUserUpdatedAt from '../domain/value-objects/HostUserUpdatedAt';
 import { HostUserCreatorPayload } from './HostUserCreatorPayload';
 
 class HostUserCreator {
@@ -11,12 +14,16 @@ class HostUserCreator {
 
   readonly #securePasswordCreationService: SecurePasswordCreationService;
 
+  readonly #businessDateService: BusinessDateService;
+
   constructor(dependencies: {
     hostUserRepository: HostUserRepository;
     securePasswordCreationService: SecurePasswordCreationService;
+    businessDateService: BusinessDateService;
   }) {
     this.#hostUserRepository = dependencies.hostUserRepository;
     this.#securePasswordCreationService = dependencies.securePasswordCreationService;
+    this.#businessDateService = dependencies.businessDateService;
   }
 
   public async run(payload: HostUserCreatorPayload): Promise<void> {
@@ -27,11 +34,16 @@ class HostUserCreator {
     }
 
     const { id, email, password } = payload;
+    const createdAt: string = this.#businessDateService.getCurrentDate<HostUserCreatedAt>().getValue();
+    const updatedAt: string = this.#businessDateService.getCurrentDate<HostUserUpdatedAt>().getValue();
+
     const hostUser: HostUser = new HostUser(
       id,
       { value: email.value, verified: false },
       this.#securePasswordCreationService.createFromPlainText<HostUserPassword>(password).getValue(),
       true,
+      createdAt,
+      updatedAt,
     );
 
     return this.#hostUserRepository.save(hostUser);

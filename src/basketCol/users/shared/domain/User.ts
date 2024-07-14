@@ -2,10 +2,12 @@ import AggregateRoot from '../../../shared/domain/AggregateRoot';
 import { PrimitiveValueObject } from '../../../shared/domain/value-objects/PrimitiveValueObject';
 import { IUser } from './IUser';
 import UserActive from './value-objects/UserActive';
+import UserCreatedAt from './value-objects/UserCreatedAt';
 import UserEmail from './value-objects/UserEmail';
 import UserId from './value-objects/UserId';
 import UserPassword from './value-objects/UserPassword';
 import UserType from './value-objects/UserType';
+import UserUpdatedAt from './value-objects/UserUpdatedAt';
 
 abstract class User extends AggregateRoot<IUser> {
   protected readonly email: UserEmail;
@@ -22,8 +24,10 @@ abstract class User extends AggregateRoot<IUser> {
     password: UserPassword,
     type: UserType,
     active: UserActive,
+    createdAt: UserCreatedAt,
+    updatedAt: UserUpdatedAt,
   ) {
-    super(id);
+    super(id, createdAt, updatedAt);
 
     this.email = email;
     this.password = password;

@@ -2,11 +2,13 @@ import User from '../../shared/domain/User';
 import { ILeagueFounderUser } from './ILeagueFounderUser';
 import LeagueFounderUserActive from './value-objects/LeagueFounderUserActive';
 import LeagueFounderUserBiography from './value-objects/LeagueFounderUserBiography';
+import LeagueFounderUserCreatedAt from './value-objects/LeagueFounderUserCreatedAt';
 import LeagueFounderUserEmail from './value-objects/LeagueFounderUserEmail';
 import LeagueFounderUserId from './value-objects/LeagueFounderUserId';
 import LeagueFounderUserName from './value-objects/LeagueFounderUserName';
 import LeagueFounderUserPassword from './value-objects/LeagueFounderUserPassword';
 import LeagueFounderUserType from './value-objects/LeagueFounderUserType';
+import LeagueFounderUserUpdatedAt from './value-objects/LeagueFounderUserUpdatedAt';
 
 class LeagueFounderUser extends User {
   readonly #name: LeagueFounderUserName;
@@ -20,6 +22,8 @@ class LeagueFounderUser extends User {
     email: { value: string; verified: boolean; },
     password: string,
     active: boolean,
+    createdAt: string,
+    updatedAt: string,
   ) {
     super(
       new LeagueFounderUserId(id, 'id'),
@@ -27,6 +31,8 @@ class LeagueFounderUser extends User {
       new LeagueFounderUserPassword(password),
       new LeagueFounderUserType(),
       new LeagueFounderUserActive(active),
+      new LeagueFounderUserCreatedAt(createdAt),
+      new LeagueFounderUserUpdatedAt(updatedAt),
     );
 
     this.#name = new LeagueFounderUserName(name);
@@ -42,6 +48,8 @@ class LeagueFounderUser extends User {
       password: this.password.getValue(),
       type: this.type.getValue(),
       active: this.active.getValue(),
+      createdAt: this.createdAt.getValue(),
+      updatedAt: this.updatedAt.getValue(),
     };
   }
 }

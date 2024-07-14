@@ -6,9 +6,11 @@ import { ILeague } from '../domain/ILeague';
 import League from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
 import LeagueValidationNameService from '../domain/services/LeagueValidationNameService';
+import LeagueCreatedAt from '../domain/value-objects/LeagueCreatedAt';
 import LeagueCreationDate from '../domain/value-objects/LeagueCreationDate';
 import LeagueId from '../domain/value-objects/LeagueId';
 import LeagueName from '../domain/value-objects/LeagueName';
+import LeagueUpdatedAt from '../domain/value-objects/LeagueUpdatedAt';
 import { LeagueCreatorPayload } from './LeagueCreatorPayload';
 
 class LeagueCreator {
@@ -58,6 +60,8 @@ class LeagueCreator {
 
     const creationDate: string = this.#businessDateService.getCurrentDate<LeagueCreationDate>().getValue();
     const isActive: boolean = true;
+    const createdAt: string = this.#businessDateService.getCurrentDate<LeagueCreatedAt>().getValue();
+    const updatedAt: string = this.#businessDateService.getCurrentDate<LeagueUpdatedAt>().getValue();
 
     const league: League = new League(
       id,
@@ -69,6 +73,8 @@ class LeagueCreator {
       leagueFounderUserId.getValue(),
       creationDate,
       isActive,
+      createdAt,
+      updatedAt,
     );
 
     return this.#leagueRepository.save(league);

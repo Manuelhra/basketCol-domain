@@ -1,5 +1,6 @@
-export interface IPhysicalAttributes {
-  id: string;
+import { IAggregateRoot } from '../../../../../shared/domain/IAggregateRoot';
+
+export interface IPhysicalAttributes extends IAggregateRoot {
   speed: number;
   acceleration: number;
   strength: number;
