@@ -1,6 +1,7 @@
 import AggregateRoot from '../../shared/domain/AggregateRoot';
 import LeagueFounderUserId from '../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
 import { ILeague } from './ILeague';
+import LeagueCreatedAt from './value-objects/LeagueCreatedAt';
 import LeagueCreationDate from './value-objects/LeagueCreationDate';
 import LeagueDescription from './value-objects/LeagueDescription';
 import LeagueId from './value-objects/LeagueId';
@@ -9,6 +10,7 @@ import LeagueLevel from './value-objects/LeagueLevel';
 import LeagueLocation, { ILeagueLocationProps } from './value-objects/LeagueLocation';
 import LeagueName from './value-objects/LeagueName';
 import LeagueRules from './value-objects/LeagueRules';
+import LeagueUpdatedAt from './value-objects/LeagueUpdatedAt';
 
 class League extends AggregateRoot<ILeague> {
   readonly #name: LeagueName;
@@ -37,8 +39,14 @@ class League extends AggregateRoot<ILeague> {
     leagueFounderUserId: string,
     creationDate: string,
     isActive: boolean,
+    createdAt: string,
+    updatedAt: string,
   ) {
-    super(new LeagueId(id));
+    const leagueId: LeagueId = new LeagueId(id);
+    const leagueCreatedAt: LeagueCreatedAt = new LeagueCreatedAt(createdAt);
+    const leagueUpdatedAt: LeagueUpdatedAt = new LeagueUpdatedAt(updatedAt);
+
+    super(leagueId, leagueCreatedAt, leagueUpdatedAt);
 
     this.#name = new LeagueName(name);
     this.#description = new LeagueDescription(description);
@@ -61,6 +69,8 @@ class League extends AggregateRoot<ILeague> {
       leagueFounderUserId: this.#leagueFounderUserId.getValue(),
       creationDate: this.#creationDate.getValue(),
       isActive: this.#isActive.getValue(),
+      createdAt: this.createdAt.getValue(),
+      updatedAt: this.updatedAt.getValue(),
     };
   }
 }
