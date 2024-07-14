@@ -1,6 +1,7 @@
+import { IAggregateRoot } from './IAggregateRoot';
 import UuidValueObject from './value-objects/UuidValueObject';
 
-abstract class AggregateRoot<I> {
+abstract class AggregateRoot<I extends IAggregateRoot> {
   protected readonly id: UuidValueObject;
 
   constructor(id: UuidValueObject) {
