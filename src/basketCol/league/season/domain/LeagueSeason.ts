@@ -6,11 +6,13 @@ import LeagueSeasonEndDateInPastError from './exceptions/LeagueSeasonEndDateInPa
 import LeagueSeasonInsufficientDurationError from './exceptions/LeagueSeasonInsufficientDurationError';
 import LeagueSeasonInsufficientPreparationTimeError from './exceptions/LeagueSeasonInsufficientPreparationTimeError';
 import LeagueSeasonStartDateInPastError from './exceptions/LeagueSeasonStartDateInPastError';
+import LeagueSeasonCreatedAt from './value-objects/LeagueSeasonCreatedAt';
 import LeagueSeasonEndDate from './value-objects/LeagueSeasonEndDate';
 import LeagueSeasonId from './value-objects/LeagueSeasonId';
 import LeagueSeasonName from './value-objects/LeagueSeasonName';
 import LeagueSeasonStartDate from './value-objects/LeagueSeasonStartDate';
 import LeagueSeasonStatus from './value-objects/LeagueSeasonStatus';
+import LeagueSeasonUpdatedAt from './value-objects/LeagueSeasonUpdatedAt';
 
 class LeagueSeason extends AggregateRoot<ILeagueSeason> {
   static readonly #MINIMUM_PREPARATION_DAYS = 10 as const;
@@ -34,8 +36,15 @@ class LeagueSeason extends AggregateRoot<ILeagueSeason> {
     endDate: string,
     status: string,
     leagueId: string,
+    createdAt: string,
+    updatedAt: string,
   ) {
-    super(new LeagueSeasonId(id));
+    const leagueSeasonId: LeagueSeasonId = new LeagueSeasonId(id);
+    const leagueSeasonCreatedAt: LeagueSeasonCreatedAt = new LeagueSeasonCreatedAt(createdAt);
+    const leagueSeasonUpdatedAt: LeagueSeasonUpdatedAt = new LeagueSeasonUpdatedAt(updatedAt);
+
+    super(leagueSeasonId, leagueSeasonCreatedAt, leagueSeasonUpdatedAt);
+
     this.#name = new LeagueSeasonName(name);
     this.#startDate = new LeagueSeasonStartDate(startDate);
     this.#endDate = new LeagueSeasonEndDate(endDate);
@@ -53,6 +62,8 @@ class LeagueSeason extends AggregateRoot<ILeagueSeason> {
       endDate: this.#endDate.getValue(),
       status: this.#status.getValue(),
       leagueId: this.#leagueId.getValue(),
+      createdAt: this.createdAt.getValue(),
+      updatedAt: this.updatedAt.getValue(),
     };
   }
 
