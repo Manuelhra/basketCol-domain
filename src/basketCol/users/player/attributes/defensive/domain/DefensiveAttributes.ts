@@ -1,22 +1,22 @@
 import AggregateRoot from '../../../../../shared/domain/AggregateRoot';
 import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
 import { IDefensiveAttributes } from './IDefensiveAttributes';
-import Block from './value-objects/Block';
+import DABlock from './value-objects/DABlock';
 import DACreatedAt from './value-objects/DACreatedAt';
 import DAUpdatedAt from './value-objects/DAUpdatedAt';
 import DefensiveAttributesId from './value-objects/DefensiveAttributesId';
-import InteriorDefense from './value-objects/InteriorDefense';
-import PerimeterDefense from './value-objects/PerimeterDefense';
-import Steal from './value-objects/Steal';
+import DAInteriorDefense from './value-objects/DAInteriorDefense';
+import DAPerimeterDefense from './value-objects/DAPerimeterDefense';
+import DASteal from './value-objects/DASteal';
 
 class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
-  readonly #interiorDefense: InteriorDefense;
+  readonly #interiorDefense: DAInteriorDefense;
 
-  readonly #perimeterDefense: PerimeterDefense;
+  readonly #perimeterDefense: DAPerimeterDefense;
 
-  readonly #steal: Steal;
+  readonly #steal: DASteal;
 
-  readonly #block: Block;
+  readonly #block: DABlock;
 
   readonly #playerUserId: PlayerUserId;
 
@@ -36,10 +36,10 @@ class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
 
     super(defensiveAttributesId, dACreatedAt, dAUpdatedAt);
 
-    this.#interiorDefense = new InteriorDefense(interiorDefense);
-    this.#perimeterDefense = new PerimeterDefense(perimeterDefense);
-    this.#steal = new Steal(steal);
-    this.#block = new Block(block);
+    this.#interiorDefense = new DAInteriorDefense(interiorDefense);
+    this.#perimeterDefense = new DAPerimeterDefense(perimeterDefense);
+    this.#steal = new DASteal(steal);
+    this.#block = new DABlock(block);
     this.#playerUserId = new PlayerUserId(playerUserId, 'playerUserId');
   }
 

@@ -1,9 +1,9 @@
 import Attributes from '../../../shared/domain/value-objects/Attributes';
 
-class Steal extends Attributes {
+class FADrivingLayup extends Attributes {
   constructor(value: number) {
-    super(value, 'steal');
+    super(value, 'drivingLayup');
   }
 }
 
-export default Steal;
+export default FADrivingLayup;
