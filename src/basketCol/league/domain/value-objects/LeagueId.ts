@@ -1,9 +1,4 @@
-import UuidValueObject from '../../../shared/domain/value-objects/UuidValueObject';
+import IdValueObject from '../../../shared/domain/value-objects/IdValueObject';
 
-class LeagueId extends UuidValueObject {
-  constructor(value: string) {
-    super(value, 'id');
-  }
-}
-
+class LeagueId extends IdValueObject {}
 export default LeagueId;

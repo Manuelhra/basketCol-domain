@@ -1,9 +1,4 @@
-import DateValueObject from '../../../../shared/domain/value-objects/DateValueObject';
+import CreatedAtValueObject from '../../../../shared/domain/value-objects/CreatedAtValueObject';
 
-class LeagueSeasonCreatedAt extends DateValueObject {
-  constructor(value: string) {
-    super(value, 'createdAt');
-  }
-}
-
+class LeagueSeasonCreatedAt extends CreatedAtValueObject {}
 export default LeagueSeasonCreatedAt;

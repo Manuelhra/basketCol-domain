@@ -1,9 +1,9 @@
 import Attributes from '../../../shared/domain/value-objects/Attributes';
 
-class InteriorDefense extends Attributes {
+class PAStamina extends Attributes {
   constructor(value: number) {
-    super(value, 'interiorDefense');
+    super(value, 'stamina');
   }
 }
 
-export default InteriorDefense;
+export default PAStamina;

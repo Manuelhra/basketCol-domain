@@ -1,9 +1,4 @@
-import DateValueObject from '../../../../shared/domain/value-objects/DateValueObject';
+import UpdatedAtValueObject from '../../../../shared/domain/value-objects/UpdatedAtValueObject';
 
-class UserUpdatedAt extends DateValueObject {
-  constructor(value: string) {
-    super(value, 'updatedAt');
-  }
-}
-
+class UserUpdatedAt extends UpdatedAtValueObject {}
 export default UserUpdatedAt;
