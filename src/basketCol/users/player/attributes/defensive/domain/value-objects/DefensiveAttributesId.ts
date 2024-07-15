@@ -1,9 +1,4 @@
-import UuidValueObject from '../../../../../../shared/domain/value-objects/UuidValueObject';
+import IdValueObject from '../../../../../../shared/domain/value-objects/IdValueObject';
 
-class DefensiveAttributesId extends UuidValueObject {
-  constructor(value: string) {
-    super(value, 'id');
-  }
-}
-
+class DefensiveAttributesId extends IdValueObject {}
 export default DefensiveAttributesId;

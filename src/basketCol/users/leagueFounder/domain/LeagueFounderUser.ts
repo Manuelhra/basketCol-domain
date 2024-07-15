@@ -26,7 +26,7 @@ class LeagueFounderUser extends User {
     updatedAt: string,
   ) {
     super(
-      new LeagueFounderUserId(id, 'id'),
+      new LeagueFounderUserId(id),
       new LeagueFounderUserEmail(email),
       new LeagueFounderUserPassword(password),
       new LeagueFounderUserType(),
