@@ -1,6 +1,6 @@
-import Attributes from '../../../shared/domain/value-objects/Attributes';
+import Attribute from '../../../shared/domain/value-objects/Attribute';
 
-class FADrivingDunk extends Attributes {
+class FADrivingDunk extends Attribute {
   constructor(value: number) {
     super(value, 'drivingDunk');
   }

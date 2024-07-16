@@ -1,6 +1,6 @@
-import Attributes from '../../../shared/domain/value-objects/Attributes';
+import Attribute from '../../../shared/domain/value-objects/Attribute';
 
-class FADrivingLayup extends Attributes {
+class FADrivingLayup extends Attribute {
   constructor(value: number) {
     super(value, 'drivingLayup');
   }

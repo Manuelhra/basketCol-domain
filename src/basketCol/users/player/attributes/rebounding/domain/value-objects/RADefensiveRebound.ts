@@ -1,6 +1,6 @@
-import Attributes from '../../../shared/domain/value-objects/Attributes';
+import Attribute from '../../../shared/domain/value-objects/Attribute';
 
-class RADefensiveRebound extends Attributes {
+class RADefensiveRebound extends Attribute {
   constructor(value: number) {
     super(value, 'defensiveRebound');
   }
