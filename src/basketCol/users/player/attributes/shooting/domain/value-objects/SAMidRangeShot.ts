@@ -1,9 +1,9 @@
 import Attribute from '../../../shared/domain/value-objects/Attribute';
 
-class SACloseShot extends Attribute {
+class SAMidRangeShot extends Attribute {
   constructor(value: number) {
-    super(value, 'closeShot');
+    super(value, 'midRangeShot');
   }
 }
 
-export default SACloseShot;
+export default SAMidRangeShot;

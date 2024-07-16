@@ -1,9 +1,9 @@
 import Attribute from '../../../shared/domain/value-objects/Attribute';
 
-class SACloseShot extends Attribute {
+class SAFreeThrow extends Attribute {
   constructor(value: number) {
-    super(value, 'closeShot');
+    super(value, 'freeThrow');
   }
 }
 
-export default SACloseShot;
+export default SAFreeThrow;
