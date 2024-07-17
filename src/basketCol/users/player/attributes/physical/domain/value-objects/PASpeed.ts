@@ -1,6 +1,6 @@
-import Attributes from '../../../shared/domain/value-objects/Attributes';
+import Attribute from '../../../shared/domain/value-objects/Attribute';
 
-class PASpeed extends Attributes {
+class PASpeed extends Attribute {
   constructor(value: number) {
     super(value, 'speed');
   }

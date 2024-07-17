@@ -1,9 +1,9 @@
 import Attribute from '../../../shared/domain/value-objects/Attribute';
 
-class FADrivingDunk extends Attribute {
+class SACloseShot extends Attribute {
   constructor(value: number) {
-    super(value, 'drivingDunk');
+    super(value, 'closeShot');
   }
 }
 
-export default FADrivingDunk;
+export default SACloseShot;

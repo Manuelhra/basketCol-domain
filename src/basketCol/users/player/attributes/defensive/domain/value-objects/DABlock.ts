@@ -1,6 +1,6 @@
-import Attributes from '../../../shared/domain/value-objects/Attributes';
+import Attribute from '../../../shared/domain/value-objects/Attribute';
 
-class DABlock extends Attributes {
+class DABlock extends Attribute {
   constructor(value: number) {
     super(value, 'block');
   }
