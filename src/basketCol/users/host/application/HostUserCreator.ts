@@ -34,16 +34,16 @@ class HostUserCreator {
     }
 
     const { id, email, password } = payload;
-    const createdAt: string = this.#businessDateService.getCurrentDate<HostUserCreatedAt>().getValue();
-    const updatedAt: string = this.#businessDateService.getCurrentDate<HostUserUpdatedAt>().getValue();
+    const hostUserCreatedAt: HostUserCreatedAt = this.#businessDateService.getCurrentDate<HostUserCreatedAt>();
+    const hostUserUpdatedAt: HostUserUpdatedAt = this.#businessDateService.getCurrentDate<HostUserUpdatedAt>();
 
     const hostUser: HostUser = new HostUser(
       id,
       { value: email.value, verified: false },
       this.#securePasswordCreationService.createFromPlainText<HostUserPassword>(password).getValue(),
       true,
-      createdAt,
-      updatedAt,
+      hostUserCreatedAt.getValue(),
+      hostUserUpdatedAt.getValue(),
     );
 
     return this.#hostUserRepository.save(hostUser);

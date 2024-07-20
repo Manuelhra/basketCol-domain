@@ -46,8 +46,8 @@ class FinishingAttributesCreator {
     await this.#idUniquenessValidatorService.ensureUniqueId<FinishingAttributesId, IFinishingAttributes, FinishingAttributes>(finishingAttributesId);
     await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
 
-    const createdAt: string = this.#businessDateService.getCurrentDate<FACreatedAt>().getValue();
-    const updatedAt: string = this.#businessDateService.getCurrentDate<FAUpdatedAt>().getValue();
+    const fACreatedAt: FACreatedAt = this.#businessDateService.getCurrentDate<FACreatedAt>();
+    const fAUpdatedAt: FAUpdatedAt = this.#businessDateService.getCurrentDate<FAUpdatedAt>();
 
     const finishingAttributes: FinishingAttributes = new FinishingAttributes(
       finishingAttributesId.getValue(),
@@ -56,8 +56,8 @@ class FinishingAttributesCreator {
       standingDunk,
       postControl,
       playerUserId.getValue(),
-      createdAt,
-      updatedAt,
+      fACreatedAt.getValue(),
+      fAUpdatedAt.getValue(),
     );
 
     return this.#finishingAttributesRepository.save(finishingAttributes);
@@ -65,5 +65,3 @@ class FinishingAttributesCreator {
 }
 
 export default FinishingAttributesCreator;
-
-// TODO: Validar que los méodos de fechas estén bien tipados

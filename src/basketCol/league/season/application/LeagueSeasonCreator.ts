@@ -47,8 +47,8 @@ class LeagueSeasonCreator {
     await this.#idUniquenessValidatorService.ensureUniqueId<LeagueSeasonId, ILeagueSeason, LeagueSeason>(leagueSeasonId);
     await this.#leagueValidationService.ensureLeagueExist(leagueId);
 
-    const createdAt: string = this.#businessDateService.getCurrentDate<LeagueSeasonCreatedAt>().getValue();
-    const updatedAt: string = this.#businessDateService.getCurrentDate<LeagueSeasonUpdatedAt>().getValue();
+    const leagueSeasonCreatedAt: LeagueSeasonCreatedAt = this.#businessDateService.getCurrentDate<LeagueSeasonCreatedAt>();
+    const leagueSeasonUpdatedAt: LeagueSeasonUpdatedAt = this.#businessDateService.getCurrentDate<LeagueSeasonUpdatedAt>();
 
     const leagueSeason: LeagueSeason = new LeagueSeason(
       leagueSeasonId.getValue(),
@@ -57,8 +57,8 @@ class LeagueSeasonCreator {
       endDate,
       leagueSeasonStatus.getValue(),
       leagueId.getValue(),
-      createdAt,
-      updatedAt,
+      leagueSeasonCreatedAt.getValue(),
+      leagueSeasonUpdatedAt.getValue(),
     );
 
     return this.#leagueSeasonRepository.save(leagueSeason);
