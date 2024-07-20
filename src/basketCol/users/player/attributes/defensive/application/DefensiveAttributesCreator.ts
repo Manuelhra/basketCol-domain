@@ -3,6 +3,7 @@ import IdUniquenessValidatorService from '../../../../../shared/domain/services/
 import PlayerUserValidationService from '../../../domain/services/PlayerUserValidationService';
 import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
 import DefensiveAttributes from '../domain/DefensiveAttributes';
+import { IDefensiveAttributes } from '../domain/IDefensiveAttributes';
 import { DefensiveAttributesRepository } from '../domain/repository/DefensiveAttributesRepository';
 import DACreatedAt from '../domain/value-objects/DACreatedAt';
 import DAUpdatedAt from '../domain/value-objects/DAUpdatedAt';
@@ -42,7 +43,7 @@ class DefensiveAttributesCreator {
     const defensiveAttributesId: DefensiveAttributesId = new DefensiveAttributesId(id);
     const playerUserId: PlayerUserId = new PlayerUserId(payload.playerUserId, 'playerUserId');
 
-    await this.#idUniquenessValidatorService.ensureUniqueId(defensiveAttributesId);
+    await this.#idUniquenessValidatorService.ensureUniqueId<DefensiveAttributesId, IDefensiveAttributes, DefensiveAttributes>(defensiveAttributesId);
     await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
 
     const createdAt: string = this.#businessDateService.getCurrentDate<DACreatedAt>().getValue();
