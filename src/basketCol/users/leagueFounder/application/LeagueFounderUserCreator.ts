@@ -57,7 +57,7 @@ class LeagueFounderUserCreator {
     const updatedAt: string = this.#businessDateService.getCurrentDate<LeagueFounderUserUpdatedAt>().getValue();
 
     const leagueFounderUser: LeagueFounderUser = new LeagueFounderUser(
-      id,
+      leagueFounderUserId.getValue(),
       name,
       biography,
       { value: email.value, verified: false },

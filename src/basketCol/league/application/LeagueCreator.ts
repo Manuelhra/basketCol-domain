@@ -64,7 +64,7 @@ class LeagueCreator {
     const updatedAt: string = this.#businessDateService.getCurrentDate<LeagueUpdatedAt>().getValue();
 
     const league: League = new League(
-      id,
+      leagueId.getValue(),
       name,
       description,
       rules,
