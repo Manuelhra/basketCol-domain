@@ -53,8 +53,8 @@ class LeagueFounderUserCreator {
     await this.#emailUniquenessValidatorService.ensureUniqueEmail<LeagueFounderUserEmail, ILeagueFounderUser, LeagueFounderUser>(leagueFounderUserEmail);
 
     const active: boolean = true;
-    const createdAt: string = this.#businessDateService.getCurrentDate<LeagueFounderUserCreatedAt>().getValue();
-    const updatedAt: string = this.#businessDateService.getCurrentDate<LeagueFounderUserUpdatedAt>().getValue();
+    const leagueFounderUserCreatedAt: LeagueFounderUserCreatedAt = this.#businessDateService.getCurrentDate<LeagueFounderUserCreatedAt>();
+    const leagueFounderUserUpdatedAt: LeagueFounderUserUpdatedAt = this.#businessDateService.getCurrentDate<LeagueFounderUserUpdatedAt>();
 
     const leagueFounderUser: LeagueFounderUser = new LeagueFounderUser(
       leagueFounderUserId.getValue(),
@@ -63,8 +63,8 @@ class LeagueFounderUserCreator {
       { value: email.value, verified: false },
       this.#securePasswordCreationService.createFromPlainText<LeagueFounderUserPassword>(password).getValue(),
       active,
-      createdAt,
-      updatedAt,
+      leagueFounderUserCreatedAt.getValue(),
+      leagueFounderUserUpdatedAt.getValue(),
     );
 
     return this.#leagueFounderUserRepository.save(leagueFounderUser);

@@ -60,8 +60,8 @@ class LeagueCreator {
 
     const creationDate: string = this.#businessDateService.getCurrentDate<LeagueCreationDate>().getValue();
     const isActive: boolean = true;
-    const createdAt: string = this.#businessDateService.getCurrentDate<LeagueCreatedAt>().getValue();
-    const updatedAt: string = this.#businessDateService.getCurrentDate<LeagueUpdatedAt>().getValue();
+    const leagueCreatedAt: LeagueCreatedAt = this.#businessDateService.getCurrentDate<LeagueCreatedAt>();
+    const leagueUpdatedAt: LeagueUpdatedAt = this.#businessDateService.getCurrentDate<LeagueUpdatedAt>();
 
     const league: League = new League(
       leagueId.getValue(),
@@ -73,8 +73,8 @@ class LeagueCreator {
       leagueFounderUserId.getValue(),
       creationDate,
       isActive,
-      createdAt,
-      updatedAt,
+      leagueCreatedAt.getValue(),
+      leagueUpdatedAt.getValue(),
     );
 
     return this.#leagueRepository.save(league);
