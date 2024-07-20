@@ -1,14 +1,14 @@
-import User from '../../shared/domain/User';
+import { User } from '../../shared/domain/User';
 import { IHostUser } from './IHostUser';
-import HostUserActive from './value-objects/HostUserActive';
-import HostUserCreatedAt from './value-objects/HostUserCreatedAt';
-import HostUserEmail from './value-objects/HostUserEmail';
-import HostUserId from './value-objects/HostUserId';
-import HostUserPassword from './value-objects/HostUserPassword';
-import HostUserType from './value-objects/HostUserType';
-import HostUserUpdatedAt from './value-objects/HostUserUpdatedAt';
+import  { HostUserActive }  from './value-objects/HostUserActive';
+import { HostUserCreatedAt } from './value-objects/HostUserCreatedAt';
+import { HostUserEmail } from './value-objects/HostUserEmail';
+import { HostUserId } from './value-objects/HostUserId';
+import { HostUserPassword } from './value-objects/HostUserPassword';
+import { HostUserType } from './value-objects/HostUserType';
+import { HostUserUpdatedAt } from './value-objects/HostUserUpdatedAt';
 
-class HostUser extends User {
+export class HostUser extends User {
   constructor(
     id: string,
     email: { value: string; verified: boolean },
@@ -41,4 +41,3 @@ class HostUser extends User {
   }
 }
 
-export default HostUser;

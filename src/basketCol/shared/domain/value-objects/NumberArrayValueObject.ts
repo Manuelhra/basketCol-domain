@@ -1,9 +1,8 @@
-import ObjectValueObject from './ObjectValueObject';
+import { ObjectValueObject } from './ObjectValueObject';
 
-abstract class NumberArrayValueObject extends ObjectValueObject<number[]> {
+export abstract class NumberArrayValueObject extends ObjectValueObject<number[]> {
   constructor(value: number[], propertyName: string) {
     super(value, propertyName, 'number[]');
   }
 }
 
-export default NumberArrayValueObject;

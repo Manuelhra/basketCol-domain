@@ -1,10 +1,10 @@
 import { Nullable } from '../../../../shared/domain/Nullable';
-import LeagueFounderUser from '../LeagueFounderUser';
-import LeagueFounderUserNotFoundError from '../exceptions/LeagueFounderUserNotFoundError';
+import { LeagueFounderUser } from '../LeagueFounderUser';
+import { LeagueFounderUserNotFoundError } from '../exceptions/LeagueFounderUserNotFoundError';
 import { LeagueFounderUserRepository } from '../repository/LeagueFounderUserRepository';
-import LeagueFounderUserId from '../value-objects/LeagueFounderUserId';
+import { LeagueFounderUserId } from '../value-objects/LeagueFounderUserId';
 
-class LeagueFounderUserValidationService {
+export class LeagueFounderUserValidationService {
   readonly #leagueFounderUserRepository: LeagueFounderUserRepository;
 
   constructor(dependencies: {
@@ -22,4 +22,3 @@ class LeagueFounderUserValidationService {
   }
 }
 
-export default LeagueFounderUserValidationService;

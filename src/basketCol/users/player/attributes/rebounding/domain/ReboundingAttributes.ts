@@ -1,13 +1,13 @@
-import AggregateRoot from '../../../../../shared/domain/AggregateRoot';
-import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
+import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
+import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IReboundingAttributes } from './IReboundingAttributes';
-import RACreatedAt from './value-objects/RACreatedAt';
-import RADefensiveRebound from './value-objects/RADefensiveRebound';
-import RAOffensiveRebound from './value-objects/RAOffensiveRebound';
-import RAUpdatedAt from './value-objects/RAUpdatedAt';
-import ReboundingAttributesId from './value-objects/ReboundingAttributesId';
+import { RACreatedAt } from './value-objects/RACreatedAt';
+import { RADefensiveRebound } from './value-objects/RADefensiveRebound';
+import { RAOffensiveRebound } from './value-objects/RAOffensiveRebound';
+import { RAUpdatedAt } from './value-objects/RAUpdatedAt';
+import { ReboundingAttributesId } from './value-objects/ReboundingAttributesId';
 
-class ReboundingAttributes extends AggregateRoot<IReboundingAttributes> {
+export class ReboundingAttributes extends AggregateRoot<IReboundingAttributes> {
   readonly #offensiveRebound: RAOffensiveRebound;
 
   readonly #defensiveRebound: RADefensiveRebound;
@@ -44,4 +44,3 @@ class ReboundingAttributes extends AggregateRoot<IReboundingAttributes> {
     };
   }
 }
-export default ReboundingAttributes;

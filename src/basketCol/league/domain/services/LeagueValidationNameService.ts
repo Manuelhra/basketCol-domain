@@ -1,10 +1,10 @@
 import { Nullable } from '../../../shared/domain/Nullable';
-import League from '../League';
-import DuplicateLeagueNameError from '../exceptions/DuplicateLeagueNameError';
+import { League } from '../League';
+import  { DuplicateLeagueNameError }  from '../exceptions/DuplicateLeagueNameError';
 import { LeagueRepository } from '../repository/LeagueRepository';
-import LeagueName from '../value-objects/LeagueName';
+import { LeagueName } from '../value-objects/LeagueName';
 
-class LeagueValidationNameService {
+export class LeagueValidationNameService {
   readonly #leagueRepository: LeagueRepository;
 
   constructor(dependencies: {
@@ -30,4 +30,4 @@ class LeagueValidationNameService {
   }
 }
 
-export default LeagueValidationNameService;
+

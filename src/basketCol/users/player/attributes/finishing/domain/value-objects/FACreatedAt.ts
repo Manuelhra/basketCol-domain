@@ -1,4 +1,3 @@
-import CreatedAtValueObject from '../../../../../../shared/domain/value-objects/CreatedAtValueObject';
+import { CreatedAtValueObject } from '../../../../../../shared/domain/value-objects/CreatedAtValueObject';
 
-class FACreatedAt extends CreatedAtValueObject {}
-export default FACreatedAt;
+export class FACreatedAt extends CreatedAtValueObject {}

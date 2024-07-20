@@ -1,7 +1,7 @@
-import RootError from '../../../shared/domain/exceptions/RootError';
-import LeagueName from '../value-objects/LeagueName';
+import { RootError } from '../../../shared/domain/exceptions/RootError';
+import { LeagueName } from '../value-objects/LeagueName';
 
-class DuplicateLeagueNameError extends RootError {
+export      class DuplicateLeagueNameError extends RootError {
   constructor(leagueName: LeagueName, label: 'SHORT_NAME' | 'OFFICIAL_NAME') {
     let feedback: string;
     const { short, official } = leagueName.getValue();
@@ -27,4 +27,6 @@ class DuplicateLeagueNameError extends RootError {
   }
 }
 
-export default DuplicateLeagueNameError;
+
+
+

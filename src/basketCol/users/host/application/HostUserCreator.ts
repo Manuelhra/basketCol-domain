@@ -1,15 +1,15 @@
 import { Nullable } from '../../../shared/domain/Nullable';
-import BusinessDateService from '../../../shared/domain/services/BusinessDateService';
-import SecurePasswordCreationService from '../../shared/domain/services/SecurePasswordCreationService';
-import MultipleHostUsersException from '../domain/exceptions/MultipleHostUsersException';
-import HostUser from '../domain/HostUser';
+import { BusinessDateService } from '../../../shared/domain/services/BusinessDateService';
+import { SecurePasswordCreationService } from '../../shared/domain/services/SecurePasswordCreationService';
+import { MultipleHostUsersException } from '../domain/exceptions/MultipleHostUsersException';
+import { HostUser } from '../domain/HostUser';
 import { HostUserRepository } from '../domain/repository/HostUserRepository';
-import HostUserCreatedAt from '../domain/value-objects/HostUserCreatedAt';
-import HostUserPassword from '../domain/value-objects/HostUserPassword';
-import HostUserUpdatedAt from '../domain/value-objects/HostUserUpdatedAt';
+import { HostUserCreatedAt } from '../domain/value-objects/HostUserCreatedAt';
+import { HostUserPassword } from '../domain/value-objects/HostUserPassword';
+import { HostUserUpdatedAt } from '../domain/value-objects/HostUserUpdatedAt';
 import { HostUserCreatorPayload } from './HostUserCreatorPayload';
 
-class HostUserCreator {
+export class HostUserCreator {
   readonly #hostUserRepository: HostUserRepository;
 
   readonly #securePasswordCreationService: SecurePasswordCreationService;
@@ -50,4 +50,3 @@ class HostUserCreator {
   }
 }
 
-export default HostUserCreator;

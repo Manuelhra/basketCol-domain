@@ -1,9 +1,8 @@
-import DateValueObject from '../../../../shared/domain/value-objects/DateValueObject';
+import { DateValueObject } from '../../../../shared/domain/value-objects/DateValueObject';
 
-class LeagueSeasonStartDate extends DateValueObject {
+export class LeagueSeasonStartDate extends DateValueObject {
   constructor(value: string) {
     super(value, 'startDate');
   }
 }
 
-export default LeagueSeasonStartDate;

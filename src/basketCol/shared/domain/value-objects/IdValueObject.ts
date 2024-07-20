@@ -1,9 +1,8 @@
-import UuidValueObject from './UuidValueObject';
+import { UuidValueObject } from './UuidValueObject';
 
-class IdValueObject extends UuidValueObject {
+export class IdValueObject extends UuidValueObject {
   constructor(value: string) {
     super(value, 'id');
   }
 }
 
-export default IdValueObject;

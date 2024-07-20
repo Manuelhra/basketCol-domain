@@ -1,6 +1,6 @@
-import RootError from './RootError';
+import { RootError } from './RootError';
 
-class DatabaseConnectionFailedError extends RootError {
+export class DatabaseConnectionFailedError extends RootError {
   constructor(details: string) {
     const message = `Database connection failed: ${details}`;
     super(message);
@@ -12,4 +12,3 @@ class DatabaseConnectionFailedError extends RootError {
   }
 }
 
-export default DatabaseConnectionFailedError;

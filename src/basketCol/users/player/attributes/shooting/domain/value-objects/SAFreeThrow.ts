@@ -1,9 +1,8 @@
-import Attribute from '../../../shared/domain/value-objects/Attribute';
+import { Attribute } from '../../../shared/domain/value-objects/Attribute';
 
-class SAFreeThrow extends Attribute {
+export class SAFreeThrow extends Attribute {
   constructor(value: number) {
     super(value, 'freeThrow');
   }
 }
 
-export default SAFreeThrow;

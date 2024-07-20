@@ -1,6 +1,6 @@
-import RootError from './RootError';
+import { RootError } from './RootError';
 
-class PropertyLengthExceededError extends RootError {
+export class PropertyLengthExceededError extends RootError {
   constructor(propertyName: string, maxLength: number, currentLength: number) {
     const message = `Length constraint violation: '${propertyName}' exceeds maximum length. Allowed: ${maxLength}, Actual: ${currentLength}.`;
     super(message);
@@ -12,4 +12,3 @@ class PropertyLengthExceededError extends RootError {
   }
 }
 
-export default PropertyLengthExceededError;

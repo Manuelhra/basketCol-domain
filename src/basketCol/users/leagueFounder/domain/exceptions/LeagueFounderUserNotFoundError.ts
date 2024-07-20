@@ -1,7 +1,7 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
-import LeagueFounderUserId from '../value-objects/LeagueFounderUserId';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
+import { LeagueFounderUserId } from '../value-objects/LeagueFounderUserId';
 
-class LeagueFounderUserNotFoundError extends RootError {
+export class LeagueFounderUserNotFoundError extends RootError {
   constructor(leagueFounderUserId: LeagueFounderUserId) {
     super(`LeagueFounderUser not found: The user with ID '${leagueFounderUserId.getValue()}' does not exist in the system.`);
 
@@ -13,4 +13,3 @@ class LeagueFounderUserNotFoundError extends RootError {
   }
 }
 
-export default LeagueFounderUserNotFoundError;

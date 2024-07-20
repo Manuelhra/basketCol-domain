@@ -1,8 +1,8 @@
-import PropertyLengthExceededError from '../../../../shared/domain/exceptions/PropertyLengthExceededError';
-import PropertyLengthTooShortError from '../../../../shared/domain/exceptions/PropertyLengthTooShortError';
-import StringValueObject from '../../../../shared/domain/value-objects/StringValueObject';
+import { PropertyLengthExceededError } from '../../../../shared/domain/exceptions/PropertyLengthExceededError';
+import { PropertyLengthTooShortError } from '../../../../shared/domain/exceptions/PropertyLengthTooShortError';
+import { StringValueObject } from '../../../../shared/domain/value-objects/StringValueObject';
 
-class LeagueFounderUserBiography extends StringValueObject {
+export class LeagueFounderUserBiography extends StringValueObject {
   static readonly #LENGTH: { min: number; max: number; } = { min: 50, max: 200 } as const;
 
   constructor(value: string) {
@@ -22,4 +22,3 @@ class LeagueFounderUserBiography extends StringValueObject {
   }
 }
 
-export default LeagueFounderUserBiography;

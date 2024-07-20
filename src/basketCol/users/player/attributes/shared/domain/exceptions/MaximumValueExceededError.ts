@@ -1,6 +1,6 @@
-import RootError from '../../../../../../shared/domain/exceptions/RootError';
+import { RootError } from '../../../../../../shared/domain/exceptions/RootError';
 
-class MaximumValueExceededError extends RootError {
+export class MaximumValueExceededError extends RootError {
   constructor(propertyName: string, maximumValue: number, actualValue: number) {
     const message = `Value constraint violation: '${propertyName}' exceeds maximum allowed value. Maximum: ${maximumValue}, Actual: ${actualValue}.`;
     super(message);
@@ -12,4 +12,3 @@ class MaximumValueExceededError extends RootError {
   }
 }
 
-export default MaximumValueExceededError;

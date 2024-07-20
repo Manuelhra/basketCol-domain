@@ -1,5 +1,5 @@
-import InvalidPropertyTypeError from '../../../shared/domain/exceptions/InvalidPropertyTypeError';
-import ObjectValueObject from '../../../shared/domain/value-objects/ObjectValueObject';
+import { InvalidPropertyTypeError } from '../../../shared/domain/exceptions/InvalidPropertyTypeError';
+import { ObjectValueObject } from '../../../shared/domain/value-objects/ObjectValueObject';
 
 interface Item {
   code: string;
@@ -13,7 +13,7 @@ export interface ILeagueLocationProps {
   coords: { lat: number; lng: number; };
 }
 
-class LeagueLocation extends ObjectValueObject<ILeagueLocationProps> {
+export class LeagueLocation extends ObjectValueObject<ILeagueLocationProps> {
   constructor(value: ILeagueLocationProps) {
     super(value, 'location', '{ country: Item; department: Item; city: Item; coords: { lat: number; lng: number } } - Item { code: string; label: string; } ');
 
@@ -52,4 +52,3 @@ class LeagueLocation extends ObjectValueObject<ILeagueLocationProps> {
   }
 }
 
-export default LeagueLocation;

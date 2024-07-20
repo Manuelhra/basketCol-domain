@@ -1,9 +1,8 @@
-import UuidValueObject from '../../../../shared/domain/value-objects/UuidValueObject';
+import { UuidValueObject } from '../../../../shared/domain/value-objects/UuidValueObject';
 
-abstract class UserId extends UuidValueObject {
+export abstract class UserId extends UuidValueObject {
   constructor(value: string, propertyName = 'id') {
     super(value, propertyName);
   }
 }
 
-export default UserId;

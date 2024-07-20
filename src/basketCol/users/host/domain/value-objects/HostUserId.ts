@@ -1,4 +1,3 @@
-import UserId from '../../../shared/domain/value-objects/UserId';
+import { UserId } from '../../../shared/domain/value-objects/UserId';
 
-class HostUserId extends UserId {}
-export default HostUserId;
+export class HostUserId extends UserId {}

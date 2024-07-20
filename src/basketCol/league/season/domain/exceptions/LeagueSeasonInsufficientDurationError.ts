@@ -1,6 +1,6 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
 
-class LeagueSeasonInsufficientDurationError extends RootError {
+export class LeagueSeasonInsufficientDurationError extends RootError {
   constructor(private startDate: string, private endDate: string, private minimumDays: number) {
     super('LeagueSeason has insufficient duration');
   }
@@ -14,4 +14,3 @@ class LeagueSeasonInsufficientDurationError extends RootError {
   }
 }
 
-export default LeagueSeasonInsufficientDurationError;

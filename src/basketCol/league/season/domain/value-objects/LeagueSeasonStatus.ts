@@ -1,7 +1,7 @@
-import StringValueObject from '../../../../shared/domain/value-objects/StringValueObject';
-import InvalidLeagueSeasonStatusError from '../exceptions/InvalidLeagueSeasonStatusError';
+import { StringValueObject } from '../../../../shared/domain/value-objects/StringValueObject';
+import { InvalidLeagueSeasonStatusError } from '../exceptions/InvalidLeagueSeasonStatusError';
 
-class LeagueSeasonStatus extends StringValueObject {
+export class LeagueSeasonStatus extends StringValueObject {
   static readonly #VALID_STATUSES: string[] = ['UPCOMING', 'ONGOING', 'COMPLETED', 'CANCELLED', 'POSTPONED', 'SUSPENDED', 'RESCHEDULED'] as const;
 
   constructor(value: string) {
@@ -21,4 +21,3 @@ class LeagueSeasonStatus extends StringValueObject {
   }
 }
 
-export default LeagueSeasonStatus;

@@ -1,16 +1,16 @@
-import BusinessDateService from '../../../../../shared/domain/services/BusinessDateService';
-import IdUniquenessValidatorService from '../../../../../shared/domain/services/IdUniquenessValidatorService';
-import PlayerUserValidationService from '../../../domain/services/PlayerUserValidationService';
-import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
-import FinishingAttributes from '../domain/FinishingAttributes';
+import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
+import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
+import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
+import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
+import { FinishingAttributes } from '../domain/FinishingAttributes';
 import { IFinishingAttributes } from '../domain/IFinishingAttributes';
 import { FinishingAttributesRepository } from '../domain/repository/FinishingAttributesRepository';
-import FACreatedAt from '../domain/value-objects/FACreatedAt';
-import FAUpdatedAt from '../domain/value-objects/FAUpdatedAt';
-import FinishingAttributesId from '../domain/value-objects/FinishingAttributesId';
+import { FACreatedAt } from '../domain/value-objects/FACreatedAt';
+import { FAUpdatedAt } from '../domain/value-objects/FAUpdatedAt';
+import { FinishingAttributesId } from '../domain/value-objects/FinishingAttributesId';
 import { FinishingAttributesCreatorPayload } from './FinishingAttributesCreatorPayload';
 
-class FinishingAttributesCreator {
+export class FinishingAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
 
   readonly #playerUserValidationService: PlayerUserValidationService;
@@ -64,4 +64,3 @@ class FinishingAttributesCreator {
   }
 }
 
-export default FinishingAttributesCreator;

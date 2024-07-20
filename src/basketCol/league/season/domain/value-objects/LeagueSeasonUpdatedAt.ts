@@ -1,4 +1,3 @@
-import UpdatedAtValueObject from '../../../../shared/domain/value-objects/UpdatedAtValueObject';
+import { UpdatedAtValueObject } from '../../../../shared/domain/value-objects/UpdatedAtValueObject';
 
-class LeagueSeasonUpdatedAt extends UpdatedAtValueObject {}
-export default LeagueSeasonUpdatedAt;
+export class LeagueSeasonUpdatedAt extends UpdatedAtValueObject {}

@@ -1,16 +1,16 @@
-import User from '../../shared/domain/User';
+import { User } from '../../shared/domain/User';
 import { ILeagueFounderUser } from './ILeagueFounderUser';
-import LeagueFounderUserActive from './value-objects/LeagueFounderUserActive';
-import LeagueFounderUserBiography from './value-objects/LeagueFounderUserBiography';
-import LeagueFounderUserCreatedAt from './value-objects/LeagueFounderUserCreatedAt';
-import LeagueFounderUserEmail from './value-objects/LeagueFounderUserEmail';
-import LeagueFounderUserId from './value-objects/LeagueFounderUserId';
-import LeagueFounderUserName from './value-objects/LeagueFounderUserName';
-import LeagueFounderUserPassword from './value-objects/LeagueFounderUserPassword';
-import LeagueFounderUserType from './value-objects/LeagueFounderUserType';
-import LeagueFounderUserUpdatedAt from './value-objects/LeagueFounderUserUpdatedAt';
+import { LeagueFounderUserActive } from './value-objects/LeagueFounderUserActive';
+import { LeagueFounderUserBiography } from './value-objects/LeagueFounderUserBiography';
+import { LeagueFounderUserCreatedAt } from './value-objects/LeagueFounderUserCreatedAt';
+import { LeagueFounderUserEmail } from './value-objects/LeagueFounderUserEmail';
+import { LeagueFounderUserId } from './value-objects/LeagueFounderUserId';
+import { LeagueFounderUserName } from './value-objects/LeagueFounderUserName';
+import { LeagueFounderUserPassword } from './value-objects/LeagueFounderUserPassword';
+import { LeagueFounderUserType } from './value-objects/LeagueFounderUserType';
+import { LeagueFounderUserUpdatedAt } from './value-objects/LeagueFounderUserUpdatedAt';
 
-class LeagueFounderUser extends User {
+export class LeagueFounderUser extends User {
   readonly #name: LeagueFounderUserName;
 
   readonly #biography: LeagueFounderUserBiography;
@@ -54,4 +54,3 @@ class LeagueFounderUser extends User {
   }
 }
 
-export default LeagueFounderUser;

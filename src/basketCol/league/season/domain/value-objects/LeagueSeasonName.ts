@@ -1,8 +1,8 @@
-import PropertyLengthExceededError from '../../../../shared/domain/exceptions/PropertyLengthExceededError';
-import PropertyLengthTooShortError from '../../../../shared/domain/exceptions/PropertyLengthTooShortError';
-import StringValueObject from '../../../../shared/domain/value-objects/StringValueObject';
+import { PropertyLengthExceededError } from '../../../../shared/domain/exceptions/PropertyLengthExceededError';
+import { PropertyLengthTooShortError } from '../../../../shared/domain/exceptions/PropertyLengthTooShortError';
+import { StringValueObject } from '../../../../shared/domain/value-objects/StringValueObject';
 
-class LeagueSeasonName extends StringValueObject {
+export class LeagueSeasonName extends StringValueObject {
   static readonly #LENGTH: { min: number; max: number } = { min: 8, max: 20 } as const;
 
   constructor(value: string) {
@@ -22,4 +22,3 @@ class LeagueSeasonName extends StringValueObject {
   }
 }
 
-export default LeagueSeasonName;

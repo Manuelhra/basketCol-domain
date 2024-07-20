@@ -1,8 +1,8 @@
-import IntegerValueObject from '../../../../../../shared/domain/value-objects/IntegerValueObject';
-import MaximumValueExceededError from '../exceptions/MaximumValueExceededError';
-import MinimumValueViolationError from '../exceptions/MinimumValueViolationError';
+import { IntegerValueObject } from '../../../../../../shared/domain/value-objects/IntegerValueObject';
+import { MaximumValueExceededError } from '../exceptions/MaximumValueExceededError';
+import { MinimumValueViolationError } from '../exceptions/MinimumValueViolationError';
 
-abstract class Attribute extends IntegerValueObject {
+export abstract class Attribute extends IntegerValueObject {
   static readonly #maxAllowedValue: number = 99 as const;
 
   static readonly #minAllowedValue: number = 0 as const;
@@ -27,4 +27,3 @@ abstract class Attribute extends IntegerValueObject {
   }
 }
 
-export default Attribute;

@@ -1,4 +1,3 @@
-import UpdatedAtValueObject from '../../../../../../shared/domain/value-objects/UpdatedAtValueObject';
+import { UpdatedAtValueObject } from '../../../../../../shared/domain/value-objects/UpdatedAtValueObject';
 
-class RAUpdatedAt extends UpdatedAtValueObject {}
-export default RAUpdatedAt;
+export class RAUpdatedAt extends UpdatedAtValueObject {}

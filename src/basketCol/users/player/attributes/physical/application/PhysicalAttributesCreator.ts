@@ -1,16 +1,16 @@
-import BusinessDateService from '../../../../../shared/domain/services/BusinessDateService';
-import IdUniquenessValidatorService from '../../../../../shared/domain/services/IdUniquenessValidatorService';
-import PlayerUserValidationService from '../../../domain/services/PlayerUserValidationService';
-import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
+import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
+import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
+import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
+import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IPhysicalAttributes } from '../domain/IPhysicalAttributes';
-import PhysicalAttributes from '../domain/PhysicalAttributes';
+import { PhysicalAttributes } from '../domain/PhysicalAttributes';
 import { PhysicalAttributesRepository } from '../domain/repository/PhysicalAttributesRepository';
-import PACreatedAt from '../domain/value-objects/PACreatedAt';
-import PAUpdatedAt from '../domain/value-objects/PAUpdatedAt';
-import PhysicalAttributesId from '../domain/value-objects/PhysicalAttributesId';
+import { PACreatedAt } from '../domain/value-objects/PACreatedAt';
+import { PAUpdatedAt } from '../domain/value-objects/PAUpdatedAt';
+import { PhysicalAttributesId } from '../domain/value-objects/PhysicalAttributesId';
 import { PhysicalAttributesCreatorPayload } from './PhysicalAttributesCreatorPayload';
 
-class PhysicalAttributesCreator {
+export class PhysicalAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
 
   readonly #playerUserValidationService: PlayerUserValidationService;
@@ -66,4 +66,3 @@ class PhysicalAttributesCreator {
   }
 }
 
-export default PhysicalAttributesCreator;

@@ -1,6 +1,6 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
 
-class InvalidUserTypeError extends RootError {
+export class InvalidUserTypeError extends RootError {
   constructor(type: string) {
     const message = `Invalid user type: '${type}' is not a valid user type in the system.`;
     super(message);
@@ -12,4 +12,3 @@ class InvalidUserTypeError extends RootError {
   }
 }
 
-export default InvalidUserTypeError;

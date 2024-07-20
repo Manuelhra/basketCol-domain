@@ -1,7 +1,7 @@
-import UuidValueObject from '../value-objects/UuidValueObject';
-import RootError from './RootError';
+import { UuidValueObject } from '../value-objects/UuidValueObject';
+import { RootError } from './RootError';
 
-class IdAlreadyExistsError extends RootError {
+export class IdAlreadyExistsError extends RootError {
   constructor(idValueObject: UuidValueObject) {
     const id: string = idValueObject.getValue();
 
@@ -15,4 +15,3 @@ class IdAlreadyExistsError extends RootError {
   }
 }
 
-export default IdAlreadyExistsError;

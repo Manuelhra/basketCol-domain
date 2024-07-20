@@ -1,4 +1,3 @@
-import CreatedAtValueObject from '../../../../shared/domain/value-objects/CreatedAtValueObject';
+import { CreatedAtValueObject } from '../../../../shared/domain/value-objects/CreatedAtValueObject';
 
-class UserCreatedAt extends CreatedAtValueObject {}
-export default UserCreatedAt;
+export class UserCreatedAt extends CreatedAtValueObject {}

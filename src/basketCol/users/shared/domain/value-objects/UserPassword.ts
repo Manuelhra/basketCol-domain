@@ -1,7 +1,7 @@
-import StringValueObject from '../../../../shared/domain/value-objects/StringValueObject';
-import PasswordPolicyViolationError from '../exceptions/PasswordPolicyViolationError';
+import { StringValueObject } from '../../../../shared/domain/value-objects/StringValueObject';
+import { PasswordPolicyViolationError } from '../exceptions/PasswordPolicyViolationError';
 
-abstract class UserPassword extends StringValueObject {
+export abstract class UserPassword extends StringValueObject {
   static readonly #PASSWORD_REG_EXP: RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
   static readonly #REQUIREMENTS: string[] = [
@@ -24,4 +24,3 @@ abstract class UserPassword extends StringValueObject {
   }
 }
 
-export default UserPassword;

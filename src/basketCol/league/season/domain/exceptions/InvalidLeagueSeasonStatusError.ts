@@ -1,6 +1,6 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
 
-class InvalidLeagueSeasonStatusError extends RootError {
+export class InvalidLeagueSeasonStatusError extends RootError {
   constructor(invalidStatus: string, validStatuses: readonly string[]) {
     super(`Invalid league season status: "${invalidStatus}". Valid statuses are: ${validStatuses.join(', ')}`);
 
@@ -12,4 +12,3 @@ class InvalidLeagueSeasonStatusError extends RootError {
   }
 }
 
-export default InvalidLeagueSeasonStatusError;

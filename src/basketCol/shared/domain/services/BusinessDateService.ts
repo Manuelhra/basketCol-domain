@@ -1,10 +1,10 @@
-import DateValueObject from '../value-objects/DateValueObject';
+import { DateValueObject } from '../value-objects/DateValueObject';
 
 interface CreateDateValueObject {
   run<T extends DateValueObject>(parsedDate: string): T;
 }
 
-class BusinessDateService {
+export class BusinessDateService {
   readonly #createDateValueObject: CreateDateValueObject;
 
   constructor(dependencies: {
@@ -25,4 +25,3 @@ class BusinessDateService {
   }
 }
 
-export default BusinessDateService;

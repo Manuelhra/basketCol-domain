@@ -1,14 +1,14 @@
-import User from '../../shared/domain/User';
+import { User } from '../../shared/domain/User';
 import { IPlayerUser } from './IPlayerUser';
-import PlayerUserActive from './value-objects/PlayerUserActive';
-import PlayerUserCreatedAt from './value-objects/PlayerUserCreatedAt';
-import PlayerUserEmail from './value-objects/PlayerUserEmail';
-import PlayerUserId from './value-objects/PlayerUserId';
-import PlayerUserPassword from './value-objects/PlayerUserPassword';
-import PlayerUserType from './value-objects/PlayerUserType';
-import PlayerUserUpdatedAt from './value-objects/PlayerUserUpdatedAt';
+import { PlayerUserActive } from './value-objects/PlayerUserActive';
+import { PlayerUserCreatedAt } from './value-objects/PlayerUserCreatedAt';
+import { PlayerUserEmail } from './value-objects/PlayerUserEmail';
+import { PlayerUserId } from './value-objects/PlayerUserId';
+import { PlayerUserPassword } from './value-objects/PlayerUserPassword';
+import { PlayerUserType } from './value-objects/PlayerUserType';
+import { PlayerUserUpdatedAt } from './value-objects/PlayerUserUpdatedAt';
 
-class PlayerUser extends User {
+export class PlayerUser extends User {
   constructor(
     id: string,
     email: { value: string; verified: boolean },
@@ -40,4 +40,3 @@ class PlayerUser extends User {
     };
   }
 }
-export default PlayerUser;

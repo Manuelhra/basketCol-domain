@@ -1,10 +1,10 @@
 import { Nullable } from '../../../../shared/domain/Nullable';
-import PlayerUserNotFoundError from '../exceptions/PlayerUserNotFoundError';
-import PlayerUser from '../PlayerUser';
+import { PlayerUserNotFoundError } from '../exceptions/PlayerUserNotFoundError';
+import { PlayerUser } from '../PlayerUser';
 import { PlayerUserRepository } from '../repository/PlayerUserRepository';
-import PlayerUserId from '../value-objects/PlayerUserId';
+import { PlayerUserId } from '../value-objects/PlayerUserId';
 
-class PlayerUserValidationService {
+export class PlayerUserValidationService {
   readonly #playerUserRepository: PlayerUserRepository;
 
   constructor(dependencies: {
@@ -22,4 +22,3 @@ class PlayerUserValidationService {
   }
 }
 
-export default PlayerUserValidationService;

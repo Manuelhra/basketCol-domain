@@ -1,4 +1,4 @@
-abstract class RootError extends Error {
+export abstract class RootError extends Error {
   constructor(message: string) {
     super(message);
     this.name = this.constructor.name;
@@ -7,4 +7,3 @@ abstract class RootError extends Error {
   public abstract logError(): string;
 }
 
-export default RootError;

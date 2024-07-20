@@ -1,6 +1,6 @@
-import RootError from './RootError';
+import { RootError } from './RootError';
 
-class EntityNotFoundError extends RootError {
+export class EntityNotFoundError extends RootError {
   constructor(entityType: string, identifier: string | number) {
     const message = `Entity not found: ${entityType} with identifier '${identifier}' does not exist in the system.`;
     super(message);
@@ -12,4 +12,3 @@ class EntityNotFoundError extends RootError {
   }
 }
 
-export default EntityNotFoundError;

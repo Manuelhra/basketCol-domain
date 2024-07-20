@@ -1,6 +1,6 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
 
-class PasswordPolicyViolationError extends RootError {
+export class PasswordPolicyViolationError extends RootError {
   constructor(message: string = "The password does not comply with the domain's security policies") {
     super(message);
     this.name = 'PasswordPolicyViolationError';
@@ -11,4 +11,3 @@ class PasswordPolicyViolationError extends RootError {
   }
 }
 
-export default PasswordPolicyViolationError;

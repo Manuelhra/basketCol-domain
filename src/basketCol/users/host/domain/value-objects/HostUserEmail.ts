@@ -1,4 +1,3 @@
-import UserEmail from '../../../shared/domain/value-objects/UserEmail';
+import { UserEmail } from '../../../shared/domain/value-objects/UserEmail';
 
-class HostUserEmail extends UserEmail {}
-export default HostUserEmail;
+export class HostUserEmail extends UserEmail {}

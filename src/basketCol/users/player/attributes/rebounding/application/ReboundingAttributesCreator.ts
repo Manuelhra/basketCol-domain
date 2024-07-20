@@ -1,16 +1,16 @@
-import BusinessDateService from '../../../../../shared/domain/services/BusinessDateService';
-import IdUniquenessValidatorService from '../../../../../shared/domain/services/IdUniquenessValidatorService';
-import PlayerUserValidationService from '../../../domain/services/PlayerUserValidationService';
-import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
+import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
+import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
+import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
+import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IReboundingAttributes } from '../domain/IReboundingAttributes';
-import ReboundingAttributes from '../domain/ReboundingAttributes';
+import { ReboundingAttributes } from '../domain/ReboundingAttributes';
 import { ReboundingAttributesRepository } from '../domain/repository/ReboundingAttributesRepository';
-import RACreatedAt from '../domain/value-objects/RACreatedAt';
-import RAUpdatedAt from '../domain/value-objects/RAUpdatedAt';
-import ReboundingAttributesId from '../domain/value-objects/ReboundingAttributesId';
+import { RACreatedAt } from '../domain/value-objects/RACreatedAt';
+import { RAUpdatedAt } from '../domain/value-objects/RAUpdatedAt';
+import { ReboundingAttributesId } from '../domain/value-objects/ReboundingAttributesId';
 import { ReboundingAttributesCreatorPayload } from './ReboundingAttributesCreatorPayload';
 
-class ReboundingAttributesCreator {
+export class ReboundingAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
 
   readonly #playerUserValidationService: PlayerUserValidationService;
@@ -60,4 +60,3 @@ class ReboundingAttributesCreator {
   }
 }
 
-export default ReboundingAttributesCreator;

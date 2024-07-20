@@ -1,7 +1,7 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
-import PlayerUserId from '../value-objects/PlayerUserId';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
+import { PlayerUserId } from '../value-objects/PlayerUserId';
 
-class PlayerUserNotFoundError extends RootError {
+export class PlayerUserNotFoundError extends RootError {
   constructor(playerUserId: PlayerUserId) {
     super(`PlayerUser not found: The user with ID '${playerUserId.getValue()}' does not exist in the system.`);
 
@@ -13,4 +13,3 @@ class PlayerUserNotFoundError extends RootError {
   }
 }
 
-export default PlayerUserNotFoundError;
