@@ -1,6 +1,6 @@
-import RootError from './RootError';
+import { RootError } from './RootError';
 
-class InvalidDomainIdError extends RootError {
+export class InvalidDomainIdError extends RootError {
   constructor(id: string) {
     const message = `The ID "${id}" violates the domain policy`;
     super(message);
@@ -12,4 +12,3 @@ class InvalidDomainIdError extends RootError {
   }
 }
 
-export default InvalidDomainIdError;

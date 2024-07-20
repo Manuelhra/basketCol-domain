@@ -1,16 +1,16 @@
-import BusinessDateService from '../../../../../shared/domain/services/BusinessDateService';
-import IdUniquenessValidatorService from '../../../../../shared/domain/services/IdUniquenessValidatorService';
-import PlayerUserValidationService from '../../../domain/services/PlayerUserValidationService';
-import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
+import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
+import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
+import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
+import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IShootingAttributes } from '../domain/IShootingAttributes';
 import { ShootingAttributesRepository } from '../domain/repository/ShootingAttributesRepository';
-import ShootingAttributes from '../domain/ShootingAttributes';
-import SACreatedAt from '../domain/value-objects/SACreatedAt';
-import SAUpdatedAt from '../domain/value-objects/SAUpdatedAt';
-import ShootingAttributesId from '../domain/value-objects/ShootingAttributesId';
+import { ShootingAttributes } from '../domain/ShootingAttributes';
+import { SACreatedAt } from '../domain/value-objects/SACreatedAt';
+import { SAUpdatedAt } from '../domain/value-objects/SAUpdatedAt';
+import { ShootingAttributesId } from '../domain/value-objects/ShootingAttributesId';
 import { ShootingAttributesCreatorPayload } from './ShootingAttributesCreatorPayload';
 
-class ShootingAttributesCreator {
+export class ShootingAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
 
   readonly #playerUserValidationService: PlayerUserValidationService;
@@ -64,4 +64,3 @@ class ShootingAttributesCreator {
   }
 }
 
-export default ShootingAttributesCreator;

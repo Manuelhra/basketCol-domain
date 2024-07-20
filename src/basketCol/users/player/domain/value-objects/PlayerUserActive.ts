@@ -1,4 +1,3 @@
-import UserActive from '../../../shared/domain/value-objects/UserActive';
+import { UserActive } from '../../../shared/domain/value-objects/UserActive';
 
-class PlayerUserActive extends UserActive {}
-export default PlayerUserActive;
+export class PlayerUserActive extends UserActive {}

@@ -1,11 +1,11 @@
-import UserPassword from '../value-objects/UserPassword';
+import { UserPassword } from '../value-objects/UserPassword';
 import { PasswordEncrypterService } from './PasswordEncrypterService';
 
 interface CreatePasswordValueObject {
   run<T extends UserPassword>(encryptedPassword: string): T;
 }
 
-class SecurePasswordCreationService {
+export class SecurePasswordCreationService {
   readonly #passwordEncrypterService: PasswordEncrypterService;
 
   readonly #createPasswordValueObject: CreatePasswordValueObject;
@@ -23,5 +23,3 @@ class SecurePasswordCreationService {
     return this.#createPasswordValueObject.run<T>(encryptedPassword);
   }
 }
-
-export default SecurePasswordCreationService;

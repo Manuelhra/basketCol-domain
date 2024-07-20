@@ -1,4 +1,3 @@
-import UserPassword from '../../../shared/domain/value-objects/UserPassword';
+import { UserPassword } from '../../../shared/domain/value-objects/UserPassword';
 
-class LeagueFounderUserPassword extends UserPassword {}
-export default LeagueFounderUserPassword;
+export class LeagueFounderUserPassword extends UserPassword {}

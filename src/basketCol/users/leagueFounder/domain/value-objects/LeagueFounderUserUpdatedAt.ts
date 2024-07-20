@@ -1,4 +1,3 @@
-import UserUpdatedAt from '../../../shared/domain/value-objects/UserUpdatedAt';
+import { UserUpdatedAt } from '../../../shared/domain/value-objects/UserUpdatedAt';
 
-class LeagueFounderUserUpdatedAt extends UserUpdatedAt {}
-export default LeagueFounderUserUpdatedAt;
+export class LeagueFounderUserUpdatedAt extends UserUpdatedAt {}

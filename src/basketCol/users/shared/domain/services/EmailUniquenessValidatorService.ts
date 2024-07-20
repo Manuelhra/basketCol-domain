@@ -1,14 +1,14 @@
-import AggregateRoot from '../../../../shared/domain/AggregateRoot';
+import { AggregateRoot } from '../../../../shared/domain/AggregateRoot';
 import { IAggregateRoot } from '../../../../shared/domain/IAggregateRoot';
 import { Nullable } from '../../../../shared/domain/Nullable';
-import EmailAlreadyExistsError from '../exceptions/EmailAlreadyExistsError';
-import UserEmail from '../value-objects/UserEmail';
+import { EmailAlreadyExistsError } from '../exceptions/EmailAlreadyExistsError';
+import { UserEmail } from '../value-objects/UserEmail';
 
 interface Repository {
   searchByEmail<N extends UserEmail, IES extends IAggregateRoot, ES extends AggregateRoot<IES>>(emailValueObject: N): Promise<Nullable<ES>>;
 }
 
-class EmailUniquenessValidatorService {
+export class EmailUniquenessValidatorService {
   readonly #repository: Repository;
 
   constructor(dependencies: { repository: Repository }) {
@@ -24,4 +24,3 @@ class EmailUniquenessValidatorService {
   }
 }
 
-export default EmailUniquenessValidatorService;

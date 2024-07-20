@@ -1,14 +1,14 @@
-import AggregateRoot from '../AggregateRoot';
+import { AggregateRoot } from '../AggregateRoot';
 import { IAggregateRoot } from '../IAggregateRoot';
 import { Nullable } from '../Nullable';
-import IdAlreadyExistsError from '../exceptions/IdlAlreadyExistsError';
-import UuidValueObject from '../value-objects/UuidValueObject';
+import { IdAlreadyExistsError } from '../exceptions/IdlAlreadyExistsError';
+import { UuidValueObject } from '../value-objects/UuidValueObject';
 
 export interface Repository {
   searchById<T extends UuidValueObject, IES extends IAggregateRoot, ES extends AggregateRoot<IES>>(idValueObject: T): Promise<Nullable<ES>>;
 }
 
-class IdUniquenessValidatorService {
+export class IdUniquenessValidatorService {
   readonly #repository: Repository;
 
   constructor(dependencies: {
@@ -26,4 +26,3 @@ class IdUniquenessValidatorService {
   }
 }
 
-export default IdUniquenessValidatorService;

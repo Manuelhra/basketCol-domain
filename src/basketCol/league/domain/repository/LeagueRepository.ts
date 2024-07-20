@@ -1,7 +1,7 @@
 import { Nullable } from '../../../shared/domain/Nullable';
-import League from '../League';
-import LeagueId from '../value-objects/LeagueId';
-import LeagueName from '../value-objects/LeagueName';
+import { League } from '../League';
+import { LeagueId } from '../value-objects/LeagueId';
+import { LeagueName } from '../value-objects/LeagueName';
 
 export interface LeagueRepository {
   save(league: League): Promise<void>;

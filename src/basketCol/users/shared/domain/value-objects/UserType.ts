@@ -1,7 +1,7 @@
-import StringValueObject from '../../../../shared/domain/value-objects/StringValueObject';
-import InvalidUserTypeError from '../exceptions/InvalidUserTypeError';
+import { StringValueObject } from '../../../../shared/domain/value-objects/StringValueObject';
+import { InvalidUserTypeError } from '../exceptions/InvalidUserTypeError';
 
-abstract class UserType extends StringValueObject {
+export abstract class UserType extends StringValueObject {
   protected abstract readonly TYPE: string;
 
   constructor(type: string) {
@@ -21,4 +21,3 @@ abstract class UserType extends StringValueObject {
   }
 }
 
-export default UserType;

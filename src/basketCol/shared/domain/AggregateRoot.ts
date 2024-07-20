@@ -1,8 +1,8 @@
 import { IAggregateRoot } from './IAggregateRoot';
-import DateValueObject from './value-objects/DateValueObject';
-import UuidValueObject from './value-objects/UuidValueObject';
+import { DateValueObject } from './value-objects/DateValueObject';
+import { UuidValueObject } from './value-objects/UuidValueObject';
 
-abstract class AggregateRoot<I extends IAggregateRoot> {
+export abstract class AggregateRoot<I extends IAggregateRoot> {
   protected readonly id: UuidValueObject;
 
   protected readonly createdAt: DateValueObject;
@@ -26,4 +26,3 @@ abstract class AggregateRoot<I extends IAggregateRoot> {
   }
 }
 
-export default AggregateRoot;

@@ -1,6 +1,6 @@
-import RootError from '../../../../../../shared/domain/exceptions/RootError';
+import { RootError } from '../../../../../../shared/domain/exceptions/RootError';
 
-class MinimumValueViolationError extends RootError {
+export class MinimumValueViolationError extends RootError {
   constructor(propertyName: string, minimumValue: number, actualValue: number) {
     const message = `Value constraint violation: '${propertyName}' is below minimum allowed value. Minimum: ${minimumValue}, Actual: ${actualValue}.`;
     super(message);
@@ -12,4 +12,3 @@ class MinimumValueViolationError extends RootError {
   }
 }
 
-export default MinimumValueViolationError;

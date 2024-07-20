@@ -1,4 +1,3 @@
-import UpdatedAtValueObject from '../../../../../../shared/domain/value-objects/UpdatedAtValueObject';
+import { UpdatedAtValueObject } from '../../../../../../shared/domain/value-objects/UpdatedAtValueObject';
 
-class PAUpdatedAt extends UpdatedAtValueObject {}
-export default PAUpdatedAt;
+export class PAUpdatedAt extends UpdatedAtValueObject {}

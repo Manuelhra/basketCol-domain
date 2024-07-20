@@ -1,9 +1,9 @@
 import validate from 'uuid-validate';
 
-import StringValueObject from './StringValueObject';
-import InvalidDomainIdError from '../exceptions/InvalidDomainIdError';
+import { StringValueObject } from './StringValueObject';
+import { InvalidDomainIdError } from '../exceptions/InvalidDomainIdError';
 
-abstract class UuidValueObject extends StringValueObject {
+export abstract class UuidValueObject extends StringValueObject {
   constructor(value: string, propertyName: string) {
     super(value, propertyName);
 
@@ -17,4 +17,3 @@ abstract class UuidValueObject extends StringValueObject {
   }
 }
 
-export default UuidValueObject;

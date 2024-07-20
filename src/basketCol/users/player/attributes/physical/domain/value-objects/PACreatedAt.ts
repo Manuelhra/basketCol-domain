@@ -1,4 +1,3 @@
-import CreatedAtValueObject from '../../../../../../shared/domain/value-objects/CreatedAtValueObject';
+import { CreatedAtValueObject } from '../../../../../../shared/domain/value-objects/CreatedAtValueObject';
 
-class PACreatedAt extends CreatedAtValueObject {}
-export default PACreatedAt;
+export class PACreatedAt extends CreatedAtValueObject {}

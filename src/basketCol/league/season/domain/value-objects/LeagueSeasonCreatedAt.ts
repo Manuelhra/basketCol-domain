@@ -1,4 +1,3 @@
-import CreatedAtValueObject from '../../../../shared/domain/value-objects/CreatedAtValueObject';
+import { CreatedAtValueObject } from '../../../../shared/domain/value-objects/CreatedAtValueObject';
 
-class LeagueSeasonCreatedAt extends CreatedAtValueObject {}
-export default LeagueSeasonCreatedAt;
+export class LeagueSeasonCreatedAt extends CreatedAtValueObject {}

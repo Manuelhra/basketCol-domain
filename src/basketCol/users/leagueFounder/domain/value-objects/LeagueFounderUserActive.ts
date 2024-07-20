@@ -1,9 +1,8 @@
-import BooleanValueObject from '../../../../shared/domain/value-objects/BooleanValueObject';
+import { BooleanValueObject } from '../../../../shared/domain/value-objects/BooleanValueObject';
 
-class LeagueFounderUserActive extends BooleanValueObject {
+export class LeagueFounderUserActive extends BooleanValueObject {
   constructor(value: boolean) {
     super(value, 'active');
   }
 }
 
-export default LeagueFounderUserActive;

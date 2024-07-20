@@ -1,7 +1,7 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
-import UserEmail from '../value-objects/UserEmail';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
+import { UserEmail } from '../value-objects/UserEmail';
 
-class EmailAlreadyExistsError extends RootError {
+export class EmailAlreadyExistsError extends RootError {
   constructor(userEmail: UserEmail) {
     const { value } = userEmail.getValue();
 
@@ -15,4 +15,3 @@ class EmailAlreadyExistsError extends RootError {
   }
 }
 
-export default EmailAlreadyExistsError;

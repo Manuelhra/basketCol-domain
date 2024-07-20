@@ -1,15 +1,15 @@
-import AggregateRoot from '../../../../../shared/domain/AggregateRoot';
-import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
+import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
+import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IFinishingAttributes } from './IFinishingAttributes';
-import FACreatedAt from './value-objects/FACreatedAt';
-import FADrivingDunk from './value-objects/FADrivingDunk';
-import FADrivingLayup from './value-objects/FADrivingLayup';
-import FAPostControl from './value-objects/FAPostControl';
-import FAStandingDunk from './value-objects/FAStandingDunk';
-import FAUpdatedAt from './value-objects/FAUpdatedAt';
-import FinishingAttributesId from './value-objects/FinishingAttributesId';
+import { FACreatedAt } from './value-objects/FACreatedAt';
+import { FADrivingDunk } from './value-objects/FADrivingDunk';
+import { FADrivingLayup } from './value-objects/FADrivingLayup';
+import { FAPostControl } from './value-objects/FAPostControl';
+import { FAStandingDunk } from './value-objects/FAStandingDunk';
+import { FAUpdatedAt } from './value-objects/FAUpdatedAt';
+import { FinishingAttributesId } from './value-objects/FinishingAttributesId';
 
-class FinishingAttributes extends AggregateRoot<IFinishingAttributes> {
+export class FinishingAttributes extends AggregateRoot<IFinishingAttributes> {
   readonly #drivingLayup: FADrivingLayup;
 
   readonly #drivingDunk: FADrivingDunk;
@@ -57,4 +57,3 @@ class FinishingAttributes extends AggregateRoot<IFinishingAttributes> {
   }
 }
 
-export default FinishingAttributes;

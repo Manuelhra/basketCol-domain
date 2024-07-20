@@ -1,6 +1,6 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
 
-class MultipleHostUsersException extends RootError {
+export class MultipleHostUsersException extends RootError {
   constructor() {
     super('Uniqueness constraint violated: attempt to create multiple host users');
 
@@ -12,4 +12,3 @@ class MultipleHostUsersException extends RootError {
   }
 }
 
-export default MultipleHostUsersException;

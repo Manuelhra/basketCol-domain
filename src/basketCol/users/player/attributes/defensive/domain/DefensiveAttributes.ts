@@ -1,15 +1,15 @@
-import AggregateRoot from '../../../../../shared/domain/AggregateRoot';
-import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
+import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
+import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IDefensiveAttributes } from './IDefensiveAttributes';
-import DABlock from './value-objects/DABlock';
-import DACreatedAt from './value-objects/DACreatedAt';
-import DAUpdatedAt from './value-objects/DAUpdatedAt';
-import DefensiveAttributesId from './value-objects/DefensiveAttributesId';
-import DAInteriorDefense from './value-objects/DAInteriorDefense';
-import DAPerimeterDefense from './value-objects/DAPerimeterDefense';
-import DASteal from './value-objects/DASteal';
+import { DABlock } from './value-objects/DABlock';
+import { DACreatedAt } from './value-objects/DACreatedAt';
+import { DAUpdatedAt } from './value-objects/DAUpdatedAt';
+import { DefensiveAttributesId } from './value-objects/DefensiveAttributesId';
+import { DAInteriorDefense } from './value-objects/DAInteriorDefense';
+import { DAPerimeterDefense } from './value-objects/DAPerimeterDefense';
+import { DASteal } from './value-objects/DASteal';
 
-class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
+export class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
   readonly #interiorDefense: DAInteriorDefense;
 
   readonly #perimeterDefense: DAPerimeterDefense;
@@ -57,4 +57,3 @@ class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
   }
 }
 
-export default DefensiveAttributes;

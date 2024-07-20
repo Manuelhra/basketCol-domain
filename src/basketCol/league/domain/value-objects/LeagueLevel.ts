@@ -1,6 +1,6 @@
-import StringValueObject from '../../../shared/domain/value-objects/StringValueObject';
+import { StringValueObject } from '../../../shared/domain/value-objects/StringValueObject';
 
-class LeagueLevel extends StringValueObject {
+export class LeagueLevel extends StringValueObject {
   constructor(value: string) {
     super(value, 'level');
   }
@@ -9,4 +9,3 @@ class LeagueLevel extends StringValueObject {
 // TODO: Crear administrador de niveles de UnitedHoops y
 // luego replantear la estructura de level para la entidad League
 
-export default LeagueLevel;

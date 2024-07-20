@@ -1,6 +1,6 @@
-import RootError from './RootError';
+import { RootError } from './RootError';
 
-class ElementAlreadyDisabledError extends RootError {
+export class ElementAlreadyDisabledError extends RootError {
   constructor(elementType: string) {
     const message = `Invalid operation: ${elementType} is already in a disabled state.`;
     super(message);
@@ -13,4 +13,3 @@ class ElementAlreadyDisabledError extends RootError {
   }
 }
 
-export default ElementAlreadyDisabledError;

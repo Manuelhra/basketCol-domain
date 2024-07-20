@@ -1,9 +1,9 @@
-import InvalidPropertyTypeError from '../../../shared/domain/exceptions/InvalidPropertyTypeError';
-import PropertyLengthExceededError from '../../../shared/domain/exceptions/PropertyLengthExceededError';
-import PropertyLengthTooShortError from '../../../shared/domain/exceptions/PropertyLengthTooShortError';
-import ObjectValueObject from '../../../shared/domain/value-objects/ObjectValueObject';
+import { InvalidPropertyTypeError } from '../../../shared/domain/exceptions/InvalidPropertyTypeError';
+import { PropertyLengthExceededError } from '../../../shared/domain/exceptions/PropertyLengthExceededError';
+import { PropertyLengthTooShortError } from '../../../shared/domain/exceptions/PropertyLengthTooShortError';
+import { ObjectValueObject } from '../../../shared/domain/value-objects/ObjectValueObject';
 
-class LeagueName extends ObjectValueObject<{ short: string; official: string; }> {
+export class LeagueName extends ObjectValueObject<{ short: string; official: string; }> {
   static readonly #SHORT_NAME_LENGTH: { min: number; max: number; } = {
     min: 5,
     max: 10,
@@ -40,4 +40,3 @@ class LeagueName extends ObjectValueObject<{ short: string; official: string; }>
   }
 }
 
-export default LeagueName;

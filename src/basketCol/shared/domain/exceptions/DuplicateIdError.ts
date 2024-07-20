@@ -1,6 +1,6 @@
-import RootError from './RootError';
+import { RootError } from './RootError';
 
-class DuplicateIdError extends RootError {
+export class DuplicateIdError extends RootError {
   constructor(id: string | number) {
     const message = `Uniqueness constraint violation: ID '${id}' already exists in the system.`;
     super(message);
@@ -12,4 +12,3 @@ class DuplicateIdError extends RootError {
   }
 }
 
-export default DuplicateIdError;

@@ -1,4 +1,4 @@
-import ValueObject from './ValueObject';
+import { ValueObject } from './ValueObject';
 
 export type Primitives = string | number | boolean | Boolean;
 

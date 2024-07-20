@@ -1,6 +1,6 @@
-import InvalidPropertyTypeError from '../exceptions/InvalidPropertyTypeError';
+import { InvalidPropertyTypeError } from '../exceptions/InvalidPropertyTypeError';
 
-abstract class ValueObject<T> {
+export abstract class ValueObject<T> {
   readonly #value: T;
 
   constructor(value: T, propertyName: string, expectedType: string) {
@@ -24,4 +24,3 @@ abstract class ValueObject<T> {
   }
 }
 
-export default ValueObject;

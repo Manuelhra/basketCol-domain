@@ -1,18 +1,18 @@
-import AggregateRoot from '../../shared/domain/AggregateRoot';
-import LeagueFounderUserId from '../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
+import { AggregateRoot } from '../../shared/domain/AggregateRoot';
+import { LeagueFounderUserId } from '../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
 import { ILeague } from './ILeague';
-import LeagueCreatedAt from './value-objects/LeagueCreatedAt';
-import LeagueCreationDate from './value-objects/LeagueCreationDate';
-import LeagueDescription from './value-objects/LeagueDescription';
-import LeagueId from './value-objects/LeagueId';
-import LeagueIsActive from './value-objects/LeagueIsActive';
-import LeagueLevel from './value-objects/LeagueLevel';
-import LeagueLocation, { ILeagueLocationProps } from './value-objects/LeagueLocation';
-import LeagueName from './value-objects/LeagueName';
-import LeagueRules from './value-objects/LeagueRules';
-import LeagueUpdatedAt from './value-objects/LeagueUpdatedAt';
+import { LeagueCreatedAt } from './value-objects/LeagueCreatedAt';
+import { LeagueCreationDate } from './value-objects/LeagueCreationDate';
+import { LeagueDescription } from './value-objects/LeagueDescription';
+import { LeagueId } from './value-objects/LeagueId';
+import { LeagueIsActive } from './value-objects/LeagueIsActive';
+import { LeagueLevel } from './value-objects/LeagueLevel';
+import { LeagueLocation, ILeagueLocationProps } from './value-objects/LeagueLocation';
+import { LeagueName } from './value-objects/LeagueName';
+import { LeagueRules } from './value-objects/LeagueRules';
+import { LeagueUpdatedAt } from './value-objects/LeagueUpdatedAt';
 
-class League extends AggregateRoot<ILeague> {
+export class League extends AggregateRoot<ILeague> {
   readonly #name: LeagueName;
 
   readonly #description: LeagueDescription;
@@ -75,4 +75,3 @@ class League extends AggregateRoot<ILeague> {
   }
 }
 
-export default League;

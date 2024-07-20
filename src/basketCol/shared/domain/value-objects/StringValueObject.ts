@@ -1,7 +1,7 @@
-import InvalidPropertyTypeError from '../exceptions/InvalidPropertyTypeError';
+import { InvalidPropertyTypeError } from '../exceptions/InvalidPropertyTypeError';
 import { PrimitiveValueObject } from './PrimitiveValueObject';
 
-abstract class StringValueObject extends PrimitiveValueObject<string> {
+export abstract class StringValueObject extends PrimitiveValueObject<string> {
   constructor(value: string, propertyName: string) {
     super(value, propertyName, 'string');
 
@@ -14,4 +14,3 @@ abstract class StringValueObject extends PrimitiveValueObject<string> {
     }
   }
 }
-export default StringValueObject;

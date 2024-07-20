@@ -1,6 +1,6 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
 
-class LeagueSeasonEndDateInPastError extends RootError {
+export class LeagueSeasonEndDateInPastError extends RootError {
   constructor(private endDate: string, private currentDate: string) {
     super('LeagueSeason end date is in the past');
   }
@@ -14,4 +14,3 @@ class LeagueSeasonEndDateInPastError extends RootError {
   }
 }
 
-export default LeagueSeasonEndDateInPastError;

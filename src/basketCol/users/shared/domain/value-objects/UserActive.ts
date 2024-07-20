@@ -1,9 +1,8 @@
-import BooleanValueObject from '../../../../shared/domain/value-objects/BooleanValueObject';
+import { BooleanValueObject } from '../../../../shared/domain/value-objects/BooleanValueObject';
 
-class UserActive extends BooleanValueObject {
+export class UserActive extends BooleanValueObject {
   constructor(value: boolean) {
     super(value, 'active');
   }
 }
 
-export default UserActive;

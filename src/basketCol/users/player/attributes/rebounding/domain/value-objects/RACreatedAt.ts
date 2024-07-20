@@ -1,4 +1,3 @@
-import CreatedAtValueObject from '../../../../../../shared/domain/value-objects/CreatedAtValueObject';
+import { CreatedAtValueObject } from '../../../../../../shared/domain/value-objects/CreatedAtValueObject';
 
-class RACreatedAt extends CreatedAtValueObject {}
-export default RACreatedAt;
+export class RACreatedAt extends CreatedAtValueObject {}

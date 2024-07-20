@@ -1,7 +1,7 @@
-import InvalidPropertyTypeError from '../../../../shared/domain/exceptions/InvalidPropertyTypeError';
-import ValueObject from '../../../../shared/domain/value-objects/ValueObject';
+import { InvalidPropertyTypeError } from '../../../../shared/domain/exceptions/InvalidPropertyTypeError';
+import { ValueObject } from '../../../../shared/domain/value-objects/ValueObject';
 
-class LeagueFounderUserName extends ValueObject<{ firstName: string; lastName: string; }> {
+export class LeagueFounderUserName extends ValueObject<{ firstName: string; lastName: string; }> {
   constructor(value: { firstName: string; lastName: string; }) {
     super(value, 'name', '{ firstName: string; lastName: string; }');
 
@@ -16,4 +16,3 @@ class LeagueFounderUserName extends ValueObject<{ firstName: string; lastName: s
   }
 }
 
-export default LeagueFounderUserName;

@@ -1,15 +1,15 @@
-import AggregateRoot from '../../../../../shared/domain/AggregateRoot';
-import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
+import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
+import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IShootingAttributes } from './IShootingAttributes';
-import SACloseShot from './value-objects/SACloseShot';
-import SACreatedAt from './value-objects/SACreatedAt';
-import SAFreeThrow from './value-objects/SAFreeThrow';
-import SAMidRangeShot from './value-objects/SAMidRangeShot';
-import SAThreePointShot from './value-objects/SAThreePointShot';
-import SAUpdatedAt from './value-objects/SAUpdatedAt';
-import ShootingAttributesId from './value-objects/ShootingAttributesId';
+import { SACloseShot } from './value-objects/SACloseShot';
+import { SACreatedAt } from './value-objects/SACreatedAt';
+import { SAFreeThrow } from './value-objects/SAFreeThrow';
+import { SAMidRangeShot } from './value-objects/SAMidRangeShot';
+import { SAThreePointShot } from './value-objects/SAThreePointShot';
+import { SAUpdatedAt } from './value-objects/SAUpdatedAt';
+import { ShootingAttributesId } from './value-objects/ShootingAttributesId';
 
-class ShootingAttributes extends AggregateRoot<IShootingAttributes> {
+export class ShootingAttributes extends AggregateRoot<IShootingAttributes> {
   readonly #closeShot: SACloseShot;
 
   readonly #midRangeShot: SAMidRangeShot;
@@ -57,4 +57,3 @@ class ShootingAttributes extends AggregateRoot<IShootingAttributes> {
   }
 }
 
-export default ShootingAttributes;

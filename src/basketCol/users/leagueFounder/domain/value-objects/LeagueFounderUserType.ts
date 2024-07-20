@@ -1,6 +1,6 @@
-import UserType from '../../../shared/domain/value-objects/UserType';
+import { UserType } from '../../../shared/domain/value-objects/UserType';
 
-class LeagueFounderUserType extends UserType {
+export class LeagueFounderUserType extends UserType {
   readonly TYPE: string;
 
   constructor() {
@@ -11,4 +11,3 @@ class LeagueFounderUserType extends UserType {
   }
 }
 
-export default LeagueFounderUserType;

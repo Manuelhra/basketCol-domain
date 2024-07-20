@@ -1,15 +1,15 @@
-import AggregateRoot from '../../../shared/domain/AggregateRoot';
+import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
 import { PrimitiveValueObject } from '../../../shared/domain/value-objects/PrimitiveValueObject';
 import { IUser } from './IUser';
-import UserActive from './value-objects/UserActive';
-import UserCreatedAt from './value-objects/UserCreatedAt';
-import UserEmail from './value-objects/UserEmail';
-import UserId from './value-objects/UserId';
-import UserPassword from './value-objects/UserPassword';
-import UserType from './value-objects/UserType';
-import UserUpdatedAt from './value-objects/UserUpdatedAt';
+import { UserActive } from './value-objects/UserActive';
+import { UserCreatedAt } from './value-objects/UserCreatedAt';
+import { UserEmail } from './value-objects/UserEmail';
+import { UserId } from './value-objects/UserId';
+import { UserPassword } from './value-objects/UserPassword';
+import { UserType } from './value-objects/UserType';
+import { UserUpdatedAt } from './value-objects/UserUpdatedAt';
 
-abstract class User extends AggregateRoot<IUser> {
+export abstract class User extends AggregateRoot<IUser> {
   protected readonly email: UserEmail;
 
   protected password: PrimitiveValueObject<string>;
@@ -36,4 +36,3 @@ abstract class User extends AggregateRoot<IUser> {
   }
 }
 
-export default User;

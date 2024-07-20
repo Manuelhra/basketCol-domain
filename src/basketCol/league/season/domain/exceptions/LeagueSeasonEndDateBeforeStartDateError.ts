@@ -1,6 +1,6 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
 
-class LeagueSeasonEndDateBeforeStartDateError extends RootError {
+export class LeagueSeasonEndDateBeforeStartDateError extends RootError {
   constructor(private startDate: string, private endDate: string) {
     super('LeagueSeason end date is before start date');
   }
@@ -14,4 +14,3 @@ class LeagueSeasonEndDateBeforeStartDateError extends RootError {
   }
 }
 
-export default LeagueSeasonEndDateBeforeStartDateError;

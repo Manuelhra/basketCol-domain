@@ -1,7 +1,7 @@
-import RootError from '../../../shared/domain/exceptions/RootError';
-import LeagueId from '../value-objects/LeagueId';
+import { RootError } from '../../../shared/domain/exceptions/RootError';
+import { LeagueId } from '../value-objects/LeagueId';
 
-class LeagueNotFoundError extends RootError {
+export class LeagueNotFoundError extends RootError {
   constructor(leagueId: LeagueId) {
     const leagueIdValue: string = leagueId.getValue();
     super(`League not found: The league with ID '${leagueIdValue}' does not exist in the system.`);
@@ -13,5 +13,3 @@ class LeagueNotFoundError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-
-export default LeagueNotFoundError;

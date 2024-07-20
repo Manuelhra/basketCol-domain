@@ -1,4 +1,3 @@
-import UserEmail from '../../../shared/domain/value-objects/UserEmail';
+import { UserEmail } from '../../../shared/domain/value-objects/UserEmail';
 
-class PlayerUserEmail extends UserEmail {}
-export default PlayerUserEmail;
+export class PlayerUserEmail extends UserEmail {}

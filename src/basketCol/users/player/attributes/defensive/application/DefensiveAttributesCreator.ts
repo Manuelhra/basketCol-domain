@@ -1,16 +1,16 @@
-import BusinessDateService from '../../../../../shared/domain/services/BusinessDateService';
-import IdUniquenessValidatorService from '../../../../../shared/domain/services/IdUniquenessValidatorService';
-import PlayerUserValidationService from '../../../domain/services/PlayerUserValidationService';
-import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
-import DefensiveAttributes from '../domain/DefensiveAttributes';
+import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
+import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
+import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
+import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
+import { DefensiveAttributes } from '../domain/DefensiveAttributes';
 import { IDefensiveAttributes } from '../domain/IDefensiveAttributes';
 import { DefensiveAttributesRepository } from '../domain/repository/DefensiveAttributesRepository';
-import DACreatedAt from '../domain/value-objects/DACreatedAt';
-import DAUpdatedAt from '../domain/value-objects/DAUpdatedAt';
-import DefensiveAttributesId from '../domain/value-objects/DefensiveAttributesId';
+import { DACreatedAt } from '../domain/value-objects/DACreatedAt';
+import { DAUpdatedAt } from '../domain/value-objects/DAUpdatedAt';
+import { DefensiveAttributesId } from '../domain/value-objects/DefensiveAttributesId';
 import { DefensiveAttributesCreatorPayload } from './DefensiveAttributesCreatorPayload';
 
-class DefensiveAttributesCreator {
+export class DefensiveAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
 
   readonly #playerUserValidationService: PlayerUserValidationService;
@@ -64,4 +64,3 @@ class DefensiveAttributesCreator {
   }
 }
 
-export default DefensiveAttributesCreator;

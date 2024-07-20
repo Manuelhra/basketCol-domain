@@ -1,16 +1,16 @@
-import AggregateRoot from '../../../../../shared/domain/AggregateRoot';
-import PlayerUserId from '../../../domain/value-objects/PlayerUserId';
+import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
+import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IPhysicalAttributes } from './IPhysicalAttributes';
-import PAAcceleration from './value-objects/PAAcceleration';
-import PACreatedAt from './value-objects/PACreatedAt';
-import PASpeed from './value-objects/PASpeed';
-import PAStamina from './value-objects/PAStamina';
-import PAStrength from './value-objects/PAStrength';
-import PAUpdatedAt from './value-objects/PAUpdatedAt';
-import PAVertical from './value-objects/PAVertical';
-import PhysicalAttributesId from './value-objects/PhysicalAttributesId';
+import { PAAcceleration } from './value-objects/PAAcceleration';
+import { PACreatedAt } from './value-objects/PACreatedAt';
+import { PASpeed } from './value-objects/PASpeed';
+import { PAStamina } from './value-objects/PAStamina';
+import { PAStrength } from './value-objects/PAStrength';
+import { PAUpdatedAt } from './value-objects/PAUpdatedAt';
+import { PAVertical } from './value-objects/PAVertical';
+import { PhysicalAttributesId } from './value-objects/PhysicalAttributesId';
 
-class PhysicalAttributes extends AggregateRoot<IPhysicalAttributes> {
+export class PhysicalAttributes extends AggregateRoot<IPhysicalAttributes> {
   readonly #speed: PASpeed;
 
   readonly #acceleration: PAAcceleration;
@@ -63,4 +63,3 @@ class PhysicalAttributes extends AggregateRoot<IPhysicalAttributes> {
   }
 }
 
-export default PhysicalAttributes;

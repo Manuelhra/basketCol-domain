@@ -1,6 +1,6 @@
-import RootError from '../../../../shared/domain/exceptions/RootError';
+import { RootError } from '../../../../shared/domain/exceptions/RootError';
 
-class LeagueSeasonInsufficientPreparationTimeError extends RootError {
+export class LeagueSeasonInsufficientPreparationTimeError extends RootError {
   constructor(private startDate: string, private minimumStartDate: string, private minimumDays: number) {
     super('LeagueSeason has insufficient preparation time');
   }
@@ -14,4 +14,3 @@ class LeagueSeasonInsufficientPreparationTimeError extends RootError {
   }
 }
 
-export default LeagueSeasonInsufficientPreparationTimeError;

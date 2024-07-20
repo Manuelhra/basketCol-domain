@@ -1,8 +1,8 @@
-import InvalidDateFormatError from '../exceptions/InvalidDateFormatError';
-import InvalidPropertyTypeError from '../exceptions/InvalidPropertyTypeError';
-import StringValueObject from './StringValueObject';
+import { InvalidDateFormatError } from '../exceptions/InvalidDateFormatError';
+import { InvalidPropertyTypeError } from '../exceptions/InvalidPropertyTypeError';
+import { StringValueObject } from './StringValueObject';
 
-abstract class DateValueObject extends StringValueObject {
+export abstract class DateValueObject extends StringValueObject {
   static readonly #dataRegex: RegExp = /^([0-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/;
 
   static readonly #DATE_FORMAT: string = 'DD/MM/YYYY' as const;
@@ -24,4 +24,3 @@ abstract class DateValueObject extends StringValueObject {
   }
 }
 
-export default DateValueObject;
