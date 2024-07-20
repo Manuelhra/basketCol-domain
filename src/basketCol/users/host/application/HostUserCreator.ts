@@ -34,14 +34,17 @@ export class HostUserCreator {
     }
 
     const { id, email, password } = payload;
+
+    const active: boolean = true;
+    const hostUserPassword: HostUserPassword = this.#securePasswordCreationService.createFromPlainText<HostUserPassword>(password);
     const hostUserCreatedAt: HostUserCreatedAt = this.#businessDateService.getCurrentDate<HostUserCreatedAt>();
     const hostUserUpdatedAt: HostUserUpdatedAt = this.#businessDateService.getCurrentDate<HostUserUpdatedAt>();
 
     const hostUser: HostUser = new HostUser(
       id,
       { value: email.value, verified: false },
-      this.#securePasswordCreationService.createFromPlainText<HostUserPassword>(password).getValue(),
-      true,
+      hostUserPassword.getValue(),
+      active,
       hostUserCreatedAt.getValue(),
       hostUserUpdatedAt.getValue(),
     );
