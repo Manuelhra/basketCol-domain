@@ -26,6 +26,6 @@
     "linebreak-style": "off",
     "consistent-return": "error",
     "max-len":"off",
-    "import/prefer-default-export": false
+    "import/prefer-default-export": "off"
   }
 }

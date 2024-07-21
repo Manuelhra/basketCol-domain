@@ -1,5 +1,5 @@
 import { Nullable } from '../../../shared/domain/Nullable';
-import  { LeagueNotFoundError }  from '../exceptions/LeagueNotFoundError';
+import { LeagueNotFoundError } from '../exceptions/LeagueNotFoundError';
 import { League } from '../League';
 import { LeagueRepository } from '../repository/LeagueRepository';
 import { LeagueId } from '../value-objects/LeagueId';
@@ -21,4 +21,3 @@ export class LeagueValidationService {
     }
   }
 }
-
