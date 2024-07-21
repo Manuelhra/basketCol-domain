@@ -64,4 +64,3 @@ export class LeagueSeasonCreator {
     return this.#leagueSeasonRepository.save(leagueSeason);
   }
 }
-
