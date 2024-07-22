@@ -74,4 +74,3 @@ export class League extends AggregateRoot<ILeague> {
     };
   }
 }
-

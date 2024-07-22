@@ -1,5 +1,5 @@
-import { IUser } from '../../shared/domain/IUser';
 import { User } from '../../shared/domain/User';
+import { ITeamFounderUser } from './ITeamFounderUser';
 import { TeamFounderUserId } from './value-objects/TeamFounderUserId';
 import { TFUActive } from './value-objects/TFUActive';
 import { TFUBiography } from './value-objects/TFUBiography';
@@ -34,7 +34,7 @@ export class TeamFounderUser extends User {
     );
   }
 
-  public toPrimitives(): IUser {
+  public toPrimitives(): ITeamFounderUser {
     return {
       id: this.id.getValue(),
       name: this.name.getValue(),

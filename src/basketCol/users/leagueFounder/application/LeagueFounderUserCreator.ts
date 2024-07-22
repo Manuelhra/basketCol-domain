@@ -71,4 +71,3 @@ export class LeagueFounderUserCreator {
     return this.#leagueFounderUserRepository.save(leagueFounderUser);
   }
 }
-
