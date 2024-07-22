@@ -5,4 +5,3 @@ export abstract class UserId extends UuidValueObject {
     super(value, propertyName);
   }
 }
-

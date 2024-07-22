@@ -1,10 +1,10 @@
 import { UserType } from '../../../shared/domain/value-objects/UserType';
 
-export class LeagueFounderUserType extends UserType {
+export class TFUType extends UserType {
   readonly TYPE: string;
 
   constructor() {
-    const type: string = 'LEAGUE_FOUNDER_USER';
+    const type: string = 'TEAM_FOUNDER_USER';
 
     super(type);
     this.TYPE = type;

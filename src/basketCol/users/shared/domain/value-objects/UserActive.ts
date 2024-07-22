@@ -5,4 +5,3 @@ export class UserActive extends BooleanValueObject {
     super(value, 'active');
   }
 }
-

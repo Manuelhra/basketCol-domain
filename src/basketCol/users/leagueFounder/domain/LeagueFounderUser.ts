@@ -11,10 +11,6 @@ import { LeagueFounderUserType } from './value-objects/LeagueFounderUserType';
 import { LeagueFounderUserUpdatedAt } from './value-objects/LeagueFounderUserUpdatedAt';
 
 export class LeagueFounderUser extends User {
-  readonly #name: LeagueFounderUserName;
-
-  readonly #biography: LeagueFounderUserBiography;
-
   constructor(
     id: string,
     name: { firstName: string; lastName: string; },
@@ -27,6 +23,8 @@ export class LeagueFounderUser extends User {
   ) {
     super(
       new LeagueFounderUserId(id),
+      new LeagueFounderUserName(name),
+      new LeagueFounderUserBiography(biography),
       new LeagueFounderUserEmail(email),
       new LeagueFounderUserPassword(password),
       new LeagueFounderUserType(),
@@ -34,16 +32,13 @@ export class LeagueFounderUser extends User {
       new LeagueFounderUserCreatedAt(createdAt),
       new LeagueFounderUserUpdatedAt(updatedAt),
     );
-
-    this.#name = new LeagueFounderUserName(name);
-    this.#biography = new LeagueFounderUserBiography(biography);
   }
 
   public toPrimitives(): ILeagueFounderUser {
     return {
       id: this.id.getValue(),
-      name: this.#name.getValue(),
-      biography: this.#biography.getValue(),
+      name: this.name.getValue(),
+      biography: this.biography.getValue(),
       email: this.email.getValue(),
       password: this.password.getValue(),
       type: this.type.getValue(),
@@ -53,4 +48,3 @@ export class LeagueFounderUser extends User {
     };
   }
 }
-
