@@ -1,8 +1,3 @@
-import { BooleanValueObject } from '../../../../shared/domain/value-objects/BooleanValueObject';
+import { UserActive } from '../../../shared/domain/value-objects/UserActive';
 
-export class HostUserActive extends BooleanValueObject {
-  constructor(value: boolean) {
-    super(value, 'active');
-  }
-}
-
+export class HostUserActive extends UserActive {}
