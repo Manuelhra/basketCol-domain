@@ -1,6 +1,6 @@
 import { Nullable } from '../../../shared/domain/Nullable';
 import { League } from '../League';
-import  { DuplicateLeagueNameError }  from '../exceptions/DuplicateLeagueNameError';
+import { DuplicateLeagueNameError } from '../exceptions/DuplicateLeagueNameError';
 import { LeagueRepository } from '../repository/LeagueRepository';
 import { LeagueName } from '../value-objects/LeagueName';
 
@@ -13,7 +13,7 @@ export class LeagueValidationNameService {
     this.#leagueRepository = dependencies.leagueRepository;
   }
 
-  public async ensureIsValidShortName(leagueName: LeagueName): Promise<void> {
+  public async validateUniqueShortName(leagueName: LeagueName): Promise<void> {
     const leagueFound: Nullable<League> = await this.#leagueRepository.searchByShortName(leagueName);
 
     if (leagueFound) {
@@ -21,7 +21,7 @@ export class LeagueValidationNameService {
     }
   }
 
-  public async ensureIsValidOfficialName(leagueName: LeagueName): Promise<void> {
+  public async validateUniqueOfficialName(leagueName: LeagueName): Promise<void> {
     const leagueFound: Nullable<League> = await this.#leagueRepository.searchByOfficialName(leagueName);
 
     if (leagueFound) {
@@ -29,5 +29,3 @@ export class LeagueValidationNameService {
     }
   }
 }
-
-

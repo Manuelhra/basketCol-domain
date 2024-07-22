@@ -1,0 +1,59 @@
+import { BusinessDateService } from '../../shared/domain/services/BusinessDateService';
+import { IdUniquenessValidatorService } from '../../shared/domain/services/IdUniquenessValidatorService';
+import { TFUValidationService } from '../../users/teamFounder/domain/services/TFUValidationService';
+import { TeamFounderUserId } from '../../users/teamFounder/domain/value-objects/TeamFounderUserId';
+import { ITeam } from '../domain/ITeam';
+import { TeamRepository } from '../domain/repository/TeamRepository';
+import { Team } from '../domain/Team';
+import { TeamCreatedAt } from '../domain/value-objects/TeamCreatedAt';
+import { TeamId } from '../domain/value-objects/TeamId';
+import { TeamUpdatedAt } from '../domain/value-objects/TeamUpdatedAt';
+import { TeamCreatorPayload } from './TeamCreatorPayload';
+
+export class TeamCreator {
+  readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
+
+  readonly #tFUValidationService: TFUValidationService;
+
+  readonly #businessDateService: BusinessDateService;
+
+  readonly #teamRepository: TeamRepository;
+
+  constructor(dependencies: {
+    idUniquenessValidatorService: IdUniquenessValidatorService;
+    tFUValidationService: TFUValidationService;
+    businessDateService: BusinessDateService;
+    teamRepository: TeamRepository;
+  }) {
+    this.#idUniquenessValidatorService = dependencies.idUniquenessValidatorService;
+    this.#tFUValidationService = dependencies.tFUValidationService;
+    this.#businessDateService = dependencies.businessDateService;
+    this.#teamRepository = dependencies.teamRepository;
+  }
+
+  public async run(payload: TeamCreatorPayload): Promise<void> {
+    const {
+      id,
+      officialName,
+    } = payload;
+
+    const teamId: TeamId = new TeamId(id);
+    const teamFounderUserId: TeamFounderUserId = new TeamFounderUserId(payload.teamFounderUserId, 'teamFounderUserId');
+
+    await this.#idUniquenessValidatorService.ensureUniqueId<TeamId, ITeam, Team>(teamId);
+    await this.#tFUValidationService.ensureTeamFounderUserExists(teamFounderUserId);
+
+    const teamCreatedAt: TeamCreatedAt = this.#businessDateService.getCurrentDate<TeamCreatedAt>();
+    const teamUpdatedAt: TeamUpdatedAt = this.#businessDateService.getCurrentDate<TeamUpdatedAt>();
+
+    const team: Team = new Team(
+      teamId.getValue(),
+      officialName,
+      teamFounderUserId.getValue(),
+      teamCreatedAt.getValue(),
+      teamUpdatedAt.getValue(),
+    );
+
+    return this.#teamRepository.save(team);
+  }
+}

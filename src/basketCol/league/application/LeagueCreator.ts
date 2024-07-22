@@ -3,7 +3,7 @@ import { IdUniquenessValidatorService } from '../../shared/domain/services/IdUni
 import { LeagueFounderUserValidationService } from '../../users/leagueFounder/domain/services/LeagueFounderUserValidationService';
 import { LeagueFounderUserId } from '../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
 import { ILeague } from '../domain/ILeague';
-import {League} from '../domain/League';
+import { League } from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
 import { LeagueValidationNameService } from '../domain/services/LeagueValidationNameService';
 import { LeagueCreatedAt } from '../domain/value-objects/LeagueCreatedAt';
@@ -53,8 +53,8 @@ export class LeagueCreator {
     const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(payload.leagueFounderUserId, 'leagueFounderUserId');
 
     await this.#idUniquenessValidatorService.ensureUniqueId<LeagueId, ILeague, League>(leagueId);
-    await this.#leagueValidationNameService.ensureIsValidShortName(leagueName);
-    await this.#leagueValidationNameService.ensureIsValidOfficialName(leagueName);
+    await this.#leagueValidationNameService.validateUniqueShortName(leagueName);
+    await this.#leagueValidationNameService.validateUniqueOfficialName(leagueName);
 
     await this.#leagueFounderUserValidationService.ensureFounderUserExists(leagueFounderUserId);
 

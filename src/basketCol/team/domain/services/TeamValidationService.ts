@@ -13,7 +13,7 @@ export class TeamValidationService {
     this.#teamRepository = dependencies.teamRepository;
   }
 
-  public async ensureTeamExist(teamId: TeamId): Promise<void> {
+  public async ensureTeamExists(teamId: TeamId): Promise<void> {
     const teamFound: Nullable<Team> = await this.#teamRepository.searchById(teamId);
 
     if (teamFound === undefined || teamFound === null) {

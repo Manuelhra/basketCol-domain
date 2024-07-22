@@ -33,7 +33,13 @@ export class HostUserCreator {
       throw new MultipleHostUsersException();
     }
 
-    const { id, email, password } = payload;
+    const {
+      id,
+      name,
+      biography,
+      email,
+      password,
+    } = payload;
 
     const active: boolean = true;
     const hostUserPassword: HostUserPassword = this.#securePasswordCreationService.createFromPlainText<HostUserPassword>(password);
@@ -42,6 +48,8 @@ export class HostUserCreator {
 
     const hostUser: HostUser = new HostUser(
       id,
+      name,
+      biography,
       { value: email.value, verified: false },
       hostUserPassword.getValue(),
       active,
@@ -52,4 +60,3 @@ export class HostUserCreator {
     return this.#hostUserRepository.save(hostUser);
   }
 }
-

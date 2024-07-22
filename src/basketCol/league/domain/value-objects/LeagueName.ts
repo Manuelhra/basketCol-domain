@@ -39,4 +39,3 @@ export class LeagueName extends ObjectValueObject<{ short: string; official: str
     }
   }
 }
-
