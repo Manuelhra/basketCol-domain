@@ -11,7 +11,7 @@ import { UserPassword } from './value-objects/UserPassword';
 import { UserType } from './value-objects/UserType';
 import { UserUpdatedAt } from './value-objects/UserUpdatedAt';
 
-export abstract class User extends AggregateRoot<IUser> {
+export abstract class User<I extends IUser> extends AggregateRoot<I> {
   protected readonly name: UserName;
 
   protected readonly biography: UserBiography;

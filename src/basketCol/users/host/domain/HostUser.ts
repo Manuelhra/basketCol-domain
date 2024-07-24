@@ -10,7 +10,7 @@ import { HostUserPassword } from './value-objects/HostUserPassword';
 import { HostUserType } from './value-objects/HostUserType';
 import { HostUserUpdatedAt } from './value-objects/HostUserUpdatedAt';
 
-export class HostUser extends User {
+export class HostUser extends User<IHostUser> {
   constructor(
     id: string,
     name: { firstName: string; lastName: string; },

@@ -63,7 +63,7 @@ export class LeagueSeasonAwardsCreator {
     await this.#playerUserValidationService.ensurePlayerUserExists(bestAssistProviderId);
     await this.#playerUserValidationService.ensurePlayerUserExists(bestOffensiveRebounderId);
     await this.#playerUserValidationService.ensurePlayerUserExists(bestDefensiveRebounderId);
-    await this.#teamValidationService.ensureTeamExist(championTeamId);
+    await this.#teamValidationService.ensureTeamExists(championTeamId);
     await this.#leagueSeasonValidationService.ensureLeagueSeasonExists(leagueSeasonId);
 
     const lSACreatedAt: LSACreatedAt = this.#businessDateService.getCurrentDate<LSACreatedAt>();

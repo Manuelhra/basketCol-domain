@@ -10,7 +10,7 @@ import { TFUPassword } from './value-objects/TFUPassword';
 import { TFUType } from './value-objects/TFUType';
 import { TFUUpdatedAt } from './value-objects/TFUUpdatedAt';
 
-export class TeamFounderUser extends User {
+export class TeamFounderUser extends User<ITeamFounderUser> {
   constructor(
     id: string,
     name: { firstName: string; lastName: string; },

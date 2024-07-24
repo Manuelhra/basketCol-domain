@@ -1,10 +1,10 @@
 import { UserType } from '../../../shared/domain/value-objects/UserType';
 
-export class PlayerUserType extends UserType {
+export class RefereeUserType extends UserType {
   protected readonly TYPE: string;
 
   constructor() {
-    const type: string = 'HOST_USER';
+    const type: string = 'REFEREE_USER';
 
     super(type);
     this.TYPE = type;
