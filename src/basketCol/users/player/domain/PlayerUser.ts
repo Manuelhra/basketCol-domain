@@ -10,7 +10,7 @@ import { PlayerUserPassword } from './value-objects/PlayerUserPassword';
 import { PlayerUserType } from './value-objects/PlayerUserType';
 import { PlayerUserUpdatedAt } from './value-objects/PlayerUserUpdatedAt';
 
-export class PlayerUser extends User {
+export class PlayerUser extends User<IPlayerUser> {
   constructor(
     id: string,
     name: { firstName: string; lastName: string; },

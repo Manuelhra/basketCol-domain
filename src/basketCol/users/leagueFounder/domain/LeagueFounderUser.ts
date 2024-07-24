@@ -10,7 +10,7 @@ import { LeagueFounderUserPassword } from './value-objects/LeagueFounderUserPass
 import { LeagueFounderUserType } from './value-objects/LeagueFounderUserType';
 import { LeagueFounderUserUpdatedAt } from './value-objects/LeagueFounderUserUpdatedAt';
 
-export class LeagueFounderUser extends User {
+export class LeagueFounderUser extends User<ILeagueFounderUser> {
   constructor(
     id: string,
     name: { firstName: string; lastName: string; },

@@ -32,7 +32,7 @@ export class Team extends AggregateRoot<ITeam> {
     return {
       id: this.id.getValue(),
       officialName: this.#officialName.getValue(),
-      teamFounderId: this.#teamFounderUserId.getValue(),
+      teamFounderUserId: this.#teamFounderUserId.getValue(),
       createdAt: this.createdAt.getValue(),
       updatedAt: this.updatedAt.getValue(),
     };

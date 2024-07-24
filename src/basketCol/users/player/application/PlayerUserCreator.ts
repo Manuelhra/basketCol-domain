@@ -13,15 +13,15 @@ import { PlayerUserUpdatedAt } from '../domain/value-objects/PlayerUserUpdatedAt
 import { PlayerUserCreatorPayload } from './PlayerUserCreatorPayload';
 
 export class PlayerUserCreator {
-  readonly #emailUniquenessValidatorService: EmailUniquenessValidatorService;
-
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
+
+  readonly #emailUniquenessValidatorService: EmailUniquenessValidatorService;
 
   readonly #securePasswordCreationService: SecurePasswordCreationService;
 
-  readonly #playerUserRepository: PlayerUserRepository;
-
   readonly #businessDateService: BusinessDateService;
+
+  readonly #playerUserRepository: PlayerUserRepository;
 
   constructor(dependencies: {
     emailUniquenessValidatorService: EmailUniquenessValidatorService;
