@@ -66,8 +66,8 @@ export class LeagueSeasonAwardsCreator {
     await this.#teamValidationService.ensureTeamExists(championTeamId);
     await this.#leagueSeasonValidationService.ensureLeagueSeasonExists(leagueSeasonId);
 
-    const lSACreatedAt: LSACreatedAt = this.#businessDateService.getCurrentDate<LSACreatedAt>();
-    const lSAUpdatedAt: LSAUpdatedAt = this.#businessDateService.getCurrentDate<LSAUpdatedAt>();
+    const lSACreatedAt: LSACreatedAt = this.#businessDateService.getCurrentDate();
+    const lSAUpdatedAt: LSAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const leagueSeasonAwards: LeagueSeasonAwards = new LeagueSeasonAwards(
       leagueSeasonAwardsId.getValue(),

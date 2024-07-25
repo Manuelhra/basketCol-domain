@@ -47,8 +47,8 @@ export class LeagueSeasonCreator {
     await this.#idUniquenessValidatorService.ensureUniqueId<LeagueSeasonId, ILeagueSeason, LeagueSeason>(leagueSeasonId);
     await this.#leagueValidationService.ensureLeagueExist(leagueId);
 
-    const leagueSeasonCreatedAt: LeagueSeasonCreatedAt = this.#businessDateService.getCurrentDate<LeagueSeasonCreatedAt>();
-    const leagueSeasonUpdatedAt: LeagueSeasonUpdatedAt = this.#businessDateService.getCurrentDate<LeagueSeasonUpdatedAt>();
+    const leagueSeasonCreatedAt: LeagueSeasonCreatedAt = this.#businessDateService.getCurrentDate();
+    const leagueSeasonUpdatedAt: LeagueSeasonUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const leagueSeason: LeagueSeason = new LeagueSeason(
       leagueSeasonId.getValue(),

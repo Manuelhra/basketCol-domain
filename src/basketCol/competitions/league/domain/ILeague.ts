@@ -13,7 +13,7 @@ export interface ILeague extends IAggregateRoot {
   rules: string;
   level: string;
   location: ILocationValueObjectProps;
-  creationDate: string;
+  establishmentDate: string;
   leagueFounderUserId: string;
   isActive: boolean;
 }

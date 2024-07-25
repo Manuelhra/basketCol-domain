@@ -54,8 +54,8 @@ export class RefereeUserCreator {
 
     const active: boolean = true;
     const refereeUserPassword: RefereeUserPassword = this.#securePasswordCreationService.createFromPlainText<RefereeUserPassword>(password);
-    const refereeUserCreatedAt: RefereeUserCreatedAt = this.#businessDateService.getCurrentDate<RefereeUserCreatedAt>();
-    const refereeUserUpdatedAt: RefereeUserUpdatedAt = this.#businessDateService.getCurrentDate<RefereeUserUpdatedAt>();
+    const refereeUserCreatedAt: RefereeUserCreatedAt = this.#businessDateService.getCurrentDate();
+    const refereeUserUpdatedAt: RefereeUserUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const refereeUser: RefereeUser = new RefereeUser(
       refereeUserId.getValue(),

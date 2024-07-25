@@ -43,8 +43,8 @@ export class TeamCreator {
     await this.#idUniquenessValidatorService.ensureUniqueId<TeamId, ITeam, Team>(teamId);
     await this.#tFUValidationService.ensureTeamFounderUserExists(teamFounderUserId);
 
-    const teamCreatedAt: TeamCreatedAt = this.#businessDateService.getCurrentDate<TeamCreatedAt>();
-    const teamUpdatedAt: TeamUpdatedAt = this.#businessDateService.getCurrentDate<TeamUpdatedAt>();
+    const teamCreatedAt: TeamCreatedAt = this.#businessDateService.getCurrentDate();
+    const teamUpdatedAt: TeamUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const team: Team = new Team(
       teamId.getValue(),

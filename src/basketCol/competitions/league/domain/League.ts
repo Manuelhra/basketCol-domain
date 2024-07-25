@@ -3,8 +3,8 @@ import { ILocationValueObjectProps } from '../../../shared/domain/value-objects/
 import { LeagueFounderUserId } from '../../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
 import { ILeague } from './ILeague';
 import { LeagueCreatedAt } from './value-objects/LeagueCreatedAt';
-import { LeagueCreationDate } from './value-objects/LeagueCreationDate';
 import { LeagueDescription } from './value-objects/LeagueDescription';
+import { LeagueEstablishmentDate } from './value-objects/LeagueEstablishmentDate';
 import { LeagueId } from './value-objects/LeagueId';
 import { LeagueIsActive } from './value-objects/LeagueIsActive';
 import { LeagueLevel } from './value-objects/LeagueLevel';
@@ -26,7 +26,7 @@ export class League extends AggregateRoot<ILeague> {
 
   readonly #leagueFounderUserId: LeagueFounderUserId;
 
-  readonly #creationDate: LeagueCreationDate;
+  readonly #establishmentDate: LeagueEstablishmentDate;
 
   readonly #isActive: LeagueIsActive;
 
@@ -38,7 +38,7 @@ export class League extends AggregateRoot<ILeague> {
     level: string,
     location: ILocationValueObjectProps,
     leagueFounderUserId: string,
-    creationDate: string,
+    establishmentDate: string,
     isActive: boolean,
     createdAt: string,
     updatedAt: string,
@@ -55,7 +55,7 @@ export class League extends AggregateRoot<ILeague> {
     this.#level = new LeagueLevel(level);
     this.#location = new LeagueLocation(location);
     this.#leagueFounderUserId = new LeagueFounderUserId(leagueFounderUserId, 'leagueFounderUserId');
-    this.#creationDate = new LeagueCreationDate(creationDate);
+    this.#establishmentDate = new LeagueEstablishmentDate(establishmentDate);
     this.#isActive = new LeagueIsActive(isActive);
   }
 
@@ -68,7 +68,7 @@ export class League extends AggregateRoot<ILeague> {
       level: this.#level.getValue(),
       location: this.#location.getValue(),
       leagueFounderUserId: this.#leagueFounderUserId.getValue(),
-      creationDate: this.#creationDate.getValue(),
+      establishmentDate: this.#establishmentDate.getValue(),
       isActive: this.#isActive.getValue(),
       createdAt: this.createdAt.getValue(),
       updatedAt: this.updatedAt.getValue(),

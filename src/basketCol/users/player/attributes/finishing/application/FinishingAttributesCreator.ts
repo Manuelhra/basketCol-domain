@@ -46,8 +46,8 @@ export class FinishingAttributesCreator {
     await this.#idUniquenessValidatorService.ensureUniqueId<FinishingAttributesId, IFinishingAttributes, FinishingAttributes>(finishingAttributesId);
     await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
 
-    const fACreatedAt: FACreatedAt = this.#businessDateService.getCurrentDate<FACreatedAt>();
-    const fAUpdatedAt: FAUpdatedAt = this.#businessDateService.getCurrentDate<FAUpdatedAt>();
+    const fACreatedAt: FACreatedAt = this.#businessDateService.getCurrentDate();
+    const fAUpdatedAt: FAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const finishingAttributes: FinishingAttributes = new FinishingAttributes(
       finishingAttributesId.getValue(),
@@ -63,4 +63,3 @@ export class FinishingAttributesCreator {
     return this.#finishingAttributesRepository.save(finishingAttributes);
   }
 }
-

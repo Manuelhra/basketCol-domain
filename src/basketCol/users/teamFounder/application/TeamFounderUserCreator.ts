@@ -54,8 +54,8 @@ export class TeamFounderUserCreator {
 
     const active: boolean = true;
     const tFUPassword: TFUPassword = this.#securePasswordCreationService.createFromPlainText<TFUPassword>(password);
-    const tFUCreatedAt: TFUCreatedAt = this.#businessDateService.getCurrentDate<TFUCreatedAt>();
-    const tFUUpdatedAt: TFUUpdatedAt = this.#businessDateService.getCurrentDate<TFUUpdatedAt>();
+    const tFUCreatedAt: TFUCreatedAt = this.#businessDateService.getCurrentDate();
+    const tFUUpdatedAt: TFUUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const teamFounderUser: TeamFounderUser = new TeamFounderUser(
       teamFounderUserId.getValue(),

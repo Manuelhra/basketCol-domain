@@ -1,7 +1,7 @@
 import { DateValueObject } from '../../../../shared/domain/value-objects/DateValueObject';
 
-export class LeagueCreationDate extends DateValueObject {
+export class LeagueEstablishmentDate extends DateValueObject {
   constructor(value: string) {
-    super(value, 'creationDate');
+    super(value, 'establishmentDate');
   }
 }
