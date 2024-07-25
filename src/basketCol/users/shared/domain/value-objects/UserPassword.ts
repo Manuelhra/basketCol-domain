@@ -11,7 +11,7 @@ export abstract class UserPassword extends StringValueObject {
     'At least one special character from [@ $!%*#?&].',
   ] as const;
 
-  constructor(value: string) {
+  protected constructor(value: string) {
     super(value, 'password');
 
     UserPassword.ensureIsValidPassword(value);
@@ -23,4 +23,3 @@ export abstract class UserPassword extends StringValueObject {
     }
   }
 }
-

@@ -14,7 +14,7 @@ export interface ILocationValueObjectProps {
 }
 
 export abstract class LocationValueObject extends ObjectValueObject<ILocationValueObjectProps> {
-  constructor(value: ILocationValueObjectProps) {
+  protected constructor(value: ILocationValueObjectProps) {
     super(value, 'location', '{ country: Item; department: Item; city: Item; coords: { lat: number; lng: number } } - Item { code: string; label: string; } ');
 
     LocationValueObject.ensurePropIsDefined(value.country, 'country');

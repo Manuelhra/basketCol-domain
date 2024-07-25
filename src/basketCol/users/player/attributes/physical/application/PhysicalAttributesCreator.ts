@@ -51,15 +51,15 @@ export class PhysicalAttributesCreator {
     const pAUpdatedAt: PAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const physicalAttributes: PhysicalAttributes = new PhysicalAttributes(
-      physicalAttributesId.getValue(),
+      physicalAttributesId.value,
       speed,
       acceleration,
       strength,
       vertical,
       stamina,
-      playerUserId.getValue(),
-      pACreatedAt.getValue(),
-      pAUpdatedAt.getValue(),
+      playerUserId.value,
+      pACreatedAt.value,
+      pAUpdatedAt.value,
     );
 
     return this.#physicalAttributesRepository.save(physicalAttributes);

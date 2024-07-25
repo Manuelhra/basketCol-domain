@@ -4,7 +4,7 @@ import { LeagueName } from '../value-objects/LeagueName';
 export class DuplicateLeagueNameError extends RootError {
   constructor(leagueName: LeagueName, label: 'SHORT_NAME' | 'OFFICIAL_NAME') {
     let feedback: string;
-    const { short, official } = leagueName.getValue();
+    const { short, official } = leagueName.value;
 
     switch (label) {
       case 'SHORT_NAME':

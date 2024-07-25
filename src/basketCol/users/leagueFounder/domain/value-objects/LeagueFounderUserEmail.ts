@@ -1,3 +1,7 @@
-import { UserEmail } from '../../../shared/domain/value-objects/UserEmail';
+import { IUserEmailProps, UserEmail } from '../../../shared/domain/value-objects/UserEmail';
 
-export class LeagueFounderUserEmail extends UserEmail {}
+export class LeagueFounderUserEmail extends UserEmail {
+  public constructor(value: IUserEmailProps) {
+    super(value);
+  }
+}

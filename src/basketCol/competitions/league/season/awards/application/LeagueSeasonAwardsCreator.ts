@@ -70,17 +70,17 @@ export class LeagueSeasonAwardsCreator {
     const lSAUpdatedAt: LSAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const leagueSeasonAwards: LeagueSeasonAwards = new LeagueSeasonAwards(
-      leagueSeasonAwardsId.getValue(),
-      bestThreePointShooterId.getValue(),
-      bestTwoPointShooterId.getValue(),
-      bestFreeThrowShooterId.getValue(),
-      bestAssistProviderId.getValue(),
-      bestOffensiveRebounderId.getValue(),
-      bestDefensiveRebounderId.getValue(),
-      championTeamId.getValue(),
-      leagueSeasonId.getValue(),
-      lSACreatedAt.getValue(),
-      lSAUpdatedAt.getValue(),
+      leagueSeasonAwardsId.value,
+      bestThreePointShooterId.value,
+      bestTwoPointShooterId.value,
+      bestFreeThrowShooterId.value,
+      bestAssistProviderId.value,
+      bestOffensiveRebounderId.value,
+      bestDefensiveRebounderId.value,
+      championTeamId.value,
+      leagueSeasonId.value,
+      lSACreatedAt.value,
+      lSAUpdatedAt.value,
     );
 
     return this.#leagueSeasonAwardsRepository.save(leagueSeasonAwards);

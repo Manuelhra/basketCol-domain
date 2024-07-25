@@ -2,7 +2,7 @@ import { InvalidPropertyTypeError } from '../exceptions/InvalidPropertyTypeError
 import { PrimitiveValueObject } from './PrimitiveValueObject';
 
 export abstract class IntegerValueObject extends PrimitiveValueObject<number> {
-  constructor(value: number, propertyName: string) {
+  protected constructor(value: number, propertyName: string) {
     super(value, propertyName, 'integer');
 
     if (!Number.isInteger(value)) {
@@ -10,4 +10,3 @@ export abstract class IntegerValueObject extends PrimitiveValueObject<number> {
     }
   }
 }
-

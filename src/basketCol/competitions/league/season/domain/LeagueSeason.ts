@@ -56,14 +56,14 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
 
   public toPrimitives(): ILeagueSeason {
     return {
-      id: this.id.getValue(),
-      name: this.#name.getValue(),
-      startDate: this.#startDate.getValue(),
-      endDate: this.#endDate.getValue(),
-      status: this.#status.getValue(),
-      leagueId: this.#leagueId.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      name: this.#name.value,
+      startDate: this.#startDate.value,
+      endDate: this.#endDate.value,
+      status: this.#status.value,
+      leagueId: this.#leagueId.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 
@@ -78,34 +78,34 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
   }
 
   private validateStartDateAfterPresent(now: string): void {
-    if (this.compareDates(this.#startDate.getValue(), now) <= 0) {
-      throw new LeagueSeasonStartDateInPastError(this.#startDate.getValue(), now);
+    if (this.compareDates(this.#startDate.value, now) <= 0) {
+      throw new LeagueSeasonStartDateInPastError(this.#startDate.value, now);
     }
   }
 
   private validateEndDateAfterPresent(now: string): void {
-    if (this.compareDates(this.#endDate.getValue(), now) <= 0) {
-      throw new LeagueSeasonEndDateInPastError(this.#endDate.getValue(), now);
+    if (this.compareDates(this.#endDate.value, now) <= 0) {
+      throw new LeagueSeasonEndDateInPastError(this.#endDate.value, now);
     }
   }
 
   private validateStartDateHasPreparationTime(now: string): void {
     const minimumStartDate = this.addDaysToDateString(now, LeagueSeason.#MINIMUM_PREPARATION_DAYS);
-    if (this.compareDates(this.#startDate.getValue(), minimumStartDate) < 0) {
-      throw new LeagueSeasonInsufficientPreparationTimeError(this.#startDate.getValue(), minimumStartDate, LeagueSeason.#MINIMUM_PREPARATION_DAYS);
+    if (this.compareDates(this.#startDate.value, minimumStartDate) < 0) {
+      throw new LeagueSeasonInsufficientPreparationTimeError(this.#startDate.value, minimumStartDate, LeagueSeason.#MINIMUM_PREPARATION_DAYS);
     }
   }
 
   private validateEndDateAfterStartDate(): void {
-    if (this.compareDates(this.#endDate.getValue(), this.#startDate.getValue()) <= 0) {
-      throw new LeagueSeasonEndDateBeforeStartDateError(this.#startDate.getValue(), this.#endDate.getValue());
+    if (this.compareDates(this.#endDate.value, this.#startDate.value) <= 0) {
+      throw new LeagueSeasonEndDateBeforeStartDateError(this.#startDate.value, this.#endDate.value);
     }
   }
 
   private validateMinimumSeasonDuration(): void {
-    const minimumEndDate = this.addDaysToDateString(this.#startDate.getValue(), LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS);
-    if (this.compareDates(this.#endDate.getValue(), minimumEndDate) < 0) {
-      throw new LeagueSeasonInsufficientDurationError(this.#startDate.getValue(), this.#endDate.getValue(), LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS);
+    const minimumEndDate = this.addDaysToDateString(this.#startDate.value, LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS);
+    if (this.compareDates(this.#endDate.value, minimumEndDate) < 0) {
+      throw new LeagueSeasonInsufficientDurationError(this.#startDate.value, this.#endDate.value, LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS);
     }
   }
 

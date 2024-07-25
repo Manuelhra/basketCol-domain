@@ -36,15 +36,15 @@ export class PlayerUser extends User<IPlayerUser> {
 
   public toPrimitives(): IPlayerUser {
     return {
-      id: this.id.getValue(),
-      name: this.name.getValue(),
-      biography: this.biography.getValue(),
-      email: this.email.getValue(),
-      password: this.password.getValue(),
-      type: this.type.getValue(),
-      active: this.active.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      name: this.name.value,
+      biography: this.biography.value,
+      email: this.email.value,
+      password: this.password.value,
+      type: this.type.value,
+      active: this.active.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 }

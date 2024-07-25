@@ -30,11 +30,11 @@ export class Team extends AggregateRoot<ITeam> {
 
   public toPrimitives(): ITeam {
     return {
-      id: this.id.getValue(),
-      officialName: this.#officialName.getValue(),
-      teamFounderUserId: this.#teamFounderUserId.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      officialName: this.#officialName.value,
+      teamFounderUserId: this.#teamFounderUserId.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 }

@@ -40,13 +40,13 @@ export class SkillAttributes extends AggregateRoot<ISkillAttributes> {
 
   public toPrimitives(): ISkillAttributes {
     return {
-      id: this.id.getValue(),
-      passAccuracy: this.#passAccuracy.getValue(),
-      ballHandle: this.#ballHandle.getValue(),
-      speedWithBall: this.#speedWithBall.getValue(),
-      playerUserId: this.#playerUserId.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      passAccuracy: this.#passAccuracy.value,
+      ballHandle: this.#ballHandle.value,
+      speedWithBall: this.#speedWithBall.value,
+      playerUserId: this.#playerUserId.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 }

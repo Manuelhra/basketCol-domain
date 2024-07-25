@@ -3,7 +3,7 @@ import { LeagueId } from '../value-objects/LeagueId';
 
 export class LeagueNotFoundError extends RootError {
   constructor(leagueId: LeagueId) {
-    const leagueIdValue: string = leagueId.getValue();
+    const leagueIdValue: string = leagueId.value;
     super(`League not found: The league with ID '${leagueIdValue}' does not exist in the system.`);
 
     this.name = 'LeagueNotFoundError';

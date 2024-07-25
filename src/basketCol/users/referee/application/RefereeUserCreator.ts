@@ -58,14 +58,14 @@ export class RefereeUserCreator {
     const refereeUserUpdatedAt: RefereeUserUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const refereeUser: RefereeUser = new RefereeUser(
-      refereeUserId.getValue(),
+      refereeUserId.value,
       name,
       biography,
-      refereeUserEmail.getValue(),
-      refereeUserPassword.getValue(),
+      refereeUserEmail.value,
+      refereeUserPassword.value,
       active,
-      refereeUserCreatedAt.getValue(),
-      refereeUserUpdatedAt.getValue(),
+      refereeUserCreatedAt.value,
+      refereeUserUpdatedAt.value,
     );
 
     return this.#refereeUserRepository.save(refereeUser);

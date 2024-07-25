@@ -3,7 +3,7 @@ import { TeamFounderUserId } from '../value-objects/TeamFounderUserId';
 
 export class TeamFounderUserNotFoundError extends RootError {
   constructor(teamFounderUserId: TeamFounderUserId) {
-    const teamIdValue: string = teamFounderUserId.getValue();
+    const teamIdValue: string = teamFounderUserId.value;
     super(`Team founder user not found: The team with ID '${teamIdValue}' does not exist in the system.`);
 
     this.name = 'TeamFounderUserNotFoundError';

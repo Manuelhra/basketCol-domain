@@ -45,14 +45,14 @@ export class FinishingAttributes extends AggregateRoot<IFinishingAttributes> {
 
   public toPrimitives(): IFinishingAttributes {
     return {
-      id: this.id.getValue(),
-      drivingLayup: this.#drivingLayup.getValue(),
-      drivingDunk: this.#drivingDunk.getValue(),
-      standingDunk: this.#standingDunk.getValue(),
-      postControl: this.#postControl.getValue(),
-      playerUserId: this.#playerUserId.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      drivingLayup: this.#drivingLayup.value,
+      drivingDunk: this.#drivingDunk.value,
+      standingDunk: this.#standingDunk.value,
+      postControl: this.#postControl.value,
+      playerUserId: this.#playerUserId.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 }

@@ -4,7 +4,7 @@ import { InvalidUserTypeError } from '../exceptions/InvalidUserTypeError';
 export abstract class UserType extends StringValueObject {
   protected abstract readonly TYPE: string;
 
-  constructor(type: string) {
+  protected constructor(type: string) {
     super(type, 'type');
 
     this.ensureUserTypeIsCorrect(type);
@@ -20,4 +20,3 @@ export abstract class UserType extends StringValueObject {
     }
   }
 }
-

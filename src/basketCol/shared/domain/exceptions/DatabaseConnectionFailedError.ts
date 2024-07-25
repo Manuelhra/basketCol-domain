@@ -11,4 +11,3 @@ export class DatabaseConnectionFailedError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-

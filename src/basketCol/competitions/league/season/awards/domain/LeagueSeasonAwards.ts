@@ -55,17 +55,17 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwards> {
 
   public toPrimitives(): ILeagueSeasonAwards {
     return {
-      id: this.id.getValue(),
-      bestThreePointShooterId: this.#bestThreePointShooterId.getValue(),
-      bestTwoPointShooterId: this.#bestTwoPointShooterId.getValue(),
-      bestFreeThrowShooterId: this.#bestFreeThrowShooterId.getValue(),
-      bestAssistProviderId: this.#bestAssistProviderId.getValue(),
-      bestOffensiveRebounderId: this.#bestOffensiveRebounderId.getValue(),
-      bestDefensiveRebounderId: this.#bestDefensiveRebounderId.getValue(),
-      championTeamId: this.#championTeamId.getValue(),
-      leagueSeasonId: this.#leagueSeasonId.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      bestThreePointShooterId: this.#bestThreePointShooterId.value,
+      bestTwoPointShooterId: this.#bestTwoPointShooterId.value,
+      bestFreeThrowShooterId: this.#bestFreeThrowShooterId.value,
+      bestAssistProviderId: this.#bestAssistProviderId.value,
+      bestOffensiveRebounderId: this.#bestOffensiveRebounderId.value,
+      bestDefensiveRebounderId: this.#bestDefensiveRebounderId.value,
+      championTeamId: this.#championTeamId.value,
+      leagueSeasonId: this.#leagueSeasonId.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 }

@@ -50,14 +50,14 @@ export class ShootingAttributesCreator {
     const sAUpdatedAt: SAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const shootingAttributes: ShootingAttributes = new ShootingAttributes(
-      shootingAttributesId.getValue(),
+      shootingAttributesId.value,
       closeShot,
       midRangeShot,
       threePointShot,
       freeThrow,
-      playerUserId.getValue(),
-      sACreatedAt.getValue(),
-      sAUpdatedAt.getValue(),
+      playerUserId.value,
+      sACreatedAt.value,
+      sAUpdatedAt.value,
     );
 
     return this.#shootingAttributesRepository.save(shootingAttributes);

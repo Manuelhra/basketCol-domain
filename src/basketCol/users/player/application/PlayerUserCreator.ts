@@ -59,14 +59,14 @@ export class PlayerUserCreator {
     const playerUserUpdatedAt: PlayerUserUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const playerUser: PlayerUser = new PlayerUser(
-      playerUserId.getValue(),
+      playerUserId.value,
       name,
       biography,
-      playerUserEmail.getValue(),
-      playerUserPassword.getValue(),
+      playerUserEmail.value,
+      playerUserPassword.value,
       active,
-      playerUserCreatedAt.getValue(),
-      playerUserUpdatedAt.getValue(),
+      playerUserCreatedAt.value,
+      playerUserUpdatedAt.value,
     );
 
     return this.#playerUserRepository.save(playerUser);

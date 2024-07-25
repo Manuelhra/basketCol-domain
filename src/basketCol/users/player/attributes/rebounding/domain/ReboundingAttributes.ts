@@ -35,12 +35,12 @@ export class ReboundingAttributes extends AggregateRoot<IReboundingAttributes> {
 
   public toPrimitives(): IReboundingAttributes {
     return {
-      id: this.id.getValue(),
-      offensiveRebound: this.#offensiveRebound.getValue(),
-      defensiveRebound: this.#defensiveRebound.getValue(),
-      playerUserId: this.#playerUserId.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      offensiveRebound: this.#offensiveRebound.value,
+      defensiveRebound: this.#defensiveRebound.value,
+      playerUserId: this.#playerUserId.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 }

@@ -24,7 +24,7 @@ export abstract class User<I extends IUser> extends AggregateRoot<I> {
 
   protected readonly active: UserActive;
 
-  constructor(
+  protected constructor(
     id: UserId,
     name: UserName,
     biography: UserBiography,

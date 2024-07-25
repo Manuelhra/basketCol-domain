@@ -3,7 +3,7 @@ import { UserEmail } from '../value-objects/UserEmail';
 
 export class EmailAlreadyExistsError extends RootError {
   constructor(userEmail: UserEmail) {
-    const { value } = userEmail.getValue();
+    const { value } = userEmail.value;
 
     const message = `Uniqueness constraint violation: email '${value}' already exists in the system.`;
     super(message);

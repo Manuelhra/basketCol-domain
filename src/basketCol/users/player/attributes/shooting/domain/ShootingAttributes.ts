@@ -45,14 +45,14 @@ export class ShootingAttributes extends AggregateRoot<IShootingAttributes> {
 
   public toPrimitives(): IShootingAttributes {
     return {
-      id: this.id.getValue(),
-      closeShot: this.#closeShot.getValue(),
-      midRangeShot: this.#midRangeShot.getValue(),
-      threePointShot: this.#threePointShot.getValue(),
-      freeThrow: this.#freeThrow.getValue(),
-      playerUserId: this.#playerUserId.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      closeShot: this.#closeShot.value,
+      midRangeShot: this.#midRangeShot.value,
+      threePointShot: this.#threePointShot.value,
+      freeThrow: this.#freeThrow.value,
+      playerUserId: this.#playerUserId.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 }

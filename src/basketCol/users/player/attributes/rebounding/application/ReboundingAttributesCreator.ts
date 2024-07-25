@@ -48,12 +48,12 @@ export class ReboundingAttributesCreator {
     const rAUpdatedAt: RAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const reboundingAttributes: ReboundingAttributes = new ReboundingAttributes(
-      reboundingAttributesId.getValue(),
+      reboundingAttributesId.value,
       offensiveRebound,
       defensiveRebound,
-      playerUserId.getValue(),
-      rACreatedAt.getValue(),
-      rAUpdatedAt.getValue(),
+      playerUserId.value,
+      rACreatedAt.value,
+      rAUpdatedAt.value,
     );
 
     return this.#reboundingAttributesRepository.save(reboundingAttributes);
