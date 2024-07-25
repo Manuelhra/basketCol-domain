@@ -46,8 +46,8 @@ export class ShootingAttributesCreator {
     await this.#idUniquenessValidatorService.ensureUniqueId<ShootingAttributesId, IShootingAttributes, ShootingAttributes>(shootingAttributesId);
     await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
 
-    const sACreatedAt: SACreatedAt = this.#businessDateService.getCurrentDate<SACreatedAt>();
-    const sAUpdatedAt: SAUpdatedAt = this.#businessDateService.getCurrentDate<SAUpdatedAt>();
+    const sACreatedAt: SACreatedAt = this.#businessDateService.getCurrentDate();
+    const sAUpdatedAt: SAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const shootingAttributes: ShootingAttributes = new ShootingAttributes(
       shootingAttributesId.getValue(),
@@ -63,4 +63,3 @@ export class ShootingAttributesCreator {
     return this.#shootingAttributesRepository.save(shootingAttributes);
   }
 }
-

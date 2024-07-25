@@ -45,8 +45,8 @@ export class SkillAttributesCreator {
     await this.#idUniquenessValidatorService.ensureUniqueId<SkillAttributesId, ISkillAttributes, SkillAttributes>(skillAttributesId);
     await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
 
-    const sACreatedAt: SACreatedAt = this.#businessDateService.getCurrentDate<SACreatedAt>();
-    const sAUpdatedAt: SAUpdatedAt = this.#businessDateService.getCurrentDate<SAUpdatedAt>();
+    const sACreatedAt: SACreatedAt = this.#businessDateService.getCurrentDate();
+    const sAUpdatedAt: SAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const skillAttributes: SkillAttributes = new SkillAttributes(
       skillAttributesId.getValue(),

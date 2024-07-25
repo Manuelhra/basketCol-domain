@@ -46,8 +46,8 @@ export class DefensiveAttributesCreator {
     await this.#idUniquenessValidatorService.ensureUniqueId<DefensiveAttributesId, IDefensiveAttributes, DefensiveAttributes>(defensiveAttributesId);
     await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
 
-    const dACreatedAt: DACreatedAt = this.#businessDateService.getCurrentDate<DACreatedAt>();
-    const dAUpdatedAt: DAUpdatedAt = this.#businessDateService.getCurrentDate<DAUpdatedAt>();
+    const dACreatedAt: DACreatedAt = this.#businessDateService.getCurrentDate();
+    const dAUpdatedAt: DAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const defensiveAttributes: DefensiveAttributes = new DefensiveAttributes(
       defensiveAttributesId.getValue(),
@@ -63,4 +63,3 @@ export class DefensiveAttributesCreator {
     return this.#defensiveAttributesRepository.save(defensiveAttributes);
   }
 }
-

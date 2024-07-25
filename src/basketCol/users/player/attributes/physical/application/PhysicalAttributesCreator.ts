@@ -47,8 +47,8 @@ export class PhysicalAttributesCreator {
     await this.#idUniquenessValidatorService.ensureUniqueId<PhysicalAttributesId, IPhysicalAttributes, PhysicalAttributes>(physicalAttributesId);
     await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
 
-    const pACreatedAt: PACreatedAt = this.#businessDateService.getCurrentDate<PACreatedAt>();
-    const pAUpdatedAt: PAUpdatedAt = this.#businessDateService.getCurrentDate<PAUpdatedAt>();
+    const pACreatedAt: PACreatedAt = this.#businessDateService.getCurrentDate();
+    const pAUpdatedAt: PAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const physicalAttributes: PhysicalAttributes = new PhysicalAttributes(
       physicalAttributesId.getValue(),
@@ -65,4 +65,3 @@ export class PhysicalAttributesCreator {
     return this.#physicalAttributesRepository.save(physicalAttributes);
   }
 }
-

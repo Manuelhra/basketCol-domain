@@ -43,8 +43,8 @@ export class HostUserCreator {
 
     const active: boolean = true;
     const hostUserPassword: HostUserPassword = this.#securePasswordCreationService.createFromPlainText<HostUserPassword>(password);
-    const hostUserCreatedAt: HostUserCreatedAt = this.#businessDateService.getCurrentDate<HostUserCreatedAt>();
-    const hostUserUpdatedAt: HostUserUpdatedAt = this.#businessDateService.getCurrentDate<HostUserUpdatedAt>();
+    const hostUserCreatedAt: HostUserCreatedAt = this.#businessDateService.getCurrentDate();
+    const hostUserUpdatedAt: HostUserUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const hostUser: HostUser = new HostUser(
       id,

@@ -55,8 +55,8 @@ export class PlayerUserCreator {
 
     const active: boolean = true;
     const playerUserPassword: PlayerUserPassword = this.#securePasswordCreationService.createFromPlainText<PlayerUserPassword>(password);
-    const playerUserCreatedAt: PlayerUserCreatedAt = this.#businessDateService.getCurrentDate<PlayerUserCreatedAt>();
-    const playerUserUpdatedAt: PlayerUserUpdatedAt = this.#businessDateService.getCurrentDate<PlayerUserUpdatedAt>();
+    const playerUserCreatedAt: PlayerUserCreatedAt = this.#businessDateService.getCurrentDate();
+    const playerUserUpdatedAt: PlayerUserUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const playerUser: PlayerUser = new PlayerUser(
       playerUserId.getValue(),

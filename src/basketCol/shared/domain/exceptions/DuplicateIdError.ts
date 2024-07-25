@@ -11,4 +11,3 @@ export class DuplicateIdError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-

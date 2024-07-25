@@ -54,8 +54,8 @@ export class LeagueFounderUserCreator {
 
     const active: boolean = true;
     const leagueFounderUserPassword: LeagueFounderUserPassword = this.#securePasswordCreationService.createFromPlainText<LeagueFounderUserPassword>(password);
-    const leagueFounderUserCreatedAt: LeagueFounderUserCreatedAt = this.#businessDateService.getCurrentDate<LeagueFounderUserCreatedAt>();
-    const leagueFounderUserUpdatedAt: LeagueFounderUserUpdatedAt = this.#businessDateService.getCurrentDate<LeagueFounderUserUpdatedAt>();
+    const leagueFounderUserCreatedAt: LeagueFounderUserCreatedAt = this.#businessDateService.getCurrentDate();
+    const leagueFounderUserUpdatedAt: LeagueFounderUserUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const leagueFounderUser: LeagueFounderUser = new LeagueFounderUser(
       leagueFounderUserId.getValue(),

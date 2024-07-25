@@ -44,8 +44,8 @@ export class ReboundingAttributesCreator {
     await this.#idUniquenessValidatorService.ensureUniqueId<ReboundingAttributesId, IReboundingAttributes, ReboundingAttributes>(reboundingAttributesId);
     await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
 
-    const rACreatedAt: RACreatedAt = this.#businessDateService.getCurrentDate<RACreatedAt>();
-    const rAUpdatedAt: RAUpdatedAt = this.#businessDateService.getCurrentDate<RAUpdatedAt>();
+    const rACreatedAt: RACreatedAt = this.#businessDateService.getCurrentDate();
+    const rAUpdatedAt: RAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const reboundingAttributes: ReboundingAttributes = new ReboundingAttributes(
       reboundingAttributesId.getValue(),
@@ -59,4 +59,3 @@ export class ReboundingAttributesCreator {
     return this.#reboundingAttributesRepository.save(reboundingAttributes);
   }
 }
-
