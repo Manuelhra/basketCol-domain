@@ -68,17 +68,17 @@ export class LeagueCreator {
     const leagueUpdatedAt: LeagueUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const league: League = new League(
-      leagueId.getValue(),
+      leagueId.value,
       name,
       description,
       rules,
       level,
       location,
-      leagueFounderUserId.getValue(),
-      leagueEstablishmentDate.getValue(),
+      leagueFounderUserId.value,
+      leagueEstablishmentDate.value,
       isActive,
-      leagueCreatedAt.getValue(),
-      leagueUpdatedAt.getValue(),
+      leagueCreatedAt.value,
+      leagueUpdatedAt.value,
     );
 
     return this.#leagueRepository.save(league);

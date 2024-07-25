@@ -50,15 +50,15 @@ export class PhysicalAttributes extends AggregateRoot<IPhysicalAttributes> {
 
   public toPrimitives(): IPhysicalAttributes {
     return {
-      id: this.id.getValue(),
-      speed: this.#speed.getValue(),
-      acceleration: this.#acceleration.getValue(),
-      strength: this.#strength.getValue(),
-      vertical: this.#vertical.getValue(),
-      stamina: this.#stamina.getValue(),
-      playerUserId: this.#playerUserId.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      speed: this.#speed.value,
+      acceleration: this.#acceleration.value,
+      strength: this.#strength.value,
+      vertical: this.#vertical.value,
+      stamina: this.#stamina.value,
+      playerUserId: this.#playerUserId.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 }

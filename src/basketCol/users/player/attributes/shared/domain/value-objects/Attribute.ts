@@ -7,7 +7,7 @@ export abstract class Attribute extends IntegerValueObject {
 
   static readonly #minAllowedValue: number = 0 as const;
 
-  constructor(value: number, propertyName: string) {
+  protected constructor(value: number, propertyName: string) {
     super(value, propertyName);
 
     Attribute.ensureNotExceedingMaximum(value, propertyName);
@@ -26,4 +26,3 @@ export abstract class Attribute extends IntegerValueObject {
     }
   }
 }
-

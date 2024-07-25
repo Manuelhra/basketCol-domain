@@ -45,14 +45,14 @@ export class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
 
   public toPrimitives(): IDefensiveAttributes {
     return {
-      id: this.id.getValue(),
-      interiorDefense: this.#interiorDefense.getValue(),
-      perimeterDefense: this.#perimeterDefense.getValue(),
-      steal: this.#steal.getValue(),
-      block: this.#block.getValue(),
-      playerUserId: this.#playerUserId.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      interiorDefense: this.#interiorDefense.value,
+      perimeterDefense: this.#perimeterDefense.value,
+      steal: this.#steal.value,
+      block: this.#block.value,
+      playerUserId: this.#playerUserId.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 }

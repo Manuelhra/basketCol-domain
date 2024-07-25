@@ -58,14 +58,14 @@ export class TeamFounderUserCreator {
     const tFUUpdatedAt: TFUUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const teamFounderUser: TeamFounderUser = new TeamFounderUser(
-      teamFounderUserId.getValue(),
+      teamFounderUserId.value,
       name,
       biography,
-      tFUEmail.getValue(),
-      tFUPassword.getValue(),
+      tFUEmail.value,
+      tFUPassword.value,
       active,
-      tFUCreatedAt.getValue(),
-      tFUUpdatedAt.getValue(),
+      tFUCreatedAt.value,
+      tFUUpdatedAt.value,
     );
 
     return this.#tFURepository.save(teamFounderUser);

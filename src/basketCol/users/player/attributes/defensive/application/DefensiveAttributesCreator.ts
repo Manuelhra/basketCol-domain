@@ -50,14 +50,14 @@ export class DefensiveAttributesCreator {
     const dAUpdatedAt: DAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const defensiveAttributes: DefensiveAttributes = new DefensiveAttributes(
-      defensiveAttributesId.getValue(),
+      defensiveAttributesId.value,
       interiorDefense,
       perimeterDefense,
       steal,
       block,
-      playerUserId.getValue(),
-      dACreatedAt.getValue(),
-      dAUpdatedAt.getValue(),
+      playerUserId.value,
+      dACreatedAt.value,
+      dAUpdatedAt.value,
     );
 
     return this.#defensiveAttributesRepository.save(defensiveAttributes);

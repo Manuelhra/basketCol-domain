@@ -58,14 +58,14 @@ export class LeagueFounderUserCreator {
     const leagueFounderUserUpdatedAt: LeagueFounderUserUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const leagueFounderUser: LeagueFounderUser = new LeagueFounderUser(
-      leagueFounderUserId.getValue(),
+      leagueFounderUserId.value,
       name,
       biography,
-      leagueFounderUserEmail.getValue(),
-      leagueFounderUserPassword.getValue(),
+      leagueFounderUserEmail.value,
+      leagueFounderUserPassword.value,
       active,
-      leagueFounderUserCreatedAt.getValue(),
-      leagueFounderUserUpdatedAt.getValue(),
+      leagueFounderUserCreatedAt.value,
+      leagueFounderUserUpdatedAt.value,
     );
 
     return this.#leagueFounderUserRepository.save(leagueFounderUser);

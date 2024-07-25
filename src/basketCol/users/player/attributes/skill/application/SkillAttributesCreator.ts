@@ -49,13 +49,13 @@ export class SkillAttributesCreator {
     const sAUpdatedAt: SAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const skillAttributes: SkillAttributes = new SkillAttributes(
-      skillAttributesId.getValue(),
+      skillAttributesId.value,
       passAccuracy,
       ballHandle,
       speedWithBall,
-      playerUserId.getValue(),
-      sACreatedAt.getValue(),
-      sAUpdatedAt.getValue(),
+      playerUserId.value,
+      sACreatedAt.value,
+      sAUpdatedAt.value,
     );
 
     return this.#skillAttributesRepository.save(skillAttributes);

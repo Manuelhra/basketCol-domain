@@ -51,14 +51,14 @@ export class LeagueSeasonCreator {
     const leagueSeasonUpdatedAt: LeagueSeasonUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const leagueSeason: LeagueSeason = new LeagueSeason(
-      leagueSeasonId.getValue(),
+      leagueSeasonId.value,
       name,
       startDate,
       endDate,
-      leagueSeasonStatus.getValue(),
-      leagueId.getValue(),
-      leagueSeasonCreatedAt.getValue(),
-      leagueSeasonUpdatedAt.getValue(),
+      leagueSeasonStatus.value,
+      leagueId.value,
+      leagueSeasonCreatedAt.value,
+      leagueSeasonUpdatedAt.value,
     );
 
     return this.#leagueSeasonRepository.save(leagueSeason);

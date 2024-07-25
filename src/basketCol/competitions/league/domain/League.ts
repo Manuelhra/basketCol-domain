@@ -61,17 +61,17 @@ export class League extends AggregateRoot<ILeague> {
 
   public toPrimitives(): ILeague {
     return {
-      id: this.id.getValue(),
-      name: this.#name.getValue(),
-      description: this.#description.getValue(),
-      rules: this.#rules.getValue(),
-      level: this.#level.getValue(),
-      location: this.#location.getValue(),
-      leagueFounderUserId: this.#leagueFounderUserId.getValue(),
-      establishmentDate: this.#establishmentDate.getValue(),
-      isActive: this.#isActive.getValue(),
-      createdAt: this.createdAt.getValue(),
-      updatedAt: this.updatedAt.getValue(),
+      id: this.id.value,
+      name: this.#name.value,
+      description: this.#description.value,
+      rules: this.#rules.value,
+      level: this.#level.value,
+      location: this.#location.value,
+      leagueFounderUserId: this.#leagueFounderUserId.value,
+      establishmentDate: this.#establishmentDate.value,
+      isActive: this.#isActive.value,
+      createdAt: this.createdAt.value,
+      updatedAt: this.updatedAt.value,
     };
   }
 }

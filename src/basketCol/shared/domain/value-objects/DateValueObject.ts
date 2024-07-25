@@ -7,7 +7,7 @@ export abstract class DateValueObject extends StringValueObject {
 
   static readonly #DATE_FORMAT: string = 'DD/MM/YYYY' as const;
 
-  constructor(value: string, propertyName: string) {
+  protected constructor(value: string, propertyName: string) {
     super(value, propertyName);
 
     DateValueObject.ensureIsValidDate(value, propertyName);
@@ -23,7 +23,7 @@ export abstract class DateValueObject extends StringValueObject {
   }
 
   public toDate(): Date {
-    const [day, month, year] = this.getValue().split('/').map(Number);
+    const [day, month, year] = this.value.split('/').map(Number);
     return new Date(year, month - 1, day);
   }
 

@@ -2,10 +2,15 @@ import { InvalidPropertyTypeError } from '../../../../shared/domain/exceptions/I
 import { ObjectValueObject } from '../../../../shared/domain/value-objects/ObjectValueObject';
 import { InvalidEmailPolicyError } from '../exceptions/InvalidEmailPolicyError';
 
+export interface IUserEmailProps {
+  value: string;
+  verified: boolean;
+}
+
 export abstract class UserEmail extends ObjectValueObject<{ value: string; verified: boolean }> {
   static readonly #EMAIL_REG_EXP: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  constructor(value: { value: string; verified: boolean; }) {
+  protected constructor(value: IUserEmailProps) {
     const expectedType: string = '{ value: string; verified: boolean; }';
 
     super(value, 'email', expectedType);
@@ -30,6 +35,5 @@ export abstract class UserEmail extends ObjectValueObject<{ value: string; verif
     }
   }
 }
-
 
 // TODO: Validar si se envía un tipo de dato que no es sin usar capa infrastructure

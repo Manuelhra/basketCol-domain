@@ -50,14 +50,14 @@ export class FinishingAttributesCreator {
     const fAUpdatedAt: FAUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const finishingAttributes: FinishingAttributes = new FinishingAttributes(
-      finishingAttributesId.getValue(),
+      finishingAttributesId.value,
       drivingLayup,
       drivingDunk,
       standingDunk,
       postControl,
-      playerUserId.getValue(),
-      fACreatedAt.getValue(),
-      fAUpdatedAt.getValue(),
+      playerUserId.value,
+      fACreatedAt.value,
+      fAUpdatedAt.value,
     );
 
     return this.#finishingAttributesRepository.save(finishingAttributes);

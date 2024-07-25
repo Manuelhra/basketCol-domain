@@ -9,7 +9,7 @@ export abstract class AggregateRoot<I extends IAggregateRoot> {
 
   protected readonly updatedAt: DateValueObject;
 
-  constructor(
+  protected constructor(
     id: UuidValueObject,
     createdAt: DateValueObject,
     updatedAt: DateValueObject,
@@ -25,4 +25,3 @@ export abstract class AggregateRoot<I extends IAggregateRoot> {
     return this.id;
   }
 }
-

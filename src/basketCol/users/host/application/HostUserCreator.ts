@@ -51,10 +51,10 @@ export class HostUserCreator {
       name,
       biography,
       { value: email.value, verified: false },
-      hostUserPassword.getValue(),
+      hostUserPassword.value,
       active,
-      hostUserCreatedAt.getValue(),
-      hostUserUpdatedAt.getValue(),
+      hostUserCreatedAt.value,
+      hostUserUpdatedAt.value,
     );
 
     return this.#hostUserRepository.save(hostUser);

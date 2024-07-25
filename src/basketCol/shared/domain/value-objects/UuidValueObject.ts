@@ -4,7 +4,7 @@ import { StringValueObject } from './StringValueObject';
 import { InvalidDomainIdError } from '../exceptions/InvalidDomainIdError';
 
 export abstract class UuidValueObject extends StringValueObject {
-  constructor(value: string, propertyName: string) {
+  protected constructor(value: string, propertyName: string) {
     super(value, propertyName);
 
     UuidValueObject.ensureIsValidUuid(value);
@@ -16,4 +16,3 @@ export abstract class UuidValueObject extends StringValueObject {
     }
   }
 }
-

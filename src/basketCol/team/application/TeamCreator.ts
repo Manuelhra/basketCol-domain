@@ -47,11 +47,11 @@ export class TeamCreator {
     const teamUpdatedAt: TeamUpdatedAt = this.#businessDateService.getCurrentDate();
 
     const team: Team = new Team(
-      teamId.getValue(),
+      teamId.value,
       officialName,
-      teamFounderUserId.getValue(),
-      teamCreatedAt.getValue(),
-      teamUpdatedAt.getValue(),
+      teamFounderUserId.value,
+      teamCreatedAt.value,
+      teamUpdatedAt.value,
     );
 
     return this.#teamRepository.save(team);

@@ -5,7 +5,7 @@ import { StringValueObject } from '../../../../shared/domain/value-objects/Strin
 export abstract class UserBiography extends StringValueObject {
   readonly #LENGTH: { min: number; max: number; } = { min: 50, max: 200 } as const;
 
-  constructor(value: string) {
+  protected constructor(value: string) {
     super(value, 'biography');
 
     this.ensureIsValidBiography(value);
