@@ -12,4 +12,3 @@ export class PlayerUserNotFoundError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-
