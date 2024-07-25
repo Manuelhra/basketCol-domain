@@ -1,4 +1,5 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
+import { HostUserId } from '../../../users/host/domain/value-objects/HostUserId';
 import { ICourt } from './ICourt';
 import { CourtCreatedAt } from './value-objects/CourtCreatedAt';
 import { CourtEstablishmentDate } from './value-objects/CourtEstablishmentDate';
@@ -17,16 +18,20 @@ export class Court extends AggregateRoot<ICourt> {
 
   readonly #hoopHeight: CourtHoopHeight;
 
+  readonly #registeredById: HostUserId;
+
   constructor(
     id: string,
     officialName: string,
     establishmentDate: string,
     surface: string,
     hoopHeight: number,
+    registeredById: string,
     createdAt: string,
     updatedAt: string,
   ) {
     const courtId: CourtId = new CourtId(id);
+    const hostUserId: HostUserId = new HostUserId(registeredById);
     const courtCreatedAt: CourtCreatedAt = new CourtCreatedAt(createdAt);
     const courtUpdatedAt: CourtUpdatedAt = new CourtCreatedAt(updatedAt);
 
@@ -36,6 +41,7 @@ export class Court extends AggregateRoot<ICourt> {
     this.#establishmentDate = new CourtEstablishmentDate(establishmentDate);
     this.#surface = new CourtSurface(surface);
     this.#hoopHeight = new CourtHoopHeight(hoopHeight);
+    this.#registeredById = hostUserId;
   }
 
   public toPrimitives(): ICourt {
@@ -45,6 +51,7 @@ export class Court extends AggregateRoot<ICourt> {
       establishmentDate: this.#establishmentDate.value,
       surface: this.#surface.value,
       hoopHeight: this.#hoopHeight.value,
+      registeredById: this.#registeredById.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
