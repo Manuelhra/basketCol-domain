@@ -1,5 +1,6 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
 import { HostUserId } from '../../../users/host/domain/value-objects/HostUserId';
+import { GymId } from '../../domain/value-objects/GymId';
 import { ICourt } from './ICourt';
 import { CourtCreatedAt } from './value-objects/CourtCreatedAt';
 import { CourtEstablishmentDate } from './value-objects/CourtEstablishmentDate';
@@ -20,6 +21,8 @@ export class Court extends AggregateRoot<ICourt> {
 
   readonly #registeredById: HostUserId;
 
+  readonly #gymId: GymId;
+
   constructor(
     id: string,
     officialName: string,
@@ -27,11 +30,11 @@ export class Court extends AggregateRoot<ICourt> {
     surface: string,
     hoopHeight: number,
     registeredById: string,
+    gymId: string,
     createdAt: string,
     updatedAt: string,
   ) {
     const courtId: CourtId = new CourtId(id);
-    const hostUserId: HostUserId = new HostUserId(registeredById);
     const courtCreatedAt: CourtCreatedAt = new CourtCreatedAt(createdAt);
     const courtUpdatedAt: CourtUpdatedAt = new CourtCreatedAt(updatedAt);
 
@@ -41,7 +44,8 @@ export class Court extends AggregateRoot<ICourt> {
     this.#establishmentDate = new CourtEstablishmentDate(establishmentDate);
     this.#surface = new CourtSurface(surface);
     this.#hoopHeight = new CourtHoopHeight(hoopHeight);
-    this.#registeredById = hostUserId;
+    this.#registeredById = new HostUserId(registeredById, 'registeredById');
+    this.#gymId = new GymId(gymId, 'gymId');
   }
 
   public toPrimitives(): ICourt {
@@ -52,6 +56,7 @@ export class Court extends AggregateRoot<ICourt> {
       surface: this.#surface.value,
       hoopHeight: this.#hoopHeight.value,
       registeredById: this.#registeredById.value,
+      gymId: this.#gymId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

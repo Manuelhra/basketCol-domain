@@ -3,6 +3,8 @@ import { IdUniquenessValidatorService } from '../../../shared/domain/services/Id
 import { DateValueObject } from '../../../shared/domain/value-objects/DateValueObject';
 import { HostUserValidationService } from '../../../users/host/domain/services/HostUserValidationService';
 import { HostUserId } from '../../../users/host/domain/value-objects/HostUserId';
+import { GymValidationService } from '../../domain/services/GymValidationService';
+import { GymId } from '../../domain/value-objects/GymId';
 import { Court } from '../domain/Court';
 import { ICourt } from '../domain/ICourt';
 import { CourtRepository } from '../domain/repository/CourtRepository';
@@ -17,6 +19,8 @@ export class CourtCreator {
 
   readonly #hostUserValidationService: HostUserValidationService;
 
+  readonly #gymValidationService: GymValidationService;
+
   readonly #businessDateService: BusinessDateService;
 
   readonly #courtRepository: CourtRepository;
@@ -24,11 +28,13 @@ export class CourtCreator {
   constructor(dependencies: {
     idUniquenessValidatorService: IdUniquenessValidatorService;
     hostUserValidationService: HostUserValidationService;
+    gymValidationService: GymValidationService;
     businessDateService: BusinessDateService;
     courtRepository: CourtRepository;
   }) {
     this.#idUniquenessValidatorService = dependencies.idUniquenessValidatorService;
     this.#hostUserValidationService = dependencies.hostUserValidationService;
+    this.#gymValidationService = dependencies.gymValidationService;
     this.#businessDateService = dependencies.businessDateService;
     this.#courtRepository = dependencies.courtRepository;
   }
@@ -44,12 +50,14 @@ export class CourtCreator {
     } = payload;
 
     const courtId: CourtId = new CourtId(id);
-    const hostUserId: HostUserId = new HostUserId(registeredById);
+    const hostUserId: HostUserId = new HostUserId(registeredById, 'registeredById');
+    const gymId: GymId = new GymId(payload.gymId, 'gymId');
     const courtEstablishmentDate: CourtEstablishmentDate = new CourtEstablishmentDate(establishmentDate);
     const currentDate: DateValueObject = this.#businessDateService.getCurrentDate();
 
     await this.#idUniquenessValidatorService.ensureUniqueId<CourtId, ICourt, Court>(courtId);
     await this.#hostUserValidationService.ensureHostUserExists(hostUserId);
+    await this.#gymValidationService.ensureGymExists(gymId);
     this.#businessDateService.ensureNotGreaterThan<CourtEstablishmentDate, DateValueObject>(courtEstablishmentDate, currentDate);
 
     const courtCreatedAt: CourtCreatedAt = this.#businessDateService.getCurrentDate();
@@ -62,6 +70,7 @@ export class CourtCreator {
       surface,
       hoopHeight,
       hostUserId.value,
+      gymId.value,
       courtCreatedAt.value,
       courtUpdatedAt.value,
     );

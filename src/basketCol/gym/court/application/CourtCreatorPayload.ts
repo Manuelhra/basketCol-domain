@@ -5,4 +5,5 @@ export interface CourtCreatorPayload {
   surface: string;
   hoopHeight: number;
   registeredById: string;
+  gymId: string;
 }
