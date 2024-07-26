@@ -6,9 +6,9 @@ import { LeagueSeasonEndDateInPastError } from './exceptions/LeagueSeasonEndDate
 import { LeagueSeasonInsufficientDurationError } from './exceptions/LeagueSeasonInsufficientDurationError';
 import { LeagueSeasonInsufficientPreparationTimeError } from './exceptions/LeagueSeasonInsufficientPreparationTimeError';
 import { LeagueSeasonStartDateInPastError } from './exceptions/LeagueSeasonStartDateInPastError';
+import { LeagueSeasonCourtIdList } from './value-objects/LeagueSeasonCourtIdList';
 import { LeagueSeasonCreatedAt } from './value-objects/LeagueSeasonCreatedAt';
 import { LeagueSeasonEndDate } from './value-objects/LeagueSeasonEndDate';
-import { LeagueSeasonGymIdList } from './value-objects/LeagueSeasonGymIdList';
 import { LeagueSeasonId } from './value-objects/LeagueSeasonId';
 import { LeagueSeasonName } from './value-objects/LeagueSeasonName';
 import { LeagueSeasonStartDate } from './value-objects/LeagueSeasonStartDate';
@@ -28,7 +28,7 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
 
   readonly #status: LeagueSeasonStatus;
 
-  readonly #gymIdList: LeagueSeasonGymIdList;
+  readonly #courtIdList: LeagueSeasonCourtIdList;
 
   readonly #leagueId: LeagueId;
 
@@ -38,7 +38,7 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
     startDate: string,
     endDate: string,
     status: string,
-    gymIdList: string[],
+    courtIdList: string[],
     leagueId: string,
     createdAt: string,
     updatedAt: string,
@@ -53,7 +53,7 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
     this.#startDate = new LeagueSeasonStartDate(startDate);
     this.#endDate = new LeagueSeasonEndDate(endDate);
     this.#status = new LeagueSeasonStatus(status);
-    this.#gymIdList = new LeagueSeasonGymIdList(gymIdList);
+    this.#courtIdList = new LeagueSeasonCourtIdList(courtIdList);
     this.#leagueId = new LeagueId(leagueId);
 
     this.validateDates();
@@ -67,7 +67,7 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
       endDate: this.#endDate.value,
       status: this.#status.value,
       leagueId: this.#leagueId.value,
-      gymIdList: this.#gymIdList.gymIdListAsStrings,
+      courtIdList: this.#courtIdList.courtIdListAsStrings,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

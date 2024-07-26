@@ -3,6 +3,6 @@ export interface LeagueSeasonCreatorPayload {
   name: string;
   startDate: string;
   endDate: string;
-  gymIdList: string[];
+  courtIdList: string[];
   leagueId: string;
 }
