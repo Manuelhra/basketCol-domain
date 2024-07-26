@@ -28,7 +28,6 @@ export class Gym extends AggregateRoot<IGym> {
     updatedAt: string,
   ) {
     const gymId: GymId = new GymId(id);
-    const hostUserId: HostUserId = new HostUserId(registeredById);
     const gymCreatedAt: GymCreatedAt = new GymCreatedAt(createdAt);
     const gymUpdatedAt: GymUpdatedAt = new GymUpdatedAt(updatedAt);
 
@@ -37,7 +36,7 @@ export class Gym extends AggregateRoot<IGym> {
     this.#officialName = new GymOfficialName(officialName);
     this.#location = new GymLocation(location);
     this.#establishmentDate = new GymEstablishmentDate(establishmentDate);
-    this.#registeredById = hostUserId;
+    this.#registeredById = new HostUserId(registeredById, 'registeredById');
   }
 
   public toPrimitives(): IGym {

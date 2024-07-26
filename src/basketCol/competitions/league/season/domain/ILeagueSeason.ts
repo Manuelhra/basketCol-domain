@@ -5,5 +5,6 @@ export interface ILeagueSeason extends IAggregateRoot {
   startDate: string;
   endDate: string;
   status: string;
+  gymIdList: string[];
   leagueId: string;
 }

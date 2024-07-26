@@ -6,4 +6,5 @@ export interface ICourt extends IAggregateRoot {
   hoopHeight: { value: number; unit: string };
   establishmentDate: string;
   registeredById: string;
+  gymId: string;
 }
