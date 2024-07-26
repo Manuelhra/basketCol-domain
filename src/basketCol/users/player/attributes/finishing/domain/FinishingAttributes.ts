@@ -56,4 +56,3 @@ export class FinishingAttributes extends AggregateRoot<IFinishingAttributes> {
     };
   }
 }
-

@@ -1,7 +1,7 @@
-import { StringValueObject } from '../../../../shared/domain/value-objects/StringValueObject';
+import { FacilityOfficialName } from '../../../shared/domain/value-objects/FacilityOfficialName';
 
-export class GymOfficialName extends StringValueObject {
-  constructor(value: string) {
-    super(value, 'officialName');
+export class GymOfficialName extends FacilityOfficialName {
+  public constructor(value: string) {
+    super(value);
   }
 }

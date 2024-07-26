@@ -1,3 +1,7 @@
-import { CreatedAtValueObject } from '../../../../shared/domain/value-objects/CreatedAtValueObject';
+import { FacilityCreatedAt } from '../../../shared/domain/value-objects/FacilityCreatedAt';
 
-export class CourtCreatedAt extends CreatedAtValueObject {}
+export class CourtCreatedAt extends FacilityCreatedAt {
+  public constructor(value: string) {
+    super(value);
+  }
+}

@@ -56,4 +56,3 @@ export class ShootingAttributes extends AggregateRoot<IShootingAttributes> {
     };
   }
 }
-

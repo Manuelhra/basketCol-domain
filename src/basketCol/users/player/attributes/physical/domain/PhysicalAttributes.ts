@@ -62,4 +62,3 @@ export class PhysicalAttributes extends AggregateRoot<IPhysicalAttributes> {
     };
   }
 }
-

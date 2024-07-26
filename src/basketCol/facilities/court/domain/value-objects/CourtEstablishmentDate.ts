@@ -1,6 +1,6 @@
-import { EstablishmentDateValueObject } from '../../../../shared/domain/value-objects/EstablishmentDateValueObject';
+import { FacilityEstablishmentDate } from '../../../shared/domain/value-objects/FacilityEstablishmentDate';
 
-export class CourtEstablishmentDate extends EstablishmentDateValueObject {
+export class CourtEstablishmentDate extends FacilityEstablishmentDate {
   public constructor(value: string) {
     super(value);
   }
