@@ -1,9 +1,9 @@
-import { ValueObject } from '../../../../shared/domain/value-objects/ValueObject';
+import { CourtId } from '../../../facilities/court/domain/value-objects/CourtId';
 import { EmptyCourtIdListError } from '../exceptions/EmptyCourtIdListError';
 import { InvalidCourtIdListElementError } from '../exceptions/InvalidCourtIdListElementError';
-import { CourtId } from './CourtId';
+import { ValueObject } from './ValueObject';
 
-export abstract class CourtIdList extends ValueObject<CourtId[]> {
+export abstract class ReferencedCourtIdList extends ValueObject<CourtId[]> {
   protected constructor(value: string[]) {
     const courtIdList: CourtId[] = value.map((courtId: string) => new CourtId(courtId));
 

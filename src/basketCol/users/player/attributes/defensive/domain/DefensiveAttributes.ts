@@ -1,5 +1,4 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IDefensiveAttributes } from './IDefensiveAttributes';
 import { DABlock } from './value-objects/DABlock';
 import { DACreatedAt } from './value-objects/DACreatedAt';
@@ -8,6 +7,7 @@ import { DefensiveAttributesId } from './value-objects/DefensiveAttributesId';
 import { DAInteriorDefense } from './value-objects/DAInteriorDefense';
 import { DAPerimeterDefense } from './value-objects/DAPerimeterDefense';
 import { DASteal } from './value-objects/DASteal';
+import { DAReferencedPlayerUserId } from './value-objects/DAReferencedPlayerUserId';
 
 export class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
   readonly #interiorDefense: DAInteriorDefense;
@@ -18,7 +18,7 @@ export class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
 
   readonly #block: DABlock;
 
-  readonly #playerUserId: PlayerUserId;
+  readonly #playerUserId: DAReferencedPlayerUserId;
 
   constructor(
     id: string,
@@ -40,7 +40,7 @@ export class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
     this.#perimeterDefense = new DAPerimeterDefense(perimeterDefense);
     this.#steal = new DASteal(steal);
     this.#block = new DABlock(block);
-    this.#playerUserId = new PlayerUserId(playerUserId, 'playerUserId');
+    this.#playerUserId = new DAReferencedPlayerUserId(playerUserId);
   }
 
   public toPrimitives(): IDefensiveAttributes {
@@ -50,10 +50,9 @@ export class DefensiveAttributes extends AggregateRoot<IDefensiveAttributes> {
       perimeterDefense: this.#perimeterDefense.value,
       steal: this.#steal.value,
       block: this.#block.value,
-      playerUserId: this.#playerUserId.value,
+      playerUserId: this.#playerUserId.playerUserIdAsString,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
   }
 }
-

@@ -50,4 +50,3 @@ export class SkillAttributes extends AggregateRoot<ISkillAttributes> {
     };
   }
 }
-

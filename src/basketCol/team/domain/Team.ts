@@ -1,15 +1,15 @@
 import { AggregateRoot } from '../../shared/domain/AggregateRoot';
-import { TeamFounderUserId } from '../../users/teamFounder/domain/value-objects/TeamFounderUserId';
 import { ITeam } from './ITeam';
 import { TeamCreatedAt } from './value-objects/TeamCreatedAt';
 import { TeamId } from './value-objects/TeamId';
 import { TeamOfficialName } from './value-objects/TeamOfficialName';
 import { TeamUpdatedAt } from './value-objects/TeamUpdatedAt';
+import { TReferencedTeamFounderUserId } from './value-objects/TReferencedTeamFounderUserId';
 
 export class Team extends AggregateRoot<ITeam> {
   readonly #officialName: TeamOfficialName;
 
-  readonly #teamFounderUserId: TeamFounderUserId;
+  readonly #teamFounderUserId: TReferencedTeamFounderUserId;
 
   constructor(
     id: string,
@@ -25,14 +25,14 @@ export class Team extends AggregateRoot<ITeam> {
     super(teamId, teamCreatedAt, teamUpdatedAt);
 
     this.#officialName = new TeamOfficialName(officialName);
-    this.#teamFounderUserId = new TeamFounderUserId(teamFounderUserId);
+    this.#teamFounderUserId = new TReferencedTeamFounderUserId(teamFounderUserId);
   }
 
   public toPrimitives(): ITeam {
     return {
       id: this.id.value,
       officialName: this.#officialName.value,
-      teamFounderUserId: this.#teamFounderUserId.value,
+      teamFounderUserId: this.#teamFounderUserId.teamFounderUserIdAsString,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

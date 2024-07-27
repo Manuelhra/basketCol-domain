@@ -1,8 +1,8 @@
+import { ReferencedGymIdList } from '../../../../shared/domain/value-objects/ReferencedGymIdList';
 import { GymNotFoundError } from '../exceptions/GymNotFoundError';
 import { GymsNotFoundError } from '../exceptions/GymsNotFoundError';
 import { GymRepository } from '../repository/GymRepository';
 import { GymId } from '../value-objects/GymId';
-import { GymIdList } from '../value-objects/GymIdList';
 
 export class GymValidationService {
   readonly #gymRepository: GymRepository;
@@ -21,8 +21,8 @@ export class GymValidationService {
     }
   }
 
-  public async ensureGymsExist(gymIdList: GymIdList): Promise<void> {
-    const { allGymsExist, nonExistentGymIds } = await this.#gymRepository.areAllGymsExistingByIds(gymIdList);
+  public async ensureGymsExist<T extends ReferencedGymIdList>(gymIdList: T): Promise<void> {
+    const { allGymsExist, nonExistentGymIds } = await this.#gymRepository.areAllGymsExistingByIds<T>(gymIdList);
 
     if (allGymsExist === false && nonExistentGymIds.length > 0) {
       throw new GymsNotFoundError(nonExistentGymIds);

@@ -1,28 +1,33 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { TeamId } from '../../../../../team/domain/value-objects/TeamId';
-import { PlayerUserId } from '../../../../../users/player/domain/value-objects/PlayerUserId';
-import { LeagueSeasonId } from '../../domain/value-objects/LeagueSeasonId';
 import { ILeagueSeasonAwards } from './ILeagueSeasonAwards';
 import { LeagueSeasonAwardsId } from './value-objects/LeagueSeasonAwardsId';
+import { LSABestAssistProviderId } from './value-objects/LSABestAssistProviderId';
+import { LSABestDefensiveRebounderId } from './value-objects/LSABestDefensiveRebounderId';
+import { LSABestFreeThrowShooterId } from './value-objects/LSABestFreeThrowShooterId';
+import { LSABestOffensiveRebounderId } from './value-objects/LSABestOffensiveRebounderId';
+import { LSABestThreePointShooterId } from './value-objects/LSABestThreePointShooterId';
+import { LSABestTwoPointShooterId } from './value-objects/LSABestTwoPointShooterId';
+import { LSAChampionTeamId } from './value-objects/LSAChampionTeamId';
 import { LSACreatedAt } from './value-objects/LSACreatedAt';
+import { LSAReferencedLeagueSeasonId } from './value-objects/LSAReferencedLeagueSeasonId';
 import { LSAUpdatedAt } from './value-objects/LSAUpdatedAt';
 
 export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwards> {
-  readonly #bestThreePointShooterId: PlayerUserId;
+  readonly #bestThreePointShooterId: LSABestThreePointShooterId;
 
-  readonly #bestTwoPointShooterId: PlayerUserId;
+  readonly #bestTwoPointShooterId: LSABestTwoPointShooterId;
 
-  readonly #bestFreeThrowShooterId: PlayerUserId;
+  readonly #bestFreeThrowShooterId: LSABestFreeThrowShooterId;
 
-  readonly #bestAssistProviderId: PlayerUserId;
+  readonly #bestAssistProviderId: LSABestAssistProviderId;
 
-  readonly #bestOffensiveRebounderId: PlayerUserId;
+  readonly #bestOffensiveRebounderId: LSABestOffensiveRebounderId;
 
-  readonly #bestDefensiveRebounderId: PlayerUserId;
+  readonly #bestDefensiveRebounderId: LSABestDefensiveRebounderId;
 
-  readonly #championTeamId: TeamId;
+  readonly #championTeamId: LSAChampionTeamId;
 
-  readonly #leagueSeasonId: LeagueSeasonId;
+  readonly #leagueSeasonId: LSAReferencedLeagueSeasonId;
 
   constructor(
     id: string,
@@ -43,27 +48,27 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwards> {
 
     super(leagueSeasonAwardsId, lSACreatedAt, lSAUpdatedAt);
 
-    this.#bestThreePointShooterId = new PlayerUserId(bestThreePointShooterId, 'bestThreePointShooterId');
-    this.#bestTwoPointShooterId = new PlayerUserId(bestTwoPointShooterId, 'bestTwoPointShooterId');
-    this.#bestFreeThrowShooterId = new PlayerUserId(bestFreeThrowShooterId, 'bestFreeThrowShooterId');
-    this.#bestAssistProviderId = new PlayerUserId(bestAssistProviderId, 'bestAssistProviderId');
-    this.#bestOffensiveRebounderId = new PlayerUserId(bestOffensiveRebounderId, 'bestOffensiveRebounderId');
-    this.#bestDefensiveRebounderId = new PlayerUserId(bestDefensiveRebounderId, 'bestDefensiveRebounderId');
-    this.#championTeamId = new TeamId(championTeamId, 'championTeamId');
-    this.#leagueSeasonId = new LeagueSeasonId(leagueSeasonId, 'leagueSeasonId');
+    this.#bestThreePointShooterId = new LSABestThreePointShooterId(bestThreePointShooterId);
+    this.#bestTwoPointShooterId = new LSABestTwoPointShooterId(bestTwoPointShooterId);
+    this.#bestFreeThrowShooterId = new LSABestFreeThrowShooterId(bestFreeThrowShooterId);
+    this.#bestAssistProviderId = new LSABestAssistProviderId(bestAssistProviderId);
+    this.#bestOffensiveRebounderId = new LSABestOffensiveRebounderId(bestOffensiveRebounderId);
+    this.#bestDefensiveRebounderId = new LSABestDefensiveRebounderId(bestDefensiveRebounderId);
+    this.#championTeamId = new LSAChampionTeamId(championTeamId);
+    this.#leagueSeasonId = new LSAReferencedLeagueSeasonId(leagueSeasonId);
   }
 
   public toPrimitives(): ILeagueSeasonAwards {
     return {
       id: this.id.value,
-      bestThreePointShooterId: this.#bestThreePointShooterId.value,
-      bestTwoPointShooterId: this.#bestTwoPointShooterId.value,
-      bestFreeThrowShooterId: this.#bestFreeThrowShooterId.value,
-      bestAssistProviderId: this.#bestAssistProviderId.value,
-      bestOffensiveRebounderId: this.#bestOffensiveRebounderId.value,
-      bestDefensiveRebounderId: this.#bestDefensiveRebounderId.value,
-      championTeamId: this.#championTeamId.value,
-      leagueSeasonId: this.#leagueSeasonId.value,
+      bestThreePointShooterId: this.#bestThreePointShooterId.playerUserIdAsString,
+      bestTwoPointShooterId: this.#bestTwoPointShooterId.playerUserIdAsString,
+      bestFreeThrowShooterId: this.#bestFreeThrowShooterId.playerUserIdAsString,
+      bestAssistProviderId: this.#bestAssistProviderId.playerUserIdAsString,
+      bestOffensiveRebounderId: this.#bestOffensiveRebounderId.playerUserIdAsString,
+      bestDefensiveRebounderId: this.#bestDefensiveRebounderId.playerUserIdAsString,
+      championTeamId: this.#championTeamId.teamIdAsString,
+      leagueSeasonId: this.#leagueSeasonId.leagueSeasonIdAsString,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

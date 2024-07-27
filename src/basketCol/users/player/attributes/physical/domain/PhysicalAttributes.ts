@@ -1,8 +1,8 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IPhysicalAttributes } from './IPhysicalAttributes';
 import { PAAcceleration } from './value-objects/PAAcceleration';
 import { PACreatedAt } from './value-objects/PACreatedAt';
+import { PAReferencedPlayerUserId } from './value-objects/PAReferencedPlayerUserId';
 import { PASpeed } from './value-objects/PASpeed';
 import { PAStamina } from './value-objects/PAStamina';
 import { PAStrength } from './value-objects/PAStrength';
@@ -21,7 +21,7 @@ export class PhysicalAttributes extends AggregateRoot<IPhysicalAttributes> {
 
   readonly #stamina: PAStamina;
 
-  readonly #playerUserId: PlayerUserId;
+  readonly #playerUserId: PAReferencedPlayerUserId;
 
   constructor(
     id: string,
@@ -45,7 +45,7 @@ export class PhysicalAttributes extends AggregateRoot<IPhysicalAttributes> {
     this.#strength = new PAStrength(strength);
     this.#vertical = new PAVertical(vertical);
     this.#stamina = new PAStamina(stamina);
-    this.#playerUserId = new PlayerUserId(playerUserId, 'playerUserId');
+    this.#playerUserId = new PAReferencedPlayerUserId(playerUserId);
   }
 
   public toPrimitives(): IPhysicalAttributes {
@@ -56,10 +56,9 @@ export class PhysicalAttributes extends AggregateRoot<IPhysicalAttributes> {
       strength: this.#strength.value,
       vertical: this.#vertical.value,
       stamina: this.#stamina.value,
-      playerUserId: this.#playerUserId.value,
+      playerUserId: this.#playerUserId.playerUserIdAsString,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
   }
 }
-

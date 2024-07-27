@@ -1,9 +1,9 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IReboundingAttributes } from './IReboundingAttributes';
 import { RACreatedAt } from './value-objects/RACreatedAt';
 import { RADefensiveRebound } from './value-objects/RADefensiveRebound';
 import { RAOffensiveRebound } from './value-objects/RAOffensiveRebound';
+import { RAReferencedPlayerUserId } from './value-objects/RAReferencedPlayerUserId';
 import { RAUpdatedAt } from './value-objects/RAUpdatedAt';
 import { ReboundingAttributesId } from './value-objects/ReboundingAttributesId';
 
@@ -12,7 +12,7 @@ export class ReboundingAttributes extends AggregateRoot<IReboundingAttributes> {
 
   readonly #defensiveRebound: RADefensiveRebound;
 
-  readonly #playerUserId: PlayerUserId;
+  readonly #playerUserId: RAReferencedPlayerUserId;
 
   constructor(
     id: string,
@@ -30,7 +30,7 @@ export class ReboundingAttributes extends AggregateRoot<IReboundingAttributes> {
 
     this.#offensiveRebound = new RAOffensiveRebound(offensiveRebound);
     this.#defensiveRebound = new RADefensiveRebound(defensiveRebound);
-    this.#playerUserId = new PlayerUserId(playerUserId);
+    this.#playerUserId = new RAReferencedPlayerUserId(playerUserId);
   }
 
   public toPrimitives(): IReboundingAttributes {
@@ -38,7 +38,7 @@ export class ReboundingAttributes extends AggregateRoot<IReboundingAttributes> {
       id: this.id.value,
       offensiveRebound: this.#offensiveRebound.value,
       defensiveRebound: this.#defensiveRebound.value,
-      playerUserId: this.#playerUserId.value,
+      playerUserId: this.#playerUserId.playerUserIdAsString,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

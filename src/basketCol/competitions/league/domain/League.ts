@@ -1,6 +1,5 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
 import { ILocationValueObjectProps } from '../../../shared/domain/value-objects/LocationValueObject';
-import { LeagueFounderUserId } from '../../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
 import { ILeague } from './ILeague';
 import { LeagueCreatedAt } from './value-objects/LeagueCreatedAt';
 import { LeagueDescription } from './value-objects/LeagueDescription';
@@ -12,6 +11,7 @@ import { LeagueLocation } from './value-objects/LeagueLocation';
 import { LeagueName } from './value-objects/LeagueName';
 import { LeagueRules } from './value-objects/LeagueRules';
 import { LeagueUpdatedAt } from './value-objects/LeagueUpdatedAt';
+import { LReferencedLeagueFounderUserId } from './value-objects/LReferencedLeagueFounderUserId';
 
 export class League extends AggregateRoot<ILeague> {
   readonly #name: LeagueName;
@@ -24,7 +24,7 @@ export class League extends AggregateRoot<ILeague> {
 
   readonly #location: LeagueLocation;
 
-  readonly #leagueFounderUserId: LeagueFounderUserId;
+  readonly #leagueFounderUserId: LReferencedLeagueFounderUserId;
 
   readonly #establishmentDate: LeagueEstablishmentDate;
 
@@ -54,7 +54,7 @@ export class League extends AggregateRoot<ILeague> {
     this.#rules = new LeagueRules(rules);
     this.#level = new LeagueLevel(level);
     this.#location = new LeagueLocation(location);
-    this.#leagueFounderUserId = new LeagueFounderUserId(leagueFounderUserId, 'leagueFounderUserId');
+    this.#leagueFounderUserId = new LReferencedLeagueFounderUserId(leagueFounderUserId);
     this.#establishmentDate = new LeagueEstablishmentDate(establishmentDate);
     this.#isActive = new LeagueIsActive(isActive);
   }
@@ -67,7 +67,7 @@ export class League extends AggregateRoot<ILeague> {
       rules: this.#rules.value,
       level: this.#level.value,
       location: this.#location.value,
-      leagueFounderUserId: this.#leagueFounderUserId.value,
+      leagueFounderUserId: this.#leagueFounderUserId.leagueFounderUserIdAsString,
       establishmentDate: this.#establishmentDate.value,
       isActive: this.#isActive.value,
       createdAt: this.createdAt.value,

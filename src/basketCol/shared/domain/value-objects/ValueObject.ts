@@ -29,7 +29,7 @@ export abstract class ValueObject<T> {
     return `${this.constructor.name}(${JSON.stringify(this.#value)})`;
   }
 
-  private ensureValueIsDefined(value: T, propertyName: string, expectedType: string): void {
+  protected ensureValueIsDefined(value: T, propertyName: string, expectedType: string): void {
     if (value === null || value === undefined) {
       throw new InvalidPropertyTypeError(propertyName, expectedType, typeof value);
     }

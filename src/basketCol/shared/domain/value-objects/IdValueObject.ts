@@ -1,7 +1,7 @@
 import { UuidValueObject } from './UuidValueObject';
 
-export class IdValueObject extends UuidValueObject {
-  constructor(value: string, propertyName: string = 'id') {
+export abstract class IdValueObject extends UuidValueObject {
+  protected constructor(value: string, propertyName: string = 'id') {
     super(value, propertyName);
   }
 }

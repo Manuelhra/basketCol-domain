@@ -1,12 +1,7 @@
-import { IAggregateRoot } from '../../../shared/domain/IAggregateRoot';
-import { ILocationValueObjectProps } from '../../../shared/domain/value-objects/LocationValueObject';
+import { IFacility } from '../../shared/domain/IFacility';
 
-export interface ICourt extends IAggregateRoot {
-  officialName: string;
+export interface ICourt extends IFacility {
   surface: string;
   hoopHeight: { value: number; unit: string };
-  establishmentDate: string;
-  registeredById: string;
-  location: ILocationValueObjectProps;
-  gymId: string | null;
+  facilityId: string | null;
 }

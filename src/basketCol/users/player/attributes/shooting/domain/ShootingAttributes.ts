@@ -1,10 +1,10 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IShootingAttributes } from './IShootingAttributes';
 import { SACloseShot } from './value-objects/SACloseShot';
 import { SACreatedAt } from './value-objects/SACreatedAt';
 import { SAFreeThrow } from './value-objects/SAFreeThrow';
 import { SAMidRangeShot } from './value-objects/SAMidRangeShot';
+import { SAReferencedPlayerUserId } from './value-objects/SAReferencedPlayerUserId';
 import { SAThreePointShot } from './value-objects/SAThreePointShot';
 import { SAUpdatedAt } from './value-objects/SAUpdatedAt';
 import { ShootingAttributesId } from './value-objects/ShootingAttributesId';
@@ -18,7 +18,7 @@ export class ShootingAttributes extends AggregateRoot<IShootingAttributes> {
 
   readonly #freeThrow: SAFreeThrow;
 
-  readonly #playerUserId: PlayerUserId;
+  readonly #playerUserId: SAReferencedPlayerUserId;
 
   constructor(
     id: string,
@@ -40,7 +40,7 @@ export class ShootingAttributes extends AggregateRoot<IShootingAttributes> {
     this.#midRangeShot = new SAMidRangeShot(midRangeShot);
     this.#threePointShot = new SAThreePointShot(threePointShot);
     this.#freeThrow = new SAFreeThrow(freeThrow);
-    this.#playerUserId = new PlayerUserId(playerUserId);
+    this.#playerUserId = new SAReferencedPlayerUserId(playerUserId);
   }
 
   public toPrimitives(): IShootingAttributes {
@@ -50,10 +50,9 @@ export class ShootingAttributes extends AggregateRoot<IShootingAttributes> {
       midRangeShot: this.#midRangeShot.value,
       threePointShot: this.#threePointShot.value,
       freeThrow: this.#freeThrow.value,
-      playerUserId: this.#playerUserId.value,
+      playerUserId: this.#playerUserId.playerUserIdAsString,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
   }
 }
-
