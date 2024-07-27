@@ -6,11 +6,11 @@ import { LeagueId } from '../../domain/value-objects/LeagueId';
 import { ILeagueSeason } from '../domain/ILeagueSeason';
 import { LeagueSeason } from '../domain/LeagueSeason';
 import { LeagueSeasonRepository } from '../domain/repository/LeagueSeasonRepository';
-import { LeagueSeasonCourtIdList } from '../domain/value-objects/LeagueSeasonCourtIdList';
 import { LeagueSeasonCreatedAt } from '../domain/value-objects/LeagueSeasonCreatedAt';
 import { LeagueSeasonId } from '../domain/value-objects/LeagueSeasonId';
 import { LeagueSeasonStatus } from '../domain/value-objects/LeagueSeasonStatus';
 import { LeagueSeasonUpdatedAt } from '../domain/value-objects/LeagueSeasonUpdatedAt';
+import { LSReferencedCourtIdList } from '../domain/value-objects/LSReferencedCourtIdList';
 import { LeagueSeasonCreatorPayload } from './LeagueSeasonCreatorPayload';
 
 export class LeagueSeasonCreator {
@@ -50,7 +50,7 @@ export class LeagueSeasonCreator {
     const leagueSeasonId: LeagueSeasonId = new LeagueSeasonId(id);
     const leagueSeasonStatus: LeagueSeasonStatus = LeagueSeasonStatus.createUpcoming();
     const leagueId: LeagueId = new LeagueId(payload.leagueId);
-    const leagueSeasonCourtIdList: LeagueSeasonCourtIdList = new LeagueSeasonCourtIdList(courtIdList);
+    const leagueSeasonCourtIdList: LSReferencedCourtIdList = new LSReferencedCourtIdList(courtIdList);
 
     await this.#idUniquenessValidatorService.ensureUniqueId<LeagueSeasonId, ILeagueSeason, LeagueSeason>(leagueSeasonId);
     await this.#leagueValidationService.ensureLeagueExist(leagueId);

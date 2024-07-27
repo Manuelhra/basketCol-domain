@@ -1,4 +1,4 @@
-import { RootError } from '../../../../shared/domain/exceptions/RootError';
+import { RootError } from './RootError';
 
 export class EmptyCourtIdListError extends RootError {
   constructor() {

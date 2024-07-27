@@ -1,10 +1,10 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IFinishingAttributes } from './IFinishingAttributes';
 import { FACreatedAt } from './value-objects/FACreatedAt';
 import { FADrivingDunk } from './value-objects/FADrivingDunk';
 import { FADrivingLayup } from './value-objects/FADrivingLayup';
 import { FAPostControl } from './value-objects/FAPostControl';
+import { FAReferencedPlayerUserId } from './value-objects/FAReferencedPlayerUserId';
 import { FAStandingDunk } from './value-objects/FAStandingDunk';
 import { FAUpdatedAt } from './value-objects/FAUpdatedAt';
 import { FinishingAttributesId } from './value-objects/FinishingAttributesId';
@@ -18,7 +18,7 @@ export class FinishingAttributes extends AggregateRoot<IFinishingAttributes> {
 
   readonly #postControl: FAPostControl;
 
-  readonly #playerUserId: PlayerUserId;
+  readonly #playerUserId: FAReferencedPlayerUserId;
 
   constructor(
     id: string,
@@ -40,7 +40,7 @@ export class FinishingAttributes extends AggregateRoot<IFinishingAttributes> {
     this.#drivingDunk = new FADrivingDunk(drivingDunk);
     this.#standingDunk = new FAStandingDunk(standingDunk);
     this.#postControl = new FAPostControl(postControl);
-    this.#playerUserId = new PlayerUserId(playerUserId, 'playerUserId');
+    this.#playerUserId = new FAReferencedPlayerUserId(playerUserId);
   }
 
   public toPrimitives(): IFinishingAttributes {
@@ -50,7 +50,7 @@ export class FinishingAttributes extends AggregateRoot<IFinishingAttributes> {
       drivingDunk: this.#drivingDunk.value,
       standingDunk: this.#standingDunk.value,
       postControl: this.#postControl.value,
-      playerUserId: this.#playerUserId.value,
+      playerUserId: this.#playerUserId.playerUserIdAsString,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

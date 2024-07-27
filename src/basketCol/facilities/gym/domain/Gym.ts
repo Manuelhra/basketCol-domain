@@ -1,5 +1,4 @@
 import { ILocationValueObjectProps } from '../../../shared/domain/value-objects/LocationValueObject';
-import { HostUserId } from '../../../users/host/domain/value-objects/HostUserId';
 import { Facility } from '../../shared/domain/Facility';
 import { IGym } from './IGym';
 import { GymCreatedAt } from './value-objects/GymCreatedAt';
@@ -7,6 +6,7 @@ import { GymEstablishmentDate } from './value-objects/GymEstablishmentDate';
 import { GymId } from './value-objects/GymId';
 import { GymLocation } from './value-objects/GymLocation';
 import { GymOfficialName } from './value-objects/GymOfficialName';
+import { GymRegisteredById } from './value-objects/GymRegisteredById';
 import { GymUpdatedAt } from './value-objects/GymUpdatedAt';
 
 export class Gym extends Facility<IGym> {
@@ -24,7 +24,7 @@ export class Gym extends Facility<IGym> {
       new GymOfficialName(officialName),
       new GymLocation(location),
       new GymEstablishmentDate(establishmentDate),
-      new HostUserId(registeredById, 'registeredById'),
+      new GymRegisteredById(registeredById),
       new GymCreatedAt(createdAt),
       new GymUpdatedAt(updatedAt),
     );
@@ -36,7 +36,7 @@ export class Gym extends Facility<IGym> {
       officialName: this.officialName.value,
       location: this.location.value,
       establishmentDate: this.establishmentDate.value,
-      registeredById: this.registeredById.value,
+      registeredById: this.registeredById.hostUserIdAsString,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

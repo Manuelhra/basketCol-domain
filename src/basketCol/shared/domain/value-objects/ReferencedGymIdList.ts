@@ -1,9 +1,10 @@
-import { ValueObject } from '../../../../shared/domain/value-objects/ValueObject';
+import { GymId } from '../../../facilities/gym/domain/value-objects/GymId';
 import { EmptyGymIdListError } from '../exceptions/EmptyGymIdListError';
 import { InvalidGymIdListElementError } from '../exceptions/InvalidGymIdListElementError';
-import { GymId } from './GymId';
 
-export abstract class GymIdList extends ValueObject<GymId[]> {
+import { ValueObject } from './ValueObject';
+
+export abstract class ReferencedGymIdList extends ValueObject<GymId[]> {
   protected constructor(value: string[]) {
     const gymIdList: GymId[] = value.map((gymId: string) => new GymId(gymId));
 

@@ -1,11 +1,11 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
-import { HostUserId } from '../../../users/host/domain/value-objects/HostUserId';
 import { IFacility } from './IFacility';
 import { FacilityCreatedAt } from './value-objects/FacilityCreatedAt';
 import { FacilityEstablishmentDate } from './value-objects/FacilityEstablishmentDate';
 import { FacilityId } from './value-objects/FacilityId';
 import { FacilityLocation } from './value-objects/FacilityLocation';
 import { FacilityOfficialName } from './value-objects/FacilityOfficialName';
+import { FacilityRegisteredBy } from './value-objects/FacilityRegisteredBy';
 import { FacilityUpdatedAt } from './value-objects/FacilityUpdatedAt';
 
 export abstract class Facility<I extends IFacility> extends AggregateRoot<I> {
@@ -15,14 +15,14 @@ export abstract class Facility<I extends IFacility> extends AggregateRoot<I> {
 
   protected readonly establishmentDate: FacilityEstablishmentDate;
 
-  protected readonly registeredById: HostUserId;
+  protected readonly registeredById: FacilityRegisteredBy;
 
   constructor(
     id: FacilityId,
     officialName: FacilityOfficialName,
     location: FacilityLocation,
     establishmentDate: FacilityEstablishmentDate,
-    registeredById: HostUserId,
+    registeredById: FacilityRegisteredBy,
     createdAt: FacilityCreatedAt,
     updatedAt: FacilityUpdatedAt,
   ) {

@@ -1,12 +1,12 @@
 import { AggregateRoot } from '../../../../shared/domain/AggregateRoot';
-import { LeagueId } from '../../domain/value-objects/LeagueId';
 import { ILeagueSeason } from './ILeagueSeason';
 import { LeagueSeasonEndDateBeforeStartDateError } from './exceptions/LeagueSeasonEndDateBeforeStartDateError';
 import { LeagueSeasonEndDateInPastError } from './exceptions/LeagueSeasonEndDateInPastError';
 import { LeagueSeasonInsufficientDurationError } from './exceptions/LeagueSeasonInsufficientDurationError';
 import { LeagueSeasonInsufficientPreparationTimeError } from './exceptions/LeagueSeasonInsufficientPreparationTimeError';
 import { LeagueSeasonStartDateInPastError } from './exceptions/LeagueSeasonStartDateInPastError';
-import { LeagueSeasonCourtIdList } from './value-objects/LeagueSeasonCourtIdList';
+import { LSReferencedCourtIdList } from './value-objects/LSReferencedCourtIdList';
+import { LSReferencedLeagueId } from './value-objects/LSReferencedLeagueId';
 import { LeagueSeasonCreatedAt } from './value-objects/LeagueSeasonCreatedAt';
 import { LeagueSeasonEndDate } from './value-objects/LeagueSeasonEndDate';
 import { LeagueSeasonId } from './value-objects/LeagueSeasonId';
@@ -28,9 +28,9 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
 
   readonly #status: LeagueSeasonStatus;
 
-  readonly #courtIdList: LeagueSeasonCourtIdList;
+  readonly #courtIdList: LSReferencedCourtIdList;
 
-  readonly #leagueId: LeagueId;
+  readonly #leagueId: LSReferencedLeagueId;
 
   constructor(
     id: string,
@@ -53,8 +53,8 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
     this.#startDate = new LeagueSeasonStartDate(startDate);
     this.#endDate = new LeagueSeasonEndDate(endDate);
     this.#status = new LeagueSeasonStatus(status);
-    this.#courtIdList = new LeagueSeasonCourtIdList(courtIdList);
-    this.#leagueId = new LeagueId(leagueId);
+    this.#courtIdList = new LSReferencedCourtIdList(courtIdList);
+    this.#leagueId = new LSReferencedLeagueId(leagueId);
 
     this.validateDates();
   }
@@ -66,7 +66,7 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
       startDate: this.#startDate.value,
       endDate: this.#endDate.value,
       status: this.#status.value,
-      leagueId: this.#leagueId.value,
+      leagueId: this.#leagueId.leagueIdAsString,
       courtIdList: this.#courtIdList.courtIdListAsStrings,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
