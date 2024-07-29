@@ -19,7 +19,7 @@ export class NullableFacilityId extends ValueObject<FACILITY_ID_TYPE> {
     return this.value === null ? null : this.value.value;
   }
 
-  protected ensureValueIsDefined(): void {}
+  protected override ensureValueIsDefined(): void {}
 
   protected isValueEqual(otherValue: unknown): boolean {
     if (this.value === null && otherValue === null) {

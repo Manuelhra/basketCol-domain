@@ -1,28 +1,18 @@
-import { IntegerValueObject } from '../../../../../../shared/domain/value-objects/IntegerValueObject';
-import { MaximumValueExceededError } from '../exceptions/MaximumValueExceededError';
-import { MinimumValueViolationError } from '../exceptions/MinimumValueViolationError';
+import { MaximumValueExceededError } from '../../../../../../shared/domain/exceptions/MaximumValueExceededError';
+import { PositiveIntegerValueObject } from '../../../../../../shared/domain/value-objects/PositiveIntegerValueObject';
 
-export abstract class Attribute extends IntegerValueObject {
+export abstract class Attribute extends PositiveIntegerValueObject {
   static readonly #maxAllowedValue: number = 99 as const;
-
-  static readonly #minAllowedValue: number = 0 as const;
 
   protected constructor(value: number, propertyName: string) {
     super(value, propertyName);
 
     Attribute.ensureNotExceedingMaximum(value, propertyName);
-    Attribute.ensureAboveMinimumValue(value, propertyName);
   }
 
   private static ensureNotExceedingMaximum(value: number, propertyName: string): void {
     if (value > Attribute.#maxAllowedValue) {
       throw new MaximumValueExceededError(propertyName, Attribute.#maxAllowedValue, value);
-    }
-  }
-
-  private static ensureAboveMinimumValue(value: number, propertyName: string): void {
-    if (value < Attribute.#minAllowedValue) {
-      throw new MinimumValueViolationError(propertyName, Attribute.#minAllowedValue, value);
     }
   }
 }

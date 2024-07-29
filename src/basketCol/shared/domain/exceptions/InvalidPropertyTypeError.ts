@@ -11,4 +11,3 @@ export class InvalidPropertyTypeError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-
