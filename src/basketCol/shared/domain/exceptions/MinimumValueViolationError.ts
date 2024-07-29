@@ -1,4 +1,4 @@
-import { RootError } from '../../../../../../shared/domain/exceptions/RootError';
+import { RootError } from './RootError';
 
 export class MinimumValueViolationError extends RootError {
   constructor(propertyName: string, minimumValue: number, actualValue: number) {
@@ -11,4 +11,3 @@ export class MinimumValueViolationError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-

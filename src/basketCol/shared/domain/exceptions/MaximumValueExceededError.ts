@@ -1,4 +1,4 @@
-import { RootError } from '../../../../../../shared/domain/exceptions/RootError';
+import { RootError } from './RootError';
 
 export class MaximumValueExceededError extends RootError {
   constructor(propertyName: string, maximumValue: number, actualValue: number) {
@@ -11,4 +11,3 @@ export class MaximumValueExceededError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-
