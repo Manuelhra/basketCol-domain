@@ -18,11 +18,11 @@ export abstract class MinutesDurationValueObject extends ObjectValueObject<IMinu
     return value;
   }
 
-  public get minutes(): number {
+  public get minutesAsString(): number {
     return this.value.value;
   }
 
   public toHours(): number {
-    return this.minutes / 60;
+    return this.minutesAsString / 60;
   }
 }

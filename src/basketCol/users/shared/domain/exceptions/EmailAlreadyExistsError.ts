@@ -14,4 +14,3 @@ export class EmailAlreadyExistsError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-
