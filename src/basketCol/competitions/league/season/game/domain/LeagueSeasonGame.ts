@@ -34,9 +34,6 @@ export class LeagueSeasonGame extends Game<ILeagueSeasonGame> {
     createdAt: string,
     updatedAt: string,
   ) {
-    const headReferee = new LSGameHeadRefereeId(headRefereeId);
-    headReferee.ensureDifferentReferees(assistantRefereeId);
-
     super(
       new LSGameId(id),
       new LSGameDate(date),
@@ -46,7 +43,7 @@ export class LeagueSeasonGame extends Game<ILeagueSeasonGame> {
       new LSGameAwayScore(awayScore),
       new LSGameType(gameType),
       new LSGameDuration(gameDuration),
-      headReferee,
+      new LSGameHeadRefereeId(headRefereeId),
       new LSGameAssistantRefereeId(assistantRefereeId),
       new LSGameCourtId(courtId),
       new LSGameCreatedAt(createdAt),
@@ -65,7 +62,7 @@ export class LeagueSeasonGame extends Game<ILeagueSeasonGame> {
       homeScore: this.homeScore.value,
       awayScore: this.awayScore.value,
       gameType: this.gameType.value,
-      gameDuration: this.gameDuration.minutesAsString,
+      gameDuration: this.gameDuration.value,
       headRefereeId: this.headRefereeId.refereeUserIdAsString,
       assistantRefereeId: this.assistantRefereeId.refereeUserIdAsString,
       courtId: this.courtId.courtIdAsString,

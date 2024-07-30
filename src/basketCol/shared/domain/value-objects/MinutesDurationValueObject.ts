@@ -17,12 +17,4 @@ export abstract class MinutesDurationValueObject extends ObjectValueObject<IMinu
     }
     return value;
   }
-
-  public get minutesAsString(): number {
-    return this.value.value;
-  }
-
-  public toHours(): number {
-    return this.minutesAsString / 60;
-  }
 }

@@ -21,5 +21,3 @@ export abstract class ReferencedPlayerUserId extends ValueObject<PlayerUserId> {
     }
   }
 }
-
-// TODO: Crear los value objecst abstractos para todos los campos relacionados, cambiar los que ya se usaron y heredarlos de esta carpeta general
