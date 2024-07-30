@@ -8,7 +8,7 @@ export class PlayerUserNotFoundError extends RootError {
     this.name = 'PlayerUserNotFoundError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

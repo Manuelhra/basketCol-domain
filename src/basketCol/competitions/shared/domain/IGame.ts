@@ -7,7 +7,7 @@ export interface IGame extends IAggregateRoot {
   homeScore: number;
   awayScore: number;
   gameType: string;
-  gameDuration: number;
+  gameDuration: { value: number; unit: string };
   headRefereeId: string;
   assistantRefereeId: string;
   courtId: string;

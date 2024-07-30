@@ -1,4 +1,6 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
+import { SameRefereeError } from './exceptions/SameRefereeError';
+import { SameTeamError } from './exceptions/SameTeamError';
 import { IGame } from './IGame';
 import { GameAssistantRefereeId } from './value-object/GameAssistantRefereeId';
 import { GameAwayScore } from './value-object/GameAwayScore';
@@ -62,5 +64,20 @@ export abstract class Game<I extends IGame> extends AggregateRoot<I> {
     this.headRefereeId = headRefereeId;
     this.assistantRefereeId = assistantRefereeId;
     this.courtId = courtId;
+
+    Game.ensureDifferentReferees(headRefereeId, assistantRefereeId);
+    Game.ensureDifferentTeams(homeTeamId, awayTeamId);
+  }
+
+  private static ensureDifferentReferees(headRefereeId: GameHeadRefereeId, assistantRefereeId: GameAssistantRefereeId): void {
+    if (headRefereeId.refereeUserIdAsString === assistantRefereeId.refereeUserIdAsString) {
+      throw new SameRefereeError(headRefereeId.refereeUserIdAsString, assistantRefereeId.refereeUserIdAsString);
+    }
+  }
+
+  private static ensureDifferentTeams(homeTeamId: GameHomeTeamId, awayTeamId: GameAwayTeamId): void {
+    if (homeTeamId.teamIdAsString === awayTeamId.teamIdAsString) {
+      throw new SameTeamError(homeTeamId.teamIdAsString, awayTeamId.teamIdAsString);
+    }
   }
 }

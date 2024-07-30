@@ -1,13 +1,13 @@
 import { RootError } from '../../../../shared/domain/exceptions/RootError';
 
 export class SameRefereeError extends RootError {
-  constructor(refereeId: string) {
-    const message = `The referee with ID '${refereeId}' cannot be both the head referee and the assistant referee.`;
+  constructor(headRefereeId: string, assistantRefereeId: string) {
+    const message = `The head referee with ID '${headRefereeId}' cannot also be the assistant referee with ID '${assistantRefereeId}'.`;
     super(message);
     this.name = 'SameRefereeError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }
