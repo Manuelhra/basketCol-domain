@@ -8,7 +8,7 @@ import { Team } from '../domain/Team';
 import { TeamCreatedAt } from '../domain/value-objects/TeamCreatedAt';
 import { TeamId } from '../domain/value-objects/TeamId';
 import { TeamUpdatedAt } from '../domain/value-objects/TeamUpdatedAt';
-import { TeamCreatorPayload } from './TeamCreatorPayload';
+import { CreateTeamDTO } from './dto/CreateTeamDTO';
 
 export class TeamCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -31,7 +31,7 @@ export class TeamCreator {
     this.#teamRepository = dependencies.teamRepository;
   }
 
-  public async run(payload: TeamCreatorPayload): Promise<void> {
+  public async run(payload: CreateTeamDTO): Promise<void> {
     const {
       id,
       officialName,

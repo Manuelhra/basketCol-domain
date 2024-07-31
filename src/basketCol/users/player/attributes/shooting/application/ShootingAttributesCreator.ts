@@ -8,7 +8,7 @@ import { ShootingAttributes } from '../domain/ShootingAttributes';
 import { SACreatedAt } from '../domain/value-objects/SACreatedAt';
 import { SAUpdatedAt } from '../domain/value-objects/SAUpdatedAt';
 import { ShootingAttributesId } from '../domain/value-objects/ShootingAttributesId';
-import { ShootingAttributesCreatorPayload } from './ShootingAttributesCreatorPayload';
+import { CreateShootingAttributesDTO } from './dto/CreateShootingAttributesDTO';
 
 export class ShootingAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -31,7 +31,7 @@ export class ShootingAttributesCreator {
     this.#shootingAttributesRepository = dependencies.shootingAttributesRepository;
   }
 
-  public async run(payload: ShootingAttributesCreatorPayload): Promise<void> {
+  public async run(payload: CreateShootingAttributesDTO): Promise<void> {
     const {
       id,
       closeShot,

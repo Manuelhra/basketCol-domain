@@ -7,7 +7,7 @@ import { HostUserRepository } from '../domain/repository/HostUserRepository';
 import { HostUserCreatedAt } from '../domain/value-objects/HostUserCreatedAt';
 import { HostUserPassword } from '../domain/value-objects/HostUserPassword';
 import { HostUserUpdatedAt } from '../domain/value-objects/HostUserUpdatedAt';
-import { HostUserCreatorPayload } from './HostUserCreatorPayload';
+import { CreateHostUserDTO } from './dto/CreateHostUserDTO';
 
 export class HostUserCreator {
   readonly #hostUserRepository: HostUserRepository;
@@ -26,7 +26,7 @@ export class HostUserCreator {
     this.#businessDateService = dependencies.businessDateService;
   }
 
-  public async run(payload: HostUserCreatorPayload): Promise<void> {
+  public async run(payload: CreateHostUserDTO): Promise<void> {
     const hostUserFound: Nullable<HostUser> = await this.#hostUserRepository.search();
 
     if (hostUserFound) {

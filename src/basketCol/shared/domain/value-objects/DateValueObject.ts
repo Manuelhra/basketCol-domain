@@ -13,6 +13,10 @@ export abstract class DateValueObject extends StringValueObject {
     DateValueObject.ensureIsValidDate(value, propertyName);
   }
 
+  public get dateAsString(): string {
+    return this.value;
+  }
+
   public static fromDate(date: Date): DateValueObject {
     const dateString = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
     return new (this as any)(dateString, 'date');

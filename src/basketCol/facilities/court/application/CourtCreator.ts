@@ -13,7 +13,7 @@ import { CourtCreatedAt } from '../domain/value-objects/CourtCreatedAt';
 import { CourtEstablishmentDate } from '../domain/value-objects/CourtEstablishmentDate';
 import { CourtId } from '../domain/value-objects/CourtId';
 import { CourtUpdatedAt } from '../domain/value-objects/CourtUpdatedAt';
-import { CourtCreatorPayload } from './CourtCreatorPayload';
+import { CreateCourtDTO } from './dto/CreateCourtDTO';
 
 export class CourtCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -40,7 +40,7 @@ export class CourtCreator {
     this.#courtRepository = dependencies.courtRepository;
   }
 
-  public async run(payload: CourtCreatorPayload): Promise<void> {
+  public async run(payload: CreateCourtDTO): Promise<void> {
     const {
       id,
       officialName,

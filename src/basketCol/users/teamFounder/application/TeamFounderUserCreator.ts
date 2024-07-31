@@ -10,7 +10,7 @@ import { TFUCreatedAt } from '../domain/value-objects/TFUCreatedAt';
 import { TFUEmail } from '../domain/value-objects/TFUEmail';
 import { TFUPassword } from '../domain/value-objects/TFUPassword';
 import { TFUUpdatedAt } from '../domain/value-objects/TFUUpdatedAt';
-import { TeamFounderUserCreatorPayload } from './TeamFounderUserCreatorPayload';
+import { CreateTeamFounderUserDTO } from './dto/CreateTeamFounderUserDTO';
 
 export class TeamFounderUserCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -37,7 +37,7 @@ export class TeamFounderUserCreator {
     this.#tFURepository = dependencies.tFURepository;
   }
 
-  public async run(payload: TeamFounderUserCreatorPayload): Promise<void> {
+  public async run(payload: CreateTeamFounderUserDTO): Promise<void> {
     const {
       id,
       name,

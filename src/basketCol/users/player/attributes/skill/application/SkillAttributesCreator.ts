@@ -8,7 +8,7 @@ import { SkillAttributes } from '../domain/SkillAttributes';
 import { SACreatedAt } from '../domain/value-objects/SACreatedAt';
 import { SAUpdatedAt } from '../domain/value-objects/SAUpdatedAt';
 import { SkillAttributesId } from '../domain/value-objects/SkillAttributesId';
-import { SkillAttributesCreatorPayload } from './SkillAttributesCreatorPayload';
+import { CreateSkillAttributesDTO } from './dto/CreateSkillAttributesDTO';
 
 export class SkillAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -31,7 +31,7 @@ export class SkillAttributesCreator {
     this.#skillAttributesRepository = dependencies.skillAttributesRepository;
   }
 
-  public async run(payload: SkillAttributesCreatorPayload): Promise<void> {
+  public async run(payload: CreateSkillAttributesDTO): Promise<void> {
     const {
       id,
       passAccuracy,

@@ -12,7 +12,7 @@ import { LeagueSeasonAwardsRepository } from '../domain/repository/LeagueSeasonA
 import { LeagueSeasonAwardsId } from '../domain/value-objects/LeagueSeasonAwardsId';
 import { LSACreatedAt } from '../domain/value-objects/LSACreatedAt';
 import { LSAUpdatedAt } from '../domain/value-objects/LSAUpdatedAt';
-import { LeagueSeasonAwardsCreatorPayload } from './LeagueSeasonAwardsCreatorPayload';
+import { CreateLeagueSeasonAwardsDTO } from './dto/CreateLeagueSeasonAwardsDTO';
 
 export class LeagueSeasonAwardsCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -43,7 +43,7 @@ export class LeagueSeasonAwardsCreator {
     this.#leagueSeasonAwardsRepository = dependencies.leagueSeasonAwardsRepository;
   }
 
-  public async run(payload: LeagueSeasonAwardsCreatorPayload): Promise<void> {
+  public async run(payload: CreateLeagueSeasonAwardsDTO): Promise<void> {
     const { id } = payload;
 
     const leagueSeasonAwardsId: LeagueSeasonAwardsId = new LeagueSeasonAwardsId(id);

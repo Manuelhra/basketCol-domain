@@ -8,7 +8,7 @@ import { PhysicalAttributesRepository } from '../domain/repository/PhysicalAttri
 import { PACreatedAt } from '../domain/value-objects/PACreatedAt';
 import { PAUpdatedAt } from '../domain/value-objects/PAUpdatedAt';
 import { PhysicalAttributesId } from '../domain/value-objects/PhysicalAttributesId';
-import { PhysicalAttributesCreatorPayload } from './PhysicalAttributesCreatorPayload';
+import { CreatePhysicalAttributesDTO } from './dto/CreatePhysicalAttributesDTO';
 
 export class PhysicalAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -31,7 +31,7 @@ export class PhysicalAttributesCreator {
     this.#physicalAttributesRepository = dependencies.physicalAttributesRepository;
   }
 
-  public async run(payload: PhysicalAttributesCreatorPayload): Promise<void> {
+  public async run(payload: CreatePhysicalAttributesDTO): Promise<void> {
     const {
       id,
       speed,
