@@ -7,7 +7,7 @@ export class FixtureDateTooSoonError extends RootError {
     this.name = 'FixtureDateTooSoonError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }
