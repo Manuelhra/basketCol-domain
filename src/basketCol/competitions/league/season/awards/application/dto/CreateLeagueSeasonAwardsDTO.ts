@@ -1,4 +1,4 @@
-export interface LeagueSeasonAwardsCreatorPayload {
+export interface CreateLeagueSeasonAwardsDTO {
   id: string;
   bestThreePointShooterId: string;
   bestTwoPointShooterId: string;

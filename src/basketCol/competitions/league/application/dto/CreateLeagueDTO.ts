@@ -3,7 +3,7 @@ interface Item {
   label: string;
 }
 
-export interface LeagueCreatorPayload {
+export interface CreateLeagueDTO {
   id: string;
   name: {
     short: string;

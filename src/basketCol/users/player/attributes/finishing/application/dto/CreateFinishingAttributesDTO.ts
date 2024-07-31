@@ -1,4 +1,4 @@
-export interface FinishingAttributesCreatorPayload {
+export interface CreateFinishingAttributesDTO {
   id: string;
   drivingLayup: number;
   drivingDunk: number;

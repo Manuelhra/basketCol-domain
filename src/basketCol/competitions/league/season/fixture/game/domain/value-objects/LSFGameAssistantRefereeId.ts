@@ -1,6 +1,6 @@
-import { GameAssistantRefereeId } from '../../../../../../shared/domain/value-object/GameAssistantRefereeId';
+import { FGameAssistantRefereeId } from '../../../../../../shared/domain/value-object/FGameAssistantRefereeId';
 
-export class LSFGameAssistantRefereeId extends GameAssistantRefereeId {
+export class LSFGameAssistantRefereeId extends FGameAssistantRefereeId {
   public constructor(value: string) {
     super(value);
   }

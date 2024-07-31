@@ -12,7 +12,7 @@ import { LeagueEstablishmentDate } from '../domain/value-objects/LeagueEstablish
 import { LeagueId } from '../domain/value-objects/LeagueId';
 import { LeagueName } from '../domain/value-objects/LeagueName';
 import { LeagueUpdatedAt } from '../domain/value-objects/LeagueUpdatedAt';
-import { LeagueCreatorPayload } from './LeagueCreatorPayload';
+import { CreateLeagueDTO } from './dto/CreateLeagueDTO';
 
 export class LeagueCreator {
   readonly #businessDateService: BusinessDateService;
@@ -39,7 +39,7 @@ export class LeagueCreator {
     this.#idUniquenessValidatorService = dependencies.idUniquenessValidatorService;
   }
 
-  public async run(payload: LeagueCreatorPayload): Promise<void> {
+  public async run(payload: CreateLeagueDTO): Promise<void> {
     const {
       id,
       name,

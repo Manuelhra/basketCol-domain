@@ -1,4 +1,4 @@
-export interface TeamFounderUserCreatorPayload {
+export interface CreateRefereeUserDTO {
   id: string;
   name: { firstName: string; lastName: string; };
   biography: string;

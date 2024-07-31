@@ -1,4 +1,4 @@
-export interface ShootingAttributesCreatorPayload {
+export interface CreateShootingAttributesDTO {
   id: string;
   closeShot: number;
   midRangeShot: number;

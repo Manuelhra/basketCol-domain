@@ -1,7 +1,20 @@
-import { Game } from '../../../../../shared/domain/Game';
+import { FixtureGame } from '../../../../../shared/domain/FixtureGame';
 import { ILeagueSeasonFixtureGame } from './ILeagueSeasonFixtureGame';
+import { LSFGameAssistantRefereeId } from './value-objects/LSFGameAssistantRefereeId';
+import { LSFGameAwayScore } from './value-objects/LSFGameAwayScore';
+import { LSFGameAwayTeamId } from './value-objects/LSFGameAwayTeamId';
+import { LSFGameCourtId } from './value-objects/LSFGameCourtId';
+import { LSFGameCreatedAt } from './value-objects/LSFGameCreatedAt';
+import { LSFGameDuration } from './value-objects/LSFGameDuration';
+import { LSFGameFixtureId } from './value-objects/LSFGameFixtureId';
+import { LSFGameHeadRefereeId } from './value-objects/LSFGameHeadRefereeId';
+import { LSFGameHomeScore } from './value-objects/LSFGameHomeScore';
+import { LSFGameHomeTeamId } from './value-objects/LSFGameHomeTeamId';
+import { LSFGameId } from './value-objects/LSFGameId';
+import { LSFGameType } from './value-objects/LSFGameType';
+import { LSFGameUpdatedAt } from './value-objects/LSFGameUpdatedAt';
 
-export class LeagueSeasonFixtureGame extends Game<ILeagueSeasonFixtureGame> {
+export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGame> {
   constructor(
     id: string,
     homeTeamId: string,
@@ -18,22 +31,23 @@ export class LeagueSeasonFixtureGame extends Game<ILeagueSeasonFixtureGame> {
     updatedAt: string,
   ) {
     super(
-      new LSGameId(id),
-      new LSGameHomeTeamId(homeTeamId),
-      new LSGameAwayTeamId(awayTeamId),
-      new LSGameHomeScore(homeScore),
-      new LSGameAwayScore(awayScore),
-      new LSGameType(gameType),
-      new LSGameDuration(gameDuration),
-      new LSGameHeadRefereeId(headRefereeId),
-      new LSGameAssistantRefereeId(assistantRefereeId),
-      new LSGameCourtId(courtId),
-      new LSGameCreatedAt(createdAt),
-      new LSGameUpdatedAt(updatedAt),
+      new LSFGameId(id),
+      new LSFGameHomeTeamId(homeTeamId),
+      new LSFGameAwayTeamId(awayTeamId),
+      new LSFGameHomeScore(homeScore),
+      new LSFGameAwayScore(awayScore),
+      new LSFGameType(gameType),
+      new LSFGameDuration(gameDuration),
+      new LSFGameHeadRefereeId(headRefereeId),
+      new LSFGameAssistantRefereeId(assistantRefereeId),
+      new LSFGameCourtId(courtId),
+      new LSFGameFixtureId(fixtureId),
+      new LSFGameCreatedAt(createdAt),
+      new LSFGameUpdatedAt(updatedAt),
     );
   }
 
-  public toPrimitives(): ILeagueSeasonGame {
+  public toPrimitives(): ILeagueSeasonFixtureGame {
     return {
       id: this.id.value,
       homeTeamId: this.homeTeamId.teamIdAsString,
@@ -45,7 +59,7 @@ export class LeagueSeasonFixtureGame extends Game<ILeagueSeasonFixtureGame> {
       headRefereeId: this.headRefereeId.refereeUserIdAsString,
       assistantRefereeId: this.assistantRefereeId.refereeUserIdAsString,
       courtId: this.courtId.courtIdAsString,
-      leagueSeasonId: this.#leagueSeasonId.leagueSeasonIdAsString,
+      fixtureId: this.fixtureId.fixtureIdAsString,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

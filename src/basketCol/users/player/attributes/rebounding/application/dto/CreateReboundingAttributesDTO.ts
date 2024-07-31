@@ -1,4 +1,4 @@
-export interface ReboundingAttributesCreatorPayload {
+export interface CreateReboundingAttributesDTO {
   id: string;
   offensiveRebound: number;
   defensiveRebound: number;

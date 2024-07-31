@@ -10,7 +10,7 @@ import { PlayerUserEmail } from '../domain/value-objects/PlayerUserEmail';
 import { PlayerUserId } from '../domain/value-objects/PlayerUserId';
 import { PlayerUserPassword } from '../domain/value-objects/PlayerUserPassword';
 import { PlayerUserUpdatedAt } from '../domain/value-objects/PlayerUserUpdatedAt';
-import { PlayerUserCreatorPayload } from './PlayerUserCreatorPayload';
+import { CreatePlayerUserDTO } from './dto/CreatePlayerUserDTO';
 
 export class PlayerUserCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -38,7 +38,7 @@ export class PlayerUserCreator {
     this.#businessDateService = dependencies.businessDateService;
   }
 
-  public async run(payload: PlayerUserCreatorPayload): Promise<void> {
+  public async run(payload: CreatePlayerUserDTO): Promise<void> {
     const {
       id,
       name,

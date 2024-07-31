@@ -10,7 +10,7 @@ import { GymCreatedAt } from '../domain/value-objects/GymCreatedAt';
 import { GymEstablishmentDate } from '../domain/value-objects/GymEstablishmentDate';
 import { GymId } from '../domain/value-objects/GymId';
 import { GymUpdatedAt } from '../domain/value-objects/GymUpdatedAt';
-import { GymCreatorPayload } from './GymCreatorPayload';
+import { CreateGymDTO } from './dto/CreateGymDTO';
 
 export class GymCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -33,7 +33,7 @@ export class GymCreator {
     this.#gymRepository = dependencies.gymRepository;
   }
 
-  public async run(payload: GymCreatorPayload): Promise<void> {
+  public async run(payload: CreateGymDTO): Promise<void> {
     const {
       id,
       officialName,

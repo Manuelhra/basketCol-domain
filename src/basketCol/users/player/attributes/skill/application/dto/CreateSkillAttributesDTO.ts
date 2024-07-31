@@ -1,4 +1,4 @@
-export interface SkillAttributesCreatorPayload {
+export interface CreateSkillAttributesDTO {
   id: string;
   passAccuracy: number;
   ballHandle: number;

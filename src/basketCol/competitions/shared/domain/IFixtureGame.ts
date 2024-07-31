@@ -15,6 +15,7 @@ export interface IFixtureGame extends IAggregateRoot {
 
 // TODO: Terminar flujo, crear referenced FixtureId y crear BoxScore
 // Agregar hora de juego en Game
+// Crear DTOS para todas las capas de application
 
 /*
 interface IGame extends IAuditableEntity {

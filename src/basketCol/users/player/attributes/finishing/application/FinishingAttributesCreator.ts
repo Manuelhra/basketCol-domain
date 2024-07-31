@@ -8,7 +8,7 @@ import { FinishingAttributesRepository } from '../domain/repository/FinishingAtt
 import { FACreatedAt } from '../domain/value-objects/FACreatedAt';
 import { FAUpdatedAt } from '../domain/value-objects/FAUpdatedAt';
 import { FinishingAttributesId } from '../domain/value-objects/FinishingAttributesId';
-import { FinishingAttributesCreatorPayload } from './FinishingAttributesCreatorPayload';
+import { CreateFinishingAttributesDTO } from './dto/CreateFinishingAttributesDTO';
 
 export class FinishingAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -31,7 +31,7 @@ export class FinishingAttributesCreator {
     this.#finishingAttributesRepository = dependencies.finishingAttributesRepository;
   }
 
-  public async run(payload: FinishingAttributesCreatorPayload): Promise<void> {
+  public async run(payload: CreateFinishingAttributesDTO): Promise<void> {
     const {
       id,
       drivingLayup,

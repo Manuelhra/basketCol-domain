@@ -8,7 +8,7 @@ import { ReboundingAttributesRepository } from '../domain/repository/ReboundingA
 import { RACreatedAt } from '../domain/value-objects/RACreatedAt';
 import { RAUpdatedAt } from '../domain/value-objects/RAUpdatedAt';
 import { ReboundingAttributesId } from '../domain/value-objects/ReboundingAttributesId';
-import { ReboundingAttributesCreatorPayload } from './ReboundingAttributesCreatorPayload';
+import { CreateReboundingAttributesDTO } from './dto/CreateReboundingAttributesDTO';
 
 export class ReboundingAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -31,7 +31,7 @@ export class ReboundingAttributesCreator {
     this.#reboundingAttributesRepository = dependencies.reboundingAttributesRepository;
   }
 
-  public async run(payload: ReboundingAttributesCreatorPayload): Promise<void> {
+  public async run(payload: CreateReboundingAttributesDTO): Promise<void> {
     const {
       id,
       offensiveRebound,

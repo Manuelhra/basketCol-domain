@@ -1,4 +1,4 @@
-export interface PhysicalAttributesCreatorPayload {
+export interface CreatePhysicalAttributesDTO {
   id: string; speed: number;
   acceleration: number;
   strength: number;

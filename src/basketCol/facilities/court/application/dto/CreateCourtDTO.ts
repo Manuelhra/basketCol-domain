@@ -1,6 +1,6 @@
-import { ILocationValueObjectProps } from '../../../shared/domain/value-objects/LocationValueObject';
+import { ILocationValueObjectProps } from '../../../../shared/domain/value-objects/LocationValueObject';
 
-export interface CourtCreatorPayload {
+export interface CreateCourtDTO {
   id: string;
   officialName: string;
   establishmentDate: string;

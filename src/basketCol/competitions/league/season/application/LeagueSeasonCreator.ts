@@ -11,7 +11,7 @@ import { LeagueSeasonId } from '../domain/value-objects/LeagueSeasonId';
 import { LeagueSeasonStatus } from '../domain/value-objects/LeagueSeasonStatus';
 import { LeagueSeasonUpdatedAt } from '../domain/value-objects/LeagueSeasonUpdatedAt';
 import { LSReferencedCourtIdList } from '../domain/value-objects/LSReferencedCourtIdList';
-import { LeagueSeasonCreatorPayload } from './LeagueSeasonCreatorPayload';
+import { CreateLeagueSeasonDTO } from './dto/CreateLeagueSeasonDTO';
 
 export class LeagueSeasonCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -38,7 +38,7 @@ export class LeagueSeasonCreator {
     this.#courtValidationService = dependencies.courtValidationService;
   }
 
-  public async run(payload: LeagueSeasonCreatorPayload): Promise<void> {
+  public async run(payload: CreateLeagueSeasonDTO): Promise<void> {
     const {
       id,
       name,

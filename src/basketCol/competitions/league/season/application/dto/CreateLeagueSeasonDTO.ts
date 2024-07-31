@@ -1,4 +1,4 @@
-export interface LeagueSeasonCreatorPayload {
+export interface CreateLeagueSeasonDTO {
   id: string;
   name: string;
   startDate: string;

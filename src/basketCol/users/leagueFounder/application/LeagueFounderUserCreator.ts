@@ -10,7 +10,7 @@ import { LeagueFounderUserEmail } from '../domain/value-objects/LeagueFounderUse
 import { LeagueFounderUserId } from '../domain/value-objects/LeagueFounderUserId';
 import { LeagueFounderUserPassword } from '../domain/value-objects/LeagueFounderUserPassword';
 import { LeagueFounderUserUpdatedAt } from '../domain/value-objects/LeagueFounderUserUpdatedAt';
-import { LeagueFounderUserCreatorPayload } from './LeagueFounderUserCreatorPayload';
+import { CreateLeagueFounderUserDTO } from './dto/CreateLeagueFounderUserDTO';
 
 export class LeagueFounderUserCreator {
   readonly #emailUniquenessValidatorService: EmailUniquenessValidatorService;
@@ -37,14 +37,14 @@ export class LeagueFounderUserCreator {
     this.#businessDateService = dependencies.businessDateService;
   }
 
-  public async run(leagueFounderUserCreatorPayload: LeagueFounderUserCreatorPayload): Promise<void> {
+  public async run(payload: CreateLeagueFounderUserDTO): Promise<void> {
     const {
       id,
       email,
       name,
       biography,
       password,
-    } = leagueFounderUserCreatorPayload;
+    } = payload;
 
     const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(id);
     const leagueFounderUserEmail: LeagueFounderUserEmail = new LeagueFounderUserEmail({ value: email.value, verified: false });

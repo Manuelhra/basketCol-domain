@@ -10,7 +10,7 @@ import { RefereeUserEmail } from '../domain/value-objects/RefereeUserEmail';
 import { RefereeUserId } from '../domain/value-objects/RefereeUserId';
 import { RefereeUserPassword } from '../domain/value-objects/RefereeUserPassword';
 import { RefereeUserUpdatedAt } from '../domain/value-objects/RefereeUserUpdatedAt';
-import { RefereeUserCreatorPayload } from './RefereeUserCreatorPayload';
+import { CreateRefereeUserDTO } from './dto/CreateRefereeUserDTO';
 
 export class RefereeUserCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -37,7 +37,7 @@ export class RefereeUserCreator {
     this.#refereeUserRepository = dependencies.refereeUserRepository;
   }
 
-  public async run(payload: RefereeUserCreatorPayload): Promise<void> {
+  public async run(payload: CreateRefereeUserDTO): Promise<void> {
     const {
       id,
       name,

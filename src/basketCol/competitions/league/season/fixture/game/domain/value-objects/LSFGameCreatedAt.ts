@@ -1,6 +1,6 @@
-import { GameCreatedAt } from '../../../../../../shared/domain/value-object/GameCreatedAt';
+import { FGameCreatedAt } from '../../../../../../shared/domain/value-object/FGameCreatedAt';
 
-export class LSFGameCreatedAt extends GameCreatedAt {
+export class LSFGameCreatedAt extends FGameCreatedAt {
   public constructor(value: string) {
     super(value);
   }

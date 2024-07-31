@@ -1,6 +1,6 @@
-import { GameType } from '../../../../../../shared/domain/value-object/GameType';
+import { FGameType } from '../../../../../../shared/domain/value-object/FGameType';
 
-export class LSFGameType extends GameType {
+export class LSFGameType extends FGameType {
   public constructor(value: string) {
     super(value);
   }

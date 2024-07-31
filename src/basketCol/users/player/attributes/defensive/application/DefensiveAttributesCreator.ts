@@ -8,7 +8,7 @@ import { DefensiveAttributesRepository } from '../domain/repository/DefensiveAtt
 import { DACreatedAt } from '../domain/value-objects/DACreatedAt';
 import { DAUpdatedAt } from '../domain/value-objects/DAUpdatedAt';
 import { DefensiveAttributesId } from '../domain/value-objects/DefensiveAttributesId';
-import { DefensiveAttributesCreatorPayload } from './DefensiveAttributesCreatorPayload';
+import { CreateDefensiveAttributesDTO } from './dto/CreateDefensiveAttributesDTO';
 
 export class DefensiveAttributesCreator {
   readonly #idUniquenessValidatorService: IdUniquenessValidatorService;
@@ -31,7 +31,7 @@ export class DefensiveAttributesCreator {
     this.#defensiveAttributesRepository = dependencies.defensiveAttributesRepository;
   }
 
-  public async run(payload: DefensiveAttributesCreatorPayload): Promise<void> {
+  public async run(payload: CreateDefensiveAttributesDTO): Promise<void> {
     const {
       id,
       interiorDefense,

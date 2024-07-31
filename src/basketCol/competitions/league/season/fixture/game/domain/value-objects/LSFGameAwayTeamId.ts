@@ -1,6 +1,6 @@
-import { GameAwayTeamId } from '../../../../../../shared/domain/value-object/GameAwayTeamId';
+import { FGameAwayTeamId } from '../../../../../../shared/domain/value-object/FGameAwayTeamId';
 
-export class LSFGameAwayTeamId extends GameAwayTeamId {
+export class LSFGameAwayTeamId extends FGameAwayTeamId {
   public constructor(value: string) {
     super(value);
   }

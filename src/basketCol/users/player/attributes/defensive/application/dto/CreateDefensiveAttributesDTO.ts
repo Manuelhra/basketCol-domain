@@ -1,4 +1,4 @@
-export interface DefensiveAttributesCreatorPayload {
+export interface CreateDefensiveAttributesDTO {
   id: string;
   interiorDefense: number;
   perimeterDefense: number;

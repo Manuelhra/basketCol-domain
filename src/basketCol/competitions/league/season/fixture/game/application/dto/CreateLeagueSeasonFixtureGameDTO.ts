@@ -1,6 +1,5 @@
-export interface LSGameCreatorPayload {
+export interface CreateLeagueSeasonFixtureGameDTO {
   id: string;
-  date: string;
   homeTeamId: string;
   awayTeamId: string;
   homeScore: number;
@@ -10,5 +9,5 @@ export interface LSGameCreatorPayload {
   headRefereeId: string;
   assistantRefereeId: string;
   courtId: string;
-  leagueSeasonId: string;
+  fixtureId: string;
 }

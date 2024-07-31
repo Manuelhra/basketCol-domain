@@ -1,6 +1,6 @@
-import { GameHeadRefereeId } from '../../../../../../shared/domain/value-object/GameHeadRefereeId';
+import { FGameHeadRefereeId } from '../../../../../../shared/domain/value-object/FGameHeadRefereeId';
 
-export class LSFGameHeadRefereeId extends GameHeadRefereeId {
+export class LSFGameHeadRefereeId extends FGameHeadRefereeId {
   public constructor(value: string) {
     super(value);
   }

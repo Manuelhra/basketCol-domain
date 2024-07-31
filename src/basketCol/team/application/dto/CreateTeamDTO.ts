@@ -1,4 +1,4 @@
-export interface TeamCreatorPayload {
+export interface CreateTeamDTO {
   id: string;
   officialName: string;
   teamFounderUserId: string;

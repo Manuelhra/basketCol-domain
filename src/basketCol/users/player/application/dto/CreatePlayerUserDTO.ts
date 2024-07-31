@@ -1,4 +1,4 @@
-export interface LeagueFounderUserCreatorPayload {
+export interface CreatePlayerUserDTO {
   id: string;
   name: { firstName: string; lastName: string; };
   biography: string;

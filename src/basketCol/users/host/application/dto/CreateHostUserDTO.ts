@@ -1,4 +1,4 @@
-export interface HostUserCreatorPayload {
+export interface CreateHostUserDTO {
   id: string;
   name: { firstName: string; lastName: string; };
   biography: string;
