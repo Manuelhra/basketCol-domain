@@ -13,6 +13,7 @@ export class LeagueSeasonFixture extends Fixture<ILeagueSeasonFixture> {
     id: string,
     date: string,
     name: string | null,
+    leagueSeasonId: string,
     createdAt: string,
     updatedAt: string,
   ) {
@@ -24,7 +25,7 @@ export class LeagueSeasonFixture extends Fixture<ILeagueSeasonFixture> {
       new LSFixtureCreatedAt(updatedAt),
     );
 
-    this.#leagueSeasonId = new LSFixtureLeagueSeasonId(id);
+    this.#leagueSeasonId = new LSFixtureLeagueSeasonId(leagueSeasonId);
   }
 
   public toPrimitives(): ILeagueSeasonFixture {
