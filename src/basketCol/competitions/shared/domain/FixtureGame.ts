@@ -7,16 +7,22 @@ import { FGameAwayScore } from './value-object/FGameAwayScore';
 import { FGameAwayTeamId } from './value-object/FGameAwayTeamId';
 import { FGameCreatedAt } from './value-object/FGameCreatedAt';
 import { FGameDuration } from './value-object/FGameDuration';
+import { FGameEndTime } from './value-object/FGameEndTime';
 import { FGameFixtureId } from './value-object/FGameFixtureId';
 import { FGameHeadRefereeId } from './value-object/FGameHeadRefereeId';
 import { FGameHomeScore } from './value-object/FGameHomeScore';
 import { FGameHomeTeamId } from './value-object/FGameHomeTeamId';
 import { FGameId } from './value-object/FGameId';
 import { FGameReferencedCourtId } from './value-object/FGameReferencedCourtId';
+import { FGameStartTime } from './value-object/FGameStartTime';
 import { FGameType } from './value-object/FGameType';
 import { FGameUpdatedAt } from './value-object/FGameUpdatedAt';
 
 export abstract class FixtureGame<I extends IFixtureGame> extends AggregateRoot<I> {
+  protected readonly startTime: FGameStartTime;
+
+  protected readonly endTime: FGameEndTime;
+
   protected readonly homeTeamId: FGameHomeTeamId;
 
   protected readonly awayTeamId: FGameAwayTeamId;
@@ -39,6 +45,8 @@ export abstract class FixtureGame<I extends IFixtureGame> extends AggregateRoot<
 
   constructor(
     id: FGameId,
+    startTime: FGameStartTime,
+    endTime: FGameEndTime,
     homeTeamId: FGameHomeTeamId,
     awayTeamId: FGameAwayTeamId,
     homeScore: FGameHomeScore,
@@ -54,6 +62,8 @@ export abstract class FixtureGame<I extends IFixtureGame> extends AggregateRoot<
   ) {
     super(id, createdAt, updatedAt);
 
+    this.startTime = startTime;
+    this.endTime = endTime;
     this.homeTeamId = homeTeamId;
     this.awayTeamId = awayTeamId;
     this.homeScore = homeScore;

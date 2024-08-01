@@ -8,7 +8,7 @@ export class NullableFacilityId extends ValueObject<FACILITY_ID_TYPE> {
   constructor(value: string | null) {
     const facilityId: FACILITY_ID_TYPE = value === null ? null : new FacilityId(value);
 
-    super(facilityId, 'facilityId', 'string | null');
+    super(facilityId, 'facilityId', 'string | null', { allowNull: true });
 
     if (facilityId !== null) {
       this.ensureIsFacilityId(facilityId);
@@ -18,8 +18,6 @@ export class NullableFacilityId extends ValueObject<FACILITY_ID_TYPE> {
   public get facilityIdAsStringOrNull(): string | null {
     return this.value === null ? null : this.value.value;
   }
-
-  protected override ensureValueIsDefined(): void {}
 
   protected isValueEqual(otherValue: unknown): boolean {
     if (this.value === null && otherValue === null) {

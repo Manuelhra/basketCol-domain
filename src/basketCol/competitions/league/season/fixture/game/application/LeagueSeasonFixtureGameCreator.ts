@@ -57,6 +57,8 @@ export class LeagueSeasonFixtureGameCreator {
   public async run(payload: CreateLeagueSeasonFixtureGameDTO): Promise<void> {
     const {
       id,
+      startTime,
+      endTime,
       homeTeamId,
       awayTeamId,
       homeScore,
@@ -93,6 +95,8 @@ export class LeagueSeasonFixtureGameCreator {
 
     const leagueSeasonFixtureGame: LeagueSeasonFixtureGame = new LeagueSeasonFixtureGame(
       lSFGameId.value,
+      startTime,
+      endTime,
       lSFGameHomeTeamId.teamIdAsString,
       lSFGameAwayTeamId.teamIdAsString,
       lSFGameHomeScore.value,
