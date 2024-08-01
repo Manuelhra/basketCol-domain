@@ -7,7 +7,7 @@ export class MinimumValueViolationError extends RootError {
     this.name = 'MinimumValueViolationError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

@@ -1,11 +1,11 @@
 import { RootError } from './RootError';
 
-export class InvalidDateFormatError extends RootError {
+export class InvalidTimeFormatError extends RootError {
   constructor(value: string, expectedFormat: string) {
-    const message = `Invalid date format: '${value}' does not match the required format '${expectedFormat}'.`;
+    const message = `Invalid time format: '${value}' does not match the required format '${expectedFormat}'.`;
     super(message);
 
-    this.name = 'InvalidDateFormatError';
+    this.name = 'InvalidTimeFormatError';
   }
 
   public override logError(): string {

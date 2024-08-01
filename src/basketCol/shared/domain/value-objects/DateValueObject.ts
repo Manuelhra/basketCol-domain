@@ -1,5 +1,4 @@
 import { InvalidDateFormatError } from '../exceptions/InvalidDateFormatError';
-import { InvalidPropertyTypeError } from '../exceptions/InvalidPropertyTypeError';
 import { StringValueObject } from './StringValueObject';
 
 export abstract class DateValueObject extends StringValueObject {
@@ -10,7 +9,7 @@ export abstract class DateValueObject extends StringValueObject {
   protected constructor(value: string, propertyName: string) {
     super(value, propertyName);
 
-    DateValueObject.ensureIsValidDate(value, propertyName);
+    DateValueObject.ensureIsValidDate(value);
   }
 
   public get dateAsString(): string {
@@ -31,12 +30,8 @@ export abstract class DateValueObject extends StringValueObject {
     return new Date(year, month - 1, day);
   }
 
-  private static ensureIsValidDate(value: string, propertyName: string) {
-    if (value === null || value === undefined) {
-      throw new InvalidPropertyTypeError(propertyName, 'string', typeof value);
-    }
-
-    if (!DateValueObject.#dataRegex.test(value)) {
+  private static ensureIsValidDate(value: string) {
+    if (DateValueObject.#dataRegex.test(value) === false) {
       throw new InvalidDateFormatError(value, DateValueObject.#DATE_FORMAT);
     }
   }

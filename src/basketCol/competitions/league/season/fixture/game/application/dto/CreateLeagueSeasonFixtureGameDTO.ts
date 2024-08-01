@@ -1,5 +1,7 @@
 export interface CreateLeagueSeasonFixtureGameDTO {
   id: string;
+  startTime: string;
+  endTime: string | undefined;
   homeTeamId: string;
   awayTeamId: string;
   homeScore: number;

@@ -6,17 +6,21 @@ import { LSFGameAwayTeamId } from './value-objects/LSFGameAwayTeamId';
 import { LSFGameCourtId } from './value-objects/LSFGameCourtId';
 import { LSFGameCreatedAt } from './value-objects/LSFGameCreatedAt';
 import { LSFGameDuration } from './value-objects/LSFGameDuration';
+import { LSFGameEndTime } from './value-objects/LSFGameEndTime';
 import { LSFGameFixtureId } from './value-objects/LSFGameFixtureId';
 import { LSFGameHeadRefereeId } from './value-objects/LSFGameHeadRefereeId';
 import { LSFGameHomeScore } from './value-objects/LSFGameHomeScore';
 import { LSFGameHomeTeamId } from './value-objects/LSFGameHomeTeamId';
 import { LSFGameId } from './value-objects/LSFGameId';
+import { LSFGameStartTime } from './value-objects/LSFGameStartTime';
 import { LSFGameType } from './value-objects/LSFGameType';
 import { LSFGameUpdatedAt } from './value-objects/LSFGameUpdatedAt';
 
 export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGame> {
   constructor(
     id: string,
+    startTime: string,
+    endTime: string | undefined,
     homeTeamId: string,
     awayTeamId: string,
     homeScore: number,
@@ -32,6 +36,8 @@ export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGam
   ) {
     super(
       new LSFGameId(id),
+      new LSFGameStartTime(startTime),
+      new LSFGameEndTime(endTime),
       new LSFGameHomeTeamId(homeTeamId),
       new LSFGameAwayTeamId(awayTeamId),
       new LSFGameHomeScore(homeScore),
@@ -50,6 +56,8 @@ export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGam
   public toPrimitives(): ILeagueSeasonFixtureGame {
     return {
       id: this.id.value,
+      startTime: this.startTime.timeAsString,
+      endTime: this.endTime.timeAsStringOrUndefined,
       homeTeamId: this.homeTeamId.teamIdAsString,
       awayTeamId: this.awayTeamId.teamIdAsString,
       homeScore: this.homeScore.value,

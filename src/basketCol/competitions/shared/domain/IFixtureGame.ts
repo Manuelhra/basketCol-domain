@@ -1,6 +1,8 @@
 import { IAggregateRoot } from '../../../shared/domain/IAggregateRoot';
 
 export interface IFixtureGame extends IAggregateRoot {
+  startTime: string;
+  endTime: string | undefined;
   homeTeamId: string;
   awayTeamId: string;
   homeScore: number;
@@ -13,9 +15,8 @@ export interface IFixtureGame extends IAggregateRoot {
   fixtureId: string;
 }
 
-// TODO: Terminar flujo, crear referenced FixtureId y crear BoxScore
-// Agregar hora de juego en Game
-// Crear DTOS para todas las capas de application
+// TODO: crear BoxScore
+// Agregar hora de juego en Game, acá abajo está la propiedad de a hora que es startTime
 
 /*
 interface IGame extends IAuditableEntity {
