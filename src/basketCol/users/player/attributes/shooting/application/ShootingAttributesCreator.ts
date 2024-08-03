@@ -1,11 +1,11 @@
 import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
 import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
 import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IShootingAttributes } from '../domain/IShootingAttributes';
 import { ShootingAttributesRepository } from '../domain/repository/ShootingAttributesRepository';
 import { ShootingAttributes } from '../domain/ShootingAttributes';
 import { SACreatedAt } from '../domain/value-objects/SACreatedAt';
+import { SAReferencedPlayerUserId } from '../domain/value-objects/SAReferencedPlayerUserId';
 import { SAUpdatedAt } from '../domain/value-objects/SAUpdatedAt';
 import { ShootingAttributesId } from '../domain/value-objects/ShootingAttributesId';
 import { CreateShootingAttributesDTO } from './dto/CreateShootingAttributesDTO';
@@ -38,13 +38,14 @@ export class ShootingAttributesCreator {
       midRangeShot,
       threePointShot,
       freeThrow,
+      playerUserId,
     } = payload;
 
     const shootingAttributesId: ShootingAttributesId = new ShootingAttributesId(id);
-    const playerUserId: PlayerUserId = new PlayerUserId(payload.playerUserId, 'playerUserId');
+    const sAPlayerUserId: SAReferencedPlayerUserId = new SAReferencedPlayerUserId(playerUserId);
 
     await this.#idUniquenessValidatorService.ensureUniqueId<ShootingAttributesId, IShootingAttributes, ShootingAttributes>(shootingAttributesId);
-    await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
+    await this.#playerUserValidationService.ensurePlayerUserExists(sAPlayerUserId.value);
 
     const sACreatedAt: SACreatedAt = this.#businessDateService.getCurrentDate();
     const sAUpdatedAt: SAUpdatedAt = this.#businessDateService.getCurrentDate();
@@ -55,7 +56,7 @@ export class ShootingAttributesCreator {
       midRangeShot,
       threePointShot,
       freeThrow,
-      playerUserId.value,
+      sAPlayerUserId.playerUserIdAsString,
       sACreatedAt.value,
       sAUpdatedAt.value,
     );

@@ -1,11 +1,11 @@
 import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
 import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
 import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IReboundingAttributes } from '../domain/IReboundingAttributes';
 import { ReboundingAttributes } from '../domain/ReboundingAttributes';
 import { ReboundingAttributesRepository } from '../domain/repository/ReboundingAttributesRepository';
 import { RACreatedAt } from '../domain/value-objects/RACreatedAt';
+import { RAReferencedPlayerUserId } from '../domain/value-objects/RAReferencedPlayerUserId';
 import { RAUpdatedAt } from '../domain/value-objects/RAUpdatedAt';
 import { ReboundingAttributesId } from '../domain/value-objects/ReboundingAttributesId';
 import { CreateReboundingAttributesDTO } from './dto/CreateReboundingAttributesDTO';
@@ -36,13 +36,14 @@ export class ReboundingAttributesCreator {
       id,
       offensiveRebound,
       defensiveRebound,
+      playerUserId,
     } = payload;
 
     const reboundingAttributesId: ReboundingAttributesId = new ReboundingAttributesId(id);
-    const playerUserId: PlayerUserId = new PlayerUserId(payload.playerUserId, 'playerUserId');
+    const rAPlayerUserId: RAReferencedPlayerUserId = new RAReferencedPlayerUserId(playerUserId);
 
     await this.#idUniquenessValidatorService.ensureUniqueId<ReboundingAttributesId, IReboundingAttributes, ReboundingAttributes>(reboundingAttributesId);
-    await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
+    await this.#playerUserValidationService.ensurePlayerUserExists(rAPlayerUserId.value);
 
     const rACreatedAt: RACreatedAt = this.#businessDateService.getCurrentDate();
     const rAUpdatedAt: RAUpdatedAt = this.#businessDateService.getCurrentDate();
@@ -51,7 +52,7 @@ export class ReboundingAttributesCreator {
       reboundingAttributesId.value,
       offensiveRebound,
       defensiveRebound,
-      playerUserId.value,
+      rAPlayerUserId.playerUserIdAsString,
       rACreatedAt.value,
       rAUpdatedAt.value,
     );

@@ -2,13 +2,13 @@ import { BusinessDateService } from '../../../shared/domain/services/BusinessDat
 import { IdUniquenessValidatorService } from '../../../shared/domain/services/IdUniquenessValidatorService';
 import { DateValueObject } from '../../../shared/domain/value-objects/DateValueObject';
 import { HostUserValidationService } from '../../../users/host/domain/services/HostUserValidationService';
-import { HostUserId } from '../../../users/host/domain/value-objects/HostUserId';
 import { Gym } from '../domain/Gym';
 import { IGym } from '../domain/IGym';
 import { GymRepository } from '../domain/repository/GymRepository';
 import { GymCreatedAt } from '../domain/value-objects/GymCreatedAt';
 import { GymEstablishmentDate } from '../domain/value-objects/GymEstablishmentDate';
 import { GymId } from '../domain/value-objects/GymId';
+import { GymRegisteredById } from '../domain/value-objects/GymRegisteredById';
 import { GymUpdatedAt } from '../domain/value-objects/GymUpdatedAt';
 import { CreateGymDTO } from './dto/CreateGymDTO';
 
@@ -42,12 +42,12 @@ export class GymCreator {
       registeredById,
     } = payload;
     const gymId: GymId = new GymId(id);
-    const hostUserId: HostUserId = new HostUserId(registeredById);
+    const gymRegisteredById: GymRegisteredById = new GymRegisteredById(registeredById);
     const gymEstablishmentDate: GymEstablishmentDate = new GymEstablishmentDate(establishmentDate);
     const currentDate: DateValueObject = this.#businessDateService.getCurrentDate();
 
     await this.#idUniquenessValidatorService.ensureUniqueId<GymId, IGym, Gym>(gymId);
-    await this.#hostUserValidationService.ensureHostUserExists(hostUserId);
+    await this.#hostUserValidationService.ensureHostUserExists(gymRegisteredById.value);
     this.#businessDateService.ensureNotGreaterThan<GymEstablishmentDate, DateValueObject>(gymEstablishmentDate, currentDate);
 
     const gymCreatedAt: GymCreatedAt = this.#businessDateService.getCurrentDate();
@@ -58,7 +58,7 @@ export class GymCreator {
       officialName,
       location,
       gymEstablishmentDate.value,
-      hostUserId.value,
+      gymRegisteredById.hostUserIdAsString,
       gymCreatedAt.value,
       gymUpdatedAt.value,
     );

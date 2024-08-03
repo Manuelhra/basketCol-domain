@@ -1,11 +1,11 @@
 import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
 import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
 import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { DefensiveAttributes } from '../domain/DefensiveAttributes';
 import { IDefensiveAttributes } from '../domain/IDefensiveAttributes';
 import { DefensiveAttributesRepository } from '../domain/repository/DefensiveAttributesRepository';
 import { DACreatedAt } from '../domain/value-objects/DACreatedAt';
+import { DAReferencedPlayerUserId } from '../domain/value-objects/DAReferencedPlayerUserId';
 import { DAUpdatedAt } from '../domain/value-objects/DAUpdatedAt';
 import { DefensiveAttributesId } from '../domain/value-objects/DefensiveAttributesId';
 import { CreateDefensiveAttributesDTO } from './dto/CreateDefensiveAttributesDTO';
@@ -38,13 +38,14 @@ export class DefensiveAttributesCreator {
       perimeterDefense,
       steal,
       block,
+      playerUserId,
     } = payload;
 
     const defensiveAttributesId: DefensiveAttributesId = new DefensiveAttributesId(id);
-    const playerUserId: PlayerUserId = new PlayerUserId(payload.playerUserId, 'playerUserId');
+    const dAPlayerUserId: DAReferencedPlayerUserId = new DAReferencedPlayerUserId(playerUserId);
 
     await this.#idUniquenessValidatorService.ensureUniqueId<DefensiveAttributesId, IDefensiveAttributes, DefensiveAttributes>(defensiveAttributesId);
-    await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
+    await this.#playerUserValidationService.ensurePlayerUserExists(dAPlayerUserId.value);
 
     const dACreatedAt: DACreatedAt = this.#businessDateService.getCurrentDate();
     const dAUpdatedAt: DAUpdatedAt = this.#businessDateService.getCurrentDate();
@@ -55,7 +56,7 @@ export class DefensiveAttributesCreator {
       perimeterDefense,
       steal,
       block,
-      playerUserId.value,
+      dAPlayerUserId.playerUserIdAsString,
       dACreatedAt.value,
       dAUpdatedAt.value,
     );

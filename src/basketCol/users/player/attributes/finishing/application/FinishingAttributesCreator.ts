@@ -1,11 +1,11 @@
 import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
 import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
 import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { FinishingAttributes } from '../domain/FinishingAttributes';
 import { IFinishingAttributes } from '../domain/IFinishingAttributes';
 import { FinishingAttributesRepository } from '../domain/repository/FinishingAttributesRepository';
 import { FACreatedAt } from '../domain/value-objects/FACreatedAt';
+import { FAReferencedPlayerUserId } from '../domain/value-objects/FAReferencedPlayerUserId';
 import { FAUpdatedAt } from '../domain/value-objects/FAUpdatedAt';
 import { FinishingAttributesId } from '../domain/value-objects/FinishingAttributesId';
 import { CreateFinishingAttributesDTO } from './dto/CreateFinishingAttributesDTO';
@@ -38,13 +38,14 @@ export class FinishingAttributesCreator {
       drivingDunk,
       standingDunk,
       postControl,
+      playerUserId,
     } = payload;
 
     const finishingAttributesId: FinishingAttributesId = new FinishingAttributesId(id);
-    const playerUserId: PlayerUserId = new PlayerUserId(payload.playerUserId, 'playerUserId');
+    const fAPlayerUserId: FAReferencedPlayerUserId = new FAReferencedPlayerUserId(playerUserId);
 
     await this.#idUniquenessValidatorService.ensureUniqueId<FinishingAttributesId, IFinishingAttributes, FinishingAttributes>(finishingAttributesId);
-    await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
+    await this.#playerUserValidationService.ensurePlayerUserExists(fAPlayerUserId.value);
 
     const fACreatedAt: FACreatedAt = this.#businessDateService.getCurrentDate();
     const fAUpdatedAt: FAUpdatedAt = this.#businessDateService.getCurrentDate();
@@ -55,7 +56,7 @@ export class FinishingAttributesCreator {
       drivingDunk,
       standingDunk,
       postControl,
-      playerUserId.value,
+      fAPlayerUserId.playerUserIdAsString,
       fACreatedAt.value,
       fAUpdatedAt.value,
     );

@@ -8,5 +8,5 @@ export interface CreateCourtDTO {
   hoopHeight: number;
   registeredById: string;
   location: ILocationValueObjectProps;
-  gymId: string | null | undefined;
+  gymId: string | null;
 }
