@@ -1,4 +1,4 @@
-import { FixtureId } from '../../../competitions/shared/domain/value-object/FixtureId';
+import { FixtureId } from '../../../competitions/shared/domain/value-objects/FixtureId';
 import { ValueObject } from './ValueObject';
 
 export abstract class ReferencedFixtureId extends ValueObject<FixtureId> {

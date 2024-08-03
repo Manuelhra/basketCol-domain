@@ -1,4 +1,4 @@
-import { TeamFounderUserId } from '../../../users/teamFounder/domain/value-objects/TeamFounderUserId';
+import { TeamFounderUserId } from '../../../users/team-founder/domain/value-objects/TeamFounderUserId';
 import { InvalidTeamFounderUserIdInstanceError } from '../exceptions/InvalidTeamFounderUserIdInstanceError';
 import { ValueObject } from './ValueObject';
 

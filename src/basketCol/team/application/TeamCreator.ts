@@ -1,7 +1,7 @@
 import { BusinessDateService } from '../../shared/domain/services/BusinessDateService';
 import { IdUniquenessValidatorService } from '../../shared/domain/services/IdUniquenessValidatorService';
-import { TFUValidationService } from '../../users/teamFounder/domain/services/TFUValidationService';
-import { TeamFounderUserId } from '../../users/teamFounder/domain/value-objects/TeamFounderUserId';
+import { TFUValidationService } from '../../users/team-founder/domain/services/TFUValidationService';
+import { TeamFounderUserId } from '../../users/team-founder/domain/value-objects/TeamFounderUserId';
 import { ITeam } from '../domain/ITeam';
 import { TeamRepository } from '../domain/repository/TeamRepository';
 import { Team } from '../domain/Team';

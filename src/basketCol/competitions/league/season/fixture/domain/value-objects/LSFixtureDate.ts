@@ -1,4 +1,4 @@
-import { FixtureDate } from '../../../../../shared/domain/value-object/FixtureDate';
+import { FixtureDate } from '../../../../../shared/domain/value-objects/FixtureDate';
 import { FixtureDateTooSoonError } from '../exceptions/FixtureDateTooSoonError';
 
 export class LSFixtureDate extends FixtureDate {

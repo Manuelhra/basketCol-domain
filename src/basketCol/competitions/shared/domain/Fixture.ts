@@ -1,10 +1,10 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
 import { IFixture } from './IFixture';
-import { FixtureCreatedAt } from './value-object/FixtureCreatedAt';
-import { FixtureDate } from './value-object/FixtureDate';
-import { FixtureId } from './value-object/FixtureId';
-import { FixtureName } from './value-object/FixtureName';
-import { FixtureUpdatedAt } from './value-object/FixtureUpdatedAt';
+import { FixtureCreatedAt } from './value-objects/FixtureCreatedAt';
+import { FixtureDate } from './value-objects/FixtureDate';
+import { FixtureId } from './value-objects/FixtureId';
+import { FixtureName } from './value-objects/FixtureName';
+import { FixtureUpdatedAt } from './value-objects/FixtureUpdatedAt';
 
 export abstract class Fixture<I extends IFixture> extends AggregateRoot<I> {
   protected readonly date: FixtureDate;
