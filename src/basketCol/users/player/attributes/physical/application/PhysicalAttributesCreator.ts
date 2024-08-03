@@ -1,11 +1,11 @@
 import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
 import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
 import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { IPhysicalAttributes } from '../domain/IPhysicalAttributes';
 import { PhysicalAttributes } from '../domain/PhysicalAttributes';
 import { PhysicalAttributesRepository } from '../domain/repository/PhysicalAttributesRepository';
 import { PACreatedAt } from '../domain/value-objects/PACreatedAt';
+import { PAReferencedPlayerUserId } from '../domain/value-objects/PAReferencedPlayerUserId';
 import { PAUpdatedAt } from '../domain/value-objects/PAUpdatedAt';
 import { PhysicalAttributesId } from '../domain/value-objects/PhysicalAttributesId';
 import { CreatePhysicalAttributesDTO } from './dto/CreatePhysicalAttributesDTO';
@@ -39,13 +39,14 @@ export class PhysicalAttributesCreator {
       strength,
       vertical,
       stamina,
+      playerUserId,
     } = payload;
 
     const physicalAttributesId: PhysicalAttributesId = new PhysicalAttributesId(id);
-    const playerUserId: PlayerUserId = new PlayerUserId(payload.playerUserId, 'playerUserId');
+    const pAPlayerUserId: PAReferencedPlayerUserId = new PAReferencedPlayerUserId(playerUserId);
 
     await this.#idUniquenessValidatorService.ensureUniqueId<PhysicalAttributesId, IPhysicalAttributes, PhysicalAttributes>(physicalAttributesId);
-    await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
+    await this.#playerUserValidationService.ensurePlayerUserExists(pAPlayerUserId.value);
 
     const pACreatedAt: PACreatedAt = this.#businessDateService.getCurrentDate();
     const pAUpdatedAt: PAUpdatedAt = this.#businessDateService.getCurrentDate();
@@ -57,7 +58,7 @@ export class PhysicalAttributesCreator {
       strength,
       vertical,
       stamina,
-      playerUserId.value,
+      pAPlayerUserId.playerUserIdAsString,
       pACreatedAt.value,
       pAUpdatedAt.value,
     );

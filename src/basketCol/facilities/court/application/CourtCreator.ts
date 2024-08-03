@@ -2,9 +2,7 @@ import { BusinessDateService } from '../../../shared/domain/services/BusinessDat
 import { IdUniquenessValidatorService } from '../../../shared/domain/services/IdUniquenessValidatorService';
 import { DateValueObject } from '../../../shared/domain/value-objects/DateValueObject';
 import { HostUserValidationService } from '../../../users/host/domain/services/HostUserValidationService';
-import { HostUserId } from '../../../users/host/domain/value-objects/HostUserId';
 import { GymValidationService } from '../../gym/domain/services/GymValidationService';
-import { GymId } from '../../gym/domain/value-objects/GymId';
 
 import { Court } from '../domain/Court';
 import { ICourt } from '../domain/ICourt';
@@ -12,6 +10,8 @@ import { CourtRepository } from '../domain/repository/CourtRepository';
 import { CourtCreatedAt } from '../domain/value-objects/CourtCreatedAt';
 import { CourtEstablishmentDate } from '../domain/value-objects/CourtEstablishmentDate';
 import { CourtId } from '../domain/value-objects/CourtId';
+import { CourtNullableFacilityId } from '../domain/value-objects/CourtNullableFacilityId';
+import { CourtRegisteredById } from '../domain/value-objects/CourtRegisteredById';
 import { CourtUpdatedAt } from '../domain/value-objects/CourtUpdatedAt';
 import { CreateCourtDTO } from './dto/CreateCourtDTO';
 
@@ -53,23 +53,21 @@ export class CourtCreator {
     } = payload;
 
     const courtId: CourtId = new CourtId(id);
-    const hostUserId: HostUserId = new HostUserId(registeredById, 'registeredById');
+    const courtRegisteredById: CourtRegisteredById = new CourtRegisteredById(registeredById);
     const courtEstablishmentDate: CourtEstablishmentDate = new CourtEstablishmentDate(establishmentDate);
     const currentDate: DateValueObject = this.#businessDateService.getCurrentDate();
 
     await this.#idUniquenessValidatorService.ensureUniqueId<CourtId, ICourt, Court>(courtId);
-    await this.#hostUserValidationService.ensureHostUserExists(hostUserId);
+    await this.#hostUserValidationService.ensureHostUserExists(courtRegisteredById.value);
     this.#businessDateService.ensureNotGreaterThan<CourtEstablishmentDate, DateValueObject>(courtEstablishmentDate, currentDate);
 
     const courtCreatedAt: CourtCreatedAt = this.#businessDateService.getCurrentDate();
     const courtUpdatedAt: CourtUpdatedAt = this.#businessDateService.getCurrentDate();
 
-    let gymIdValueObject: GymId | null = null;
+    const courtNullableFacilityId: CourtNullableFacilityId = new CourtNullableFacilityId(gymId);
 
-    if (typeof gymId === 'string' && gymId !== undefined && gymId !== null) {
-      gymIdValueObject = new GymId(gymId, 'gymId');
-
-      await this.#gymValidationService.ensureGymExists(gymIdValueObject);
+    if (courtNullableFacilityId.value !== null) {
+      await this.#gymValidationService.ensureGymExists(courtNullableFacilityId.value);
     }
 
     const court: Court = new Court(
@@ -78,9 +76,9 @@ export class CourtCreator {
       courtEstablishmentDate.value,
       surface,
       hoopHeight,
-      hostUserId.value,
+      courtRegisteredById.hostUserIdAsString,
       location,
-      gymIdValueObject === null ? gymIdValueObject : gymIdValueObject.value,
+      courtNullableFacilityId.facilityIdAsStringOrNull,
       courtCreatedAt.value,
       courtUpdatedAt.value,
     );

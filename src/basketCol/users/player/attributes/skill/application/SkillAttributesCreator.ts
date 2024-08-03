@@ -1,11 +1,11 @@
 import { BusinessDateService } from '../../../../../shared/domain/services/BusinessDateService';
 import { IdUniquenessValidatorService } from '../../../../../shared/domain/services/IdUniquenessValidatorService';
 import { PlayerUserValidationService } from '../../../domain/services/PlayerUserValidationService';
-import { PlayerUserId } from '../../../domain/value-objects/PlayerUserId';
 import { ISkillAttributes } from '../domain/ISkillAttributes';
 import { SkillAttributesRepository } from '../domain/repository/SkillAttributesRepository';
 import { SkillAttributes } from '../domain/SkillAttributes';
 import { SACreatedAt } from '../domain/value-objects/SACreatedAt';
+import { SAReferencedPlayerUserId } from '../domain/value-objects/SAReferencedPlayerUserId';
 import { SAUpdatedAt } from '../domain/value-objects/SAUpdatedAt';
 import { SkillAttributesId } from '../domain/value-objects/SkillAttributesId';
 import { CreateSkillAttributesDTO } from './dto/CreateSkillAttributesDTO';
@@ -37,13 +37,14 @@ export class SkillAttributesCreator {
       passAccuracy,
       ballHandle,
       speedWithBall,
+      playerUserId,
     } = payload;
 
     const skillAttributesId: SkillAttributesId = new SkillAttributesId(id);
-    const playerUserId: PlayerUserId = new PlayerUserId(payload.playerUserId, 'playerUserId');
+    const sAPlayerUserId: SAReferencedPlayerUserId = new SAReferencedPlayerUserId(playerUserId);
 
     await this.#idUniquenessValidatorService.ensureUniqueId<SkillAttributesId, ISkillAttributes, SkillAttributes>(skillAttributesId);
-    await this.#playerUserValidationService.ensurePlayerUserExists(playerUserId);
+    await this.#playerUserValidationService.ensurePlayerUserExists(sAPlayerUserId.value);
 
     const sACreatedAt: SACreatedAt = this.#businessDateService.getCurrentDate();
     const sAUpdatedAt: SAUpdatedAt = this.#businessDateService.getCurrentDate();
@@ -53,7 +54,7 @@ export class SkillAttributesCreator {
       passAccuracy,
       ballHandle,
       speedWithBall,
-      playerUserId.value,
+      sAPlayerUserId.playerUserIdAsString,
       sACreatedAt.value,
       sAUpdatedAt.value,
     );

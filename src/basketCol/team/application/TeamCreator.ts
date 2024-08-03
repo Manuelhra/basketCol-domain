@@ -1,13 +1,13 @@
 import { BusinessDateService } from '../../shared/domain/services/BusinessDateService';
 import { IdUniquenessValidatorService } from '../../shared/domain/services/IdUniquenessValidatorService';
 import { TFUValidationService } from '../../users/team-founder/domain/services/TFUValidationService';
-import { TeamFounderUserId } from '../../users/team-founder/domain/value-objects/TeamFounderUserId';
 import { ITeam } from '../domain/ITeam';
 import { TeamRepository } from '../domain/repository/TeamRepository';
 import { Team } from '../domain/Team';
 import { TeamCreatedAt } from '../domain/value-objects/TeamCreatedAt';
 import { TeamId } from '../domain/value-objects/TeamId';
 import { TeamUpdatedAt } from '../domain/value-objects/TeamUpdatedAt';
+import { TReferencedTeamFounderUserId } from '../domain/value-objects/TReferencedTeamFounderUserId';
 import { CreateTeamDTO } from './dto/CreateTeamDTO';
 
 export class TeamCreator {
@@ -35,13 +35,14 @@ export class TeamCreator {
     const {
       id,
       officialName,
+      teamFounderUserId,
     } = payload;
 
     const teamId: TeamId = new TeamId(id);
-    const teamFounderUserId: TeamFounderUserId = new TeamFounderUserId(payload.teamFounderUserId, 'teamFounderUserId');
+    const tReferencedTeamFounderUserId: TReferencedTeamFounderUserId = new TReferencedTeamFounderUserId(teamFounderUserId);
 
     await this.#idUniquenessValidatorService.ensureUniqueId<TeamId, ITeam, Team>(teamId);
-    await this.#tFUValidationService.ensureTeamFounderUserExists(teamFounderUserId);
+    await this.#tFUValidationService.ensureTeamFounderUserExists(tReferencedTeamFounderUserId.value);
 
     const teamCreatedAt: TeamCreatedAt = this.#businessDateService.getCurrentDate();
     const teamUpdatedAt: TeamUpdatedAt = this.#businessDateService.getCurrentDate();
@@ -49,7 +50,7 @@ export class TeamCreator {
     const team: Team = new Team(
       teamId.value,
       officialName,
-      teamFounderUserId.value,
+      tReferencedTeamFounderUserId.teamFounderUserIdAsString,
       teamCreatedAt.value,
       teamUpdatedAt.value,
     );

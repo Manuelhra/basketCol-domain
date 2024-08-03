@@ -2,7 +2,6 @@ import { BusinessDateService } from '../../../shared/domain/services/BusinessDat
 import { IdUniquenessValidatorService } from '../../../shared/domain/services/IdUniquenessValidatorService';
 import { DateValueObject } from '../../../shared/domain/value-objects/DateValueObject';
 import { LeagueFounderUserValidationService } from '../../../users/league-founder/domain/services/LeagueFounderUserValidationService';
-import { LeagueFounderUserId } from '../../../users/league-founder/domain/value-objects/LeagueFounderUserId';
 import { ILeague } from '../domain/ILeague';
 import { League } from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
@@ -12,6 +11,7 @@ import { LeagueEstablishmentDate } from '../domain/value-objects/LeagueEstablish
 import { LeagueId } from '../domain/value-objects/LeagueId';
 import { LeagueName } from '../domain/value-objects/LeagueName';
 import { LeagueUpdatedAt } from '../domain/value-objects/LeagueUpdatedAt';
+import { LReferencedLeagueFounderUserId } from '../domain/value-objects/LReferencedLeagueFounderUserId';
 import { CreateLeagueDTO } from './dto/CreateLeagueDTO';
 
 export class LeagueCreator {
@@ -48,11 +48,12 @@ export class LeagueCreator {
       rules,
       location,
       establishmentDate,
+      leagueFounderUserId,
     } = payload;
 
     const leagueId: LeagueId = new LeagueId(id);
     const leagueName: LeagueName = new LeagueName(name);
-    const leagueFounderUserId: LeagueFounderUserId = new LeagueFounderUserId(payload.leagueFounderUserId, 'leagueFounderUserId');
+    const lReferencedLeagueFounderUserId: LReferencedLeagueFounderUserId = new LReferencedLeagueFounderUserId(leagueFounderUserId);
     const leagueEstablishmentDate: LeagueEstablishmentDate = new LeagueEstablishmentDate(establishmentDate);
     const currentDate: DateValueObject = this.#businessDateService.getCurrentDate();
 
@@ -60,7 +61,7 @@ export class LeagueCreator {
     await this.#leagueValidationNameService.validateUniqueShortName(leagueName);
     await this.#leagueValidationNameService.validateUniqueOfficialName(leagueName);
 
-    await this.#leagueFounderUserValidationService.ensureFounderUserExists(leagueFounderUserId);
+    await this.#leagueFounderUserValidationService.ensureFounderUserExists(lReferencedLeagueFounderUserId.value);
     this.#businessDateService.ensureNotGreaterThan<LeagueEstablishmentDate, DateValueObject>(leagueEstablishmentDate, currentDate);
 
     const isActive: boolean = true;
@@ -74,7 +75,7 @@ export class LeagueCreator {
       rules,
       level,
       location,
-      leagueFounderUserId.value,
+      lReferencedLeagueFounderUserId.leagueFounderUserIdAsString,
       leagueEstablishmentDate.value,
       isActive,
       leagueCreatedAt.value,
