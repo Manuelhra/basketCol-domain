@@ -1,4 +1,4 @@
-import { FGameAwayScore } from '../../../../../../shared/domain/value-object/FGameAwayScore';
+import { FGameAwayScore } from '../../../../../../shared/domain/value-objects/FGameAwayScore';
 
 export class LSFGameAwayScore extends FGameAwayScore {
   public constructor(value: number) {

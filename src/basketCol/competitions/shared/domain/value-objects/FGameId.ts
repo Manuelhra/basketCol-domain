@@ -1,7 +1,7 @@
 import { IdValueObject } from '../../../../shared/domain/value-objects/IdValueObject';
 
-export abstract class FGameId extends IdValueObject {
-  protected constructor(value: string) {
+export class FGameId extends IdValueObject {
+  public constructor(value: string) {
     super(value);
   }
 }

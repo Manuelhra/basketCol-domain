@@ -1,4 +1,4 @@
-import { LeagueFounderUserId } from '../../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
+import { LeagueFounderUserId } from '../../../users/league-founder/domain/value-objects/LeagueFounderUserId';
 import { InvalidLeagueFounderUserIdInstanceError } from '../exceptions/InvalidLeagueFounderUserIdInstanceError';
 import { ValueObject } from './ValueObject';
 

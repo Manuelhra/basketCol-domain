@@ -1,4 +1,4 @@
-import { FixtureCreatedAt } from '../../../../../shared/domain/value-object/FixtureCreatedAt';
+import { FixtureCreatedAt } from '../../../../../shared/domain/value-objects/FixtureCreatedAt';
 
 export class LSFixtureCreatedAt extends FixtureCreatedAt {
   public constructor(value: string) {

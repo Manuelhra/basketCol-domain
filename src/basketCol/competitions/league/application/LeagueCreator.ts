@@ -1,8 +1,8 @@
 import { BusinessDateService } from '../../../shared/domain/services/BusinessDateService';
 import { IdUniquenessValidatorService } from '../../../shared/domain/services/IdUniquenessValidatorService';
 import { DateValueObject } from '../../../shared/domain/value-objects/DateValueObject';
-import { LeagueFounderUserValidationService } from '../../../users/leagueFounder/domain/services/LeagueFounderUserValidationService';
-import { LeagueFounderUserId } from '../../../users/leagueFounder/domain/value-objects/LeagueFounderUserId';
+import { LeagueFounderUserValidationService } from '../../../users/league-founder/domain/services/LeagueFounderUserValidationService';
+import { LeagueFounderUserId } from '../../../users/league-founder/domain/value-objects/LeagueFounderUserId';
 import { ILeague } from '../domain/ILeague';
 import { League } from '../domain/League';
 import { LeagueRepository } from '../domain/repository/LeagueRepository';
