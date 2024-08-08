@@ -1,15 +1,15 @@
 import { InvalidPropertyTypeError } from '../exceptions/InvalidPropertyTypeError';
 import { ObjectValueObject } from './ObjectValueObject';
 
-interface Item {
+interface IItem {
   code: string;
   label: string;
 }
 
 export interface ILocationValueObjectProps {
-  country: Item;
-  department: Item;
-  city: Item;
+  country: IItem;
+  department: IItem;
+  city: IItem;
   coords: { lat: number; lng: number; };
 }
 
@@ -23,7 +23,7 @@ export abstract class LocationValueObject extends ObjectValueObject<ILocationVal
     LocationValueObject.ensureCoordsIsDefined(value.coords);
   }
 
-  private static ensurePropIsDefined(propertyValue: Item, propertyName: string): void {
+  private static ensurePropIsDefined(propertyValue: IItem, propertyName: string): void {
     if (propertyValue === null || propertyValue === undefined) {
       throw new InvalidPropertyTypeError(propertyName, '{ code: string; label: string }', typeof propertyValue);
     }

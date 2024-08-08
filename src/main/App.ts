@@ -1,10 +1,12 @@
-import { serverStatusRouteManager } from '../basketCol/server-status/infrastructure/dependency-injection';
-import { sharedServerErrorHandler } from '../basketCol/shared/infrastructure/dependency-injection';
-import { Server } from '../basketCol/shared/infrastructure/server';
+import { Router, Response } from 'express';
+
+import { expressServerStatusRouteManager } from '../basketCol/server-status/infrastructure/dependency-injection';
+import { expressSharedServerErrorHandler } from '../basketCol/shared/infrastructure/dependency-injection';
+import { IServer } from '../basketCol/shared/infrastructure/server';
 import { ExpressServer } from '../basketCol/shared/infrastructure/server/express/server/ExpressServer';
 
 export class App {
-  readonly #server: Server;
+  readonly #server: IServer<Router, Response>;
 
   constructor() {
     this.#server = new ExpressServer();
@@ -23,13 +25,15 @@ export class App {
 
   private setUpRoutes(): void {
     this.#server.registerRoutes([
-      serverStatusRouteManager,
+      expressServerStatusRouteManager,
     ]);
   }
 
   private handleErrors(): void {
     this.#server.handleErrors([
-      sharedServerErrorHandler,
+      expressSharedServerErrorHandler,
     ]);
   }
 }
+
+// TODO: Handle error on all context file

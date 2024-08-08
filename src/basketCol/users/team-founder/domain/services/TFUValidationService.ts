@@ -1,14 +1,14 @@
 import { Nullable } from '../../../../shared/domain/Nullable';
 import { TeamFounderUserNotFoundError } from '../exceptions/TeamFounderUserNotFoundError';
-import { TFURepository } from '../repository/TFURepository';
+import { ITFURepository } from '../repository/ITFURepository';
 import { TeamFounderUser } from '../TeamFounderUser';
 import { TeamFounderUserId } from '../value-objects/TeamFounderUserId';
 
 export class TFUValidationService {
-  readonly #tFURepository: TFURepository;
+  readonly #tFURepository: ITFURepository;
 
   constructor(dependencies: {
-    tFURepository: TFURepository;
+    tFURepository: ITFURepository;
   }) {
     this.#tFURepository = dependencies.tFURepository;
   }

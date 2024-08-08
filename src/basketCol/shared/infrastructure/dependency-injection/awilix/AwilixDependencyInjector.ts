@@ -1,8 +1,18 @@
-import { AwilixContainer, createContainer, NameAndRegistrationPair } from 'awilix';
+import {
+  asClass,
+  asFunction,
+  asValue,
+  AwilixContainer,
+  Constructor,
+  createContainer,
+  FunctionReturning,
+  NameAndRegistrationPair,
+  Resolver,
+} from 'awilix';
 
-import { DependencyInjector } from '../DependencyInjector';
+import { IDependencyInjector } from '../IDependencyInjector';
 
-export abstract class AwilixDependencyInjector<TContainer extends Object> implements DependencyInjector<AwilixContainer<TContainer>, NameAndRegistrationPair<TContainer>> {
+export abstract class AwilixDependencyInjector<TContainer extends Object> implements IDependencyInjector<AwilixContainer<TContainer>, NameAndRegistrationPair<TContainer>> {
   public container: AwilixContainer<TContainer> | null = null;
 
   public createContainer(): void {
@@ -18,7 +28,16 @@ export abstract class AwilixDependencyInjector<TContainer extends Object> implem
       this.container.register(dependencies);
     }
   }
-}
 
-// TODO: Terminar de crear esta clase abstrac y verificar que las clases abstractas sean abstractas
-// Tener en cuenta a la hora de la injectio dependency si una clase es abtrasct no se puede crear una instancia de la clase
+  public static registerAsValue<T>(value: T): Resolver<T> {
+    return asValue(value);
+  }
+
+  public static registerAsFunction<T>(fn: FunctionReturning<T>) {
+    return asFunction(fn);
+  }
+
+  public static registerAsClass<T>(cls: Constructor<T>) {
+    return asClass(cls);
+  }
+}

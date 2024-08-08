@@ -1,23 +1,27 @@
-import { AwilixDependencyInjector } from '../../../../shared/infrastructure/dependency-injection/awilix/AwilixDependencyInjector';
-import { AwilixDependencySetup } from '../../../../shared/infrastructure/dependency-injection/awilix/AwilixDependencySetup';
-import { FileSystem } from '../../../../shared/infrastructure/file-system/FileSystem';
-import { GlobFileSystem } from '../../../../shared/infrastructure/file-system/GlobFileSystem';
-import { RootController } from '../../../../shared/infrastructure/server/controllers/RootController';
-import { RootRouteManager } from '../../../../shared/infrastructure/server/routes/RootRouteManager';
-import { ExpressServerStatusGetController } from '../../controllers/express/ExpressServerStatusGetController';
-import { ExpressServerStatusRouteManager } from '../../routes/express/ExpressServerStatusRouteManager';
-import { ServerStatusContainer } from '../ServerStatusContainer';
+import { Request, Response } from 'express';
 
-export class AwilixServerStatusDependencyInjector extends AwilixDependencyInjector<ServerStatusContainer> {
+import { IHttpResponseHandler } from '../../../../shared/application/http/IHttpResponseHandler';
+import { AwilixDependencyInjector } from '../../../../shared/infrastructure/dependency-injection/awilix/AwilixDependencyInjector';
+import { GlobFileSystem } from '../../../../shared/infrastructure/file-system/GlobFileSystem';
+import { IFileSystem } from '../../../../shared/infrastructure/file-system/IFileSystem';
+import { HttpResponseHandler } from '../../../../shared/infrastructure/http/HttpResponseHandler';
+import { IController } from '../../../../shared/infrastructure/server/controllers/IController';
+import { ExpressBaseRouteManager } from '../../../../shared/infrastructure/server/express/routes/ExpressBaseRouteManager';
+import { ExpressServerStatusGetController } from '../../server/express/controllers/ExpressServerStatusGetController';
+import { ExpressServerStatusRouteManager } from '../../server/express/routes/ExpressServerStatusRouteManager';
+import { IServerStatusContainer } from '../IServerStatusContainer';
+
+export class AwilixServerStatusDependencyInjector extends AwilixDependencyInjector<IServerStatusContainer> {
   public constructor() {
     super();
 
     this.createContainer();
     this.registerDependencies({
-      basePath: AwilixDependencySetup.registerAsValue<string>(__dirname),
-      serverStatusGetController: AwilixDependencySetup.registerAsClass<RootController>(ExpressServerStatusGetController).singleton(),
-      fileSystem: AwilixDependencySetup.registerAsClass<FileSystem>(GlobFileSystem),
-      serverStatusRouteManager: AwilixDependencySetup.registerAsClass<RootRouteManager>(ExpressServerStatusRouteManager).singleton(),
+      basePath: AwilixDependencyInjector.registerAsValue<string>(__dirname),
+      expressServerStatusGetController: AwilixDependencyInjector.registerAsClass<IController<Request, Response>>(ExpressServerStatusGetController).singleton(),
+      fileSystem: AwilixDependencyInjector.registerAsClass<IFileSystem>(GlobFileSystem).singleton(),
+      expressServerStatusRouteManager: AwilixDependencyInjector.registerAsClass<ExpressBaseRouteManager>(ExpressServerStatusRouteManager).singleton(),
+      httpResponseHandler: AwilixDependencyInjector.registerAsClass<IHttpResponseHandler>(HttpResponseHandler).singleton(),
     });
   }
 }

@@ -1,7 +1,7 @@
 import convict from 'convict';
-import { ConvictProps } from './ConvictProps';
+import { IConvictProps } from './IConvictProps';
 
-export const convictConfig = convict<ConvictProps>({
+export const convictConfig = convict<IConvictProps>({
   env: {
     doc: 'The application environment.',
     format: ['production', 'development', 'staging', 'test'],

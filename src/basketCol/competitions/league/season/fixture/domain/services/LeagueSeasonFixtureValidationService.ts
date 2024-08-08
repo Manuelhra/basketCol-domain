@@ -1,14 +1,14 @@
 import { Nullable } from '../../../../../../shared/domain/Nullable';
 import { FixtureAlreadyExistsForDateInLeagueSeasonError } from '../exceptions/FixtureAlreadyExistsForDateInLeagueSeasonError';
 import { LeagueSeasonFixture } from '../LeagueSeasonFixture';
-import { LeagueSeasonFixtureRepository } from '../repository/LeagueSeasonFixtureRepository';
+import { ILeagueSeasonFixtureRepository } from '../repository/ILeagueSeasonFixtureRepository';
 import { LSFixtureDate } from '../value-objects/LSFixtureDate';
 import { LSFixtureLeagueSeasonId } from '../value-objects/LSFixtureLeagueSeasonId';
 
 export class LeagueSeasonFixtureValidationService {
-  readonly #leagueSeasonFixtureRepository: LeagueSeasonFixtureRepository;
+  readonly #leagueSeasonFixtureRepository: ILeagueSeasonFixtureRepository;
 
-  constructor(leagueSeasonFixtureRepository: LeagueSeasonFixtureRepository) {
+  constructor(leagueSeasonFixtureRepository: ILeagueSeasonFixtureRepository) {
     this.#leagueSeasonFixtureRepository = leagueSeasonFixtureRepository;
   }
 

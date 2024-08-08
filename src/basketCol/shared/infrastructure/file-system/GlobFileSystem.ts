@@ -1,9 +1,8 @@
 import { glob } from 'glob';
-import { Router } from 'express';
 
-import { FileSystem } from './FileSystem';
+import { IFileSystem } from './IFileSystem';
 
-export class GlobFileSystem implements FileSystem {
+export class GlobFileSystem implements IFileSystem {
   private basePath: string;
 
   constructor(dependencies: {
@@ -16,7 +15,7 @@ export class GlobFileSystem implements FileSystem {
     return glob.sync(pattern, { ...options, cwd: this.basePath });
   }
 
-  public requireModule(path: string): { default: (router: Router) => void } {
+  public requireModule<Router>(path: string): { default: (router: Router) => void } {
     // eslint-disable-next-line import/no-dynamic-require, global-require
     return require(`${this.basePath}/${path}`);
   }

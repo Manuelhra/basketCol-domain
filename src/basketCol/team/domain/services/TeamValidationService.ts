@@ -1,14 +1,14 @@
 import { Nullable } from '../../../shared/domain/Nullable';
 import { TeamNotFoundError } from '../exceptions/TeamNotFoundError';
-import { TeamRepository } from '../repository/TeamRepository';
+import { ITeamRepository } from '../repository/ITeamRepository';
 import { Team } from '../Team';
 import { TeamId } from '../value-objects/TeamId';
 
 export class TeamValidationService {
-  readonly #teamRepository: TeamRepository;
+  readonly #teamRepository: ITeamRepository;
 
   constructor(dependencies: {
-    teamRepository: TeamRepository;
+    teamRepository: ITeamRepository;
   }) {
     this.#teamRepository = dependencies.teamRepository;
   }

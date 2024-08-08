@@ -1,19 +1,20 @@
+import { Response } from 'express';
+
 import { IHttpResponseHandler } from '../../../application/http/IHttpResponseHandler';
 import { HttpResponseHandler } from '../../http/HttpResponseHandler';
-import { ServerErrorHandler } from '../../server/ServerErrorHandler';
-import { SharedServerErrorHandler } from '../../server/SharedServerErrorHandler';
-import { SharedContainer } from '../SharedContainer';
+import { ExpressSharedServerErrorHandler } from '../../server/express/server/ExpressSharedServerErrorHandler';
+import { IServerErrorHandle } from '../../server/IServerErrorHandler';
+import { ISharedContainer } from '../ISharedContainer';
 import { AwilixDependencyInjector } from './AwilixDependencyInjector';
-import { AwilixDependencySetup } from './AwilixDependencySetup';
 
-export class AwilixSharedDependencyInjector extends AwilixDependencyInjector<SharedContainer> {
+export class AwilixSharedDependencyInjector extends AwilixDependencyInjector<ISharedContainer> {
   public constructor() {
     super();
 
     this.createContainer();
     this.registerDependencies({
-      sharedServerErrorHandler: AwilixDependencySetup.registerAsClass<ServerErrorHandler>(SharedServerErrorHandler).singleton(),
-      httpResponseHandler: AwilixDependencySetup.registerAsClass<IHttpResponseHandler>(HttpResponseHandler).singleton(),
+      expressSharedServerErrorHandler: AwilixDependencyInjector.registerAsClass<IServerErrorHandle<Response>>(ExpressSharedServerErrorHandler).singleton(),
+      httpResponseHandler: AwilixDependencyInjector.registerAsClass<IHttpResponseHandler>(HttpResponseHandler).singleton(),
     });
   }
 }
