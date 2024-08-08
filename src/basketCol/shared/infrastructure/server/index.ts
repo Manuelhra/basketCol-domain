@@ -1,4 +1,4 @@
-import { RootRouteManager } from '../routes/RootRouteManager';
+import { RootRouteManager } from './routes/RootRouteManager';
 import { ServerErrorHandler } from './ServerErrorHandler';
 
 export interface Server {

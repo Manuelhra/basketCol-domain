@@ -5,11 +5,11 @@ import errorHandler from 'errorhandler';
 import Router from 'express-promise-router';
 import helmet from 'helmet';
 import * as http from 'http';
-import { Server } from '../../../../domain/server';
 
-import { ServerErrorHandler } from '../../../../domain/server/ServerErrorHandler';
 import { ExpressRootRouteManager } from '../routes/ExpressRootRouteManager';
-import { ExpressServerErrorHandler } from './ExpressServerErrorHandler';
+import { HttpStatus } from '../../../../domain/http/HttpStatus';
+import { Server } from '../..';
+import { ServerErrorHandler } from '../../ServerErrorHandler';
 
 export class ExpressServer implements Server {
   readonly #app: Application;
@@ -18,12 +18,9 @@ export class ExpressServer implements Server {
 
   private httpServer: http.Server | undefined;
 
-  readonly #serverErrorHandler: ExpressServerErrorHandler;
-
   constructor() {
     this.#app = express();
     this.#router = Router();
-    this.#serverErrorHandler = new ExpressServerErrorHandler();
 
     this.setUpMiddlewares();
     this.#router.use(errorHandler());
@@ -67,7 +64,12 @@ export class ExpressServer implements Server {
       if (error !== undefined && error !== null) {
         console.log(error);
 
-        this.#serverErrorHandler.run(error, serverErrorHandlerList);
+        serverErrorHandlerList.forEach((serverErrorHandler) => {
+          serverErrorHandler.run(res, error);
+        });
+
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send();
+
         return;
       }
 

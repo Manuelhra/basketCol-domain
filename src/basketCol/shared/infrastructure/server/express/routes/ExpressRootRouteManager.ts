@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { FileSystem } from '../../../../domain/file-system/FileSystem';
-import { RootRouteManager } from '../../../../domain/routes/RootRouteManager';
+import { RootRouteManager } from '../../routes/RootRouteManager';
+import { FileSystem } from '../../../file-system/FileSystem';
 
 export abstract class ExpressRootRouteManager implements RootRouteManager {
   readonly #fileSystem: FileSystem;

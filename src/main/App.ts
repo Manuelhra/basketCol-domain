@@ -1,6 +1,7 @@
 import { serverStatusRouteManager } from '../basketCol/server-status/infrastructure/dependency-injection';
-import { Server } from '../basketCol/shared/domain/server';
-import { ExpressServer } from '../basketCol/shared/infrastructure/api/express/server/ExpressServer';
+import { sharedServerErrorHandler } from '../basketCol/shared/infrastructure/dependency-injection';
+import { Server } from '../basketCol/shared/infrastructure/server';
+import { ExpressServer } from '../basketCol/shared/infrastructure/server/express/server/ExpressServer';
 
 export class App {
   readonly #server: Server;
@@ -27,6 +28,8 @@ export class App {
   }
 
   private handleErrors(): void {
-    this.#server.handleErrors([]);
+    this.#server.handleErrors([
+      sharedServerErrorHandler,
+    ]);
   }
 }

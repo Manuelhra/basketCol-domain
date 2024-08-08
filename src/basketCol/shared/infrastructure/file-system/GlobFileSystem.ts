@@ -1,7 +1,7 @@
 import { glob } from 'glob';
 import { Router } from 'express';
 
-import { FileSystem } from '../../domain/file-system/FileSystem';
+import { FileSystem } from './FileSystem';
 
 export class GlobFileSystem implements FileSystem {
   private basePath: string;
