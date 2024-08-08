@@ -1,6 +1,6 @@
-import { RootController } from '../../../shared/domain/controllers/RootController';
-import { FileSystem } from '../../../shared/domain/file-system/FileSystem';
-import { RootRouteManager } from '../../../shared/domain/routes/RootRouteManager';
+import { FileSystem } from '../../../shared/infrastructure/file-system/FileSystem';
+import { RootController } from '../../../shared/infrastructure/server/controllers/RootController';
+import { RootRouteManager } from '../../../shared/infrastructure/server/routes/RootRouteManager';
 
 export interface ServerStatusContainer {
   basePath: string;

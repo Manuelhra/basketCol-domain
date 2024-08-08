@@ -1,6 +1,6 @@
 import { AwilixContainer, createContainer, NameAndRegistrationPair } from 'awilix';
 
-import { DependencyInjector } from '../../../domain/dependency-injection/DependencyInjector';
+import { DependencyInjector } from '../DependencyInjector';
 
 export abstract class AwilixDependencyInjector<TContainer extends Object> implements DependencyInjector<AwilixContainer<TContainer>, NameAndRegistrationPair<TContainer>> {
   public container: AwilixContainer<TContainer> | null = null;
