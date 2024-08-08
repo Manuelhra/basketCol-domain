@@ -1,14 +1,14 @@
 import { Nullable } from '../../../../../../../shared/domain/Nullable';
 import { LeagueSeasonFixtureGameNotFoundError } from '../exceptions/LeagueSeasonFixtureGameNotFoundError';
 import { LeagueSeasonFixtureGame } from '../LeagueSeasonFixtureGame';
-import { LeagueSeasonFixtureGameRepository } from '../repository/LeagueSeasonFixtureGameRepository';
+import { ILeagueSeasonFixtureGameRepository } from '../repository/ILeagueSeasonFixtureGameRepository';
 import { LSFGameId } from '../value-objects/LSFGameId';
 
 export class LeagueSeasonFixtureGameValidationService {
-  readonly #leagueSeasonFixtureGameRepository: LeagueSeasonFixtureGameRepository;
+  readonly #leagueSeasonFixtureGameRepository: ILeagueSeasonFixtureGameRepository;
 
   constructor(dependencies: {
-    leagueSeasonFixtureGameRepository: LeagueSeasonFixtureGameRepository;
+    leagueSeasonFixtureGameRepository: ILeagueSeasonFixtureGameRepository;
   }) {
     this.#leagueSeasonFixtureGameRepository = dependencies.leagueSeasonFixtureGameRepository;
   }

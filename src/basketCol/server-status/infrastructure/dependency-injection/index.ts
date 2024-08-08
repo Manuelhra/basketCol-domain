@@ -7,5 +7,5 @@ if (awilixServerStatusContainer === null) {
   throw new DependencyContainerNotInitializedError();
 }
 
-export const serverStatusGetController = awilixServerStatusContainer.resolve('serverStatusGetController');
-export const serverStatusRouteManager = awilixServerStatusContainer.resolve('serverStatusRouteManager');
+export const expressServerStatusGetController = awilixServerStatusContainer.resolve('expressServerStatusGetController');
+export const expressServerStatusRouteManager = awilixServerStatusContainer.resolve('expressServerStatusRouteManager');

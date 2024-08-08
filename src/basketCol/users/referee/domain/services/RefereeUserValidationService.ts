@@ -1,14 +1,14 @@
 import { Nullable } from '../../../../shared/domain/Nullable';
 import { RefereeUserNotFoundError } from '../exceptions/RefereeUserNotFoundError';
 import { RefereeUser } from '../RefereeUser';
-import { RefereeUserRepository } from '../repository/RefereeUserRepository';
+import { IRefereeUserRepository } from '../repository/IRefereeUserRepository';
 import { RefereeUserId } from '../value-objects/RefereeUserId';
 
 export class RefereeUserValidationService {
-  readonly #refereeUserRepository: RefereeUserRepository;
+  readonly #refereeUserRepository: IRefereeUserRepository;
 
   constructor(dependencies: {
-    refereeUserRepository: RefereeUserRepository;
+    refereeUserRepository: IRefereeUserRepository;
   }) {
     this.#refereeUserRepository = dependencies.refereeUserRepository;
   }

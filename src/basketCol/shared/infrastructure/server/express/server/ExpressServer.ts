@@ -1,17 +1,17 @@
 import { urlencoded, json } from 'body-parser';
 import compression from 'compression';
-import express, { Application } from 'express';
+import express, { Application, Response } from 'express';
 import errorHandler from 'errorhandler';
 import Router from 'express-promise-router';
 import helmet from 'helmet';
 import * as http from 'http';
 
-import { ExpressRootRouteManager } from '../routes/ExpressRootRouteManager';
 import { HttpStatus } from '../../../../domain/http/HttpStatus';
-import { Server } from '../..';
-import { ServerErrorHandler } from '../../ServerErrorHandler';
+import { IServer } from '../..';
+import { IRouteManager } from '../../routes/IRouteManager';
+import { IServerErrorHandle } from '../../IServerErrorHandler';
 
-export class ExpressServer implements Server {
+export class ExpressServer implements IServer<express.Router, Response> {
   readonly #app: Application;
 
   readonly #router: express.Router;
@@ -55,17 +55,17 @@ export class ExpressServer implements Server {
     return this.httpServer;
   }
 
-  public registerRoutes(routeManager: ExpressRootRouteManager[]): void {
+  public registerRoutes(routeManager: IRouteManager<express.Router>[]): void {
     routeManager.forEach((manager) => manager.registerRoutes(this.#router));
   }
 
-  public handleErrors(serverErrorHandlerList: ServerErrorHandler[]): void {
+  public handleErrors(expressServerErrorHandlerList: IServerErrorHandle<Response>[]): void {
     this.#router.use((error: Error, _req: express.Request, res: express.Response, next: express.NextFunction): void => {
       if (error !== undefined && error !== null) {
         console.log(error);
 
-        serverErrorHandlerList.forEach((serverErrorHandler) => {
-          serverErrorHandler.run(res, error);
+        expressServerErrorHandlerList.forEach((expressServerErrorHandler) => {
+          expressServerErrorHandler.run(res, error);
         });
 
         res.status(HttpStatus.INTERNAL_SERVER_ERROR).send();

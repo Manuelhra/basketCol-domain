@@ -1,14 +1,14 @@
 import { Nullable } from '../../../../shared/domain/Nullable';
 import { League } from '../League';
 import { DuplicateLeagueNameError } from '../exceptions/DuplicateLeagueNameError';
-import { LeagueRepository } from '../repository/LeagueRepository';
+import { ILeagueRepository } from '../repository/ILeagueRepository';
 import { LeagueName } from '../value-objects/LeagueName';
 
 export class LeagueValidationNameService {
-  readonly #leagueRepository: LeagueRepository;
+  readonly #leagueRepository: ILeagueRepository;
 
   constructor(dependencies: {
-    leagueRepository: LeagueRepository
+    leagueRepository: ILeagueRepository
   }) {
     this.#leagueRepository = dependencies.leagueRepository;
   }

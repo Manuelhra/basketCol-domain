@@ -1,4 +1,4 @@
-interface Item {
+interface IItem {
   code: string;
   label: string;
 }
@@ -16,9 +16,9 @@ export interface CreateLeagueDTO {
   rules: string;
   level: string;
   location: {
-    country: Item;
-    department: Item;
-    city: Item;
+    country: IItem;
+    department: IItem;
+    city: IItem;
     coords: { lat: number; lng: number; };
   };
   establishmentDate: string;

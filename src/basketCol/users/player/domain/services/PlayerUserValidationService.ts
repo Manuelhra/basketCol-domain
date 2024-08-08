@@ -1,14 +1,14 @@
 import { Nullable } from '../../../../shared/domain/Nullable';
 import { PlayerUserNotFoundError } from '../exceptions/PlayerUserNotFoundError';
 import { PlayerUser } from '../PlayerUser';
-import { PlayerUserRepository } from '../repository/PlayerUserRepository';
+import { IPlayerUserRepository } from '../repository/IPlayerUserRepository';
 import { PlayerUserId } from '../value-objects/PlayerUserId';
 
 export class PlayerUserValidationService {
-  readonly #playerUserRepository: PlayerUserRepository;
+  readonly #playerUserRepository: IPlayerUserRepository;
 
   constructor(dependencies: {
-    playerUserRepository: PlayerUserRepository;
+    playerUserRepository: IPlayerUserRepository;
   }) {
     this.#playerUserRepository = dependencies.playerUserRepository;
   }

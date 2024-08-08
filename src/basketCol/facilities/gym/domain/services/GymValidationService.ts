@@ -1,14 +1,14 @@
 import { ReferencedGymIdList } from '../../../../shared/domain/value-objects/ReferencedGymIdList';
 import { GymNotFoundError } from '../exceptions/GymNotFoundError';
 import { GymsNotFoundError } from '../exceptions/GymsNotFoundError';
-import { GymRepository } from '../repository/GymRepository';
+import { IGymRepository } from '../repository/IGymRepository';
 import { GymId } from '../value-objects/GymId';
 
 export class GymValidationService {
-  readonly #gymRepository: GymRepository;
+  readonly #gymRepository: IGymRepository;
 
   constructor(dependencies: {
-    gymRepository: GymRepository;
+    gymRepository: IGymRepository;
   }) {
     this.#gymRepository = dependencies.gymRepository;
   }

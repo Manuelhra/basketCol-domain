@@ -1,14 +1,14 @@
 import { Nullable } from '../../../../shared/domain/Nullable';
 import { LeagueFounderUser } from '../LeagueFounderUser';
 import { LeagueFounderUserNotFoundError } from '../exceptions/LeagueFounderUserNotFoundError';
-import { LeagueFounderUserRepository } from '../repository/LeagueFounderUserRepository';
+import { ILeagueFounderUserRepository } from '../repository/ILeagueFounderUserRepository';
 import { LeagueFounderUserId } from '../value-objects/LeagueFounderUserId';
 
 export class LeagueFounderUserValidationService {
-  readonly #leagueFounderUserRepository: LeagueFounderUserRepository;
+  readonly #leagueFounderUserRepository: ILeagueFounderUserRepository;
 
   constructor(dependencies: {
-    leagueFounderUserRepository: LeagueFounderUserRepository;
+    leagueFounderUserRepository: ILeagueFounderUserRepository;
   }) {
     this.#leagueFounderUserRepository = dependencies.leagueFounderUserRepository;
   }

@@ -1,12 +1,12 @@
 import { HostUserNotFoundError } from '../exceptions/HostUserNotFoundError';
-import { HostUserRepository } from '../repository/HostUserRepository';
+import { IHostUserRepository } from '../repository/IHostUserRepository';
 import { HostUserId } from '../value-objects/HostUserId';
 
 export class HostUserValidationService {
-  readonly #hostUserRepository: HostUserRepository;
+  readonly #hostUserRepository: IHostUserRepository;
 
   constructor(dependencies: {
-    hostUserRepository: HostUserRepository;
+    hostUserRepository: IHostUserRepository;
   }) {
     this.#hostUserRepository = dependencies.hostUserRepository;
   }

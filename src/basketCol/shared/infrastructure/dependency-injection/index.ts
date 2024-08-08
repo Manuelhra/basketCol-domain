@@ -7,4 +7,4 @@ if (awilixSharedContainer === null) {
   throw new DependencyContainerNotInitializedError();
 }
 
-export const sharedServerErrorHandler = awilixSharedContainer.resolve('sharedServerErrorHandler');
+export const expressSharedServerErrorHandler = awilixSharedContainer.resolve('expressSharedServerErrorHandler');

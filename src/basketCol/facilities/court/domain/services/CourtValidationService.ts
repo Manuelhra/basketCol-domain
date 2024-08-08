@@ -1,14 +1,14 @@
 import { ReferencedCourtIdList } from '../../../../shared/domain/value-objects/ReferencedCourtIdList';
 import { CourtNotFoundError } from '../exceptions/CourtNotFoundError';
 import { CourtsNotFoundError } from '../exceptions/CourtsNotFoundError';
-import { CourtRepository } from '../repository/CourtRepository';
+import { ICourtRepository } from '../repository/ICourtRepository';
 import { CourtId } from '../value-objects/CourtId';
 
 export class CourtValidationService {
-  readonly #courtRepository: CourtRepository;
+  readonly #courtRepository: ICourtRepository;
 
   constructor(dependencies: {
-    courtRepository: CourtRepository;
+    courtRepository: ICourtRepository;
   }) {
     this.#courtRepository = dependencies.courtRepository;
   }

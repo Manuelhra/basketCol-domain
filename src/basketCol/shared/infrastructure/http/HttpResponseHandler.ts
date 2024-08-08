@@ -1,9 +1,9 @@
-import { ErrorApiResponse } from '../../application/http/ErrorApiResponse';
+import { IErrorApiResponse } from '../../application/http/IErrorApiResponse';
 import { IHttpResponseHandler } from '../../application/http/IHttpResponseHandler';
-import { SuccessApiResponse } from '../../application/http/SuccessApiResponse';
+import { ISuccessApiResponse } from '../../application/http/ISuccessApiResponse';
 
 export class HttpResponseHandler implements IHttpResponseHandler {
-  public handleSuccessResponse<T>(body: { code: number; message: string; data: T; }): SuccessApiResponse<T> {
+  public handleSuccessResponse<T>(body: { code: number; message: string; data: T; }): ISuccessApiResponse<T> {
     return {
       code: body.code,
       message: body.message,
@@ -11,7 +11,7 @@ export class HttpResponseHandler implements IHttpResponseHandler {
     };
   }
 
-  public handleErrorResponse(body: { code: number; message: string; error: { name: string; details: string; }; }): ErrorApiResponse {
+  public handleErrorResponse(body: { code: number; message: string; error: { name: string; details: string; }; }): IErrorApiResponse {
     return {
       code: body.code,
       message: body.message,

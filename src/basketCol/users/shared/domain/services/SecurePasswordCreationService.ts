@@ -1,18 +1,18 @@
 import { UserPassword } from '../value-objects/UserPassword';
-import { PasswordEncrypterService } from './PasswordEncrypterService';
+import { IPasswordEncrypterService } from './IPasswordEncrypterService';
 
-interface CreatePasswordValueObject {
+interface ICreatePasswordValueObject {
   run<T extends UserPassword>(encryptedPassword: string): T;
 }
 
 export class SecurePasswordCreationService {
-  readonly #passwordEncrypterService: PasswordEncrypterService;
+  readonly #passwordEncrypterService: IPasswordEncrypterService;
 
-  readonly #createPasswordValueObject: CreatePasswordValueObject;
+  readonly #createPasswordValueObject: ICreatePasswordValueObject;
 
   constructor(dependencies: {
-    passwordEncrypterService: PasswordEncrypterService;
-    createPasswordValueObject: CreatePasswordValueObject;
+    passwordEncrypterService: IPasswordEncrypterService;
+    createPasswordValueObject: ICreatePasswordValueObject;
   }) {
     this.#passwordEncrypterService = dependencies.passwordEncrypterService;
     this.#createPasswordValueObject = dependencies.createPasswordValueObject;
