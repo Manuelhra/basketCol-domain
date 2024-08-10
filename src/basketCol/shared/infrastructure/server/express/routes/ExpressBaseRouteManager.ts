@@ -1,9 +1,8 @@
 import { Router } from 'express';
 
-import { IRouteManager } from '../../routes/IRouteManager';
 import { IFileSystem } from '../../../file-system/IFileSystem';
 
-export abstract class ExpressBaseRouteManager implements IRouteManager<Router> {
+export abstract class ExpressBaseRouteManager {
   readonly #fileSystem: IFileSystem;
 
   protected constructor(dependencies: {

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
 
 import { IHttpResponseHandler } from '../../../../shared/application/http/IHttpResponseHandler';
 import { AwilixDependencyInjector } from '../../../../shared/infrastructure/dependency-injection/awilix/AwilixDependencyInjector';
@@ -6,10 +6,10 @@ import { GlobFileSystem } from '../../../../shared/infrastructure/file-system/Gl
 import { IFileSystem } from '../../../../shared/infrastructure/file-system/IFileSystem';
 import { HttpResponseHandler } from '../../../../shared/infrastructure/http/HttpResponseHandler';
 import { IController } from '../../../../shared/infrastructure/server/controllers/IController';
-import { ExpressBaseRouteManager } from '../../../../shared/infrastructure/server/express/routes/ExpressBaseRouteManager';
 import { ExpressServerStatusGetController } from '../../server/express/controllers/ExpressServerStatusGetController';
 import { ExpressServerStatusRouteManager } from '../../server/express/routes/ExpressServerStatusRouteManager';
 import { IServerStatusContainer } from '../IServerStatusContainer';
+import { IRouteManager } from '../../../../shared/infrastructure/server/routes/IRouteManager';
 
 export class AwilixServerStatusDependencyInjector extends AwilixDependencyInjector<IServerStatusContainer> {
   public constructor() {
@@ -20,7 +20,7 @@ export class AwilixServerStatusDependencyInjector extends AwilixDependencyInject
       basePath: AwilixDependencyInjector.registerAsValue<string>(__dirname),
       expressServerStatusGetController: AwilixDependencyInjector.registerAsClass<IController<Request, Response>>(ExpressServerStatusGetController).singleton(),
       fileSystem: AwilixDependencyInjector.registerAsClass<IFileSystem>(GlobFileSystem).singleton(),
-      expressServerStatusRouteManager: AwilixDependencyInjector.registerAsClass<ExpressBaseRouteManager>(ExpressServerStatusRouteManager).singleton(),
+      expressServerStatusRouteManager: AwilixDependencyInjector.registerAsClass<IRouteManager<Router>>(ExpressServerStatusRouteManager).singleton(),
       httpResponseHandler: AwilixDependencyInjector.registerAsClass<IHttpResponseHandler>(HttpResponseHandler).singleton(),
     });
   }

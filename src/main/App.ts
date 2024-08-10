@@ -4,6 +4,7 @@ import { expressServerStatusRouteManager } from '../basketCol/server-status/infr
 import { expressSharedServerErrorHandler } from '../basketCol/shared/infrastructure/dependency-injection';
 import { IServer } from '../basketCol/shared/infrastructure/server';
 import { ExpressServer } from '../basketCol/shared/infrastructure/server/express/server/ExpressServer';
+import { expressHostUserRouteManager } from '../basketCol/users/host/infrastructure/dependency-injection';
 
 export class App {
   readonly #server: IServer<Router, Response>;
@@ -26,6 +27,7 @@ export class App {
   private setUpRoutes(): void {
     this.#server.registerRoutes([
       expressServerStatusRouteManager,
+      expressHostUserRouteManager,
     ]);
   }
 
