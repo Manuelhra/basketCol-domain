@@ -1,7 +1,7 @@
 import { StringValueObject } from '../../../../shared/domain/value-objects/StringValueObject';
 import { PasswordPolicyViolationError } from '../exceptions/PasswordPolicyViolationError';
 
-export abstract class UserPassword extends StringValueObject {
+export class UserPassword extends StringValueObject {
   static readonly #PASSWORD_REG_EXP: RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
   static readonly #REQUIREMENTS: string[] = [
@@ -11,7 +11,7 @@ export abstract class UserPassword extends StringValueObject {
     'At least one special character from [@ $!%*#?&].',
   ] as const;
 
-  protected constructor(value: string) {
+  public constructor(value: string) {
     super(value, 'password');
 
     UserPassword.ensureIsValidPassword(value);

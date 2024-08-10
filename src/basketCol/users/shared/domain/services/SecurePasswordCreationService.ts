@@ -1,25 +1,26 @@
 import { UserPassword } from '../value-objects/UserPassword';
+import { ICreatePasswordValueObjectService } from './ICreatePasswordValueObjectService';
 import { IPasswordEncrypterService } from './IPasswordEncrypterService';
-
-interface ICreatePasswordValueObject {
-  run<T extends UserPassword>(encryptedPassword: string): T;
-}
 
 export class SecurePasswordCreationService {
   readonly #passwordEncrypterService: IPasswordEncrypterService;
 
-  readonly #createPasswordValueObject: ICreatePasswordValueObject;
+  readonly #createPasswordValueObjectService: ICreatePasswordValueObjectService;
 
   constructor(dependencies: {
     passwordEncrypterService: IPasswordEncrypterService;
-    createPasswordValueObject: ICreatePasswordValueObject;
+    createPasswordValueObjectService: ICreatePasswordValueObjectService;
   }) {
     this.#passwordEncrypterService = dependencies.passwordEncrypterService;
-    this.#createPasswordValueObject = dependencies.createPasswordValueObject;
+    this.#createPasswordValueObjectService = dependencies.createPasswordValueObjectService;
   }
 
   public createFromPlainText<T extends UserPassword>(value: string): T {
     const encryptedPassword = this.#passwordEncrypterService.encrypt(value);
-    return this.#createPasswordValueObject.run<T>(encryptedPassword);
+    return this.#createPasswordValueObjectService.run<T>(encryptedPassword);
+  }
+
+  public createFromHashedText<T extends UserPassword>(hashedText: string): T {
+    return this.#createPasswordValueObjectService.run<T>(hashedText);
   }
 }

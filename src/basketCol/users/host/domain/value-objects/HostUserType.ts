@@ -9,5 +9,8 @@ export class HostUserType extends UserType {
     super(type);
     this.TYPE = type;
   }
-}
 
+  public static get TYPE(): string {
+    return this.TYPE;
+  }
+}

@@ -1,3 +1,14 @@
-import { ExpressBaseRouteManager } from '../../../../../../shared/infrastructure/server/express/routes/ExpressBaseRouteManager';
+import { Router } from 'express';
 
-export class ExpressHostUserRouteManager extends ExpressBaseRouteManager {}
+import { IFileSystem } from '../../../../../../shared/infrastructure/file-system/IFileSystem';
+import { ExpressBaseRouteManager } from '../../../../../../shared/infrastructure/server/express/routes/ExpressBaseRouteManager';
+import { IRouteManager } from '../../../../../../shared/infrastructure/server/routes/IRouteManager';
+
+export class ExpressHostUserRouteManager extends ExpressBaseRouteManager implements IRouteManager<Router> {
+  public constructor(dependencies: {
+    fileSystem: IFileSystem;
+    basePath: string;
+  }) {
+    super(dependencies);
+  }
+}
