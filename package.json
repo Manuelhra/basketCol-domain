@@ -5,7 +5,7 @@
   "name": "@basketcol/core",
   "version": "1.0.3",
   "main": "build/main/index.js",
-  "types": "build/types/index.d.ts",
+  "types": "build/types/main/index.d.ts",
   "files": [
     "build/**/*"
   ],
