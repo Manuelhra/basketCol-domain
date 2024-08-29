@@ -5,7 +5,10 @@
   "name": "@basketcol/core",
   "version": "1.0.2",
   "main": "build/main/index.js",
-  "types": "build/main/index.d.ts",
+  "types": "build/types/index.d.ts",
+  "files": [
+  "build/**/*"
+],
   "description": "Core domain package for basketCol project",
   "author": "Manuel Rivera - manuelh_ra",
   "extends": [
