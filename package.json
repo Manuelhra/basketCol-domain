@@ -2,6 +2,12 @@
   "env": {
     "browser": false
   },
+  "name": "@basketcol/core",
+  "version": "1.0.0",
+  "main": "build/main/index.js",
+  "types": "build/main/index.d.ts",
+  "description": "Core domain package for basketCol project",
+  "author": "Manuel Rivera - manuelh_ra",
   "extends": [
     "airbnb",
     "airbnb-typescript"
