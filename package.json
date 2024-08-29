@@ -3,7 +3,7 @@
     "browser": false
   },
   "name": "@basketcol/core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "build/main/index.js",
   "types": "build/main/index.d.ts",
   "description": "Core domain package for basketCol project",
