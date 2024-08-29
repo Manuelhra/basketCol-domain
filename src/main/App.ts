@@ -39,3 +39,8 @@ export class App {
 }
 
 // TODO: Handle error on all context file
+// TODO: Quitar todo lo del back y dejar solo la capa de dominio y application acá
+// publica el code en npm private y crear otro repo para backend y otro para front
+// Crear el método static en todas las entidades de create y reemplazar en todos los casos de uso new por .create
+// También crear en todas las entidades el método de update y crear la entidad Either
+// Y todos los métodos de los casos de uso que se pasen de llamar run a execute
