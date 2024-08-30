@@ -1,7 +1,7 @@
 import { AggregateRoot } from '../AggregateRoot';
 import { IAggregateRoot } from '../IAggregateRoot';
 import { Nullable } from '../Nullable';
-import { IdAlreadyExistsError } from '../exceptions/IdlAlreadyExistsError';
+import { IdAlreadyExistsError } from '../exceptions/IdAlreadyExistsError';
 import { UuidValueObject } from '../value-objects/UuidValueObject';
 
 export interface IRepository {
