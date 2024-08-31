@@ -1,0 +1,1 @@
+export { GymValidationService } from './GymValidationService';
