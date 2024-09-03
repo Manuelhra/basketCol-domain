@@ -10,10 +10,6 @@ export abstract class UserType extends StringValueObject {
     this.ensureUserTypeIsCorrect(type);
   }
 
-  public getType(): string {
-    return this.TYPE;
-  }
-
   private ensureUserTypeIsCorrect(type: string): void {
     if (type !== this.TYPE) {
       throw new InvalidUserTypeError(type);
