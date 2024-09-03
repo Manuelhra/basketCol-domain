@@ -1,8 +1,10 @@
 import { Nullable } from '../../../../shared/domain/Nullable';
 import { PlayerUser } from '../PlayerUser';
+import { PlayerUserNickname } from '../value-objects';
 import { PlayerUserId } from '../value-objects/PlayerUserId';
 
 export interface IPlayerUserRepository {
   searchById(playerUserId: PlayerUserId): Promise<Nullable<PlayerUser>>;
   save(playerUser: PlayerUser): Promise<void>;
+  searchByNickname(playerUserNickname: PlayerUserNickname): Promise<Nullable<PlayerUser>>;
 }
