@@ -7,8 +7,7 @@ export class PropertyLengthTooShortError extends RootError {
     this.name = 'PropertyLengthTooShortError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }
-

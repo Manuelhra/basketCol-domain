@@ -7,7 +7,7 @@ export class DatabaseConnectionFailedError extends RootError {
     this.name = 'DatabaseConnectionFailedError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

@@ -6,7 +6,7 @@ export class InvalidLeagueSeasonIdInstanceError extends RootError {
     this.name = 'InvalidLeagueSeasonIdInstanceError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

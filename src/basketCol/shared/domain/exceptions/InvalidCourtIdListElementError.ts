@@ -7,7 +7,7 @@ export class InvalidCourtIdListElementError extends RootError {
     this.name = 'InvalidCourtIdListElementError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

@@ -6,7 +6,7 @@ export class InvalidTeamIdInstanceError extends RootError {
     this.name = 'InvalidTeamIdInstanceError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

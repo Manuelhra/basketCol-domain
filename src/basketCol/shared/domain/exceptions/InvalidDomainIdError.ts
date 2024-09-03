@@ -7,8 +7,7 @@ export class InvalidDomainIdError extends RootError {
     this.name = 'InvalidDomainIdError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }
-

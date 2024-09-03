@@ -7,7 +7,7 @@ export class InvalidHostUserIdInstanceError extends RootError {
     this.name = 'InvalidHostUserIdInstanceError';
   }
 
-  logError() {
+  public override logError() {
     return `${this.name}: ${this.message}`;
   }
 }

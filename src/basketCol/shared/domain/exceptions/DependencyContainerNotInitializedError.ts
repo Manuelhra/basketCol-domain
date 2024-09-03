@@ -7,7 +7,7 @@ export class DependencyContainerNotInitializedError extends RootError {
     this.name = 'DependencyContainerNotInitializedError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }
