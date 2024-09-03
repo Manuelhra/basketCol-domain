@@ -7,7 +7,7 @@ export class InvalidGymIdListElementError extends RootError {
     this.name = 'InvalidGymIdListElementError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

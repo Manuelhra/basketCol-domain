@@ -6,7 +6,7 @@ export class InvalidPlayerUserIdInstanceError extends RootError {
     this.name = 'InvalidPlayerUserIdInstanceError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

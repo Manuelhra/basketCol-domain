@@ -7,7 +7,7 @@ export class InvalidFacilityIdInstanceError extends RootError {
     this.name = 'InvalidFacilityIdInstanceError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

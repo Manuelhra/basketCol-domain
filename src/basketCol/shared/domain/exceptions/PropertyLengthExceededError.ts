@@ -7,8 +7,7 @@ export class PropertyLengthExceededError extends RootError {
     this.name = 'PropertyLengthExceededError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }
-

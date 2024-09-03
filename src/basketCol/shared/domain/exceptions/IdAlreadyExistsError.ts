@@ -10,7 +10,7 @@ export class IdAlreadyExistsError extends RootError {
     this.name = 'IdAlreadyExistsError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

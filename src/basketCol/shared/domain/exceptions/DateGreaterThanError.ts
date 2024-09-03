@@ -8,7 +8,7 @@ export class DateGreaterThanError extends RootError {
     this.name = 'DateGreaterThanError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

@@ -7,8 +7,7 @@ export class EntityNotFoundError extends RootError {
     this.name = 'EntityNotFoundError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }
-

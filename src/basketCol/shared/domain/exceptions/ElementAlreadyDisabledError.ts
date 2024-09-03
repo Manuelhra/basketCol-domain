@@ -8,8 +8,7 @@ export class ElementAlreadyDisabledError extends RootError {
     this.name = 'ElementAlreadyDisabledError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }
-

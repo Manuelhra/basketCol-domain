@@ -7,7 +7,7 @@ export class InvalidPropertyTypeError extends RootError {
     this.name = 'InvalidPropertyTypeError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

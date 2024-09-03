@@ -7,7 +7,7 @@ export class InvalidTeamFounderUserIdInstanceError extends RootError {
     this.name = 'InvalidTeamFounderUserIdInstanceError';
   }
 
-  logError() {
+  public override logError() {
     return `${this.name}: ${this.message}`;
   }
 }

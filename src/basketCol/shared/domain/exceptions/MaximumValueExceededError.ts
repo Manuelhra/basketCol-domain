@@ -7,7 +7,7 @@ export class MaximumValueExceededError extends RootError {
     this.name = 'MaximumValueExceededError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

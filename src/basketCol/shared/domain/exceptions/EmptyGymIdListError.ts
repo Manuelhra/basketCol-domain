@@ -7,7 +7,7 @@ export class EmptyGymIdListError extends RootError {
     this.name = 'EmptyGymIdListError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

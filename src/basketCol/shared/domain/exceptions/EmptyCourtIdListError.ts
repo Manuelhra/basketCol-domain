@@ -7,7 +7,7 @@ export class EmptyCourtIdListError extends RootError {
     this.name = 'EmptyCourtIdListError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }
