@@ -447,9 +447,9 @@ export {
 // Users Player
 export { PlayerUser } from '../basketCol/users/player/domain/PlayerUser';
 export { IPlayerUser } from '../basketCol/users/player/domain/IPlayerUser';
-export { PlayerUserNotFoundError } from '../basketCol/users/player/domain/exceptions';
+export { PlayerUserNotFoundError, PlayerUserNicknameAlreadyExistsError } from '../basketCol/users/player/domain/exceptions';
 export { IPlayerUserRepository } from '../basketCol/users/player/domain/repository/IPlayerUserRepository';
-export { PlayerUserValidationService } from '../basketCol/users/player/domain/services';
+export { PlayerUserValidationService, PlayerUserNicknameValidationService } from '../basketCol/users/player/domain/services';
 export {
   PlayerUserActive,
   PlayerUserBiography,
