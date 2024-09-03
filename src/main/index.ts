@@ -454,6 +454,7 @@ export {
   PlayerUserActive,
   PlayerUserBiography,
   PlayerUserCreatedAt,
+  PlayerUserNickname,
   PlayerUserEmail,
   PlayerUserId,
   PlayerUserName,
