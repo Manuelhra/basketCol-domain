@@ -7,3 +7,4 @@ export { PlayerUserName } from './PlayerUserName';
 export { PlayerUserPassword } from './PlayerUserPassword';
 export { PlayerUserType } from './PlayerUserType';
 export { PlayerUserUpdatedAt } from './PlayerUserUpdatedAt';
+export { PlayerUserNickname } from './PlayerUserNickname';

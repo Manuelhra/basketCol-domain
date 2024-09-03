@@ -1,5 +1,6 @@
 import { User } from '../../shared/domain/User';
 import { IPlayerUser } from './IPlayerUser';
+import { PlayerUserNickname } from './value-objects/PlayerUserNickname';
 import { PlayerUserActive } from './value-objects/PlayerUserActive';
 import { PlayerUserBiography } from './value-objects/PlayerUserBiography';
 import { PlayerUserCreatedAt } from './value-objects/PlayerUserCreatedAt';
@@ -11,10 +12,13 @@ import { PlayerUserType } from './value-objects/PlayerUserType';
 import { PlayerUserUpdatedAt } from './value-objects/PlayerUserUpdatedAt';
 
 export class PlayerUser extends User<IPlayerUser> {
+  readonly #nickname: PlayerUserNickname;
+
   constructor(
     id: string,
     name: { firstName: string; lastName: string; },
     biography: string,
+    nickname: string,
     email: { value: string; verified: boolean },
     password: string,
     active: boolean,
@@ -32,6 +36,8 @@ export class PlayerUser extends User<IPlayerUser> {
       new PlayerUserCreatedAt(createdAt),
       new PlayerUserUpdatedAt(updatedAt),
     );
+
+    this.#nickname = new PlayerUserNickname(nickname);
   }
 
   public toPrimitives(): IPlayerUser {
@@ -39,6 +45,7 @@ export class PlayerUser extends User<IPlayerUser> {
       id: this.id.value,
       name: this.name.value,
       biography: this.biography.value,
+      nickname: this.#nickname.value,
       email: this.email.value,
       password: this.password.value,
       type: this.type.value,
