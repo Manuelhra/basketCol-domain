@@ -44,4 +44,8 @@ export abstract class User<I extends IUser> extends AggregateRoot<I> {
     this.type = type;
     this.active = active;
   }
+
+  public static get type(): UserType {
+    return this.type;
+  }
 }

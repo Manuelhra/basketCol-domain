@@ -30,11 +30,7 @@ export abstract class ValueObject<T> {
       return false;
     }
 
-    if (this.constructor !== other.constructor) {
-      return false;
-    }
-
-    return this.isValueEqual(other.value);
+    return this.constructor === other.constructor && this.isValueEqual(other.value);
   }
 
   public toString(): string {
@@ -48,28 +44,19 @@ export abstract class ValueObject<T> {
   }
 
   private validateValue(value: T, propertyName: string, expectedType: string, options: ValueObjectOptions): void {
-    if (!options.allowNull) {
-      this.ensureValueIsNotNull(value, propertyName, expectedType);
-    }
-
-    if (!options.allowUndefined) {
-      this.ensureValueIsNotUndefined(value, propertyName, expectedType);
-    }
-  }
-
-  private ensureValueIsNotNull(value: T, propertyName: string, expectedType: string): void {
-    if (value === null) {
+    if (value === null && !options.allowNull) {
       throw new NullValueError(propertyName, expectedType);
     }
-  }
 
-  private ensureValueIsNotUndefined(value: T, propertyName: string, expectedType: string): void {
-    if (value === undefined) {
+    if (value === undefined && !options.allowUndefined) {
       throw new UndefinedValueError(propertyName, expectedType);
     }
   }
 
   protected isValueEqual(otherValue: unknown): boolean {
+    if (typeof this.value === 'object' && this.value !== null) {
+      return JSON.stringify(this.value) === JSON.stringify(otherValue);
+    }
     return this.value === otherValue;
   }
 }
