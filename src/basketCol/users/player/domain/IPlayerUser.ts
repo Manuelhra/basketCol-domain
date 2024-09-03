@@ -1,3 +1,7 @@
 import { IUser } from '../../shared/domain/IUser';
 
-export interface IPlayerUser extends IUser {}
+interface IPlayerUserCredentials {
+  nickname: string;
+}
+
+export interface IPlayerUser extends IUser, IPlayerUserCredentials {}
