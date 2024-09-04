@@ -9,4 +9,8 @@ export class LeagueFounderUserType extends UserType {
     super(type);
     this.TYPE = type;
   }
+
+  public static getType(): string {
+    return 'LEAGUE_FOUNDER_USER';
+  }
 }

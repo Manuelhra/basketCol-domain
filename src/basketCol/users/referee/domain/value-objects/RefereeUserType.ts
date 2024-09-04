@@ -9,4 +9,8 @@ export class RefereeUserType extends UserType {
     super(type);
     this.TYPE = type;
   }
+
+  public static getType(): string {
+    return 'REFEREE_USER';
+  }
 }
