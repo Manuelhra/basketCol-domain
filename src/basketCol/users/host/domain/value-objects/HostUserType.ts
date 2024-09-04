@@ -10,7 +10,7 @@ export class HostUserType extends UserType {
     this.TYPE = type;
   }
 
-  public static get TYPE(): string {
-    return this.TYPE;
+  public static getType(): string {
+    return 'HOST_USER';
   }
 }

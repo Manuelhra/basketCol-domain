@@ -33,3 +33,4 @@ export { PropertyLengthExceededError } from './PropertyLengthExceededError';
 export { PropertyLengthTooShortError } from './PropertyLengthTooShortError';
 export { RootError } from './RootError';
 export { UndefinedValueError } from './UndefinedValueError';
+export { MethodNotImplementedError } from './MethodNotImplementedError';

@@ -10,7 +10,7 @@ export class EmailAlreadyExistsError extends RootError {
     this.name = 'EmailAlreadyExistsError';
   }
 
-  public logError(): string {
+  public override logError(): string {
     return `${this.name}: ${this.message}`;
   }
 }

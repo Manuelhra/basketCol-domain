@@ -4,9 +4,13 @@ export class PlayerUserType extends UserType {
   protected readonly TYPE: string;
 
   constructor() {
-    const type: string = 'HOST_USER';
+    const type: string = 'PLAYER_USER';
 
     super(type);
     this.TYPE = type;
+  }
+
+  public static getType(): string {
+    return 'PLAYER_USER';
   }
 }

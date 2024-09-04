@@ -9,4 +9,8 @@ export class TFUType extends UserType {
     super(type);
     this.TYPE = type;
   }
+
+  public static getType(): string {
+    return 'TEAM_FOUNDER_USER';
+  }
 }

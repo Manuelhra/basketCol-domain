@@ -1,5 +1,4 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
-import { PrimitiveValueObject } from '../../../shared/domain/value-objects/PrimitiveValueObject';
 import { IUser } from './IUser';
 import { UserActive } from './value-objects/UserActive';
 import { UserBiography } from './value-objects/UserBiography';
@@ -18,7 +17,7 @@ export abstract class User<I extends IUser> extends AggregateRoot<I> {
 
   protected readonly email: UserEmail;
 
-  protected readonly password: PrimitiveValueObject<string>;
+  protected readonly password: UserPassword;
 
   protected readonly type: UserType;
 
@@ -45,7 +44,27 @@ export abstract class User<I extends IUser> extends AggregateRoot<I> {
     this.active = active;
   }
 
-  public static get type(): UserType {
+  public getName(): UserName {
+    return this.name;
+  }
+
+  public getBiography(): UserBiography {
+    return this.biography;
+  }
+
+  public getEmail(): UserEmail {
+    return this.email;
+  }
+
+  public getPassword(): UserPassword {
+    return this.password;
+  }
+
+  public getType(): UserType {
     return this.type;
+  }
+
+  public getActive(): UserActive {
+    return this.active;
   }
 }
