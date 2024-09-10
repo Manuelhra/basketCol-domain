@@ -1,5 +1,6 @@
 import { GymId } from '../../../facilities/gym/domain/value-objects/GymId';
 import { FacilityId } from '../../../facilities/shared/domain/value-objects/FacilityId';
+import { InvalidFacilityIdInstanceError } from '../exceptions/InvalidFacilityIdInstanceError';
 import { ValueObject } from './ValueObject';
 
 type FACILITY_ID_TYPE = GymId | null;
@@ -29,7 +30,7 @@ export class NullableFacilityId extends ValueObject<FACILITY_ID_TYPE> {
 
   private ensureIsFacilityId(value: FacilityId): void {
     if (!(value instanceof FacilityId)) {
-      throw new Error('InvalidFacilityIdInstanceError');
+      throw new InvalidFacilityIdInstanceError();
     }
   }
 }

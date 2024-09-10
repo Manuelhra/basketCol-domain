@@ -1,6 +1,4 @@
-export { DatabaseConnectionFailedError } from './DatabaseConnectionFailedError';
 export { DateGreaterThanError } from './DateGreaterThanError';
-export { DependencyContainerNotInitializedError } from './DependencyContainerNotInitializedError';
 export { DuplicateIdError } from './DuplicateIdError';
 export { ElementAlreadyDisabledError } from './ElementAlreadyDisabledError';
 export { EmptyCourtIdListError } from './EmptyCourtIdListError';
