@@ -266,10 +266,8 @@ export { IStats } from '../basketCol/shared/domain/IStats';
 export { Nullable } from '../basketCol/shared/domain/Nullable';
 export { Stats } from '../basketCol/shared/domain/Stats';
 export {
-  DatabaseConnectionFailedError,
   EntityNotFoundError,
   DateGreaterThanError,
-  DependencyContainerNotInitializedError,
   DuplicateIdError,
   ElementAlreadyDisabledError,
   EmptyCourtIdListError,
@@ -412,7 +410,7 @@ export {
 // Users Host
 export { HostUser } from '../basketCol/users/host/domain/HostUser';
 export { IHostUser } from '../basketCol/users/host/domain/IHostUser';
-export { HostUserNotFoundError, MultipleHostUsersException } from '../basketCol/users/host/domain/exceptions';
+export { HostUserNotFoundError } from '../basketCol/users/host/domain/exceptions';
 export { IHostUserRepository } from '../basketCol/users/host/domain/repository/IHostUserRepository';
 export { HostUserValidationService } from '../basketCol/users/host/domain/services';
 export {
