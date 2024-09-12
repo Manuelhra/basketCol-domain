@@ -58,7 +58,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwards> {
     this.#leagueSeasonId = new LSAReferencedLeagueSeasonId(leagueSeasonId);
   }
 
-  public toPrimitives(): ILeagueSeasonAwards {
+  public override toPrimitives(): ILeagueSeasonAwards {
     return {
       id: this.id.value,
       bestThreePointShooterId: this.#bestThreePointShooterId.playerUserIdAsString,
@@ -72,5 +72,33 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwards> {
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    bestThreePointShooterId: string,
+    bestTwoPointShooterId: string,
+    bestFreeThrowShooterId: string,
+    bestAssistProviderId: string,
+    bestOffensiveRebounderId: string,
+    bestDefensiveRebounderId: string,
+    championTeamId: string,
+    leagueSeasonId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): LeagueSeasonAwards {
+    return new LeagueSeasonAwards(
+      id,
+      bestThreePointShooterId,
+      bestTwoPointShooterId,
+      bestFreeThrowShooterId,
+      bestAssistProviderId,
+      bestOffensiveRebounderId,
+      bestDefensiveRebounderId,
+      championTeamId,
+      leagueSeasonId,
+      createdAt,
+      updatedAt,
+    );
   }
 }

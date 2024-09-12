@@ -300,6 +300,7 @@ export {
   RootError,
   UndefinedValueError,
   MethodNotImplementedError,
+  CreateMethodNotImplementedError,
 } from '../basketCol/shared/domain/exceptions';
 export { HttpStatus } from '../basketCol/shared/domain/http/HttpStatus';
 export { BusinessDateService, IRepository, IdUniquenessValidatorService } from '../basketCol/shared/domain/services';

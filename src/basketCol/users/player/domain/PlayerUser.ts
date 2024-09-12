@@ -40,7 +40,7 @@ export class PlayerUser extends User<IPlayerUser> {
     this.#nickname = new PlayerUserNickname(nickname);
   }
 
-  public toPrimitives(): IPlayerUser {
+  public override toPrimitives(): IPlayerUser {
     return {
       id: this.id.value,
       name: this.name.value,
@@ -53,5 +53,29 @@ export class PlayerUser extends User<IPlayerUser> {
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    nickname: string,
+    email: { value: string; verified: boolean },
+    password: string,
+    active: boolean,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUser {
+    return new PlayerUser(
+      id,
+      name,
+      biography,
+      nickname,
+      email,
+      password,
+      active,
+      createdAt,
+      updatedAt,
+    );
   }
 }

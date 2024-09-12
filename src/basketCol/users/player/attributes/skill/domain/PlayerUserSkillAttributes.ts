@@ -38,7 +38,7 @@ export class PlayerUserSkillAttributes extends AggregateRoot<IPlayerUserSkillAtt
     this.#playerUserId = new PUSAReferencedPlayerUserId(playerUserId);
   }
 
-  public toPrimitives(): IPlayerUserSkillAttributes {
+  public override toPrimitives(): IPlayerUserSkillAttributes {
     return {
       id: this.id.value,
       passAccuracy: this.#passAccuracy.value,
@@ -48,5 +48,25 @@ export class PlayerUserSkillAttributes extends AggregateRoot<IPlayerUserSkillAtt
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    passAccuracy: number,
+    ballHandle: number,
+    speedWithBall: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserSkillAttributes {
+    return new PlayerUserSkillAttributes(
+      id,
+      passAccuracy,
+      ballHandle,
+      speedWithBall,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
   }
 }

@@ -43,7 +43,7 @@ export class PlayerUserShootingAttributes extends AggregateRoot<IPlayerUserShoot
     this.#playerUserId = new PUSAReferencedPlayerUserId(playerUserId);
   }
 
-  public toPrimitives(): IPlayerUserShootingAttributes {
+  public override toPrimitives(): IPlayerUserShootingAttributes {
     return {
       id: this.id.value,
       closeShot: this.#closeShot.value,
@@ -54,5 +54,27 @@ export class PlayerUserShootingAttributes extends AggregateRoot<IPlayerUserShoot
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    closeShot: number,
+    midRangeShot: number,
+    threePointShot: number,
+    freeThrow: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserShootingAttributes {
+    return new PlayerUserShootingAttributes(
+      id,
+      closeShot,
+      midRangeShot,
+      threePointShot,
+      freeThrow,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
   }
 }

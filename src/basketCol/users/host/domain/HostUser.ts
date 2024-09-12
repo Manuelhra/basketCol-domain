@@ -34,7 +34,7 @@ export class HostUser extends User<IHostUser> {
     );
   }
 
-  public toPrimitives(): IHostUser {
+  public override toPrimitives(): IHostUser {
     return {
       id: this.id.value,
       name: this.name.value,
@@ -46,5 +46,27 @@ export class HostUser extends User<IHostUser> {
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    email: { value: string; verified: boolean },
+    password: string,
+    active: boolean,
+    createdAt: string,
+    updatedAt: string,
+  ): HostUser {
+    return new HostUser(
+      id,
+      name,
+      biography,
+      email,
+      password,
+      active,
+      createdAt,
+      updatedAt,
+    );
   }
 }

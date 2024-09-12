@@ -77,7 +77,7 @@ export class TeamAllTimeStats extends Stats<ITeamAllTimeStats> {
     this.#teamId = new TATStatsTeamId(teamId);
   }
 
-  public toPrimitives(): ITeamAllTimeStats {
+  public override toPrimitives(): ITeamAllTimeStats {
     return {
       id: this.id.value,
       totalGamesPlayed: this.totalGamesPlayed.value,
@@ -102,5 +102,55 @@ export class TeamAllTimeStats extends Stats<ITeamAllTimeStats> {
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    totalGamesPlayed: number,
+    totalGamesWon: number,
+    totalSeasonsLeaguePlayed: number,
+    totalSeasonsLeagueWon: number,
+    totalPoints: number,
+    totalOffensiveRebounds: number,
+    totalDefensiveRebounds: number,
+    totalAssists: number,
+    totalSteals: number,
+    totalBlocks: number,
+    totalFouls: number,
+    totalTurnovers: number,
+    totalThreePointersAttempted: number,
+    totalThreePointersMade: number,
+    totalFreeThrowsAttempted: number,
+    totalFreeThrowsMade: number,
+    totalFieldGoalsAttempted: number,
+    totalFieldGoalsMade: number,
+    teamId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): TeamAllTimeStats {
+    return new TeamAllTimeStats(
+      id,
+      totalGamesPlayed,
+      totalGamesWon,
+      totalSeasonsLeaguePlayed,
+      totalSeasonsLeagueWon,
+      totalPoints,
+      totalOffensiveRebounds,
+      totalDefensiveRebounds,
+      totalAssists,
+      totalSteals,
+      totalBlocks,
+      totalFouls,
+      totalTurnovers,
+      totalThreePointersAttempted,
+      totalThreePointersMade,
+      totalFreeThrowsAttempted,
+      totalFreeThrowsMade,
+      totalFieldGoalsAttempted,
+      totalFieldGoalsMade,
+      teamId,
+      createdAt,
+      updatedAt,
+    );
   }
 }

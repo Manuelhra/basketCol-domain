@@ -45,7 +45,7 @@ export class PlayerUserDefensiveAttributes extends AggregateRoot<IPlayerUserDefe
     this.#playerUserId = new PUDAReferencedPlayerUserId(playerUserId);
   }
 
-  public toPrimitives(): IPlayerUserDefensiveAttributes {
+  public override toPrimitives(): IPlayerUserDefensiveAttributes {
     return {
       id: this.id.value,
       interiorDefense: this.#interiorDefense.value,
@@ -56,5 +56,27 @@ export class PlayerUserDefensiveAttributes extends AggregateRoot<IPlayerUserDefe
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    interiorDefense: number,
+    perimeterDefense: number,
+    steal: number,
+    block: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserDefensiveAttributes {
+    return new PlayerUserDefensiveAttributes(
+      id,
+      interiorDefense,
+      perimeterDefense,
+      steal,
+      block,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
   }
 }
