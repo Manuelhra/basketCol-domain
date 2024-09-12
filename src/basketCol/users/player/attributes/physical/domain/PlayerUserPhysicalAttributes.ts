@@ -48,7 +48,7 @@ export class PlayerUserPhysicalAttributes extends AggregateRoot<IPlayerUserPhysi
     this.#playerUserId = new PUPAReferencedPlayerUserId(playerUserId);
   }
 
-  public toPrimitives(): IPlayerUserPhysicalAttributes {
+  public override toPrimitives(): IPlayerUserPhysicalAttributes {
     return {
       id: this.id.value,
       speed: this.#speed.value,
@@ -60,5 +60,29 @@ export class PlayerUserPhysicalAttributes extends AggregateRoot<IPlayerUserPhysi
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    speed: number,
+    acceleration: number,
+    strength: number,
+    vertical: number,
+    stamina: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserPhysicalAttributes {
+    return new PlayerUserPhysicalAttributes(
+      id,
+      speed,
+      acceleration,
+      strength,
+      vertical,
+      stamina,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
   }
 }

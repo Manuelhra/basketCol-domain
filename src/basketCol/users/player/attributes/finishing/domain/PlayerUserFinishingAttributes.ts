@@ -43,7 +43,7 @@ export class PlayerUserFinishingAttributes extends AggregateRoot<IPlayerUserFini
     this.#playerUserId = new PUFAReferencedPlayerUserId(playerUserId);
   }
 
-  public toPrimitives(): IPlayerUserFinishingAttributes {
+  public override toPrimitives(): IPlayerUserFinishingAttributes {
     return {
       id: this.id.value,
       drivingLayup: this.#drivingLayup.value,
@@ -54,5 +54,27 @@ export class PlayerUserFinishingAttributes extends AggregateRoot<IPlayerUserFini
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    drivingLayup: number,
+    drivingDunk: number,
+    standingDunk: number,
+    postControl: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserFinishingAttributes {
+    return new PlayerUserFinishingAttributes(
+      id,
+      drivingLayup,
+      drivingDunk,
+      standingDunk,
+      postControl,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
   }
 }

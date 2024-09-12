@@ -46,7 +46,7 @@ export class Court extends Facility<ICourt> {
     this.#facilityId = new CourtNullableFacilityId(facilityId);
   }
 
-  public toPrimitives(): ICourt {
+  public override toPrimitives(): ICourt {
     return {
       id: this.id.value,
       officialName: this.officialName.value,
@@ -59,5 +59,31 @@ export class Court extends Facility<ICourt> {
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    officialName: string,
+    establishmentDate: string,
+    surface: string,
+    hoopHeight: number,
+    registeredById: string,
+    location: ILocationValueObjectProps,
+    facilityId: string | null,
+    createdAt: string,
+    updatedAt: string,
+  ): Court {
+    return new Court(
+      id,
+      officialName,
+      establishmentDate,
+      surface,
+      hoopHeight,
+      registeredById,
+      location,
+      facilityId,
+      createdAt,
+      updatedAt,
+    );
   }
 }

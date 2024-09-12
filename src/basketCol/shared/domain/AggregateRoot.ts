@@ -1,3 +1,4 @@
+import { CreateMethodNotImplementedError } from './exceptions/CreateMethodNotImplementedError';
 import { IAggregateRoot } from './IAggregateRoot';
 import { DateValueObject } from './value-objects/DateValueObject';
 import { UuidValueObject } from './value-objects/UuidValueObject';
@@ -23,5 +24,10 @@ export abstract class AggregateRoot<I extends IAggregateRoot> {
 
   public getId(): UuidValueObject {
     return this.id;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public static override create(..._args: any[]): AggregateRoot<any> {
+    throw new CreateMethodNotImplementedError(this.name);
   }
 }

@@ -53,7 +53,7 @@ export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGam
     );
   }
 
-  public toPrimitives(): ILeagueSeasonFixtureGame {
+  public override toPrimitives(): ILeagueSeasonFixtureGame {
     return {
       id: this.id.value,
       startTime: this.startTime.timeAsString,
@@ -71,5 +71,41 @@ export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGam
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    startTime: string,
+    endTime: string | undefined,
+    homeTeamId: string,
+    awayTeamId: string,
+    homeScore: number,
+    awayScore: number,
+    gameType: string,
+    gameDuration: number,
+    headRefereeId: string,
+    assistantRefereeId: string,
+    courtId: string,
+    fixtureId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): LeagueSeasonFixtureGame {
+    return new LeagueSeasonFixtureGame(
+      id,
+      startTime,
+      endTime,
+      homeTeamId,
+      awayTeamId,
+      homeScore,
+      awayScore,
+      gameType,
+      gameDuration,
+      headRefereeId,
+      assistantRefereeId,
+      courtId,
+      fixtureId,
+      createdAt,
+      updatedAt,
+    );
   }
 }

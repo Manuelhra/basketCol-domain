@@ -34,7 +34,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUser> {
     );
   }
 
-  public toPrimitives(): ILeagueFounderUser {
+  public override toPrimitives(): ILeagueFounderUser {
     return {
       id: this.id.value,
       name: this.name.value,
@@ -46,5 +46,27 @@ export class LeagueFounderUser extends User<ILeagueFounderUser> {
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    email: { value: string; verified: boolean; },
+    password: string,
+    active: boolean,
+    createdAt: string,
+    updatedAt: string,
+  ): LeagueFounderUser {
+    return new LeagueFounderUser(
+      id,
+      name,
+      biography,
+      email,
+      password,
+      active,
+      createdAt,
+      updatedAt,
+    );
   }
 }

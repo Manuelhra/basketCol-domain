@@ -30,7 +30,7 @@ export class Gym extends Facility<IGym> {
     );
   }
 
-  public toPrimitives(): IGym {
+  public override toPrimitives(): IGym {
     return {
       id: this.id.value,
       officialName: this.officialName.value,
@@ -40,5 +40,25 @@ export class Gym extends Facility<IGym> {
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    officialName: string,
+    location: ILocationValueObjectProps,
+    establishmentDate: string,
+    registeredById: string,
+    createdAt: string,
+    updatedAt: string,
+  ): Gym {
+    return new Gym(
+      id,
+      officialName,
+      location,
+      establishmentDate,
+      registeredById,
+      createdAt,
+      updatedAt,
+    );
   }
 }

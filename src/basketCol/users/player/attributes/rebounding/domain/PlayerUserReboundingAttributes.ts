@@ -33,7 +33,7 @@ export class PlayerUserReboundingAttributes extends AggregateRoot<IPlayerUserReb
     this.#playerUserId = new PURAReferencedPlayerUserId(playerUserId);
   }
 
-  public toPrimitives(): IPlayerUserReboundingAttributes {
+  public override toPrimitives(): IPlayerUserReboundingAttributes {
     return {
       id: this.id.value,
       offensiveRebound: this.#offensiveRebound.value,
@@ -42,5 +42,23 @@ export class PlayerUserReboundingAttributes extends AggregateRoot<IPlayerUserReb
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    offensiveRebound: number,
+    defensiveRebound: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserReboundingAttributes {
+    return new PlayerUserReboundingAttributes(
+      id,
+      offensiveRebound,
+      defensiveRebound,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
   }
 }

@@ -34,7 +34,7 @@ export class RefereeUser extends User<IRefereeUser> {
     );
   }
 
-  public toPrimitives(): IRefereeUser {
+  public override toPrimitives(): IRefereeUser {
     return {
       id: this.id.value,
       name: this.name.value,
@@ -46,5 +46,27 @@ export class RefereeUser extends User<IRefereeUser> {
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    email: { value: string; verified: boolean },
+    password: string,
+    active: boolean,
+    createdAt: string,
+    updatedAt: string,
+  ): RefereeUser {
+    return new RefereeUser(
+      id,
+      name,
+      biography,
+      email,
+      password,
+      active,
+      createdAt,
+      updatedAt,
+    );
   }
 }

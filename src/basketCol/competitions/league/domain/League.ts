@@ -59,7 +59,7 @@ export class League extends AggregateRoot<ILeague> {
     this.#isActive = new LeagueIsActive(isActive);
   }
 
-  public toPrimitives(): ILeague {
+  public override toPrimitives(): ILeague {
     return {
       id: this.id.value,
       name: this.#name.value,
@@ -73,5 +73,33 @@ export class League extends AggregateRoot<ILeague> {
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    name: { short: string; official: string },
+    description: { short: string; complete: string },
+    rules: string,
+    level: string,
+    location: ILocationValueObjectProps,
+    leagueFounderUserId: string,
+    establishmentDate: string,
+    isActive: boolean,
+    createdAt: string,
+    updatedAt: string,
+  ): League {
+    return new League(
+      id,
+      name,
+      description,
+      rules,
+      level,
+      location,
+      leagueFounderUserId,
+      establishmentDate,
+      isActive,
+      createdAt,
+      updatedAt,
+    );
   }
 }

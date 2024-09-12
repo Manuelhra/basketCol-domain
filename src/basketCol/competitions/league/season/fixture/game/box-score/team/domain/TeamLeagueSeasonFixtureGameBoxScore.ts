@@ -68,7 +68,7 @@ export class TeamLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<ITe
     this.#teamId = new TLSFGBoxScoreTeamId(teamId);
   }
 
-  public toPrimitives(): ITeamLeagueSeasonFixtureGameBoxScore {
+  public override toPrimitives(): ITeamLeagueSeasonFixtureGameBoxScore {
     return {
       id: this.id.value,
       points: this.points.value,
@@ -90,5 +90,49 @@ export class TeamLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<ITe
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    points: number,
+    offensiveRebounds: number,
+    defensiveRebounds: number,
+    assists: number,
+    steals: number,
+    blocks: number,
+    fouls: number,
+    turnovers: number,
+    threePointersAttempted: number,
+    threePointersMade: number,
+    freeThrowsAttempted: number,
+    freeThrowsMade: number,
+    fieldGoalsAttempted: number,
+    fieldGoalsMade: number,
+    fixtureGameId: string,
+    teamId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): TeamLeagueSeasonFixtureGameBoxScore {
+    return new TeamLeagueSeasonFixtureGameBoxScore(
+      id,
+      points,
+      offensiveRebounds,
+      defensiveRebounds,
+      assists,
+      steals,
+      blocks,
+      fouls,
+      turnovers,
+      threePointersAttempted,
+      threePointersMade,
+      freeThrowsAttempted,
+      freeThrowsMade,
+      fieldGoalsAttempted,
+      fieldGoalsMade,
+      fixtureGameId,
+      teamId,
+      createdAt,
+      updatedAt,
+    );
   }
 }

@@ -32,3 +32,4 @@ export { PropertyLengthTooShortError } from './PropertyLengthTooShortError';
 export { RootError } from './RootError';
 export { UndefinedValueError } from './UndefinedValueError';
 export { MethodNotImplementedError } from './MethodNotImplementedError';
+export { CreateMethodNotImplementedError } from './CreateMethodNotImplementedError';

@@ -34,7 +34,7 @@ export class TeamFounderUser extends User<ITeamFounderUser> {
     );
   }
 
-  public toPrimitives(): ITeamFounderUser {
+  public override toPrimitives(): ITeamFounderUser {
     return {
       id: this.id.value,
       name: this.name.value,
@@ -46,5 +46,27 @@ export class TeamFounderUser extends User<ITeamFounderUser> {
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
+  }
+
+  public static override create(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    email: { value: string; verified: boolean; },
+    password: string,
+    active: boolean,
+    createdAt: string,
+    updatedAt: string,
+  ): TeamFounderUser {
+    return new TeamFounderUser(
+      id,
+      name,
+      biography,
+      email,
+      password,
+      active,
+      createdAt,
+      updatedAt,
+    );
   }
 }
