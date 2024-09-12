@@ -19,7 +19,7 @@ export class CourtHoopHeight extends CentimeterHeightValueObject {
     }
   }
 
-  public static override create(height: number): CourtHoopHeight {
+  public static create(height: number): CourtHoopHeight {
     return new CourtHoopHeight(height);
   }
 
