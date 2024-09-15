@@ -17,6 +17,8 @@ export class HttpStatus {
 
   public static readonly INTERNAL_SERVER_ERROR = 500;
 
+  public static readonly NOT_IMPLEMENTED = 501;
+
   private static readonly statusMessages: { [key: number]: string } = {
     200: 'OK',
     201: 'Created',
@@ -27,6 +29,7 @@ export class HttpStatus {
     404: 'Not Found',
     409: 'Conflict',
     500: 'Internal Server Error',
+    501: 'Not Implemented',
   };
 
   public static getMessage(statusCode: number): string {
