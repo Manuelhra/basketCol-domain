@@ -1,4 +1,3 @@
-export { UserActive } from './UserActive';
 export { UserBiography } from './UserBiography';
 export { UserCreatedAt } from './UserCreatedAt';
 export { UserEmail } from './UserEmail';
@@ -7,3 +6,5 @@ export { UserName } from './UserName';
 export { UserPassword } from './UserPassword';
 export { UserType } from './UserType';
 export { UserUpdatedAt } from './UserUpdatedAt';
+export { UserSubscriptionType } from './UserSubscriptionType';
+export { UserAccountState } from './UserAccountState';

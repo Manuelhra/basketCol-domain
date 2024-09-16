@@ -1,6 +1,6 @@
 import { CreatedAtValueObject } from '../../../../shared/domain/value-objects/CreatedAtValueObject';
 
-export class TFUCreatedAt extends CreatedAtValueObject {
+export class TeamFounderUserCreatedAt extends CreatedAtValueObject {
   public constructor(value: string) {
     super(value);
   }

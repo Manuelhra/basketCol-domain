@@ -1,7 +1,6 @@
 import { User } from '../../shared/domain/User';
 import { IPlayerUser } from './IPlayerUser';
 import { PlayerUserNickname } from './value-objects/PlayerUserNickname';
-import { PlayerUserActive } from './value-objects/PlayerUserActive';
 import { PlayerUserBiography } from './value-objects/PlayerUserBiography';
 import { PlayerUserCreatedAt } from './value-objects/PlayerUserCreatedAt';
 import { PlayerUserEmail } from './value-objects/PlayerUserEmail';
@@ -10,6 +9,8 @@ import { PlayerUserName } from './value-objects/PlayerUserName';
 import { PlayerUserPassword } from './value-objects/PlayerUserPassword';
 import { PlayerUserType } from './value-objects/PlayerUserType';
 import { PlayerUserUpdatedAt } from './value-objects/PlayerUserUpdatedAt';
+import { PlayerUserAccountState } from './value-objects/PlayerUserAccountState';
+import { PlayerUserSubscriptionType } from './value-objects/PlayerUserSubscriptionType';
 
 export class PlayerUser extends User<IPlayerUser> {
   readonly #nickname: PlayerUserNickname;
@@ -21,7 +22,8 @@ export class PlayerUser extends User<IPlayerUser> {
     nickname: string,
     email: { value: string; verified: boolean },
     password: string,
-    active: boolean,
+    accountState: string,
+    subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ) {
@@ -32,7 +34,8 @@ export class PlayerUser extends User<IPlayerUser> {
       new PlayerUserEmail(email),
       new PlayerUserPassword(password),
       new PlayerUserType(),
-      new PlayerUserActive(active),
+      new PlayerUserAccountState(accountState),
+      new PlayerUserSubscriptionType(subscriptionType),
       new PlayerUserCreatedAt(createdAt),
       new PlayerUserUpdatedAt(updatedAt),
     );
@@ -49,7 +52,8 @@ export class PlayerUser extends User<IPlayerUser> {
       email: this.email.value,
       password: this.password.value,
       type: this.type.value,
-      active: this.active.value,
+      accountStatus: this.accountStatus.value,
+      subscriptionType: this.subscriptionType.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
@@ -62,7 +66,8 @@ export class PlayerUser extends User<IPlayerUser> {
     nickname: string,
     email: { value: string; verified: boolean },
     password: string,
-    active: boolean,
+    accountState: string,
+    subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ): PlayerUser {
@@ -73,7 +78,8 @@ export class PlayerUser extends User<IPlayerUser> {
       nickname,
       email,
       password,
-      active,
+      accountState,
+      subscriptionType,
       createdAt,
       updatedAt,
     );

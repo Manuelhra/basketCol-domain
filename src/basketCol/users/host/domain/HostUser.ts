@@ -1,12 +1,13 @@
 import { User } from '../../shared/domain/User';
 import { IHostUser } from './IHostUser';
-import { HostUserActive } from './value-objects/HostUserActive';
+import { HostUserAccountState } from './value-objects/HostUserAccountState';
 import { HostUserBiography } from './value-objects/HostUserBiography';
 import { HostUserCreatedAt } from './value-objects/HostUserCreatedAt';
 import { HostUserEmail } from './value-objects/HostUserEmail';
 import { HostUserId } from './value-objects/HostUserId';
 import { HostUserName } from './value-objects/HostUserName';
 import { HostUserPassword } from './value-objects/HostUserPassword';
+import { HostUserSubscriptionType } from './value-objects/HostUserSubscriptionType';
 import { HostUserType } from './value-objects/HostUserType';
 import { HostUserUpdatedAt } from './value-objects/HostUserUpdatedAt';
 
@@ -17,7 +18,8 @@ export class HostUser extends User<IHostUser> {
     biography: string,
     email: { value: string; verified: boolean },
     password: string,
-    active: boolean,
+    accountState: string,
+    subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ) {
@@ -28,7 +30,8 @@ export class HostUser extends User<IHostUser> {
       new HostUserEmail(email),
       new HostUserPassword(password),
       new HostUserType(),
-      new HostUserActive(active),
+      new HostUserAccountState(accountState),
+      new HostUserSubscriptionType(subscriptionType),
       new HostUserCreatedAt(createdAt),
       new HostUserUpdatedAt(updatedAt),
     );
@@ -42,7 +45,8 @@ export class HostUser extends User<IHostUser> {
       email: this.email.value,
       password: this.password.value,
       type: this.type.value,
-      active: this.active.value,
+      accountStatus: this.accountStatus.value,
+      subscriptionType: this.subscriptionType.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
@@ -54,7 +58,8 @@ export class HostUser extends User<IHostUser> {
     biography: string,
     email: { value: string; verified: boolean },
     password: string,
-    active: boolean,
+    accountState: string,
+    subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ): HostUser {
@@ -64,7 +69,8 @@ export class HostUser extends User<IHostUser> {
       biography,
       email,
       password,
-      active,
+      accountState,
+      subscriptionType,
       createdAt,
       updatedAt,
     );

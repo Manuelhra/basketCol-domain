@@ -1,10 +1,10 @@
 import { Nullable } from '../../../../shared/domain/Nullable';
 import { TeamFounderUser } from '../TeamFounderUser';
+import { TeamFounderUserEmail } from '../value-objects/TeamFounderUserEmail';
 import { TeamFounderUserId } from '../value-objects/TeamFounderUserId';
-import { TFUEmail } from '../value-objects/TFUEmail';
 
-export interface ITFURepository {
+export interface ITeamFounderUserRepository {
   searchById(teamFounderUserId: TeamFounderUserId): Promise<Nullable<TeamFounderUser>>;
   save(teamFounderUser: TeamFounderUser): Promise<void>;
-  searchByEmail(teamFounderUserEmail: TFUEmail): Promise<Nullable<TeamFounderUser>>;
+  searchByEmail(teamFounderUserEmail: TeamFounderUserEmail): Promise<Nullable<TeamFounderUser>>;
 }

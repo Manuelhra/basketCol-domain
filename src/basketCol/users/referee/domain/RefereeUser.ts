@@ -1,12 +1,13 @@
 import { User } from '../../shared/domain/User';
 import { IRefereeUser } from './IRefereeUser';
-import { RefereeUserActive } from './value-objects/RefereeUserActive';
+import { RefereeUserAccountState } from './value-objects/RefereeUserAccountState';
 import { RefereeUserBiography } from './value-objects/RefereeUserBiography';
 import { RefereeUserCreatedAt } from './value-objects/RefereeUserCreatedAt';
 import { RefereeUserEmail } from './value-objects/RefereeUserEmail';
 import { RefereeUserId } from './value-objects/RefereeUserId';
 import { RefereeUserName } from './value-objects/RefereeUserName';
 import { RefereeUserPassword } from './value-objects/RefereeUserPassword';
+import { RefereeUserSubscriptionType } from './value-objects/RefereeUserSubscriptionType';
 import { RefereeUserType } from './value-objects/RefereeUserType';
 import { RefereeUserUpdatedAt } from './value-objects/RefereeUserUpdatedAt';
 
@@ -17,7 +18,8 @@ export class RefereeUser extends User<IRefereeUser> {
     biography: string,
     email: { value: string; verified: boolean },
     password: string,
-    active: boolean,
+    accountState: string,
+    subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ) {
@@ -28,7 +30,8 @@ export class RefereeUser extends User<IRefereeUser> {
       new RefereeUserEmail(email),
       new RefereeUserPassword(password),
       new RefereeUserType(),
-      new RefereeUserActive(active),
+      new RefereeUserAccountState(accountState),
+      new RefereeUserSubscriptionType(subscriptionType),
       new RefereeUserCreatedAt(createdAt),
       new RefereeUserUpdatedAt(updatedAt),
     );
@@ -42,7 +45,8 @@ export class RefereeUser extends User<IRefereeUser> {
       email: this.email.value,
       password: this.password.value,
       type: this.type.value,
-      active: this.active.value,
+      accountStatus: this.accountStatus.value,
+      subscriptionType: this.subscriptionType.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
@@ -54,7 +58,8 @@ export class RefereeUser extends User<IRefereeUser> {
     biography: string,
     email: { value: string; verified: boolean },
     password: string,
-    active: boolean,
+    accountState: string,
+    subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ): RefereeUser {
@@ -64,7 +69,8 @@ export class RefereeUser extends User<IRefereeUser> {
       biography,
       email,
       password,
-      active,
+      accountState,
+      subscriptionType,
       createdAt,
       updatedAt,
     );

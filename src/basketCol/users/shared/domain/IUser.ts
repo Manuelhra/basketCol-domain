@@ -5,11 +5,17 @@ interface IUserCredentials {
   password: string;
 }
 
+interface IUserAccount {
+  accountStatus: string;
+  subscriptionType: string;
+}
+
 interface IUserIdentity {
   name: { firstName: string; lastName: string; };
   biography: string;
   type: string;
-  active: boolean;
+  accountStatus: string;
+  subscriptionType: string;
 }
 
-export interface IUser extends IAggregateRoot, IUserCredentials, IUserIdentity {}
+export interface IUser extends IAggregateRoot, IUserCredentials, IUserIdentity, IUserAccount {}

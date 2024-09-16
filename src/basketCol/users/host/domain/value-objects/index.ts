@@ -1,4 +1,3 @@
-export { HostUserActive } from './HostUserActive';
 export { HostUserBiography } from './HostUserBiography';
 export { HostUserCreatedAt } from './HostUserCreatedAt';
 export { HostUserEmail } from './HostUserEmail';
@@ -7,3 +6,5 @@ export { HostUserName } from './HostUserName';
 export { HostUserPassword } from './HostUserPassword';
 export { HostUserType } from './HostUserType';
 export { HostUserUpdatedAt } from './HostUserUpdatedAt';
+export { HostUserAccountState } from './HostUserAccountState';
+export { HostUserSubscriptionType } from './HostUserSubscriptionType';

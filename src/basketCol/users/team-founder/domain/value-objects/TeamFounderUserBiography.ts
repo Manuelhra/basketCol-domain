@@ -1,6 +1,6 @@
 import { UserBiography } from '../../../shared/domain/value-objects/UserBiography';
 
-export class TFUBiography extends UserBiography {
+export class TeamFounderUserBiography extends UserBiography {
   public constructor(value: string) {
     super(value);
   }

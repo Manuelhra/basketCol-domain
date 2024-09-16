@@ -11,4 +11,3 @@ export class InvalidUserTypeError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-

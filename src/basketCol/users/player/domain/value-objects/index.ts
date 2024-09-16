@@ -1,4 +1,3 @@
-export { PlayerUserActive } from './PlayerUserActive';
 export { PlayerUserBiography } from './PlayerUserBiography';
 export { PlayerUserCreatedAt } from './PlayerUserCreatedAt';
 export { PlayerUserEmail } from './PlayerUserEmail';
@@ -8,3 +7,5 @@ export { PlayerUserPassword } from './PlayerUserPassword';
 export { PlayerUserType } from './PlayerUserType';
 export { PlayerUserUpdatedAt } from './PlayerUserUpdatedAt';
 export { PlayerUserNickname } from './PlayerUserNickname';
+export { PlayerUserAccountState } from './PlayerUserAccountState';
+export { PlayerUserSubscriptionType } from './PlayerUserSubscriptionType';

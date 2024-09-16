@@ -34,3 +34,4 @@ export { UndefinedValueError } from './UndefinedValueError';
 export { MethodNotImplementedError } from './MethodNotImplementedError';
 export { CreateMethodNotImplementedError } from './CreateMethodNotImplementedError';
 export { InvalidTeamFounderUserIdInstanceError } from './InvalidTeamFounderUserIdInstanceError';
+export { InvalidEnumValueError } from './InvalidEnumValueError';
