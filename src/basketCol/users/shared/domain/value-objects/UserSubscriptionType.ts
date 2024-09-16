@@ -2,7 +2,7 @@ import { InvalidEnumValueError } from '../../../../shared/domain/exceptions/Inva
 import { StringValueObject } from '../../../../shared/domain/value-objects/StringValueObject';
 
 export abstract class UserSubscriptionType extends StringValueObject {
-  static readonly #VALID_TYPES = ['free', 'premium', 'trial', 'expired'] as const;
+  protected static readonly VALID_TYPES = ['free', 'premium', 'trial', 'expired'] as const;
 
   protected constructor(value: string) {
     super(value, 'subscriptionType');
@@ -10,28 +10,28 @@ export abstract class UserSubscriptionType extends StringValueObject {
   }
 
   static get free(): string {
-    return UserSubscriptionType.#VALID_TYPES['0'];
+    return UserSubscriptionType.VALID_TYPES['0'];
   }
 
   static get premium(): string {
-    return UserSubscriptionType.#VALID_TYPES['1'];
+    return UserSubscriptionType.VALID_TYPES['1'];
   }
 
   static get trial(): string {
-    return UserSubscriptionType.#VALID_TYPES['2'];
+    return UserSubscriptionType.VALID_TYPES['2'];
   }
 
   static get expired(): string {
-    return UserSubscriptionType.#VALID_TYPES['3'];
+    return UserSubscriptionType.VALID_TYPES['3'];
   }
 
   static getValidTypes(): readonly string[] {
-    return UserSubscriptionType.#VALID_TYPES;
+    return UserSubscriptionType.VALID_TYPES;
   }
 
   private ensureIsValidSubscriptionType(value: string): void {
-    if (!UserSubscriptionType.#VALID_TYPES.includes(value as any)) {
-      throw new InvalidEnumValueError('subscriptionType', value, UserSubscriptionType.#VALID_TYPES);
+    if (!UserSubscriptionType.VALID_TYPES.includes(value as any)) {
+      throw new InvalidEnumValueError('subscriptionType', value, UserSubscriptionType.VALID_TYPES);
     }
   }
 }
