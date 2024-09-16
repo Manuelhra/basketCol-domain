@@ -9,35 +9,35 @@ export abstract class UserAccountState extends StringValueObject {
     this.ensureIsValidAccountState(value);
   }
 
-  static active(): string {
+  static get active(): string {
     return this.#VALID_STATES['0'];
   }
 
-  static inactive(): string {
+  static get inactive(): string {
     return this.#VALID_STATES['1'];
   }
 
-  static locked(): string {
+  static get locked(): string {
     return this.#VALID_STATES['2'];
   }
 
-  static suspended(): string {
+  static get suspended(): string {
     return this.#VALID_STATES['3'];
   }
 
-  static banned(): string {
+  static get banned(): string {
     return this.#VALID_STATES['4'];
   }
 
-  static underReview(): string {
+  static get underReview(): string {
     return this.#VALID_STATES['5'];
   }
 
-  static deleted(): string {
+  static get deleted(): string {
     return this.#VALID_STATES['6'];
   }
 
-  static archived(): string {
+  static get archived(): string {
     return this.#VALID_STATES['7'];
   }
 
