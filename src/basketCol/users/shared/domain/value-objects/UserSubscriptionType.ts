@@ -9,19 +9,19 @@ export abstract class UserSubscriptionType extends StringValueObject {
     this.ensureIsValidSubscriptionType(value);
   }
 
-  static free(): string {
+  static get free(): string {
     return UserSubscriptionType.#VALID_TYPES['0'];
   }
 
-  static premium(): string {
+  static get premium(): string {
     return UserSubscriptionType.#VALID_TYPES['1'];
   }
 
-  static trial(): string {
+  static get trial(): string {
     return UserSubscriptionType.#VALID_TYPES['2'];
   }
 
-  static expired(): string {
+  static get expired(): string {
     return UserSubscriptionType.#VALID_TYPES['3'];
   }
 
