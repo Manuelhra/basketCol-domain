@@ -302,6 +302,7 @@ export {
   MethodNotImplementedError,
   CreateMethodNotImplementedError,
   InvalidTeamFounderUserIdInstanceError,
+  InvalidEnumValueError,
 } from '../basketCol/shared/domain/exceptions';
 export { HttpStatus } from '../basketCol/shared/domain/http/HttpStatus';
 export { BusinessDateService, IRepository, IdUniquenessValidatorService } from '../basketCol/shared/domain/services';
@@ -416,7 +417,6 @@ export { HostUserNotFoundError } from '../basketCol/users/host/domain/exceptions
 export { IHostUserRepository } from '../basketCol/users/host/domain/repository/IHostUserRepository';
 export { HostUserValidationService } from '../basketCol/users/host/domain/services';
 export {
-  HostUserActive,
   HostUserBiography,
   HostUserCreatedAt,
   HostUserEmail,
@@ -424,6 +424,8 @@ export {
   HostUserName,
   HostUserPassword,
   HostUserType,
+  HostUserAccountState,
+  HostUserSubscriptionType,
   HostUserUpdatedAt,
 } from '../basketCol/users/host/domain/value-objects';
 
@@ -434,7 +436,6 @@ export { LeagueFounderUserNotFoundError } from '../basketCol/users/league-founde
 export { ILeagueFounderUserRepository } from '../basketCol/users/league-founder/domain/repository/ILeagueFounderUserRepository';
 export { LeagueFounderUserValidationService } from '../basketCol/users/league-founder/domain/services';
 export {
-  LeagueFounderUserActive,
   LeagueFounderUserBiography,
   LeagueFounderUserCreatedAt,
   LeagueFounderUserEmail,
@@ -443,6 +444,8 @@ export {
   LeagueFounderUserPassword,
   LeagueFounderUserType,
   LeagueFounderUserUpdatedAt,
+  LeagueFounderUserAccountState,
+  LeagueFounderUserSubscriptionType,
 } from '../basketCol/users/league-founder/domain/value-objects';
 
 // Users Player
@@ -452,7 +455,6 @@ export { PlayerUserNotFoundError, PlayerUserNicknameAlreadyExistsError } from '.
 export { IPlayerUserRepository } from '../basketCol/users/player/domain/repository/IPlayerUserRepository';
 export { PlayerUserValidationService, PlayerUserNicknameValidationService } from '../basketCol/users/player/domain/services';
 export {
-  PlayerUserActive,
   PlayerUserBiography,
   PlayerUserCreatedAt,
   PlayerUserNickname,
@@ -462,6 +464,8 @@ export {
   PlayerUserPassword,
   PlayerUserType,
   PlayerUserUpdatedAt,
+  PlayerUserAccountState,
+  PlayerUserSubscriptionType,
 } from '../basketCol/users/player/domain/value-objects';
 
 // Users Player Attributes Defensive
@@ -591,7 +595,6 @@ export { RefereeUserNotFoundError } from '../basketCol/users/referee/domain/exce
 export { IRefereeUserRepository } from '../basketCol/users/referee/domain/repository/IRefereeUserRepository';
 export { RefereeUserValidationService } from '../basketCol/users/referee/domain/services';
 export {
-  RefereeUserActive,
   RefereeUserBiography,
   RefereeUserCreatedAt,
   RefereeUserEmail,
@@ -599,6 +602,8 @@ export {
   RefereeUserName,
   RefereeUserPassword,
   RefereeUserType,
+  RefereeUserAccountState,
+  RefereeUserSubscriptionType,
   RefereeUserUpdatedAt,
 } from '../basketCol/users/referee/domain/value-objects';
 
@@ -606,17 +611,18 @@ export {
 export { TeamFounderUser } from '../basketCol/users/team-founder/domain/TeamFounderUser';
 export { ITeamFounderUser } from '../basketCol/users/team-founder/domain/ITeamFounderUser';
 export { TeamFounderUserNotFoundError } from '../basketCol/users/team-founder/domain/exceptions';
-export { ITFURepository } from '../basketCol/users/team-founder/domain/repository/ITFURepository';
-export { TFUValidationService } from '../basketCol/users/team-founder/domain/services';
+export { ITeamFounderUserRepository } from '../basketCol/users/team-founder/domain/repository/ITeamFounderUserRepository';
+export { TeamFounderUserValidationService } from '../basketCol/users/team-founder/domain/services';
 export {
-  TFUActive,
-  TFUBiography,
-  TFUCreatedAt,
-  TFUEmail,
-  TFUName,
-  TFUPassword,
-  TFUType,
-  TFUUpdatedAt,
+  TeamFounderUserAccountState,
+  TeamFounderUserBiography,
+  TeamFounderUserCreatedAt,
+  TeamFounderUserEmail,
+  TeamFounderUserName,
+  TeamFounderUserPassword,
+  TeamFounderUserSubscriptionType,
+  TeamFounderUserType,
+  TeamFounderUserUpdatedAt,
   TeamFounderUserId,
 } from '../basketCol/users/team-founder/domain/value-objects';
 
@@ -637,7 +643,8 @@ export {
   SecurePasswordCreationService,
 } from '../basketCol/users/shared/domain/services';
 export {
-  UserActive,
+  UserAccountState,
+  UserSubscriptionType,
   UserBiography,
   UserCreatedAt,
   UserEmail,

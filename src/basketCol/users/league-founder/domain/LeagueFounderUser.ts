@@ -1,12 +1,13 @@
 import { User } from '../../shared/domain/User';
 import { ILeagueFounderUser } from './ILeagueFounderUser';
-import { LeagueFounderUserActive } from './value-objects/LeagueFounderUserActive';
+import { LeagueFounderUserAccountState } from './value-objects/LeagueFounderUserAccountState';
 import { LeagueFounderUserBiography } from './value-objects/LeagueFounderUserBiography';
 import { LeagueFounderUserCreatedAt } from './value-objects/LeagueFounderUserCreatedAt';
 import { LeagueFounderUserEmail } from './value-objects/LeagueFounderUserEmail';
 import { LeagueFounderUserId } from './value-objects/LeagueFounderUserId';
 import { LeagueFounderUserName } from './value-objects/LeagueFounderUserName';
 import { LeagueFounderUserPassword } from './value-objects/LeagueFounderUserPassword';
+import { LeagueFounderUserSubscriptionType } from './value-objects/LeagueFounderUserSubscriptionType';
 import { LeagueFounderUserType } from './value-objects/LeagueFounderUserType';
 import { LeagueFounderUserUpdatedAt } from './value-objects/LeagueFounderUserUpdatedAt';
 
@@ -17,7 +18,8 @@ export class LeagueFounderUser extends User<ILeagueFounderUser> {
     biography: string,
     email: { value: string; verified: boolean; },
     password: string,
-    active: boolean,
+    accountState: string,
+    subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ) {
@@ -28,7 +30,8 @@ export class LeagueFounderUser extends User<ILeagueFounderUser> {
       new LeagueFounderUserEmail(email),
       new LeagueFounderUserPassword(password),
       new LeagueFounderUserType(),
-      new LeagueFounderUserActive(active),
+      new LeagueFounderUserAccountState(accountState),
+      new LeagueFounderUserSubscriptionType(subscriptionType),
       new LeagueFounderUserCreatedAt(createdAt),
       new LeagueFounderUserUpdatedAt(updatedAt),
     );
@@ -42,7 +45,8 @@ export class LeagueFounderUser extends User<ILeagueFounderUser> {
       email: this.email.value,
       password: this.password.value,
       type: this.type.value,
-      active: this.active.value,
+      accountStatus: this.accountStatus.value,
+      subscriptionType: this.subscriptionType.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
@@ -54,7 +58,8 @@ export class LeagueFounderUser extends User<ILeagueFounderUser> {
     biography: string,
     email: { value: string; verified: boolean; },
     password: string,
-    active: boolean,
+    accountState: string,
+    subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ): LeagueFounderUser {
@@ -64,7 +69,8 @@ export class LeagueFounderUser extends User<ILeagueFounderUser> {
       biography,
       email,
       password,
-      active,
+      accountState,
+      subscriptionType,
       createdAt,
       updatedAt,
     );

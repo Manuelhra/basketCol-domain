@@ -12,4 +12,3 @@ export class LeagueFounderUserNotFoundError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-

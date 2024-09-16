@@ -1,14 +1,15 @@
 import { User } from '../../shared/domain/User';
 import { ITeamFounderUser } from './ITeamFounderUser';
 import { TeamFounderUserId } from './value-objects/TeamFounderUserId';
-import { TFUActive } from './value-objects/TFUActive';
-import { TFUBiography } from './value-objects/TFUBiography';
-import { TFUCreatedAt } from './value-objects/TFUCreatedAt';
-import { TFUEmail } from './value-objects/TFUEmail';
-import { TFUName } from './value-objects/TFUName';
-import { TFUPassword } from './value-objects/TFUPassword';
-import { TFUType } from './value-objects/TFUType';
-import { TFUUpdatedAt } from './value-objects/TFUUpdatedAt';
+import { TeamFounderUserBiography } from './value-objects/TeamFounderUserBiography';
+import { TeamFounderUserCreatedAt } from './value-objects/TeamFounderUserCreatedAt';
+import { TeamFounderUserEmail } from './value-objects/TeamFounderUserEmail';
+import { TeamFounderUserName } from './value-objects/TeamFounderUserName';
+import { TeamFounderUserPassword } from './value-objects/TeamFounderUserPassword';
+import { TeamFounderUserType } from './value-objects/TeamFounderUserType';
+import { TeamFounderUserUpdatedAt } from './value-objects/TeamFounderUserUpdatedAt';
+import { TeamFounderUserAccountState } from './value-objects/TeamFounderUserAccountState';
+import { TeamFounderUserSubscriptionType } from './value-objects/TeamFounderUserSubscriptionType';
 
 export class TeamFounderUser extends User<ITeamFounderUser> {
   constructor(
@@ -17,20 +18,22 @@ export class TeamFounderUser extends User<ITeamFounderUser> {
     biography: string,
     email: { value: string; verified: boolean; },
     password: string,
-    active: boolean,
+    accountState: string,
+    subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ) {
     super(
       new TeamFounderUserId(id),
-      new TFUName(name),
-      new TFUBiography(biography),
-      new TFUEmail(email),
-      new TFUPassword(password),
-      new TFUType(),
-      new TFUActive(active),
-      new TFUCreatedAt(createdAt),
-      new TFUUpdatedAt(updatedAt),
+      new TeamFounderUserName(name),
+      new TeamFounderUserBiography(biography),
+      new TeamFounderUserEmail(email),
+      new TeamFounderUserPassword(password),
+      new TeamFounderUserType(),
+      new TeamFounderUserAccountState(accountState),
+      new TeamFounderUserSubscriptionType(subscriptionType),
+      new TeamFounderUserCreatedAt(createdAt),
+      new TeamFounderUserUpdatedAt(updatedAt),
     );
   }
 
@@ -42,7 +45,8 @@ export class TeamFounderUser extends User<ITeamFounderUser> {
       email: this.email.value,
       password: this.password.value,
       type: this.type.value,
-      active: this.active.value,
+      accountStatus: this.accountStatus.value,
+      subscriptionType: this.subscriptionType.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
@@ -54,7 +58,8 @@ export class TeamFounderUser extends User<ITeamFounderUser> {
     biography: string,
     email: { value: string; verified: boolean; },
     password: string,
-    active: boolean,
+    accountState: string,
+    subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ): TeamFounderUser {
@@ -64,7 +69,8 @@ export class TeamFounderUser extends User<ITeamFounderUser> {
       biography,
       email,
       password,
-      active,
+      accountState,
+      subscriptionType,
       createdAt,
       updatedAt,
     );

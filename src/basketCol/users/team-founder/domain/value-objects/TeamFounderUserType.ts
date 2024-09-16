@@ -1,6 +1,6 @@
 import { UserType } from '../../../shared/domain/value-objects/UserType';
 
-export class TFUType extends UserType {
+export class TeamFounderUserType extends UserType {
   readonly TYPE: string;
 
   constructor() {

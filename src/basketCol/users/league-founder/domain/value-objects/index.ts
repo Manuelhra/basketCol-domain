@@ -1,4 +1,3 @@
-export { LeagueFounderUserActive } from './LeagueFounderUserActive';
 export { LeagueFounderUserBiography } from './LeagueFounderUserBiography';
 export { LeagueFounderUserCreatedAt } from './LeagueFounderUserCreatedAt';
 export { LeagueFounderUserEmail } from './LeagueFounderUserEmail';
@@ -7,3 +6,5 @@ export { LeagueFounderUserName } from './LeagueFounderUserName';
 export { LeagueFounderUserPassword } from './LeagueFounderUserPassword';
 export { LeagueFounderUserType } from './LeagueFounderUserType';
 export { LeagueFounderUserUpdatedAt } from './LeagueFounderUserUpdatedAt';
+export { LeagueFounderUserAccountState } from './LeagueFounderUserAccountState';
+export { LeagueFounderUserSubscriptionType } from './LeagueFounderUserSubscriptionType';

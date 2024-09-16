@@ -11,4 +11,3 @@ export class InvalidEmailPolicyError extends RootError {
     return `${this.name}: ${this.message}`;
   }
 }
-
