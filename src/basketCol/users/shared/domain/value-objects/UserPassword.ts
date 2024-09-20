@@ -17,6 +17,10 @@ export class UserPassword extends StringValueObject {
     UserPassword.ensureIsValidPassword(value);
   }
 
+  public static get passwordRegExp(): RegExp {
+    return UserPassword.#PASSWORD_REG_EXP;
+  }
+
   private static ensureIsValidPassword(password: string): void {
     if (!UserPassword.#PASSWORD_REG_EXP.test(password)) {
       throw new PasswordPolicyViolationError(`The password does not allow the value <${password}>: ${UserPassword.#REQUIREMENTS.join(', ')}`);
