@@ -12,19 +12,19 @@ import { UserType } from './value-objects/UserType';
 import { UserUpdatedAt } from './value-objects/UserUpdatedAt';
 
 export abstract class User<I extends IUser> extends AggregateRoot<I> {
-  protected readonly name: UserName;
+  protected readonly _name: UserName;
 
-  protected readonly biography: UserBiography;
+  protected readonly _biography: UserBiography;
 
-  protected readonly email: UserEmail;
+  protected readonly _email: UserEmail;
 
-  protected readonly password: UserPassword;
+  protected readonly _password: UserPassword;
 
-  protected readonly type: UserType;
+  protected readonly _type: UserType;
 
-  protected readonly accountStatus: UserAccountState;
+  protected readonly _accountStatus: UserAccountState;
 
-  protected readonly subscriptionType: UserSubscriptionType;
+  protected readonly _subscriptionType: UserSubscriptionType;
 
   protected constructor(
     id: UserId,
@@ -40,32 +40,40 @@ export abstract class User<I extends IUser> extends AggregateRoot<I> {
   ) {
     super(id, createdAt, updatedAt);
 
-    this.name = name;
-    this.biography = biography;
-    this.email = email;
-    this.password = password;
-    this.type = type;
-    this.accountStatus = accountStatus;
-    this.subscriptionType = subscriptionType;
+    this._name = name;
+    this._biography = biography;
+    this._email = email;
+    this._password = password;
+    this._type = type;
+    this._accountStatus = accountStatus;
+    this._subscriptionType = subscriptionType;
   }
 
-  public getName(): UserName {
-    return this.name;
+  public get name(): UserName {
+    return this._name;
   }
 
-  public getBiography(): UserBiography {
-    return this.biography;
+  public get biography(): UserBiography {
+    return this._biography;
   }
 
-  public getEmail(): UserEmail {
-    return this.email;
+  public get email(): UserEmail {
+    return this._email;
   }
 
-  public getPassword(): UserPassword {
-    return this.password;
+  public get password(): UserPassword {
+    return this._password;
   }
 
-  public getType(): UserType {
-    return this.type;
+  public get type(): UserType {
+    return this._type;
+  }
+
+  public get accountStatus(): UserAccountState {
+    return this._accountStatus;
+  }
+
+  public get subscriptionType(): UserSubscriptionType {
+    return this._subscriptionType;
   }
 }
