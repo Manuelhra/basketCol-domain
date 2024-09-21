@@ -1,13 +1,10 @@
 import { UserType } from '../../../shared/domain/value-objects/UserType';
 
 export class PlayerUserType extends UserType {
-  protected readonly TYPE: string;
+  protected readonly TYPE: string = 'PLAYER_USER';
 
   constructor() {
-    const type: string = 'PLAYER_USER';
-
-    super(type);
-    this.TYPE = type;
+    super(PlayerUserType.value);
   }
 
   public static override get value(): string {
