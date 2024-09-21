@@ -3,21 +3,21 @@ import { IPasswordHashingService } from './IPasswordHashingService';
 import { IPasswordValueObjectCreationService } from './IPasswordValueObjectCreationService';
 
 export class SecurePasswordCreationService {
-  readonly #PasswordHashingService: IPasswordHashingService;
+  readonly #passwordHashingService: IPasswordHashingService;
 
   readonly #passwordValueObjectCreationService: IPasswordValueObjectCreationService;
 
   constructor(dependencies: {
-    PasswordHashingService: IPasswordHashingService;
+    passwordHashingService: IPasswordHashingService;
     passwordValueObjectCreationService: IPasswordValueObjectCreationService;
   }) {
-    this.#PasswordHashingService = dependencies.PasswordHashingService;
+    this.#passwordHashingService = dependencies.passwordHashingService;
     this.#passwordValueObjectCreationService = dependencies.passwordValueObjectCreationService;
   }
 
   public async createFromPlainText<T extends UserPassword>(userPassword: T): Promise<T> {
     const { value } = userPassword;
-    const hashedPassword = await this.#PasswordHashingService.hash(value);
+    const hashedPassword = await this.#passwordHashingService.hash(value);
     return this.#passwordValueObjectCreationService.createFromHashedValue<T>(hashedPassword);
   }
 
