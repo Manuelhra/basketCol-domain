@@ -23,7 +23,7 @@ export abstract class AggregateRoot<I extends IAggregateRoot> {
   public abstract toPrimitives(): I;
 
   public get id(): UuidValueObject {
-    return this.id;
+    return this._id;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
