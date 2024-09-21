@@ -636,10 +636,10 @@ export {
   PasswordPolicyViolationError,
 } from '../basketCol/users/shared/domain/exceptions';
 export {
-  CreatePasswordValueObjectService,
   EmailUniquenessValidatorService,
-  ICreatePasswordValueObjectService,
-  IPasswordEncrypterService,
+  IPasswordHashingService,
+  IPasswordValueObjectCreationService,
+  PasswordValueObjectCreationService,
   SecurePasswordCreationService,
 } from '../basketCol/users/shared/domain/services';
 export {

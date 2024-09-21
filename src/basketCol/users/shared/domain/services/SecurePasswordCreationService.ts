@@ -1,26 +1,27 @@
 import { UserPassword } from '../value-objects/UserPassword';
-import { ICreatePasswordValueObjectService } from './ICreatePasswordValueObjectService';
-import { IPasswordEncrypterService } from './IPasswordEncrypterService';
+import { IPasswordHashingService } from './IPasswordHashingService';
+import { IPasswordValueObjectCreationService } from './IPasswordValueObjectCreationService';
 
 export class SecurePasswordCreationService {
-  readonly #passwordEncrypterService: IPasswordEncrypterService;
+  readonly #PasswordHashingService: IPasswordHashingService;
 
-  readonly #createPasswordValueObjectService: ICreatePasswordValueObjectService;
+  readonly #passwordValueObjectCreationService: IPasswordValueObjectCreationService;
 
   constructor(dependencies: {
-    passwordEncrypterService: IPasswordEncrypterService;
-    createPasswordValueObjectService: ICreatePasswordValueObjectService;
+    PasswordHashingService: IPasswordHashingService;
+    passwordValueObjectCreationService: IPasswordValueObjectCreationService;
   }) {
-    this.#passwordEncrypterService = dependencies.passwordEncrypterService;
-    this.#createPasswordValueObjectService = dependencies.createPasswordValueObjectService;
+    this.#PasswordHashingService = dependencies.PasswordHashingService;
+    this.#passwordValueObjectCreationService = dependencies.passwordValueObjectCreationService;
   }
 
-  public createFromPlainText<T extends UserPassword>(value: string): T {
-    const encryptedPassword = this.#passwordEncrypterService.encrypt(value);
-    return this.#createPasswordValueObjectService.run<T>(encryptedPassword);
+  public async createFromPlainText<T extends UserPassword>(userPassword: T): Promise<T> {
+    const { value } = userPassword;
+    const hashedPassword = await this.#PasswordHashingService.hash(value);
+    return this.#passwordValueObjectCreationService.createFromHashedValue<T>(hashedPassword);
   }
 
-  public createFromHashedText<T extends UserPassword>(hashedText: string): T {
-    return this.#createPasswordValueObjectService.run<T>(hashedText);
+  public async createFromHashedText<T extends UserPassword>(hashedText: string): Promise<T> {
+    return this.#passwordValueObjectCreationService.createFromHashedValue<T>(hashedText);
   }
 }

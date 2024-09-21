@@ -11,10 +11,12 @@ export class UserPassword extends StringValueObject {
     'At least one special character from [@ $!%*#?&].',
   ] as const;
 
-  public constructor(value: string) {
+  public constructor(value: string, skipValidation: boolean = false) {
     super(value, 'password');
 
-    UserPassword.ensureIsValidPassword(value);
+    if (skipValidation === false) {
+      UserPassword.ensureIsValidPassword(value);
+    }
   }
 
   public static get passwordRegExp(): RegExp {
@@ -30,7 +32,7 @@ export class UserPassword extends StringValueObject {
   }
 
   private static ensureIsValidPassword(password: string): void {
-    if (!UserPassword.#PASSWORD_REG_EXP.test(password)) {
+    if (UserPassword.#PASSWORD_REG_EXP.test(password) === false) {
       throw new PasswordPolicyViolationError(`The password does not allow the value <${password}>: ${UserPassword.#REQUIREMENTS.join(', ')}`);
     }
   }

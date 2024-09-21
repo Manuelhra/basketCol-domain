@@ -1,5 +1,5 @@
-export { CreatePasswordValueObjectService } from './CreatePasswordValueObjectService';
 export { EmailUniquenessValidatorService } from './EmailUniquenessValidatorService';
-export { ICreatePasswordValueObjectService } from './ICreatePasswordValueObjectService';
-export { IPasswordEncrypterService } from './IPasswordEncrypterService';
+export { IPasswordHashingService } from './IPasswordHashingService';
+export { IPasswordValueObjectCreationService } from './IPasswordValueObjectCreationService';
+export { PasswordValueObjectCreationService } from './PasswordValueObjectCreationService';
 export { SecurePasswordCreationService } from './SecurePasswordCreationService';
