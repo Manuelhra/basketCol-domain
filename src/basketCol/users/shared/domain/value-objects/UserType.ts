@@ -3,7 +3,7 @@ import { StringValueObject } from '../../../../shared/domain/value-objects/Strin
 import { InvalidUserTypeError } from '../exceptions/InvalidUserTypeError';
 
 export abstract class UserType extends StringValueObject {
-  protected abstract readonly TYPE: string;
+  protected static readonly TYPE: string;
 
   protected constructor(type: string) {
     super(type, 'type');
@@ -16,7 +16,7 @@ export abstract class UserType extends StringValueObject {
   }
 
   private ensureUserTypeIsCorrect(type: string): void {
-    if (type !== this.TYPE) {
+    if (type !== (this.constructor as typeof UserType).TYPE) {
       throw new InvalidUserTypeError(type);
     }
   }
