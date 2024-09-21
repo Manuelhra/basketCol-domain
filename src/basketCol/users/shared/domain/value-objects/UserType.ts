@@ -11,7 +11,7 @@ export abstract class UserType extends StringValueObject {
     this.ensureUserTypeIsCorrect(type);
   }
 
-  public static getType(): string {
+  public static get value(): string {
     throw new MethodNotImplementedError('This method should be overridden in derived classes');
   }
 
