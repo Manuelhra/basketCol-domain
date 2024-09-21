@@ -10,7 +10,7 @@ export class RefereeUserType extends UserType {
     this.TYPE = type;
   }
 
-  public static getType(): string {
+  public static override get value(): string {
     return 'REFEREE_USER';
   }
 }

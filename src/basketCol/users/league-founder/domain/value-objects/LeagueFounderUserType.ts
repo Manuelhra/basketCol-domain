@@ -10,7 +10,7 @@ export class LeagueFounderUserType extends UserType {
     this.TYPE = type;
   }
 
-  public static getType(): string {
+  public static override get value(): string {
     return 'LEAGUE_FOUNDER_USER';
   }
 }

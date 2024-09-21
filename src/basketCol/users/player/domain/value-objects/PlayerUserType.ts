@@ -10,7 +10,7 @@ export class PlayerUserType extends UserType {
     this.TYPE = type;
   }
 
-  public static getType(): string {
+  public static override get value(): string {
     return 'PLAYER_USER';
   }
 }
