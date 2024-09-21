@@ -1,13 +1,10 @@
 import { UserType } from '../../../shared/domain/value-objects/UserType';
 
 export class RefereeUserType extends UserType {
-  protected readonly TYPE: string;
+  protected readonly TYPE: string = 'REFEREE_USER';
 
   constructor() {
-    const type: string = 'REFEREE_USER';
-
-    super(type);
-    this.TYPE = type;
+    super(RefereeUserType.value);
   }
 
   public static override get value(): string {
