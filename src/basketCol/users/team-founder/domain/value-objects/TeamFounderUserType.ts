@@ -1,13 +1,13 @@
 import { UserType } from '../../../shared/domain/value-objects/UserType';
 
 export class TeamFounderUserType extends UserType {
-  readonly TYPE: string = 'TEAM_FOUNDER_USER';
+  protected static override readonly TYPE: string = 'TEAM_FOUNDER_USER';
 
   constructor() {
-    super(TeamFounderUserType.value);
+    super(TeamFounderUserType.TYPE);
   }
 
   public static override get value(): string {
-    return 'TEAM_FOUNDER_USER';
+    return TeamFounderUserType.TYPE;
   }
 }
