@@ -4,4 +4,8 @@ export class PUSASpeedWithBall extends Attribute {
   constructor(value: number) {
     super(value, 'speedWithBall');
   }
+
+  public static create(value: number): PUSASpeedWithBall {
+    return new PUSASpeedWithBall(value);
+  }
 }

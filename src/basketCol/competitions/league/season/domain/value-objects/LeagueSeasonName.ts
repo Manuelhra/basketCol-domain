@@ -11,6 +11,10 @@ export class LeagueSeasonName extends StringValueObject {
     LeagueSeasonName.ensureIsValidName(value, 'name');
   }
 
+  public static create(value: string): LeagueSeasonName {
+    return new LeagueSeasonName(value);
+  }
+
   private static ensureIsValidName(value: string, propertyName: string): void {
     if (value.length < LeagueSeasonName.#LENGTH.min) {
       throw new PropertyLengthTooShortError(propertyName, LeagueSeasonName.#LENGTH.min, value.length);

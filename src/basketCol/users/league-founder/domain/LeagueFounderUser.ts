@@ -24,16 +24,16 @@ export class LeagueFounderUser extends User<ILeagueFounderUser> {
     updatedAt: string,
   ) {
     super(
-      new LeagueFounderUserId(id),
-      new LeagueFounderUserName(name),
-      new LeagueFounderUserBiography(biography),
-      new LeagueFounderUserEmail(email),
-      new LeagueFounderUserPassword(password),
-      new LeagueFounderUserType(),
-      new LeagueFounderUserAccountState(accountState),
-      new LeagueFounderUserSubscriptionType(subscriptionType),
-      new LeagueFounderUserCreatedAt(createdAt),
-      new LeagueFounderUserUpdatedAt(updatedAt),
+      LeagueFounderUserId.create(id),
+      LeagueFounderUserName.create(name),
+      LeagueFounderUserBiography.create(biography),
+      LeagueFounderUserEmail.create(email),
+      LeagueFounderUserPassword.create(password),
+      LeagueFounderUserType.create(),
+      LeagueFounderUserAccountState.create(accountState),
+      LeagueFounderUserSubscriptionType.create(subscriptionType),
+      LeagueFounderUserCreatedAt.create(createdAt),
+      LeagueFounderUserUpdatedAt.create(updatedAt),
     );
   }
 

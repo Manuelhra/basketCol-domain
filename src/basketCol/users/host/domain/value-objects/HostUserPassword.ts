@@ -4,4 +4,8 @@ export class HostUserPassword extends UserPassword {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): HostUserPassword {
+    return new HostUserPassword(value);
+  }
 }

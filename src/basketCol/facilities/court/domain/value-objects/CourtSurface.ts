@@ -20,6 +20,10 @@ export class CourtSurface extends StringValueObject {
     CourtSurface.ensureIsValidSurface(upperCaseValue);
   }
 
+  public static create(value: string): CourtSurface {
+    return new CourtSurface(value);
+  }
+
   public get validSurfaces(): readonly string[] {
     return CourtSurface.#VALID_SURFACES;
   }

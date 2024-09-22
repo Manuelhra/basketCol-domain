@@ -4,4 +4,8 @@ export class LSABestFreeThrowShooterId extends ReferencedPlayerUserId {
   public constructor(value: string) {
     super(value, 'bestFreeThrowShooterId');
   }
+
+  public static create(value: string): LSABestFreeThrowShooterId {
+    return new LSABestFreeThrowShooterId(value);
+  }
 }

@@ -10,6 +10,10 @@ export class TeamOfficialName extends StringValueObject {
     TeamOfficialName.ensureValidLength(value);
   }
 
+  public static create(value: string): TeamOfficialName {
+    return new TeamOfficialName(value);
+  }
+
   private static ensureValidLength(value: string): void {
     if (value.length < TeamOfficialName.#LENGTH.min || value.length > TeamOfficialName.#LENGTH.max) {
       throw new TeamOfficialNameLengthError(value, TeamOfficialName.#LENGTH.min, TeamOfficialName.#LENGTH.max);

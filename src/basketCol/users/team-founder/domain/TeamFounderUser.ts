@@ -24,16 +24,16 @@ export class TeamFounderUser extends User<ITeamFounderUser> {
     updatedAt: string,
   ) {
     super(
-      new TeamFounderUserId(id),
-      new TeamFounderUserName(name),
-      new TeamFounderUserBiography(biography),
-      new TeamFounderUserEmail(email),
-      new TeamFounderUserPassword(password),
-      new TeamFounderUserType(),
-      new TeamFounderUserAccountState(accountState),
-      new TeamFounderUserSubscriptionType(subscriptionType),
-      new TeamFounderUserCreatedAt(createdAt),
-      new TeamFounderUserUpdatedAt(updatedAt),
+      TeamFounderUserId.create(id),
+      TeamFounderUserName.create(name),
+      TeamFounderUserBiography.create(biography),
+      TeamFounderUserEmail.create(email),
+      TeamFounderUserPassword.create(password),
+      TeamFounderUserType.create(),
+      TeamFounderUserAccountState.create(accountState),
+      TeamFounderUserSubscriptionType.create(subscriptionType),
+      TeamFounderUserCreatedAt.create(createdAt),
+      TeamFounderUserUpdatedAt.create(updatedAt),
     );
   }
 

@@ -4,4 +4,8 @@ export class RefereeUserName extends UserName {
   public constructor(value: IUserNameProps) {
     super(value);
   }
+
+  public static create(value: IUserNameProps): RefereeUserName {
+    return new RefereeUserName(value);
+  }
 }

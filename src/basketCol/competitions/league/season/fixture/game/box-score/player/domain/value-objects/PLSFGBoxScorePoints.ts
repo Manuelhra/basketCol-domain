@@ -4,4 +4,8 @@ export class PLSFGBoxScorePoints extends FGBoxScorePoints {
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): PLSFGBoxScorePoints {
+    return new PLSFGBoxScorePoints(value);
+  }
 }

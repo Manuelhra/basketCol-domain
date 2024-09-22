@@ -4,4 +4,8 @@ export class TLSFGBoxScoreFreeThrowsAttempted extends FGBoxScoreFreeThrowsAttemp
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): TLSFGBoxScoreFreeThrowsAttempted {
+    return new TLSFGBoxScoreFreeThrowsAttempted(value);
+  }
 }

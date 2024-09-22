@@ -4,7 +4,7 @@ import { ValueObject } from './ValueObject';
 
 export abstract class ReferencedTeamId extends ValueObject<TeamId> {
   protected constructor(value: string, propertyName: string = 'teamId') {
-    const teamId: TeamId = new TeamId(value);
+    const teamId: TeamId = TeamId.create(value);
 
     super(teamId, propertyName, 'string');
 

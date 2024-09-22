@@ -13,14 +13,14 @@ export class CourtHoopHeight extends CentimeterHeightValueObject {
     this.ensureIsValidHoopHeight(value);
   }
 
+  public static create(height: number): CourtHoopHeight {
+    return new CourtHoopHeight(height);
+  }
+
   private ensureIsValidHoopHeight(height: number): void {
     if (height < CourtHoopHeight.MIN_HEIGHT || height > CourtHoopHeight.MAX_HEIGHT) {
       throw new InvalidCourtHoopHeightError(height, CourtHoopHeight.MIN_HEIGHT, CourtHoopHeight.MAX_HEIGHT);
     }
-  }
-
-  public static create(height: number): CourtHoopHeight {
-    return new CourtHoopHeight(height);
   }
 
   public static createStandard(): CourtHoopHeight {

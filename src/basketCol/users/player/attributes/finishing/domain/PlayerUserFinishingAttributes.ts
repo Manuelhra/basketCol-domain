@@ -30,17 +30,17 @@ export class PlayerUserFinishingAttributes extends AggregateRoot<IPlayerUserFini
     createdAt: string,
     updatedAt: string,
   ) {
-    const pUFAId: PUFAId = new PUFAId(id);
-    const pUFACreatedAt: PUFACreatedAt = new PUFACreatedAt(createdAt);
-    const pUFAUpdatedAt: PUFAUpdatedAt = new PUFAUpdatedAt(updatedAt);
+    const pUFAId: PUFAId = PUFAId.create(id);
+    const pUFACreatedAt: PUFACreatedAt = PUFACreatedAt.create(createdAt);
+    const pUFAUpdatedAt: PUFAUpdatedAt = PUFAUpdatedAt.create(updatedAt);
 
     super(pUFAId, pUFACreatedAt, pUFAUpdatedAt);
 
-    this.#drivingLayup = new PUFADrivingLayup(drivingLayup);
-    this.#drivingDunk = new PUFADrivingDunk(drivingDunk);
-    this.#standingDunk = new PUFAStandingDunk(standingDunk);
-    this.#postControl = new PUFAPostControl(postControl);
-    this.#playerUserId = new PUFAReferencedPlayerUserId(playerUserId);
+    this.#drivingLayup = PUFADrivingLayup.create(drivingLayup);
+    this.#drivingDunk = PUFADrivingDunk.create(drivingDunk);
+    this.#standingDunk = PUFAStandingDunk.create(standingDunk);
+    this.#postControl = PUFAPostControl.create(postControl);
+    this.#playerUserId = PUFAReferencedPlayerUserId.create(playerUserId);
   }
 
   public override toPrimitives(): IPlayerUserFinishingAttributes {

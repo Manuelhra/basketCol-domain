@@ -4,4 +4,8 @@ export class PlayerUserCreatedAt extends UserCreatedAt {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): PlayerUserCreatedAt {
+    return new PlayerUserCreatedAt(value);
+  }
 }

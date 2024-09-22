@@ -4,4 +4,8 @@ export class PlayerUserEmail extends UserEmail {
   public constructor(value: IUserEmailProps) {
     super(value);
   }
+
+  public static create(value: IUserEmailProps): PlayerUserEmail {
+    return new PlayerUserEmail(value);
+  }
 }

@@ -19,14 +19,14 @@ export class LeagueSeasonFixture extends Fixture<ILeagueSeasonFixture> {
     updatedAt: string,
   ) {
     super(
-      new LSFixtureId(id),
-      new LSFixtureDate(date),
-      new LSFixtureName(name),
-      new LSFixtureCreatedAt(createdAt),
-      new LSFixtureUpdatedAt(updatedAt),
+      LSFixtureId.create(id),
+      LSFixtureDate.create(date),
+      LSFixtureName.create(name),
+      LSFixtureCreatedAt.create(createdAt),
+      LSFixtureUpdatedAt.create(updatedAt),
     );
 
-    this.#leagueSeasonId = new LSFixtureLeagueSeasonId(leagueSeasonId);
+    this.#leagueSeasonId = LSFixtureLeagueSeasonId.create(leagueSeasonId);
   }
 
   public override toPrimitives(): ILeagueSeasonFixture {

@@ -4,4 +4,8 @@ export class HostUserId extends UserId {
   public constructor(value: string, propertyName = 'id') {
     super(value, propertyName);
   }
+
+  public static create(value: string, propertyName = 'id'): HostUserId {
+    return new HostUserId(value, propertyName);
+  }
 }

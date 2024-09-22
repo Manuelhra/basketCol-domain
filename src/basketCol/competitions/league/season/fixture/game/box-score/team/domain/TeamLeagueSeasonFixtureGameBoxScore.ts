@@ -45,27 +45,27 @@ export class TeamLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<ITe
     updatedAt: string,
   ) {
     super(
-      new TLSFGBoxScoreId(id),
-      new TLSFGBoxScorePoints(points),
-      new TLSFGBoxScoreOffensiveRebounds(offensiveRebounds),
-      new TLSFGBoxScoreDefensiveRebounds(defensiveRebounds),
-      new TLSFGBoxScoreAssists(assists),
-      new TLSFGBoxScoreSteals(steals),
-      new TLSFGBoxScoreBlocks(blocks),
-      new TLSFGBoxScoreFouls(fouls),
-      new TLSFGBoxScoreTurnovers(turnovers),
-      new TLSFGBoxScoreThreePointersAttempted(threePointersAttempted),
-      new TLSFGBoxScoreThreePointersMade(threePointersMade),
-      new TLSFGBoxScoreFreeThrowsAttempted(freeThrowsAttempted),
-      new TLSFGBoxScoreFreeThrowsMade(freeThrowsMade),
-      new TLSFGBoxScoreFieldGoalsAttempted(fieldGoalsAttempted),
-      new TLSFGBoxScoreFieldGoalsMade(fieldGoalsMade),
-      new TLSFGBoxScoreFixtureGameId(fixtureGameId),
-      new TLSFGBoxScoreCreatedAt(createdAt),
-      new TLSFGBoxScoreUpdatedAt(updatedAt),
+      TLSFGBoxScoreId.create(id),
+      TLSFGBoxScorePoints.create(points),
+      TLSFGBoxScoreOffensiveRebounds.create(offensiveRebounds),
+      TLSFGBoxScoreDefensiveRebounds.create(defensiveRebounds),
+      TLSFGBoxScoreAssists.create(assists),
+      TLSFGBoxScoreSteals.create(steals),
+      TLSFGBoxScoreBlocks.create(blocks),
+      TLSFGBoxScoreFouls.create(fouls),
+      TLSFGBoxScoreTurnovers.create(turnovers),
+      TLSFGBoxScoreThreePointersAttempted.create(threePointersAttempted),
+      TLSFGBoxScoreThreePointersMade.create(threePointersMade),
+      TLSFGBoxScoreFreeThrowsAttempted.create(freeThrowsAttempted),
+      TLSFGBoxScoreFreeThrowsMade.create(freeThrowsMade),
+      TLSFGBoxScoreFieldGoalsAttempted.create(fieldGoalsAttempted),
+      TLSFGBoxScoreFieldGoalsMade.create(fieldGoalsMade),
+      TLSFGBoxScoreFixtureGameId.create(fixtureGameId),
+      TLSFGBoxScoreCreatedAt.create(createdAt),
+      TLSFGBoxScoreUpdatedAt.create(updatedAt),
     );
 
-    this.#teamId = new TLSFGBoxScoreTeamId(teamId);
+    this.#teamId = TLSFGBoxScoreTeamId.create(teamId);
   }
 
   public override toPrimitives(): ITeamLeagueSeasonFixtureGameBoxScore {

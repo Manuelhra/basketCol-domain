@@ -3,7 +3,7 @@ import { ValueObject } from './ValueObject';
 
 export abstract class ReferencedFixtureId extends ValueObject<FixtureId> {
   protected constructor(value: string, propertyName: string = 'fixtureId') {
-    const fixtureId: FixtureId = new FixtureId(value);
+    const fixtureId: FixtureId = FixtureId.create(value);
 
     super(fixtureId, propertyName, 'string');
   }

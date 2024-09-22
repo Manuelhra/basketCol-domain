@@ -4,4 +4,8 @@ export class LSAReferencedLeagueSeasonId extends ReferencedLeagueSeasonId {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LSAReferencedLeagueSeasonId {
+    return new LSAReferencedLeagueSeasonId(value);
+  }
 }

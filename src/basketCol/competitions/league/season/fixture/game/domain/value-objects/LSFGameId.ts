@@ -4,4 +4,8 @@ export class LSFGameId extends FGameId {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LSFGameId {
+    return new LSFGameId(value);
+  }
 }

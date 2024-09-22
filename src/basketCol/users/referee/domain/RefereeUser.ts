@@ -24,16 +24,16 @@ export class RefereeUser extends User<IRefereeUser> {
     updatedAt: string,
   ) {
     super(
-      new RefereeUserId(id),
-      new RefereeUserName(name),
-      new RefereeUserBiography(biography),
-      new RefereeUserEmail(email),
-      new RefereeUserPassword(password),
-      new RefereeUserType(),
-      new RefereeUserAccountState(accountState),
-      new RefereeUserSubscriptionType(subscriptionType),
-      new RefereeUserCreatedAt(createdAt),
-      new RefereeUserUpdatedAt(updatedAt),
+      RefereeUserId.create(id),
+      RefereeUserName.create(name),
+      RefereeUserBiography.create(biography),
+      RefereeUserEmail.create(email),
+      RefereeUserPassword.create(password),
+      RefereeUserType.create(),
+      RefereeUserAccountState.create(accountState),
+      RefereeUserSubscriptionType.create(subscriptionType),
+      RefereeUserCreatedAt.create(createdAt),
+      RefereeUserUpdatedAt.create(updatedAt),
     );
   }
 

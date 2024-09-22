@@ -4,4 +4,8 @@ export class PUPAId extends IdValueObject {
   public constructor(value: string, propertyName: string = 'id') {
     super(value, propertyName);
   }
+
+  public static create(value: string, propertyName: string = 'id') {
+    return new PUPAId(value, propertyName);
+  }
 }

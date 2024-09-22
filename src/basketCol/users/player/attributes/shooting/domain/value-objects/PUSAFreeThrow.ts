@@ -4,4 +4,8 @@ export class PUSAFreeThrow extends Attribute {
   constructor(value: number) {
     super(value, 'freeThrow');
   }
+
+  public static create(value: number): PUSAFreeThrow {
+    return new PUSAFreeThrow(value);
+  }
 }

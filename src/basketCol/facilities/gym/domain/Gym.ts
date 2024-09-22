@@ -20,13 +20,13 @@ export class Gym extends Facility<IGym> {
     updatedAt: string,
   ) {
     super(
-      new GymId(id),
-      new GymOfficialName(officialName),
-      new GymLocation(location),
-      new GymEstablishmentDate(establishmentDate),
-      new GymRegisteredById(registeredById),
-      new GymCreatedAt(createdAt),
-      new GymUpdatedAt(updatedAt),
+      GymId.create(id),
+      GymOfficialName.create(officialName),
+      GymLocation.create(location),
+      GymEstablishmentDate.create(establishmentDate),
+      GymRegisteredById.create(registeredById),
+      GymCreatedAt.create(createdAt),
+      GymUpdatedAt.create(updatedAt),
     );
   }
 

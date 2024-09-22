@@ -4,4 +4,8 @@ export class LeagueEstablishmentDate extends EstablishmentDateValueObject {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LeagueEstablishmentDate {
+    return new LeagueEstablishmentDate(value);
+  }
 }

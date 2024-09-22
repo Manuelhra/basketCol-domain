@@ -8,6 +8,10 @@ export class LSFixtureDate extends FixtureDate {
     this.ensureFixtureDateIsAtLeast12HoursInAdvance();
   }
 
+  public static create(value: string): LSFixtureDate {
+    return new LSFixtureDate(value);
+  }
+
   private ensureFixtureDateIsAtLeast12HoursInAdvance(): void {
     const gameDate = this.toDate();
     const currentDate = new Date();

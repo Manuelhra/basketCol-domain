@@ -19,6 +19,10 @@ export class UserPassword extends StringValueObject {
     }
   }
 
+  public static create(value: string, skipValidation: boolean = false): UserPassword {
+    return new UserPassword(value, skipValidation);
+  }
+
   public static get passwordRegExp(): RegExp {
     return UserPassword.#PASSWORD_REG_EXP;
   }

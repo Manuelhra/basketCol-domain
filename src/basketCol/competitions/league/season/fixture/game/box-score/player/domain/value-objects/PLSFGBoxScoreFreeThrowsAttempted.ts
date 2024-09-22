@@ -4,4 +4,8 @@ export class PLSFGBoxScoreFreeThrowsAttempted extends FGBoxScoreFreeThrowsAttemp
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): PLSFGBoxScoreFreeThrowsAttempted {
+    return new PLSFGBoxScoreFreeThrowsAttempted(value);
+  }
 }

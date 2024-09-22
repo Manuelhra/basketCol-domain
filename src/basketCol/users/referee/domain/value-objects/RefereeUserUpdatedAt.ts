@@ -4,4 +4,8 @@ export class RefereeUserUpdatedAt extends UserUpdatedAt {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): RefereeUserUpdatedAt {
+    return new RefereeUserUpdatedAt(value);
+  }
 }

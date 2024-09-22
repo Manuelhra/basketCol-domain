@@ -4,4 +4,8 @@ export class PLSFGBoxScoreThreePointersAttempted extends FGBoxScoreThreePointers
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): PLSFGBoxScoreThreePointersAttempted {
+    return new PLSFGBoxScoreThreePointersAttempted(value);
+  }
 }

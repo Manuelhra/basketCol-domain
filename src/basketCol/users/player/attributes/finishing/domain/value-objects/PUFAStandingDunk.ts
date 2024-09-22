@@ -4,4 +4,8 @@ export class PUFAStandingDunk extends Attribute {
   constructor(value: number) {
     super(value, 'standingDunk');
   }
+
+  public static create(value: number): PUFAStandingDunk {
+    return new PUFAStandingDunk(value);
+  }
 }

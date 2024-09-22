@@ -43,18 +43,18 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
     createdAt: string,
     updatedAt: string,
   ) {
-    const leagueSeasonId: LeagueSeasonId = new LeagueSeasonId(id);
-    const leagueSeasonCreatedAt: LeagueSeasonCreatedAt = new LeagueSeasonCreatedAt(createdAt);
-    const leagueSeasonUpdatedAt: LeagueSeasonUpdatedAt = new LeagueSeasonUpdatedAt(updatedAt);
+    const leagueSeasonId: LeagueSeasonId = LeagueSeasonId.create(id);
+    const leagueSeasonCreatedAt: LeagueSeasonCreatedAt = LeagueSeasonCreatedAt.create(createdAt);
+    const leagueSeasonUpdatedAt: LeagueSeasonUpdatedAt = LeagueSeasonUpdatedAt.create(updatedAt);
 
     super(leagueSeasonId, leagueSeasonCreatedAt, leagueSeasonUpdatedAt);
 
-    this.#name = new LeagueSeasonName(name);
-    this.#startDate = new LeagueSeasonStartDate(startDate);
-    this.#endDate = new LeagueSeasonEndDate(endDate);
-    this.#status = new LeagueSeasonStatus(status);
-    this.#courtIdList = new LSReferencedCourtIdList(courtIdList);
-    this.#leagueId = new LSReferencedLeagueId(leagueId);
+    this.#name = LeagueSeasonName.create(name);
+    this.#startDate = LeagueSeasonStartDate.create(startDate);
+    this.#endDate = LeagueSeasonEndDate.create(endDate);
+    this.#status = LeagueSeasonStatus.create(status);
+    this.#courtIdList = LSReferencedCourtIdList.create(courtIdList);
+    this.#leagueId = LSReferencedLeagueId.create(leagueId);
 
     this.validateDates();
   }

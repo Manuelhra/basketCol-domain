@@ -7,6 +7,10 @@ export class TeamFounderUserType extends UserType {
     super(TeamFounderUserType.TYPE);
   }
 
+  public static create(): TeamFounderUserType {
+    return new TeamFounderUserType();
+  }
+
   public static override get value(): string {
     return TeamFounderUserType.TYPE;
   }

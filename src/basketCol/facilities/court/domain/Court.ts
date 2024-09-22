@@ -32,18 +32,18 @@ export class Court extends Facility<ICourt> {
     updatedAt: string,
   ) {
     super(
-      new CourtId(id),
-      new CourtOfficialName(officialName),
-      new CourtLocation(location),
-      new CourtEstablishmentDate(establishmentDate),
-      new CourtRegisteredById(registeredById),
-      new CourtCreatedAt(createdAt),
-      new CourtUpdatedAt(updatedAt),
+      CourtId.create(id),
+      CourtOfficialName.create(officialName),
+      CourtLocation.create(location),
+      CourtEstablishmentDate.create(establishmentDate),
+      CourtRegisteredById.create(registeredById),
+      CourtCreatedAt.create(createdAt),
+      CourtUpdatedAt.create(updatedAt),
     );
 
-    this.#surface = new CourtSurface(surface);
-    this.#hoopHeight = new CourtHoopHeight(hoopHeight);
-    this.#facilityId = new CourtNullableFacilityId(facilityId);
+    this.#surface = CourtSurface.create(surface);
+    this.#hoopHeight = CourtHoopHeight.create(hoopHeight);
+    this.#facilityId = CourtNullableFacilityId.create(facilityId);
   }
 
   public override toPrimitives(): ICourt {

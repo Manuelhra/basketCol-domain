@@ -4,4 +4,8 @@ export class PLSFGBoxScoreCreatedAt extends FGBoxScoreCreatedAt {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): PLSFGBoxScoreCreatedAt {
+    return new PLSFGBoxScoreCreatedAt(value);
+  }
 }

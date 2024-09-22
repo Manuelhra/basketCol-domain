@@ -4,4 +4,8 @@ export class FGameId extends IdValueObject {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): FGameId {
+    return new FGameId(value);
+  }
 }

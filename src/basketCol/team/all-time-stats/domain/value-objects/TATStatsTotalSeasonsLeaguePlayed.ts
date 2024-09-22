@@ -4,4 +4,8 @@ export class TATStatsTotalSeasonsLeaguePlayed extends StatsTotalSeasonsLeaguePla
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): TATStatsTotalSeasonsLeaguePlayed {
+    return new TATStatsTotalSeasonsLeaguePlayed(value);
+  }
 }

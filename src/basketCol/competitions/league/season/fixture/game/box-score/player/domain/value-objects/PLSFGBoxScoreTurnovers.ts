@@ -4,4 +4,8 @@ export class PLSFGBoxScoreTurnovers extends FGBoxScoreTurnovers {
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): PLSFGBoxScoreTurnovers {
+    return new PLSFGBoxScoreTurnovers(value);
+  }
 }

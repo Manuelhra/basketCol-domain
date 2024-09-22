@@ -4,4 +4,8 @@ export class LSFGameFixtureId extends FGameFixtureId {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LSFGameFixtureId {
+    return new LSFGameFixtureId(value);
+  }
 }

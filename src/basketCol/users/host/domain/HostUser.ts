@@ -24,16 +24,16 @@ export class HostUser extends User<IHostUser> {
     updatedAt: string,
   ) {
     super(
-      new HostUserId(id),
-      new HostUserName(name),
-      new HostUserBiography(biography),
-      new HostUserEmail(email),
-      new HostUserPassword(password),
-      new HostUserType(),
-      new HostUserAccountState(accountState),
-      new HostUserSubscriptionType(subscriptionType),
-      new HostUserCreatedAt(createdAt),
-      new HostUserUpdatedAt(updatedAt),
+      HostUserId.create(id),
+      HostUserName.create(name),
+      HostUserBiography.create(biography),
+      HostUserEmail.create(email),
+      HostUserPassword.create(password),
+      HostUserType.create(),
+      HostUserAccountState.create(accountState),
+      HostUserSubscriptionType.create(subscriptionType),
+      HostUserCreatedAt.create(createdAt),
+      HostUserUpdatedAt.create(updatedAt),
     );
   }
 

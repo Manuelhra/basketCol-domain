@@ -4,4 +4,8 @@ export class PLSFGBoxScoreFieldGoalsAttempted extends FGBoxScoreFieldGoalsAttemp
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): PLSFGBoxScoreFieldGoalsAttempted {
+    return new PLSFGBoxScoreFieldGoalsAttempted(value);
+  }
 }
