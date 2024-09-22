@@ -4,4 +4,8 @@ export class LSAUpdatedAt extends UpdatedAtValueObject {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LSAUpdatedAt {
+    return new LSAUpdatedAt(value);
+  }
 }

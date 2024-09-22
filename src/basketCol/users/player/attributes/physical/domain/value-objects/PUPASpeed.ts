@@ -4,4 +4,8 @@ export class PUPASpeed extends Attribute {
   constructor(value: number) {
     super(value, 'speed');
   }
+
+  public static create(value: number): PUPASpeed {
+    return new PUPASpeed(value);
+  }
 }

@@ -4,4 +4,8 @@ export class PLSFGBoxScoreFixtureGameId extends FGBoxScoreFixtureGameId {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): PLSFGBoxScoreFixtureGameId {
+    return new PLSFGBoxScoreFixtureGameId(value);
+  }
 }

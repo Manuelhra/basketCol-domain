@@ -4,4 +4,8 @@ export class LSFGameUpdatedAt extends FGameUpdatedAt {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LSFGameUpdatedAt {
+    return new LSFGameUpdatedAt(value);
+  }
 }

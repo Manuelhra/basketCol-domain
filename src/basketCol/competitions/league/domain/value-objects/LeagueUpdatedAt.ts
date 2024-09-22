@@ -4,4 +4,8 @@ export class LeagueUpdatedAt extends UpdatedAtValueObject {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LeagueUpdatedAt {
+    return new LeagueUpdatedAt(value);
+  }
 }

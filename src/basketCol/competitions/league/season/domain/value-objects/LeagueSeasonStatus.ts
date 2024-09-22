@@ -10,6 +10,10 @@ export class LeagueSeasonStatus extends StringValueObject {
     LeagueSeasonStatus.ensureIsValidStatus(value);
   }
 
+  public static create(value: string): LeagueSeasonStatus {
+    return new LeagueSeasonStatus(value);
+  }
+
   public static createUpcoming(): LeagueSeasonStatus {
     return new LeagueSeasonStatus('UPCOMING');
   }

@@ -21,6 +21,10 @@ export class LeagueDescription extends ObjectValueObject<{ short: string; comple
     LeagueDescription.ensureIsValidValue(value.short, { min: LeagueDescription.#COMPLETE_DESCRIPTION_LENGTH.min, max: LeagueDescription.#COMPLETE_DESCRIPTION_LENGTH.max }, 'description.complete');
   }
 
+  public static create(value: { short: string; complete: string; }): LeagueDescription {
+    return new LeagueDescription(value);
+  }
+
   private static ensureIsValidValue(
     value: string,
     length: { min:number; max: number; },

@@ -4,4 +4,8 @@ export class PUCStatsTotalThreePointersAttempted extends StatsTotalThreePointers
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): PUCStatsTotalThreePointersAttempted {
+    return new PUCStatsTotalThreePointersAttempted(value);
+  }
 }

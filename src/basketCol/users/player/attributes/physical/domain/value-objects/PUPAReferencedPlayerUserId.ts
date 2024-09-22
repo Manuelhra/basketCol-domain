@@ -4,4 +4,8 @@ export class PUPAReferencedPlayerUserId extends ReferencedPlayerUserId {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): PUPAReferencedPlayerUserId {
+    return new PUPAReferencedPlayerUserId(value);
+  }
 }

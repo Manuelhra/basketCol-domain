@@ -6,7 +6,7 @@ import { ValueObject } from './ValueObject';
 
 export abstract class ReferencedGymIdList extends ValueObject<GymId[]> {
   protected constructor(value: string[]) {
-    const gymIdList: GymId[] = value.map((gymId: string) => new GymId(gymId));
+    const gymIdList: GymId[] = value.map((gymId: string) => GymId.create(gymId));
 
     super(gymIdList, 'gymIdList', 'array of GymId');
 

@@ -4,4 +4,8 @@ export class PUSAUpdatedAt extends UpdatedAtValueObject {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): PUSAUpdatedAt {
+    return new PUSAUpdatedAt(value);
+  }
 }

@@ -51,30 +51,30 @@ export class PlayerUserCareerStats extends Stats<IPlayerUserCareerStats> {
     updatedAt: string,
   ) {
     super(
-      new PUCStatsId(id),
-      new PUCStatsTotalGamesPlayed(totalGamesPlayed),
-      new PUCStatsTotalGamesWon(totalGamesWon),
-      new PUCStatsTotalSeasonsLeaguePlayed(totalSeasonsLeaguePlayed),
-      new PUCStatsTotalSeasonsLeagueWon(totalSeasonsLeagueWon),
-      new PUCStatsTotalPoints(totalPoints),
-      new PUCStatsTotalOffensiveRebounds(totalOffensiveRebounds),
-      new PUCStatsTotalDefensiveRebounds(totalDefensiveRebounds),
-      new PUCStatsTotalAssists(totalAssists),
-      new PUCStatsTotalSteals(totalSteals),
-      new PUCStatsTotalBlocks(totalBlocks),
-      new PUCStatsTotalFouls(totalFouls),
-      new PUCStatsTotalTurnovers(totalTurnovers),
-      new PUCStatsTotalThreePointersAttempted(totalThreePointersAttempted),
-      new PUCStatsTotalThreePointersMade(totalThreePointersMade),
-      new PUCStatsTotalFreeThrowsAttempted(totalFreeThrowsAttempted),
-      new PUCStatsTotalFreeThrowsMade(totalFreeThrowsMade),
-      new PUCStatsTotalFieldGoalsAttempted(totalFieldGoalsAttempted),
-      new PUCStatsTotalFieldGoalsMade(totalFieldGoalsMade),
-      new PUCStatsCreatedAt(createdAt),
-      new PUCStatsUpdatedAt(updatedAt),
+      PUCStatsId.create(id),
+      PUCStatsTotalGamesPlayed.create(totalGamesPlayed),
+      PUCStatsTotalGamesWon.create(totalGamesWon),
+      PUCStatsTotalSeasonsLeaguePlayed.create(totalSeasonsLeaguePlayed),
+      PUCStatsTotalSeasonsLeagueWon.create(totalSeasonsLeagueWon),
+      PUCStatsTotalPoints.create(totalPoints),
+      PUCStatsTotalOffensiveRebounds.create(totalOffensiveRebounds),
+      PUCStatsTotalDefensiveRebounds.create(totalDefensiveRebounds),
+      PUCStatsTotalAssists.create(totalAssists),
+      PUCStatsTotalSteals.create(totalSteals),
+      PUCStatsTotalBlocks.create(totalBlocks),
+      PUCStatsTotalFouls.create(totalFouls),
+      PUCStatsTotalTurnovers.create(totalTurnovers),
+      PUCStatsTotalThreePointersAttempted.create(totalThreePointersAttempted),
+      PUCStatsTotalThreePointersMade.create(totalThreePointersMade),
+      PUCStatsTotalFreeThrowsAttempted.create(totalFreeThrowsAttempted),
+      PUCStatsTotalFreeThrowsMade.create(totalFreeThrowsMade),
+      PUCStatsTotalFieldGoalsAttempted.create(totalFieldGoalsAttempted),
+      PUCStatsTotalFieldGoalsMade.create(totalFieldGoalsMade),
+      PUCStatsCreatedAt.create(createdAt),
+      PUCStatsUpdatedAt.create(updatedAt),
     );
 
-    this.#playerUserId = new PUCStatsPlayerUserId(playerUserId);
+    this.#playerUserId = PUCStatsPlayerUserId.create(playerUserId);
   }
 
   public override toPrimitives(): IPlayerUserCareerStats {

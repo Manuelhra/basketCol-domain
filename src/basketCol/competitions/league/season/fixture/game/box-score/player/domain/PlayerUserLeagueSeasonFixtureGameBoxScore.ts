@@ -45,27 +45,27 @@ export class PlayerUserLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxSco
     updatedAt: string,
   ) {
     super(
-      new PLSFGBoxScoreId(id),
-      new PLSFGBoxScorePoints(points),
-      new PLSFGBoxScoreOffensiveRebounds(offensiveRebounds),
-      new PLSFGBoxScoreDefensiveRebounds(defensiveRebounds),
-      new PLSFGBoxScoreAssists(assists),
-      new PLSFGBoxScoreSteals(steals),
-      new PLSFGBoxScoreBlocks(blocks),
-      new PLSFGBoxScoreFouls(fouls),
-      new PLSFGBoxScoreTurnovers(turnovers),
-      new PLSFGBoxScoreThreePointersAttempted(threePointersAttempted),
-      new PLSFGBoxScoreThreePointersMade(threePointersMade),
-      new PLSFGBoxScoreFreeThrowsAttempted(freeThrowsAttempted),
-      new PLSFGBoxScoreFreeThrowsMade(freeThrowsMade),
-      new PLSFGBoxScoreFieldGoalsAttempted(fieldGoalsAttempted),
-      new PLSFGBoxScoreFieldGoalsMade(fieldGoalsMade),
-      new PLSFGBoxScoreFixtureGameId(fixtureGameId),
-      new PLSFGBoxScoreCreatedAt(createdAt),
-      new PLSFGBoxScoreUpdatedAt(updatedAt),
+      PLSFGBoxScoreId.create(id),
+      PLSFGBoxScorePoints.create(points),
+      PLSFGBoxScoreOffensiveRebounds.create(offensiveRebounds),
+      PLSFGBoxScoreDefensiveRebounds.create(defensiveRebounds),
+      PLSFGBoxScoreAssists.create(assists),
+      PLSFGBoxScoreSteals.create(steals),
+      PLSFGBoxScoreBlocks.create(blocks),
+      PLSFGBoxScoreFouls.create(fouls),
+      PLSFGBoxScoreTurnovers.create(turnovers),
+      PLSFGBoxScoreThreePointersAttempted.create(threePointersAttempted),
+      PLSFGBoxScoreThreePointersMade.create(threePointersMade),
+      PLSFGBoxScoreFreeThrowsAttempted.create(freeThrowsAttempted),
+      PLSFGBoxScoreFreeThrowsMade.create(freeThrowsMade),
+      PLSFGBoxScoreFieldGoalsAttempted.create(fieldGoalsAttempted),
+      PLSFGBoxScoreFieldGoalsMade.create(fieldGoalsMade),
+      PLSFGBoxScoreFixtureGameId.create(fixtureGameId),
+      PLSFGBoxScoreCreatedAt.create(createdAt),
+      PLSFGBoxScoreUpdatedAt.create(updatedAt),
     );
 
-    this.#playerUserId = new PLSFGBoxScorePlayerUserId(playerUserId);
+    this.#playerUserId = PLSFGBoxScorePlayerUserId.create(playerUserId);
   }
 
   public override toPrimitives(): IPlayerUserLeagueSeasonFixtureGameBoxScore {

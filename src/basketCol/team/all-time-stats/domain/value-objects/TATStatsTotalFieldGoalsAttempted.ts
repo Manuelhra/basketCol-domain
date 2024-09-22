@@ -4,4 +4,8 @@ export class TATStatsTotalFieldGoalsAttempted extends StatsTotalFieldGoalsAttemp
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): TATStatsTotalFieldGoalsAttempted {
+    return new TATStatsTotalFieldGoalsAttempted(value);
+  }
 }

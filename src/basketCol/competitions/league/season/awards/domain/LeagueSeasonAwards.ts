@@ -42,20 +42,20 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwards> {
     createdAt: string,
     updatedAt: string,
   ) {
-    const leagueSeasonAwardsId: LeagueSeasonAwardsId = new LeagueSeasonAwardsId(id);
-    const lSACreatedAt: LSACreatedAt = new LSACreatedAt(createdAt);
-    const lSAUpdatedAt: LSAUpdatedAt = new LSAUpdatedAt(updatedAt);
+    const leagueSeasonAwardsId: LeagueSeasonAwardsId = LeagueSeasonAwardsId.create(id);
+    const lSACreatedAt: LSACreatedAt = LSACreatedAt.create(createdAt);
+    const lSAUpdatedAt: LSAUpdatedAt = LSAUpdatedAt.create(updatedAt);
 
     super(leagueSeasonAwardsId, lSACreatedAt, lSAUpdatedAt);
 
-    this.#bestThreePointShooterId = new LSABestThreePointShooterId(bestThreePointShooterId);
-    this.#bestTwoPointShooterId = new LSABestTwoPointShooterId(bestTwoPointShooterId);
-    this.#bestFreeThrowShooterId = new LSABestFreeThrowShooterId(bestFreeThrowShooterId);
-    this.#bestAssistProviderId = new LSABestAssistProviderId(bestAssistProviderId);
-    this.#bestOffensiveRebounderId = new LSABestOffensiveRebounderId(bestOffensiveRebounderId);
-    this.#bestDefensiveRebounderId = new LSABestDefensiveRebounderId(bestDefensiveRebounderId);
-    this.#championTeamId = new LSAChampionTeamId(championTeamId);
-    this.#leagueSeasonId = new LSAReferencedLeagueSeasonId(leagueSeasonId);
+    this.#bestThreePointShooterId = LSABestThreePointShooterId.create(bestThreePointShooterId);
+    this.#bestTwoPointShooterId = LSABestTwoPointShooterId.create(bestTwoPointShooterId);
+    this.#bestFreeThrowShooterId = LSABestFreeThrowShooterId.create(bestFreeThrowShooterId);
+    this.#bestAssistProviderId = LSABestAssistProviderId.create(bestAssistProviderId);
+    this.#bestOffensiveRebounderId = LSABestOffensiveRebounderId.create(bestOffensiveRebounderId);
+    this.#bestDefensiveRebounderId = LSABestDefensiveRebounderId.create(bestDefensiveRebounderId);
+    this.#championTeamId = LSAChampionTeamId.create(championTeamId);
+    this.#leagueSeasonId = LSAReferencedLeagueSeasonId.create(leagueSeasonId);
   }
 
   public override toPrimitives(): ILeagueSeasonAwards {

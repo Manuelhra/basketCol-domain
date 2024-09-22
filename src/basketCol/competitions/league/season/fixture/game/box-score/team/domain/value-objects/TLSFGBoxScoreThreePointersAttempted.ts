@@ -4,4 +4,8 @@ export class TLSFGBoxScoreThreePointersAttempted extends FGBoxScoreThreePointers
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): TLSFGBoxScoreThreePointersAttempted {
+    return new TLSFGBoxScoreThreePointersAttempted(value);
+  }
 }

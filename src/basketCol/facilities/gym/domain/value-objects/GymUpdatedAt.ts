@@ -4,4 +4,8 @@ export class GymUpdatedAt extends FacilityUpdatedAt {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): GymUpdatedAt {
+    return new GymUpdatedAt(value);
+  }
 }

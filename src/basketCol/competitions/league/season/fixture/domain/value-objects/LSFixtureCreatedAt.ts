@@ -4,4 +4,8 @@ export class LSFixtureCreatedAt extends FixtureCreatedAt {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LSFixtureCreatedAt {
+    return new LSFixtureCreatedAt(value);
+  }
 }

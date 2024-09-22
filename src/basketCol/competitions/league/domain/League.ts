@@ -43,20 +43,20 @@ export class League extends AggregateRoot<ILeague> {
     createdAt: string,
     updatedAt: string,
   ) {
-    const leagueId: LeagueId = new LeagueId(id);
-    const leagueCreatedAt: LeagueCreatedAt = new LeagueCreatedAt(createdAt);
-    const leagueUpdatedAt: LeagueUpdatedAt = new LeagueUpdatedAt(updatedAt);
+    const leagueId: LeagueId = LeagueId.create(id);
+    const leagueCreatedAt: LeagueCreatedAt = LeagueCreatedAt.create(createdAt);
+    const leagueUpdatedAt: LeagueUpdatedAt = LeagueUpdatedAt.create(updatedAt);
 
     super(leagueId, leagueCreatedAt, leagueUpdatedAt);
 
-    this.#name = new LeagueName(name);
-    this.#description = new LeagueDescription(description);
-    this.#rules = new LeagueRules(rules);
-    this.#level = new LeagueLevel(level);
-    this.#location = new LeagueLocation(location);
-    this.#leagueFounderUserId = new LReferencedLeagueFounderUserId(leagueFounderUserId);
-    this.#establishmentDate = new LeagueEstablishmentDate(establishmentDate);
-    this.#isActive = new LeagueIsActive(isActive);
+    this.#name = LeagueName.create(name);
+    this.#description = LeagueDescription.create(description);
+    this.#rules = LeagueRules.create(rules);
+    this.#level = LeagueLevel.create(level);
+    this.#location = LeagueLocation.create(location);
+    this.#leagueFounderUserId = LReferencedLeagueFounderUserId.create(leagueFounderUserId);
+    this.#establishmentDate = LeagueEstablishmentDate.create(establishmentDate);
+    this.#isActive = LeagueIsActive.create(isActive);
   }
 
   public override toPrimitives(): ILeague {

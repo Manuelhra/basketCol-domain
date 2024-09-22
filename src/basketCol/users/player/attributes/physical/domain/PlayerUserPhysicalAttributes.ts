@@ -34,18 +34,18 @@ export class PlayerUserPhysicalAttributes extends AggregateRoot<IPlayerUserPhysi
     createdAt: string,
     updatedAt: string,
   ) {
-    const pUPAId: PUPAId = new PUPAId(id);
-    const pUPACreatedAt: PUPACreatedAt = new PUPACreatedAt(createdAt);
-    const pUPAUpdatedAt: PUPAUpdatedAt = new PUPAUpdatedAt(updatedAt);
+    const pUPAId: PUPAId = PUPAId.create(id);
+    const pUPACreatedAt: PUPACreatedAt = PUPACreatedAt.create(createdAt);
+    const pUPAUpdatedAt: PUPAUpdatedAt = PUPAUpdatedAt.create(updatedAt);
 
     super(pUPAId, pUPACreatedAt, pUPAUpdatedAt);
 
-    this.#speed = new PUPASpeed(speed);
-    this.#acceleration = new PUPAAcceleration(acceleration);
-    this.#strength = new PUPAStrength(strength);
-    this.#vertical = new PUPAVertical(vertical);
-    this.#stamina = new PUPAStamina(stamina);
-    this.#playerUserId = new PUPAReferencedPlayerUserId(playerUserId);
+    this.#speed = PUPASpeed.create(speed);
+    this.#acceleration = PUPAAcceleration.create(acceleration);
+    this.#strength = PUPAStrength.create(strength);
+    this.#vertical = PUPAVertical.create(vertical);
+    this.#stamina = PUPAStamina.create(stamina);
+    this.#playerUserId = PUPAReferencedPlayerUserId.create(playerUserId);
   }
 
   public override toPrimitives(): IPlayerUserPhysicalAttributes {

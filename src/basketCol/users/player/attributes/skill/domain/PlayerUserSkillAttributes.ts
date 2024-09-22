@@ -26,16 +26,16 @@ export class PlayerUserSkillAttributes extends AggregateRoot<IPlayerUserSkillAtt
     createdAt: string,
     updatedAt: string,
   ) {
-    const pUSAId: PUSAId = new PUSAId(id);
-    const pUSACreatedAt: PUSACreatedAt = new PUSACreatedAt(createdAt);
-    const pUSAUpdatedAt: PUSAUpdatedAt = new PUSAUpdatedAt(updatedAt);
+    const pUSAId: PUSAId = PUSAId.create(id);
+    const pUSACreatedAt: PUSACreatedAt = PUSACreatedAt.create(createdAt);
+    const pUSAUpdatedAt: PUSAUpdatedAt = PUSAUpdatedAt.create(updatedAt);
 
     super(pUSAId, pUSACreatedAt, pUSAUpdatedAt);
 
-    this.#passAccuracy = new PUSAPassAccuracy(passAccuracy);
-    this.#ballHandle = new PUSABallHandle(ballHandle);
-    this.#speedWithBall = new PUSASpeedWithBall(speedWithBall);
-    this.#playerUserId = new PUSAReferencedPlayerUserId(playerUserId);
+    this.#passAccuracy = PUSAPassAccuracy.create(passAccuracy);
+    this.#ballHandle = PUSABallHandle.create(ballHandle);
+    this.#speedWithBall = PUSASpeedWithBall.create(speedWithBall);
+    this.#playerUserId = PUSAReferencedPlayerUserId.create(playerUserId);
   }
 
   public override toPrimitives(): IPlayerUserSkillAttributes {

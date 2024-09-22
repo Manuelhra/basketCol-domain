@@ -7,6 +7,10 @@ export class HostUserType extends UserType {
     super(HostUserType.TYPE);
   }
 
+  public static create(): HostUserType {
+    return new HostUserType();
+  }
+
   public static override get value(): string {
     return HostUserType.TYPE;
   }

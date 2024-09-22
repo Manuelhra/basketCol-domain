@@ -7,6 +7,10 @@ export class RefereeUserType extends UserType {
     super(RefereeUserType.TYPE);
   }
 
+  public static create(): RefereeUserType {
+    return new RefereeUserType();
+  }
+
   public static override get value(): string {
     return RefereeUserType.TYPE;
   }

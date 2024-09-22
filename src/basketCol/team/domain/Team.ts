@@ -18,14 +18,14 @@ export class Team extends AggregateRoot<ITeam> {
     createdAt: string,
     updatedAt: string,
   ) {
-    const teamId: TeamId = new TeamId(id);
-    const teamCreatedAt: TeamCreatedAt = new TeamCreatedAt(createdAt);
-    const teamUpdatedAt: TeamUpdatedAt = new TeamUpdatedAt(updatedAt);
+    const teamId: TeamId = TeamId.create(id);
+    const teamCreatedAt: TeamCreatedAt = TeamCreatedAt.create(createdAt);
+    const teamUpdatedAt: TeamUpdatedAt = TeamUpdatedAt.create(updatedAt);
 
     super(teamId, teamCreatedAt, teamUpdatedAt);
 
-    this.#officialName = new TeamOfficialName(officialName);
-    this.#teamFounderUserId = new TReferencedTeamFounderUserId(teamFounderUserId);
+    this.#officialName = TeamOfficialName.create(officialName);
+    this.#teamFounderUserId = TReferencedTeamFounderUserId.create(teamFounderUserId);
   }
 
   public override toPrimitives(): ITeam {

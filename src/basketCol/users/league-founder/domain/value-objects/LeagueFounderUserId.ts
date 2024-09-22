@@ -4,4 +4,8 @@ export class LeagueFounderUserId extends UserId {
   constructor(value: string, propertyName: string = 'id') {
     super(value, propertyName);
   }
+
+  public static create(value: string, propertyName: string = 'id'): LeagueFounderUserId {
+    return new LeagueFounderUserId(value, propertyName);
+  }
 }

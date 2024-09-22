@@ -4,4 +4,8 @@ export class PUCStatsTotalFreeThrowsAttempted extends StatsTotalFreeThrowsAttemp
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): PUCStatsTotalFreeThrowsAttempted {
+    return new PUCStatsTotalFreeThrowsAttempted(value);
+  }
 }

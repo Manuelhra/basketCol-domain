@@ -30,17 +30,17 @@ export class PlayerUserShootingAttributes extends AggregateRoot<IPlayerUserShoot
     createdAt: string,
     updatedAt: string,
   ) {
-    const pUSAId: PUSAId = new PUSAId(id);
-    const pUSACreatedAt: PUSACreatedAt = new PUSACreatedAt(createdAt);
-    const pUSAUpdatedAt: PUSAUpdatedAt = new PUSAUpdatedAt(updatedAt);
+    const pUSAId: PUSAId = PUSAId.create(id);
+    const pUSACreatedAt: PUSACreatedAt = PUSACreatedAt.create(createdAt);
+    const pUSAUpdatedAt: PUSAUpdatedAt = PUSAUpdatedAt.create(updatedAt);
 
     super(pUSAId, pUSACreatedAt, pUSAUpdatedAt);
 
-    this.#closeShot = new PUSACloseShot(closeShot);
-    this.#midRangeShot = new PUSAMidRangeShot(midRangeShot);
-    this.#threePointShot = new PUSAThreePointShot(threePointShot);
-    this.#freeThrow = new PUSAFreeThrow(freeThrow);
-    this.#playerUserId = new PUSAReferencedPlayerUserId(playerUserId);
+    this.#closeShot = PUSACloseShot.create(closeShot);
+    this.#midRangeShot = PUSAMidRangeShot.create(midRangeShot);
+    this.#threePointShot = PUSAThreePointShot.create(threePointShot);
+    this.#freeThrow = PUSAFreeThrow.create(freeThrow);
+    this.#playerUserId = PUSAReferencedPlayerUserId.create(playerUserId);
   }
 
   public override toPrimitives(): IPlayerUserShootingAttributes {

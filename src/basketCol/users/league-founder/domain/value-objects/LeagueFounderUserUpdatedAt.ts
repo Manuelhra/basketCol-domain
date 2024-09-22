@@ -4,4 +4,8 @@ export class LeagueFounderUserUpdatedAt extends UserUpdatedAt {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LeagueFounderUserUpdatedAt {
+    return new LeagueFounderUserUpdatedAt(value);
+  }
 }

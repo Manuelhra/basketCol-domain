@@ -4,7 +4,7 @@ import { ValueObject } from './ValueObject';
 
 export abstract class ReferencedLeagueSeasonId extends ValueObject<LeagueSeasonId> {
   protected constructor(value: string) {
-    const leagueSeasonId: LeagueSeasonId = new LeagueSeasonId(value);
+    const leagueSeasonId: LeagueSeasonId = LeagueSeasonId.create(value);
 
     super(leagueSeasonId, 'leagueSeasonId', 'string');
 

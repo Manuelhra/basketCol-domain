@@ -4,4 +4,8 @@ export class PUSACreatedAt extends CreatedAtValueObject {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): PUSACreatedAt {
+    return new PUSACreatedAt(value);
+  }
 }

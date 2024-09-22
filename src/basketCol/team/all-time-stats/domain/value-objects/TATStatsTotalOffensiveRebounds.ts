@@ -4,4 +4,8 @@ export class TATStatsTotalOffensiveRebounds extends StatsTotalOffensiveRebounds 
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): TATStatsTotalOffensiveRebounds {
+    return new TATStatsTotalOffensiveRebounds(value);
+  }
 }

@@ -4,4 +4,8 @@ export class TATStatsTotalThreePointersAttempted extends StatsTotalThreePointers
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): TATStatsTotalThreePointersAttempted {
+    return new TATStatsTotalThreePointersAttempted(value);
+  }
 }

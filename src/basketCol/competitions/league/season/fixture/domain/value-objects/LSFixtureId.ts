@@ -4,4 +4,8 @@ export class LSFixtureId extends FixtureId {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LSFixtureId {
+    return new LSFixtureId(value);
+  }
 }

@@ -4,4 +4,8 @@ export class LSFGameType extends FGameType {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LSFGameType {
+    return new LSFGameType(value);
+  }
 }

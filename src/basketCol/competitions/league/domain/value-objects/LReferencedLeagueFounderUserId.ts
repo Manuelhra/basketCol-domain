@@ -4,4 +4,8 @@ export class LReferencedLeagueFounderUserId extends ReferencedLeagueFounderUserI
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LReferencedLeagueFounderUserId {
+    return new LReferencedLeagueFounderUserId(value);
+  }
 }

@@ -32,17 +32,17 @@ export class PlayerUserDefensiveAttributes extends AggregateRoot<IPlayerUserDefe
     createdAt: string,
     updatedAt: string,
   ) {
-    const pUDAId: PUDAId = new PUDAId(id);
-    const pUDACreatedAt: PUDACreatedAt = new PUDACreatedAt(createdAt);
-    const pUDAUpdatedAt: PUDAUpdatedAt = new PUDAUpdatedAt(updatedAt);
+    const pUDAId: PUDAId = PUDAId.create(id);
+    const pUDACreatedAt: PUDACreatedAt = PUDACreatedAt.create(createdAt);
+    const pUDAUpdatedAt: PUDAUpdatedAt = PUDAUpdatedAt.create(updatedAt);
 
     super(pUDAId, pUDACreatedAt, pUDAUpdatedAt);
 
-    this.#interiorDefense = new PUDAInteriorDefense(interiorDefense);
-    this.#perimeterDefense = new PUDAPerimeterDefense(perimeterDefense);
-    this.#steal = new PUDASteal(steal);
-    this.#block = new PUDABlock(block);
-    this.#playerUserId = new PUDAReferencedPlayerUserId(playerUserId);
+    this.#interiorDefense = PUDAInteriorDefense.create(interiorDefense);
+    this.#perimeterDefense = PUDAPerimeterDefense.create(perimeterDefense);
+    this.#steal = PUDASteal.create(steal);
+    this.#block = PUDABlock.create(block);
+    this.#playerUserId = PUDAReferencedPlayerUserId.create(playerUserId);
   }
 
   public override toPrimitives(): IPlayerUserDefensiveAttributes {

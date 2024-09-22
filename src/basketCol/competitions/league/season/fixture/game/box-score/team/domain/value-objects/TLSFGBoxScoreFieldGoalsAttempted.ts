@@ -4,4 +4,8 @@ export class TLSFGBoxScoreFieldGoalsAttempted extends FGBoxScoreFieldGoalsAttemp
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): TLSFGBoxScoreFieldGoalsAttempted {
+    return new TLSFGBoxScoreFieldGoalsAttempted(value);
+  }
 }

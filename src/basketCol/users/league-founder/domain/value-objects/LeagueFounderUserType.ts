@@ -7,6 +7,10 @@ export class LeagueFounderUserType extends UserType {
     super(LeagueFounderUserType.TYPE);
   }
 
+  public static create(): LeagueFounderUserType {
+    return new LeagueFounderUserType();
+  }
+
   public static override get value(): string {
     return LeagueFounderUserType.TYPE;
   }

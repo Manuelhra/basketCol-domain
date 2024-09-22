@@ -4,4 +4,8 @@ export class PUDASteal extends Attribute {
   constructor(value: number) {
     super(value, 'steal');
   }
+
+  public static create(value: number): PUDASteal {
+    return new PUDASteal(value);
+  }
 }

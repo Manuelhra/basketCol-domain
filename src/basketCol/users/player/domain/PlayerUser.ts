@@ -28,19 +28,19 @@ export class PlayerUser extends User<IPlayerUser> {
     updatedAt: string,
   ) {
     super(
-      new PlayerUserId(id),
-      new PlayerUserName(name),
-      new PlayerUserBiography(biography),
-      new PlayerUserEmail(email),
-      new PlayerUserPassword(password),
-      new PlayerUserType(),
-      new PlayerUserAccountState(accountState),
-      new PlayerUserSubscriptionType(subscriptionType),
-      new PlayerUserCreatedAt(createdAt),
-      new PlayerUserUpdatedAt(updatedAt),
+      PlayerUserId.create(id),
+      PlayerUserName.create(name),
+      PlayerUserBiography.create(biography),
+      PlayerUserEmail.create(email),
+      PlayerUserPassword.create(password),
+      PlayerUserType.create(),
+      PlayerUserAccountState.create(accountState),
+      PlayerUserSubscriptionType.create(subscriptionType),
+      PlayerUserCreatedAt.create(createdAt),
+      PlayerUserUpdatedAt.create(updatedAt),
     );
 
-    this.#nickname = new PlayerUserNickname(nickname);
+    this.#nickname = PlayerUserNickname.create(nickname);
   }
 
   public override toPrimitives(): IPlayerUser {

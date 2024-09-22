@@ -10,6 +10,6 @@ export class PasswordValueObjectCreationService implements IPasswordValueObjectC
    * @param hashedPassword The hashed password string.
    */
   public createFromHashedValue<T extends UserPassword>(hashedPassword: string): T {
-    return new UserPassword(hashedPassword, true) as T;
+    return UserPassword.create(hashedPassword, true) as T;
   }
 }

@@ -4,4 +4,8 @@ export class PUCStatsId extends StatsId {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): PUCStatsId {
+    return new PUCStatsId(value);
+  }
 }

@@ -4,4 +4,8 @@ export class PUCStatsTotalBlocks extends StatsTotalBlocks {
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): PUCStatsTotalBlocks {
+    return new PUCStatsTotalBlocks(value);
+  }
 }

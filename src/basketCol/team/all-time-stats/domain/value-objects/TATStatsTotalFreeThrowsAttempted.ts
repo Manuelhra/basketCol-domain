@@ -4,4 +4,8 @@ export class TATStatsTotalFreeThrowsAttempted extends StatsTotalFreeThrowsAttemp
   public constructor(value: number) {
     super(value);
   }
+
+  public static create(value: number): TATStatsTotalFreeThrowsAttempted {
+    return new TATStatsTotalFreeThrowsAttempted(value);
+  }
 }

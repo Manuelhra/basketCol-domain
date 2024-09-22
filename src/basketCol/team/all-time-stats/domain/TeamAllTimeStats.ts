@@ -51,30 +51,30 @@ export class TeamAllTimeStats extends Stats<ITeamAllTimeStats> {
     updatedAt: string,
   ) {
     super(
-      new TATStatsId(id),
-      new TATStatsTotalGamesPlayed(totalGamesPlayed),
-      new TATStatsTotalGamesWon(totalGamesWon),
-      new TATStatsTotalSeasonsLeaguePlayed(totalSeasonsLeaguePlayed),
-      new TATStatsTotalSeasonsLeagueWon(totalSeasonsLeagueWon),
-      new TATStatsTotalPoints(totalPoints),
-      new TATStatsTotalOffensiveRebounds(totalOffensiveRebounds),
-      new TATStatsTotalDefensiveRebounds(totalDefensiveRebounds),
-      new TATStatsTotalAssists(totalAssists),
-      new TATStatsTotalSteals(totalSteals),
-      new TATStatsTotalBlocks(totalBlocks),
-      new TATStatsTotalFouls(totalFouls),
-      new TATStatsTotalTurnovers(totalTurnovers),
-      new TATStatsTotalThreePointersAttempted(totalThreePointersAttempted),
-      new TATStatsTotalThreePointersMade(totalThreePointersMade),
-      new TATStatsTotalFreeThrowsAttempted(totalFreeThrowsAttempted),
-      new TATStatsTotalFreeThrowsMade(totalFreeThrowsMade),
-      new TATStatsTotalFieldGoalsAttempted(totalFieldGoalsAttempted),
-      new TATStatsTotalFieldGoalsMade(totalFieldGoalsMade),
-      new TATStatsCreatedAt(createdAt),
-      new TATStatsUpdatedAt(updatedAt),
+      TATStatsId.create(id),
+      TATStatsTotalGamesPlayed.create(totalGamesPlayed),
+      TATStatsTotalGamesWon.create(totalGamesWon),
+      TATStatsTotalSeasonsLeaguePlayed.create(totalSeasonsLeaguePlayed),
+      TATStatsTotalSeasonsLeagueWon.create(totalSeasonsLeagueWon),
+      TATStatsTotalPoints.create(totalPoints),
+      TATStatsTotalOffensiveRebounds.create(totalOffensiveRebounds),
+      TATStatsTotalDefensiveRebounds.create(totalDefensiveRebounds),
+      TATStatsTotalAssists.create(totalAssists),
+      TATStatsTotalSteals.create(totalSteals),
+      TATStatsTotalBlocks.create(totalBlocks),
+      TATStatsTotalFouls.create(totalFouls),
+      TATStatsTotalTurnovers.create(totalTurnovers),
+      TATStatsTotalThreePointersAttempted.create(totalThreePointersAttempted),
+      TATStatsTotalThreePointersMade.create(totalThreePointersMade),
+      TATStatsTotalFreeThrowsAttempted.create(totalFreeThrowsAttempted),
+      TATStatsTotalFreeThrowsMade.create(totalFreeThrowsMade),
+      TATStatsTotalFieldGoalsAttempted.create(totalFieldGoalsAttempted),
+      TATStatsTotalFieldGoalsMade.create(totalFieldGoalsMade),
+      TATStatsCreatedAt.create(createdAt),
+      TATStatsUpdatedAt.create(updatedAt),
     );
 
-    this.#teamId = new TATStatsTeamId(teamId);
+    this.#teamId = TATStatsTeamId.create(teamId);
   }
 
   public override toPrimitives(): ITeamAllTimeStats {

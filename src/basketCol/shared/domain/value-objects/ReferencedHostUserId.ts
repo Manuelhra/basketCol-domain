@@ -4,7 +4,7 @@ import { ValueObject } from './ValueObject';
 
 export abstract class ReferencedHostUserId extends ValueObject<HostUserId> {
   protected constructor(value: string, propertyName: string = 'hostUserId') {
-    const hostUserId: HostUserId = new HostUserId(value);
+    const hostUserId: HostUserId = HostUserId.create(value);
 
     super(hostUserId, propertyName, 'string');
 

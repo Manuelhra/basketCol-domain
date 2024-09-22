@@ -5,4 +5,8 @@ export class GymLocation extends FacilityLocation {
   public constructor(value: ILocationValueObjectProps) {
     super(value);
   }
+
+  public static create(value: ILocationValueObjectProps): GymLocation {
+    return new GymLocation(value);
+  }
 }

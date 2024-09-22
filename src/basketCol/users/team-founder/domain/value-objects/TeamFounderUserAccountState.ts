@@ -4,4 +4,8 @@ export class TeamFounderUserAccountState extends UserAccountState {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): TeamFounderUserAccountState {
+    return new TeamFounderUserAccountState(value);
+  }
 }

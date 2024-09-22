@@ -4,4 +4,8 @@ export class PUPAUpdatedAt extends UpdatedAtValueObject {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): PUPAUpdatedAt {
+    return new PUPAUpdatedAt(value);
+  }
 }

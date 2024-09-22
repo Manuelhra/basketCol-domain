@@ -21,6 +21,10 @@ export class LeagueName extends ObjectValueObject<{ short: string; official: str
     LeagueName.ensureIsValidValue(value.official, { min: LeagueName.#OFFICIAL_NAME_LENGTH.min, max: LeagueName.#OFFICIAL_NAME_LENGTH.max }, 'official');
   }
 
+  public static create(value: { short: string; official: string; }): LeagueName {
+    return new LeagueName(value);
+  }
+
   private static ensureIsValidValue(
     value: string,
     length: { min:number; max: number; },

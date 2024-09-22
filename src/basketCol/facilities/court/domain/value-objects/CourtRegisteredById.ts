@@ -4,4 +4,8 @@ export class CourtRegisteredById extends FacilityRegisteredBy {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): CourtRegisteredById {
+    return new CourtRegisteredById(value);
+  }
 }

@@ -4,4 +4,8 @@ export class LeagueFounderUserBiography extends UserBiography {
   public constructor(value: string) {
     super(value);
   }
+
+  public static create(value: string): LeagueFounderUserBiography {
+    return new LeagueFounderUserBiography(value);
+  }
 }

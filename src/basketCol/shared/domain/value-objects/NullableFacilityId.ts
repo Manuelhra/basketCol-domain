@@ -7,13 +7,17 @@ type FACILITY_ID_TYPE = GymId | null;
 
 export class NullableFacilityId extends ValueObject<FACILITY_ID_TYPE> {
   constructor(value: string | null) {
-    const facilityId: FACILITY_ID_TYPE = value === null ? null : new FacilityId(value);
+    const facilityId: FACILITY_ID_TYPE = value === null ? null : FacilityId.create(value);
 
     super(facilityId, 'facilityId', 'string | null', { allowNull: true });
 
     if (facilityId !== null) {
       this.ensureIsFacilityId(facilityId);
     }
+  }
+
+  public static create(value: string | null): NullableFacilityId {
+    return new NullableFacilityId(value);
   }
 
   public get facilityIdAsStringOrNull(): string | null {

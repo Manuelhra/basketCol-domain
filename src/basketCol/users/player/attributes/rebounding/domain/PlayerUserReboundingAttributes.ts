@@ -22,15 +22,15 @@ export class PlayerUserReboundingAttributes extends AggregateRoot<IPlayerUserReb
     createdAt: string,
     updatedAt: string,
   ) {
-    const pURAId: PURAId = new PURAId(id);
-    const pURACreatedAt: PURACreatedAt = new PURACreatedAt(createdAt);
-    const pURAUpdatedAt: PURAUpdatedAt = new PURAUpdatedAt(updatedAt);
+    const pURAId: PURAId = PURAId.create(id);
+    const pURACreatedAt: PURACreatedAt = PURACreatedAt.create(createdAt);
+    const pURAUpdatedAt: PURAUpdatedAt = PURAUpdatedAt.create(updatedAt);
 
     super(pURAId, pURACreatedAt, pURAUpdatedAt);
 
-    this.#offensiveRebound = new PURAOffensiveRebound(offensiveRebound);
-    this.#defensiveRebound = new PURADefensiveRebound(defensiveRebound);
-    this.#playerUserId = new PURAReferencedPlayerUserId(playerUserId);
+    this.#offensiveRebound = PURAOffensiveRebound.create(offensiveRebound);
+    this.#defensiveRebound = PURADefensiveRebound.create(defensiveRebound);
+    this.#playerUserId = PURAReferencedPlayerUserId.create(playerUserId);
   }
 
   public override toPrimitives(): IPlayerUserReboundingAttributes {

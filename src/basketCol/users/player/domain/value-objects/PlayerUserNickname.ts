@@ -11,6 +11,10 @@ export class PlayerUserNickname extends StringValueObject {
     this.ensureIsValidNickname(value);
   }
 
+  public static create(value: string): PlayerUserNickname {
+    return new PlayerUserNickname(value);
+  }
+
   private ensureIsValidNickname(value: string): void {
     if (value.length < this.#LENGTH.min) {
       throw new PropertyLengthTooShortError('nickname', this.#LENGTH.min, value.length);
