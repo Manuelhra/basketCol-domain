@@ -629,6 +629,7 @@ export {
 // Users Shared
 export { User } from '../basketCol/users/shared/domain/User';
 export { IUser } from '../basketCol/users/shared/domain/IUser';
+export { AnySystemUserType } from '../basketCol/users/shared/domain/AnySystemUserType';
 export {
   EmailAlreadyExistsError,
   InvalidEmailPolicyError,
