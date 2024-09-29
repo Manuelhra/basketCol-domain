@@ -1,6 +1,6 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
 import { ILocationValueObjectProps } from '../../../shared/domain/value-objects/LocationValueObject';
-import { ILeague } from './ILeague';
+import { ILeaguePrimitives } from './ILeaguePrimitives';
 import { LeagueCreatedAt } from './value-objects/LeagueCreatedAt';
 import { LeagueDescription } from './value-objects/LeagueDescription';
 import { LeagueEstablishmentDate } from './value-objects/LeagueEstablishmentDate';
@@ -13,7 +13,7 @@ import { LeagueRules } from './value-objects/LeagueRules';
 import { LeagueUpdatedAt } from './value-objects/LeagueUpdatedAt';
 import { LReferencedLeagueFounderUserId } from './value-objects/LReferencedLeagueFounderUserId';
 
-export class League extends AggregateRoot<ILeague> {
+export class League extends AggregateRoot<ILeaguePrimitives> {
   readonly #name: LeagueName;
 
   readonly #description: LeagueDescription;
@@ -59,7 +59,7 @@ export class League extends AggregateRoot<ILeague> {
     this.#isActive = LeagueIsActive.create(isActive);
   }
 
-  public override toPrimitives(): ILeague {
+  public override toPrimitives(): ILeaguePrimitives {
     return {
       id: this.id.value,
       name: this.#name.value,

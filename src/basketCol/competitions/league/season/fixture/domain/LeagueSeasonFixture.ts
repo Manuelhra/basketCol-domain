@@ -1,5 +1,5 @@
 import { Fixture } from '../../../../shared/domain/Fixture';
-import { ILeagueSeasonFixture } from './ILeagueSeasonFixture';
+import { ILeagueSeasonFixturePrimitives } from './ILeagueSeasonFixturePrimitives';
 import { LSFixtureCreatedAt } from './value-objects/LSFixtureCreatedAt';
 import { LSFixtureDate } from './value-objects/LSFixtureDate';
 import { LSFixtureId } from './value-objects/LSFixtureId';
@@ -7,7 +7,7 @@ import { LSFixtureLeagueSeasonId } from './value-objects/LSFixtureLeagueSeasonId
 import { LSFixtureName } from './value-objects/LSFixtureName';
 import { LSFixtureUpdatedAt } from './value-objects/LSFixtureUpdatedAt';
 
-export class LeagueSeasonFixture extends Fixture<ILeagueSeasonFixture> {
+export class LeagueSeasonFixture extends Fixture<ILeagueSeasonFixturePrimitives> {
   readonly #leagueSeasonId: LSFixtureLeagueSeasonId;
 
   constructor(
@@ -29,7 +29,7 @@ export class LeagueSeasonFixture extends Fixture<ILeagueSeasonFixture> {
     this.#leagueSeasonId = LSFixtureLeagueSeasonId.create(leagueSeasonId);
   }
 
-  public override toPrimitives(): ILeagueSeasonFixture {
+  public override toPrimitives(): ILeagueSeasonFixturePrimitives {
     return {
       id: this.id.value,
       date: this.date.dateAsString,

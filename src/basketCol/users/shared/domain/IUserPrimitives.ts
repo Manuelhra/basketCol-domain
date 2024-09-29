@@ -1,4 +1,4 @@
-import { IAggregateRoot } from '../../../shared/domain/IAggregateRoot';
+import { IAggregateRootPrimitives } from '../../../shared/domain/IAggregateRootPrimitives';
 
 interface IUserCredentials {
   email: { value: string; verified: boolean; };
@@ -18,4 +18,4 @@ interface IUserIdentity {
   subscriptionType: string;
 }
 
-export interface IUser extends IAggregateRoot, IUserCredentials, IUserIdentity, IUserAccount {}
+export interface IUserPrimitives extends IAggregateRootPrimitives, IUserCredentials, IUserIdentity, IUserAccount {}

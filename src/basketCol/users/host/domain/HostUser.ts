@@ -1,5 +1,5 @@
 import { User } from '../../shared/domain/User';
-import { IHostUser } from './IHostUser';
+import { IHostUserPrimitives } from './IHostUserPrimitives';
 import { HostUserAccountState } from './value-objects/HostUserAccountState';
 import { HostUserBiography } from './value-objects/HostUserBiography';
 import { HostUserCreatedAt } from './value-objects/HostUserCreatedAt';
@@ -11,7 +11,7 @@ import { HostUserSubscriptionType } from './value-objects/HostUserSubscriptionTy
 import { HostUserType } from './value-objects/HostUserType';
 import { HostUserUpdatedAt } from './value-objects/HostUserUpdatedAt';
 
-export class HostUser extends User<IHostUser> {
+export class HostUser extends User<IHostUserPrimitives> {
   constructor(
     id: string,
     name: { firstName: string; lastName: string; },
@@ -37,7 +37,7 @@ export class HostUser extends User<IHostUser> {
     );
   }
 
-  public override toPrimitives(): IHostUser {
+  public override toPrimitives(): IHostUserPrimitives {
     return {
       id: this.id.value,
       name: this.name.value,

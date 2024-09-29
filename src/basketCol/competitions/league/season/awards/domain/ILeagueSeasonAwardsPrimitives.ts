@@ -1,6 +1,6 @@
-import { IAggregateRoot } from '../../../../../shared/domain/IAggregateRoot';
+import { IAggregateRootPrimitives } from '../../../../../shared/domain/IAggregateRootPrimitives';
 
-export interface ILeagueSeasonAwards extends IAggregateRoot {
+export interface ILeagueSeasonAwardsPrimitives extends IAggregateRootPrimitives {
   bestThreePointShooterId: string;
   bestTwoPointShooterId: string;
   bestFreeThrowShooterId: string;

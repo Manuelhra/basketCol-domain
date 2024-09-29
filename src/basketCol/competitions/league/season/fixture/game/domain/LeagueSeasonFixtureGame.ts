@@ -1,5 +1,5 @@
 import { FixtureGame } from '../../../../../shared/domain/FixtureGame';
-import { ILeagueSeasonFixtureGame } from './ILeagueSeasonFixtureGame';
+import { ILeagueSeasonFixtureGamePrimitives } from './ILeagueSeasonFixtureGamePrimitives';
 import { LSFGameAssistantRefereeId } from './value-objects/LSFGameAssistantRefereeId';
 import { LSFGameAwayScore } from './value-objects/LSFGameAwayScore';
 import { LSFGameAwayTeamId } from './value-objects/LSFGameAwayTeamId';
@@ -16,7 +16,7 @@ import { LSFGameStartTime } from './value-objects/LSFGameStartTime';
 import { LSFGameType } from './value-objects/LSFGameType';
 import { LSFGameUpdatedAt } from './value-objects/LSFGameUpdatedAt';
 
-export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGame> {
+export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGamePrimitives> {
   constructor(
     id: string,
     startTime: string,
@@ -53,7 +53,7 @@ export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGam
     );
   }
 
-  public override toPrimitives(): ILeagueSeasonFixtureGame {
+  public override toPrimitives(): ILeagueSeasonFixtureGamePrimitives {
     return {
       id: this.id.value,
       startTime: this.startTime.timeAsString,

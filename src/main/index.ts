@@ -1,6 +1,6 @@
 // Competitions League
 export { League } from '../basketCol/competitions/league/domain/League';
-export { ILeague } from '../basketCol/competitions/league/domain/ILeague';
+export { ILeaguePrimitives } from '../basketCol/competitions/league/domain/ILeaguePrimitives';
 export { DuplicateLeagueNameError, LeagueNotFoundError } from '../basketCol/competitions/league/domain/exceptions';
 export { ILeagueRepository } from '../basketCol/competitions/league/domain/repository/ILeagueRepository';
 export { LeagueValidationNameService, LeagueValidationService } from '../basketCol/competitions/league/domain/services';
@@ -20,7 +20,7 @@ export {
 
 // Competitions League Season
 export { LeagueSeason } from '../basketCol/competitions/league/season/domain/LeagueSeason';
-export { ILeagueSeason } from '../basketCol/competitions/league/season/domain/ILeagueSeason';
+export { ILeagueSeasonPrimitives } from '../basketCol/competitions/league/season/domain/ILeagueSeasonPrimitives';
 export {
   InvalidLeagueSeasonStatusError,
   LeagueSeasonEndDateBeforeStartDateError,
@@ -46,7 +46,7 @@ export {
 
 // Competitions League Season Awards
 export { LeagueSeasonAwards } from '../basketCol/competitions/league/season/awards/domain/LeagueSeasonAwards';
-export { ILeagueSeasonAwards } from '../basketCol/competitions/league/season/awards/domain/ILeagueSeasonAwards';
+export { ILeagueSeasonAwardsPrimitives } from '../basketCol/competitions/league/season/awards/domain/ILeagueSeasonAwardsPrimitives';
 export { ILeagueSeasonAwardsRepository } from '../basketCol/competitions/league/season/awards/domain/repository/ILeagueSeasonAwardsRepository';
 export {
   LSABestAssistProviderId,
@@ -64,7 +64,7 @@ export {
 
 // Competitions League Season Fixture
 export { LeagueSeasonFixture } from '../basketCol/competitions/league/season/fixture/domain/LeagueSeasonFixture';
-export { ILeagueSeasonFixture } from '../basketCol/competitions/league/season/fixture/domain/ILeagueSeasonFixture';
+export { ILeagueSeasonFixturePrimitives } from '../basketCol/competitions/league/season/fixture/domain/ILeagueSeasonFixturePrimitives';
 export { FixtureAlreadyExistsForDateInLeagueSeasonError, FixtureDateTooSoonError } from '../basketCol/competitions/league/season/fixture/domain/exceptions';
 export { ILeagueSeasonFixtureRepository } from '../basketCol/competitions/league/season/fixture/domain/repository/ILeagueSeasonFixtureRepository';
 export { LeagueSeasonFixtureValidationService } from '../basketCol/competitions/league/season/fixture/domain/services';
@@ -79,7 +79,7 @@ export {
 
 // Competitions League Season Fixture Game
 export { LeagueSeasonFixtureGame } from '../basketCol/competitions/league/season/fixture/game/domain/LeagueSeasonFixtureGame';
-export { ILeagueSeasonFixtureGame } from '../basketCol/competitions/league/season/fixture/game/domain/ILeagueSeasonFixtureGame';
+export { ILeagueSeasonFixtureGamePrimitives } from '../basketCol/competitions/league/season/fixture/game/domain/ILeagueSeasonFixtureGamePrimitives';
 export { LeagueSeasonFixtureGameNotFoundError } from '../basketCol/competitions/league/season/fixture/game/domain/exceptions';
 export { ILeagueSeasonFixtureGameRepository } from '../basketCol/competitions/league/season/fixture/game/domain/repository/ILeagueSeasonFixtureGameRepository';
 export { LeagueSeasonFixtureGameValidationService } from '../basketCol/competitions/league/season/fixture/game/domain/services';
@@ -103,7 +103,7 @@ export {
 
 // Competitions League Season Fixture Game BoxScore Player
 export { PlayerUserLeagueSeasonFixtureGameBoxScore } from '../basketCol/competitions/league/season/fixture/game/box-score/player/domain/PlayerUserLeagueSeasonFixtureGameBoxScore';
-export { IPlayerUserLeagueSeasonFixtureGameBoxScore } from '../basketCol/competitions/league/season/fixture/game/box-score/player/domain/IPlayerUserLeagueSeasonFixtureGameBoxScore';
+export { IPlayerUserLeagueSeasonFixtureGameBoxScorePrimitives } from '../basketCol/competitions/league/season/fixture/game/box-score/player/domain/IPlayerUserLeagueSeasonFixtureGameBoxScorePrimitives';
 export { IPlayerUserLeagueSeasonFixtureGameBoxScoreRepository } from '../basketCol/competitions/league/season/fixture/game/box-score/player/domain/repository/IPlayerUserLeagueSeasonFixtureGameBoxScoreRepository';
 export {
   PLSFGBoxScoreAssists,
@@ -129,7 +129,7 @@ export {
 
 // Competitions League Season Fixture Game BoxScore Team
 export { TeamLeagueSeasonFixtureGameBoxScore } from '../basketCol/competitions/league/season/fixture/game/box-score/team/domain/TeamLeagueSeasonFixtureGameBoxScore';
-export { ITeamLeagueSeasonFixtureGameBoxScore } from '../basketCol/competitions/league/season/fixture/game/box-score/team/domain/ITeamLeagueSeasonFixtureGameBoxScore';
+export { ITeamLeagueSeasonFixtureGameBoxScorePrimitives } from '../basketCol/competitions/league/season/fixture/game/box-score/team/domain/ITeamLeagueSeasonFixtureGameBoxScorePrimitives';
 export { ITeamLeagueSeasonFixtureGameBoxScoreRepository } from '../basketCol/competitions/league/season/fixture/game/box-score/team/domain/repository/ITeamLeagueSeasonFixtureGameBoxScoreRepository';
 export {
   TLSFGBoxScoreAssists,
@@ -155,11 +155,11 @@ export {
 
 // Competitions Shared
 export { Fixture } from '../basketCol/competitions/shared/domain/Fixture';
-export { IFixture } from '../basketCol/competitions/shared/domain/IFixture';
+export { IFixturePrimitives } from '../basketCol/competitions/shared/domain/IFixturePrimitives';
 export { FixtureGame } from '../basketCol/competitions/shared/domain/FixtureGame';
 export { IFixtureGame } from '../basketCol/competitions/shared/domain/IFixtureGame';
 export { FixtureGameBoxScore } from '../basketCol/competitions/shared/domain/FixtureGameBoxScore';
-export { IFixtureGameBoxScore } from '../basketCol/competitions/shared/domain/IFixtureGameBoxScore';
+export { IFixtureGameBoxScorePrimitives } from '../basketCol/competitions/shared/domain/IFixtureGameBoxScorePrimitives';
 export {
   FGameAssistantRefereeId,
   FGBoxScoreAssists,
@@ -207,7 +207,7 @@ export {
 
 // Facilities Court
 export { Court } from '../basketCol/facilities/court/domain/Court';
-export { ICourt } from '../basketCol/facilities/court/domain/ICourt';
+export { ICourtPrimitives } from '../basketCol/facilities/court/domain/ICourtPrimitives';
 export {
   CourtNotFoundError,
   CourtsNotFoundError,
@@ -231,7 +231,7 @@ export {
 
 // Facilities Gym
 export { Gym } from '../basketCol/facilities/gym/domain/Gym';
-export { IGym } from '../basketCol/facilities/gym/domain/IGym';
+export { IGymPrimitives } from '../basketCol/facilities/gym/domain/IGymPrimitives';
 export { GymNotFoundError, GymsNotFoundError } from '../basketCol/facilities/gym/domain/exceptions';
 export { IGymRepository } from '../basketCol/facilities/gym/domain/repository/IGymRepository';
 export { GymValidationService } from '../basketCol/facilities/gym/domain/services';
@@ -247,7 +247,7 @@ export {
 
 // Facilities Shared
 export { Facility } from '../basketCol/facilities/shared/domain/Facility';
-export { IFacility } from '../basketCol/facilities/shared/domain/IFacility';
+export { IFacilityPrimitives } from '../basketCol/facilities/shared/domain/IFacilityPrimitives';
 export {
   FacilityCreatedAt,
   FacilityEstablishmentDate,
@@ -262,11 +262,11 @@ export {
 export { Either } from '../basketCol/shared/domain/either/Either';
 export { Result } from '../basketCol/shared/domain/either/Result';
 export { DomainError } from '../basketCol/shared/domain/DomainError';
-export { IDomainError } from '../basketCol/shared/domain/IDomainError';
+export { IDomainErrorPrimitives } from '../basketCol/shared/domain/IDomainErrorPrimitives';
 export { AggregateRoot } from '../basketCol/shared/domain/AggregateRoot';
-export { IAggregateRoot } from '../basketCol/shared/domain/IAggregateRoot';
+export { IAggregateRootPrimitives } from '../basketCol/shared/domain/IAggregateRootPrimitives';
 export { INewableClass } from '../basketCol/shared/domain/INewableClass';
-export { IStats } from '../basketCol/shared/domain/IStats';
+export { IStatsPrimitives } from '../basketCol/shared/domain/IStatsPrimitives';
 export { Nullable } from '../basketCol/shared/domain/Nullable';
 export { Stats } from '../basketCol/shared/domain/Stats';
 export {
@@ -373,7 +373,7 @@ export {
 
 // Team
 export { Team } from '../basketCol/team/domain/Team';
-export { ITeam } from '../basketCol/team/domain/ITeam';
+export { ITeamPrimitives } from '../basketCol/team/domain/ITeamPrimitives';
 export { TeamNotFoundError, TeamOfficialNameLengthError } from '../basketCol/team/domain/exceptions';
 export { ITeamRepository } from '../basketCol/team/domain/repository/ITeamRepository';
 export { TeamValidationService } from '../basketCol/team/domain/services';
@@ -387,7 +387,7 @@ export {
 
 // Team AllTimeStats
 export { TeamAllTimeStats } from '../basketCol/team/all-time-stats/domain/TeamAllTimeStats';
-export { ITeamAllTimeStats } from '../basketCol/team/all-time-stats/domain/ITeamAllTimeStats';
+export { ITeamAllTimeStatsPrimitives } from '../basketCol/team/all-time-stats/domain/ITeamAllTimeStatsPrimitives';
 export { ITeamAllTimeStatsRepository } from '../basketCol/team/all-time-stats/domain/repository/ITeamAllTimeStatsRepository';
 export {
   TATStatsCreatedAt,
@@ -416,7 +416,7 @@ export {
 
 // Users Host
 export { HostUser } from '../basketCol/users/host/domain/HostUser';
-export { IHostUser } from '../basketCol/users/host/domain/IHostUser';
+export { IHostUserPrimitives } from '../basketCol/users/host/domain/IHostUserPrimitives';
 export { HostUserNotFoundError } from '../basketCol/users/host/domain/exceptions';
 export { IHostUserRepository } from '../basketCol/users/host/domain/repository/IHostUserRepository';
 export { HostUserValidationService } from '../basketCol/users/host/domain/services';
@@ -435,7 +435,7 @@ export {
 
 // Users LeagueFounder
 export { LeagueFounderUser } from '../basketCol/users/league-founder/domain/LeagueFounderUser';
-export { ILeagueFounderUser } from '../basketCol/users/league-founder/domain/ILeagueFounderUser';
+export { ILeagueFounderUserPrimitives } from '../basketCol/users/league-founder/domain/ILeagueFounderUserPrimitives';
 export { LeagueFounderUserNotFoundError } from '../basketCol/users/league-founder/domain/exceptions';
 export { ILeagueFounderUserRepository } from '../basketCol/users/league-founder/domain/repository/ILeagueFounderUserRepository';
 export { LeagueFounderUserValidationService } from '../basketCol/users/league-founder/domain/services';
@@ -454,7 +454,7 @@ export {
 
 // Users Player
 export { PlayerUser } from '../basketCol/users/player/domain/PlayerUser';
-export { IPlayerUser } from '../basketCol/users/player/domain/IPlayerUser';
+export { IPlayerUserPrimitives } from '../basketCol/users/player/domain/IPlayerUserPrimitives';
 export { PlayerUserNotFoundError, PlayerUserNicknameAlreadyExistsError } from '../basketCol/users/player/domain/exceptions';
 export { IPlayerUserRepository } from '../basketCol/users/player/domain/repository/IPlayerUserRepository';
 export { PlayerUserValidationService, PlayerUserNicknameValidationService } from '../basketCol/users/player/domain/services';
@@ -474,7 +474,7 @@ export {
 
 // Users Player Attributes Defensive
 export { PlayerUserDefensiveAttributes } from '../basketCol/users/player/attributes/defensive/domain/PlayerUserDefensiveAttributes';
-export { IPlayerUserDefensiveAttributes } from '../basketCol/users/player/attributes/defensive/domain/IPlayerUserDefensiveAttributes';
+export { IPlayerUserDefensiveAttributesPrimitives } from '../basketCol/users/player/attributes/defensive/domain/IPlayerUserDefensiveAttributesPrimitives';
 export { IPlayerUserDefensiveAttributesRepository } from '../basketCol/users/player/attributes/defensive/domain/repository/IPlayerUserDefensiveAttributesRepository';
 export {
   PUDABlock,
@@ -489,7 +489,7 @@ export {
 
 // Users Player Attributes Finishing
 export { PlayerUserFinishingAttributes } from '../basketCol/users/player/attributes/finishing/domain/PlayerUserFinishingAttributes';
-export { IPlayerUserFinishingAttributes } from '../basketCol/users/player/attributes/finishing/domain/IPlayerUserFinishingAttributes';
+export { IPlayerUserFinishingAttributesPrimitives } from '../basketCol/users/player/attributes/finishing/domain/IPlayerUserFinishingAttributesPrimitives';
 export { IPlayerUserFinishingAttributesRepository } from '../basketCol/users/player/attributes/finishing/domain/repository/IPlayerUserFinishingAttributesRepository';
 export {
   PUFACreatedAt,
@@ -504,7 +504,7 @@ export {
 
 // Users Player Attributes Physical
 export { PlayerUserPhysicalAttributes } from '../basketCol/users/player/attributes/physical/domain/PlayerUserPhysicalAttributes';
-export { IPlayerUserPhysicalAttributes } from '../basketCol/users/player/attributes/physical/domain/IPlayerUserPhysicalAttributes';
+export { IPlayerUserPhysicalAttributesPrimitives } from '../basketCol/users/player/attributes/physical/domain/IPlayerUserPhysicalAttributesPrimitives';
 export { IPlayerUserPhysicalAttributesRepository } from '../basketCol/users/player/attributes/physical/domain/repository/IPlayerUserPhysicalAttributesRepository';
 export {
   PUPAAcceleration,
@@ -520,7 +520,7 @@ export {
 
 // Users Player Attributes Rebounding
 export { PlayerUserReboundingAttributes } from '../basketCol/users/player/attributes/rebounding/domain/PlayerUserReboundingAttributes';
-export { IPlayerUserReboundingAttributes } from '../basketCol/users/player/attributes/rebounding/domain/IPlayerUserReboundingAttributes';
+export { IPlayerUserReboundingAttributesPrimitives } from '../basketCol/users/player/attributes/rebounding/domain/IPlayerUserReboundingAttributesPrimitives';
 export { IPlayerUserReboundingAttributesRepository } from '../basketCol/users/player/attributes/rebounding/domain/repository/IPlayerUserReboundingAttributesRepository';
 export {
   PURACreatedAt,
@@ -536,7 +536,7 @@ export { Attribute } from '../basketCol/users/player/attributes/shared/domain/va
 
 // Users Player Attributes Shooting
 export { PlayerUserShootingAttributes } from '../basketCol/users/player/attributes/shooting/domain/PlayerUserShootingAttributes';
-export { IPlayerUserShootingAttributes } from '../basketCol/users/player/attributes/shooting/domain/IPlayerUserShootingAttributes';
+export { IPlayerUserShootingAttributesPrimitives } from '../basketCol/users/player/attributes/shooting/domain/IPlayerUserShootingAttributesPrimitives';
 export { IPlayerUserShootingAttributesRepository } from '../basketCol/users/player/attributes/shooting/domain/repository/IPlayerUserShootingAttributesRepository';
 export {
   PUSAId as PUShootingAttributesId,
@@ -551,7 +551,7 @@ export {
 
 // Users Player Attributes Skill
 export { PlayerUserSkillAttributes } from '../basketCol/users/player/attributes/skill/domain/PlayerUserSkillAttributes';
-export { IPlayerUserSkillAttributes } from '../basketCol/users/player/attributes/skill/domain/IPlayerUserSkillAttributes';
+export { IPlayerUserSkillAttributesPrimitives } from '../basketCol/users/player/attributes/skill/domain/IPlayerUserSkillAttributesPrimitives';
 export { IPlayerUserSkillAttributesRepository } from '../basketCol/users/player/attributes/skill/domain/repository/IPlayerUserSkillAttributesRepository';
 export {
   PUSABallHandle,
@@ -565,7 +565,7 @@ export {
 
 // Users Player Career Stats
 export { PlayerUserCareerStats } from '../basketCol/users/player/career-stats/domain/PlayerUserCareerStats';
-export { IPlayerUserCareerStats } from '../basketCol/users/player/career-stats/domain/IPlayerUserCareerStats';
+export { IPlayerUserCareerStatsPrimitives } from '../basketCol/users/player/career-stats/domain/IPlayerUserCareerStatsPrimitives';
 export { IPlayerUserCareerStatsRepository } from '../basketCol/users/player/career-stats/domain/repository/IPlayerUserCareerStatsRepository';
 export {
   PUCStatsCreatedAt,
@@ -594,7 +594,7 @@ export {
 
 // Users Referee
 export { RefereeUser } from '../basketCol/users/referee/domain/RefereeUser';
-export { IRefereeUser } from '../basketCol/users/referee/domain/IRefereeUser';
+export { IRefereeUserPrimitives } from '../basketCol/users/referee/domain/IRefereeUserPrimitives';
 export { RefereeUserNotFoundError } from '../basketCol/users/referee/domain/exceptions';
 export { IRefereeUserRepository } from '../basketCol/users/referee/domain/repository/IRefereeUserRepository';
 export { RefereeUserValidationService } from '../basketCol/users/referee/domain/services';
@@ -613,7 +613,7 @@ export {
 
 // Users TeamFounder
 export { TeamFounderUser } from '../basketCol/users/team-founder/domain/TeamFounderUser';
-export { ITeamFounderUser } from '../basketCol/users/team-founder/domain/ITeamFounderUser';
+export { ITeamFounderUserPrimitives } from '../basketCol/users/team-founder/domain/ITeamFounderUserPrimitives';
 export { TeamFounderUserNotFoundError } from '../basketCol/users/team-founder/domain/exceptions';
 export { ITeamFounderUserRepository } from '../basketCol/users/team-founder/domain/repository/ITeamFounderUserRepository';
 export { TeamFounderUserValidationService } from '../basketCol/users/team-founder/domain/services';
@@ -632,7 +632,7 @@ export {
 
 // Users Shared
 export { User } from '../basketCol/users/shared/domain/User';
-export { IUser } from '../basketCol/users/shared/domain/IUser';
+export { IUserPrimitives } from '../basketCol/users/shared/domain/IUserPrimitives';
 export { AnySystemUserType } from '../basketCol/users/shared/domain/AnySystemUserType';
 export {
   EmailAlreadyExistsError,

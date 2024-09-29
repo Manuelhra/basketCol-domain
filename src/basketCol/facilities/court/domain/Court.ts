@@ -1,6 +1,6 @@
 import { ILocationValueObjectProps } from '../../../shared/domain/value-objects/LocationValueObject';
 import { Facility } from '../../shared/domain/Facility';
-import { ICourt } from './ICourt';
+import { ICourtPrimitives } from './ICourtPrimitives';
 import { CourtCreatedAt } from './value-objects/CourtCreatedAt';
 import { CourtEstablishmentDate } from './value-objects/CourtEstablishmentDate';
 import { CourtHoopHeight } from './value-objects/CourtHoopHeight';
@@ -12,7 +12,7 @@ import { CourtRegisteredById } from './value-objects/CourtRegisteredById';
 import { CourtSurface } from './value-objects/CourtSurface';
 import { CourtUpdatedAt } from './value-objects/CourtUpdatedAt';
 
-export class Court extends Facility<ICourt> {
+export class Court extends Facility<ICourtPrimitives> {
   readonly #surface: CourtSurface;
 
   readonly #hoopHeight: CourtHoopHeight;
@@ -46,7 +46,7 @@ export class Court extends Facility<ICourt> {
     this.#facilityId = CourtNullableFacilityId.create(facilityId);
   }
 
-  public override toPrimitives(): ICourt {
+  public override toPrimitives(): ICourtPrimitives {
     return {
       id: this.id.value,
       officialName: this.officialName.value,

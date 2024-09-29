@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { IPlayerUserFinishingAttributes } from './IPlayerUserFinishingAttributes';
+import { IPlayerUserFinishingAttributesPrimitives } from './IPlayerUserFinishingAttributesPrimitives';
 import { PUFACreatedAt } from './value-objects/PUFACreatedAt';
 import { PUFADrivingDunk } from './value-objects/PUFADrivingDunk';
 import { PUFADrivingLayup } from './value-objects/PUFADrivingLayup';
@@ -9,7 +9,7 @@ import { PUFAStandingDunk } from './value-objects/PUFAStandingDunk';
 import { PUFAUpdatedAt } from './value-objects/PUFAUpdatedAt';
 import { PUFAId } from './value-objects/PUFAId';
 
-export class PlayerUserFinishingAttributes extends AggregateRoot<IPlayerUserFinishingAttributes> {
+export class PlayerUserFinishingAttributes extends AggregateRoot<IPlayerUserFinishingAttributesPrimitives> {
   readonly #drivingLayup: PUFADrivingLayup;
 
   readonly #drivingDunk: PUFADrivingDunk;
@@ -43,7 +43,7 @@ export class PlayerUserFinishingAttributes extends AggregateRoot<IPlayerUserFini
     this.#playerUserId = PUFAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserFinishingAttributes {
+  public override toPrimitives(): IPlayerUserFinishingAttributesPrimitives {
     return {
       id: this.id.value,
       drivingLayup: this.#drivingLayup.value,

@@ -1,5 +1,5 @@
 import { FixtureGameBoxScore } from '../../../../../../../shared/domain/FixtureGameBoxScore';
-import { IPlayerUserLeagueSeasonFixtureGameBoxScore } from './IPlayerUserLeagueSeasonFixtureGameBoxScore';
+import { IPlayerUserLeagueSeasonFixtureGameBoxScorePrimitives } from './IPlayerUserLeagueSeasonFixtureGameBoxScorePrimitives';
 import { PLSFGBoxScoreAssists } from './value-objects/PLSFGBoxScoreAssists';
 import { PLSFGBoxScoreBlocks } from './value-objects/PLSFGBoxScoreBlocks';
 import { PLSFGBoxScoreCreatedAt } from './value-objects/PLSFGBoxScoreCreatedAt';
@@ -20,7 +20,7 @@ import { PLSFGBoxScoreThreePointersMade } from './value-objects/PLSFGBoxScoreThr
 import { PLSFGBoxScoreTurnovers } from './value-objects/PLSFGBoxScoreTurnovers';
 import { PLSFGBoxScoreUpdatedAt } from './value-objects/PLSFGBoxScoreUpdatedAt';
 
-export class PlayerUserLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<IPlayerUserLeagueSeasonFixtureGameBoxScore> {
+export class PlayerUserLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<IPlayerUserLeagueSeasonFixtureGameBoxScorePrimitives> {
   readonly #playerUserId: PLSFGBoxScorePlayerUserId;
 
   constructor(
@@ -68,7 +68,7 @@ export class PlayerUserLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxSco
     this.#playerUserId = PLSFGBoxScorePlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserLeagueSeasonFixtureGameBoxScore {
+  public override toPrimitives(): IPlayerUserLeagueSeasonFixtureGameBoxScorePrimitives {
     return {
       id: this.id.value,
       points: this.points.value,

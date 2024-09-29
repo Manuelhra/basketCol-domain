@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
-import { IFixtureGameBoxScore } from './IFixtureGameBoxScore';
+import { IFixtureGameBoxScorePrimitives } from './IFixtureGameBoxScorePrimitives';
 import { FGBoxScoreAssists } from './value-objects/FGBoxScoreAssists';
 import { FGBoxScoreBlocks } from './value-objects/FGBoxScoreBlocks';
 import { FGBoxScoreCreatedAt } from './value-objects/FGBoxScoreCreatedAt';
@@ -19,7 +19,7 @@ import { FGBoxScoreThreePointersMade } from './value-objects/FGBoxScoreThreePoin
 import { FGBoxScoreTurnovers } from './value-objects/FGBoxScoreTurnovers';
 import { FGBoxScoreUpdatedAt } from './value-objects/FGBoxScoreUpdatedAt';
 
-export abstract class FixtureGameBoxScore<I extends IFixtureGameBoxScore> extends AggregateRoot<I> {
+export abstract class FixtureGameBoxScore<I extends IFixtureGameBoxScorePrimitives> extends AggregateRoot<I> {
   protected readonly points: FGBoxScorePoints;
 
   protected readonly offensiveRebounds: FGBoxScoreOffensiveRebounds;

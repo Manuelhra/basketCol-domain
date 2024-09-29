@@ -1,5 +1,5 @@
 import { User } from '../../shared/domain/User';
-import { ILeagueFounderUser } from './ILeagueFounderUser';
+import { ILeagueFounderUserPrimitives } from './ILeagueFounderUserPrimitives';
 import { LeagueFounderUserAccountState } from './value-objects/LeagueFounderUserAccountState';
 import { LeagueFounderUserBiography } from './value-objects/LeagueFounderUserBiography';
 import { LeagueFounderUserCreatedAt } from './value-objects/LeagueFounderUserCreatedAt';
@@ -11,7 +11,7 @@ import { LeagueFounderUserSubscriptionType } from './value-objects/LeagueFounder
 import { LeagueFounderUserType } from './value-objects/LeagueFounderUserType';
 import { LeagueFounderUserUpdatedAt } from './value-objects/LeagueFounderUserUpdatedAt';
 
-export class LeagueFounderUser extends User<ILeagueFounderUser> {
+export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
   constructor(
     id: string,
     name: { firstName: string; lastName: string; },
@@ -37,7 +37,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUser> {
     );
   }
 
-  public override toPrimitives(): ILeagueFounderUser {
+  public override toPrimitives(): ILeagueFounderUserPrimitives {
     return {
       id: this.id.value,
       name: this.name.value,

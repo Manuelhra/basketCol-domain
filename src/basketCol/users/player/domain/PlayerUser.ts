@@ -1,5 +1,5 @@
 import { User } from '../../shared/domain/User';
-import { IPlayerUser } from './IPlayerUser';
+import { IPlayerUserPrimitives } from './IPlayerUserPrimitives';
 import { PlayerUserNickname } from './value-objects/PlayerUserNickname';
 import { PlayerUserBiography } from './value-objects/PlayerUserBiography';
 import { PlayerUserCreatedAt } from './value-objects/PlayerUserCreatedAt';
@@ -12,7 +12,7 @@ import { PlayerUserUpdatedAt } from './value-objects/PlayerUserUpdatedAt';
 import { PlayerUserAccountState } from './value-objects/PlayerUserAccountState';
 import { PlayerUserSubscriptionType } from './value-objects/PlayerUserSubscriptionType';
 
-export class PlayerUser extends User<IPlayerUser> {
+export class PlayerUser extends User<IPlayerUserPrimitives> {
   readonly #nickname: PlayerUserNickname;
 
   constructor(
@@ -43,7 +43,7 @@ export class PlayerUser extends User<IPlayerUser> {
     this.#nickname = PlayerUserNickname.create(nickname);
   }
 
-  public override toPrimitives(): IPlayerUser {
+  public override toPrimitives(): IPlayerUserPrimitives {
     return {
       id: this.id.value,
       name: this.name.value,

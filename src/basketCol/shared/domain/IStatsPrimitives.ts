@@ -1,4 +1,4 @@
-import { IAggregateRoot } from './IAggregateRoot';
+import { IAggregateRootPrimitives } from './IAggregateRootPrimitives';
 
 interface IStatsBasic {
   totalGamesPlayed: number;
@@ -24,4 +24,4 @@ interface IStatsShooting {
   totalFieldGoalsMade: number;
 }
 
-export interface IStats extends IAggregateRoot, IStatsBasic, IStatsShooting {}
+export interface IStatsPrimitives extends IAggregateRootPrimitives, IStatsBasic, IStatsShooting {}

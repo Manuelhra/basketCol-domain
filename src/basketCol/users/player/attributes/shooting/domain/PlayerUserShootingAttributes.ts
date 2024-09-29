@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { IPlayerUserShootingAttributes } from './IPlayerUserShootingAttributes';
+import { IPlayerUserShootingAttributesPrimitives } from './IPlayerUserShootingAttributesPrimitives';
 import { PUSACloseShot } from './value-objects/PUSACloseShot';
 import { PUSACreatedAt } from './value-objects/PUSACreatedAt';
 import { PUSAFreeThrow } from './value-objects/PUSAFreeThrow';
@@ -9,7 +9,7 @@ import { PUSAThreePointShot } from './value-objects/PUSAThreePointShot';
 import { PUSAUpdatedAt } from './value-objects/PUSAUpdatedAt';
 import { PUSAId } from './value-objects/PUSAId';
 
-export class PlayerUserShootingAttributes extends AggregateRoot<IPlayerUserShootingAttributes> {
+export class PlayerUserShootingAttributes extends AggregateRoot<IPlayerUserShootingAttributesPrimitives> {
   readonly #closeShot: PUSACloseShot;
 
   readonly #midRangeShot: PUSAMidRangeShot;
@@ -43,7 +43,7 @@ export class PlayerUserShootingAttributes extends AggregateRoot<IPlayerUserShoot
     this.#playerUserId = PUSAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserShootingAttributes {
+  public override toPrimitives(): IPlayerUserShootingAttributesPrimitives {
     return {
       id: this.id.value,
       closeShot: this.#closeShot.value,

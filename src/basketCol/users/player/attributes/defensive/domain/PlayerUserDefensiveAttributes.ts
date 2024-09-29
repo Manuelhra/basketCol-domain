@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { IPlayerUserDefensiveAttributes } from './IPlayerUserDefensiveAttributes';
+import { IPlayerUserDefensiveAttributesPrimitives } from './IPlayerUserDefensiveAttributesPrimitives';
 import {
   PUDAInteriorDefense,
   PUDAPerimeterDefense,
@@ -11,7 +11,7 @@ import {
   PUDAUpdatedAt,
 } from './value-objects';
 
-export class PlayerUserDefensiveAttributes extends AggregateRoot<IPlayerUserDefensiveAttributes> {
+export class PlayerUserDefensiveAttributes extends AggregateRoot<IPlayerUserDefensiveAttributesPrimitives> {
   readonly #interiorDefense: PUDAInteriorDefense;
 
   readonly #perimeterDefense: PUDAPerimeterDefense;
@@ -45,7 +45,7 @@ export class PlayerUserDefensiveAttributes extends AggregateRoot<IPlayerUserDefe
     this.#playerUserId = PUDAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserDefensiveAttributes {
+  public override toPrimitives(): IPlayerUserDefensiveAttributesPrimitives {
     return {
       id: this.id.value,
       interiorDefense: this.#interiorDefense.value,

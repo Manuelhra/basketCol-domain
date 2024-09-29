@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
-import { IUser } from './IUser';
+import { IUserPrimitives } from './IUserPrimitives';
 import { UserAccountState } from './value-objects/UserAccountState';
 import { UserBiography } from './value-objects/UserBiography';
 import { UserCreatedAt } from './value-objects/UserCreatedAt';
@@ -11,7 +11,7 @@ import { UserSubscriptionType } from './value-objects/UserSubscriptionType';
 import { UserType } from './value-objects/UserType';
 import { UserUpdatedAt } from './value-objects/UserUpdatedAt';
 
-export abstract class User<I extends IUser> extends AggregateRoot<I> {
+export abstract class User<I extends IUserPrimitives> extends AggregateRoot<I> {
   protected readonly _name: UserName;
 
   protected readonly _biography: UserBiography;

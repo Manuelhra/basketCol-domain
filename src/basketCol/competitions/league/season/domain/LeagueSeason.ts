@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../../shared/domain/AggregateRoot';
-import { ILeagueSeason } from './ILeagueSeason';
+import { ILeagueSeasonPrimitives } from './ILeagueSeasonPrimitives';
 import { LeagueSeasonEndDateBeforeStartDateError } from './exceptions/LeagueSeasonEndDateBeforeStartDateError';
 import { LeagueSeasonEndDateInPastError } from './exceptions/LeagueSeasonEndDateInPastError';
 import { LeagueSeasonInsufficientDurationError } from './exceptions/LeagueSeasonInsufficientDurationError';
@@ -15,7 +15,7 @@ import { LeagueSeasonStartDate } from './value-objects/LeagueSeasonStartDate';
 import { LeagueSeasonStatus } from './value-objects/LeagueSeasonStatus';
 import { LeagueSeasonUpdatedAt } from './value-objects/LeagueSeasonUpdatedAt';
 
-export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
+export class LeagueSeason extends AggregateRoot<ILeagueSeasonPrimitives> {
   static readonly #MINIMUM_PREPARATION_DAYS = 10 as const;
 
   static readonly #MINIMUM_SEASON_DURATION_DAYS = 5 as const;
@@ -59,7 +59,7 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeason> {
     this.validateDates();
   }
 
-  public override toPrimitives(): ILeagueSeason {
+  public override toPrimitives(): ILeagueSeasonPrimitives {
     return {
       id: this.id.value,
       name: this.#name.value,
