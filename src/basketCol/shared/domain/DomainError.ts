@@ -5,23 +5,27 @@ export class DomainError {
 
   readonly #message: string;
 
-  readonly #code: number;
+  readonly #field?: string;
 
-  constructor(name: string, message: string, code: number) {
+  constructor(name: string, message: string, field?: string) {
     this.#name = name;
     this.#message = message;
-    this.#code = code;
+    this.#field = field;
   }
 
   get toPrimitives(): IDomainError {
     return {
       name: this.#name,
       message: this.#message,
-      code: this.#code,
+      field: this.#field,
     };
   }
 
-  public static create(name: string, message: string, code: number): DomainError {
-    return new DomainError(name, message, code);
+  public static createSingle(name: string, message: string, field?: string): DomainError {
+    return new DomainError(name, message, field);
+  }
+
+  public static createMultiple(errors: DomainError[]): DomainError[] {
+    return errors;
   }
 }
