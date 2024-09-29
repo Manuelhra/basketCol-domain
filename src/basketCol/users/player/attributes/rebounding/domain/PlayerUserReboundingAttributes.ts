@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { IPlayerUserReboundingAttributes } from './IPlayerUserReboundingAttributes';
+import { IPlayerUserReboundingAttributesPrimitives } from './IPlayerUserReboundingAttributesPrimitives';
 import { PURACreatedAt } from './value-objects/PURACreatedAt';
 import { PURADefensiveRebound } from './value-objects/PURADefensiveRebound';
 import { PURAOffensiveRebound } from './value-objects/PURAOffensiveRebound';
@@ -7,7 +7,7 @@ import { PURAReferencedPlayerUserId } from './value-objects/PURAReferencedPlayer
 import { PURAUpdatedAt } from './value-objects/PURAUpdatedAt';
 import { PURAId } from './value-objects/PURAId';
 
-export class PlayerUserReboundingAttributes extends AggregateRoot<IPlayerUserReboundingAttributes> {
+export class PlayerUserReboundingAttributes extends AggregateRoot<IPlayerUserReboundingAttributesPrimitives> {
   readonly #offensiveRebound: PURAOffensiveRebound;
 
   readonly #defensiveRebound: PURADefensiveRebound;
@@ -33,7 +33,7 @@ export class PlayerUserReboundingAttributes extends AggregateRoot<IPlayerUserReb
     this.#playerUserId = PURAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserReboundingAttributes {
+  public override toPrimitives(): IPlayerUserReboundingAttributesPrimitives {
     return {
       id: this.id.value,
       offensiveRebound: this.#offensiveRebound.value,

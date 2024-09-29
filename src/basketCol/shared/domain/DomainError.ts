@@ -1,4 +1,4 @@
-import { IDomainError } from './IDomainError';
+import { IDomainErrorPrimitives } from './IDomainErrorPrimitives';
 
 export class DomainError {
   readonly #name: string;
@@ -13,7 +13,7 @@ export class DomainError {
     this.#field = field;
   }
 
-  get toPrimitives(): IDomainError {
+  get toPrimitives(): IDomainErrorPrimitives {
     return {
       name: this.#name,
       message: this.#message,

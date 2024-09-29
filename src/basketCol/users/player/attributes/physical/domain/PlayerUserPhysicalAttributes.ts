@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { IPlayerUserPhysicalAttributes } from './IPlayerUserPhysicalAttributes';
+import { IPlayerUserPhysicalAttributesPrimitives } from './IPlayerUserPhysicalAttributesPrimitives';
 import { PUPAAcceleration } from './value-objects/PUPAAcceleration';
 import { PUPACreatedAt } from './value-objects/PUPACreatedAt';
 import { PUPAReferencedPlayerUserId } from './value-objects/PUPAReferencedPlayerUserId';
@@ -10,7 +10,7 @@ import { PUPAUpdatedAt } from './value-objects/PUPAUpdatedAt';
 import { PUPAVertical } from './value-objects/PUPAVertical';
 import { PUPAId } from './value-objects/PUPAId';
 
-export class PlayerUserPhysicalAttributes extends AggregateRoot<IPlayerUserPhysicalAttributes> {
+export class PlayerUserPhysicalAttributes extends AggregateRoot<IPlayerUserPhysicalAttributesPrimitives> {
   readonly #speed: PUPASpeed;
 
   readonly #acceleration: PUPAAcceleration;
@@ -48,7 +48,7 @@ export class PlayerUserPhysicalAttributes extends AggregateRoot<IPlayerUserPhysi
     this.#playerUserId = PUPAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserPhysicalAttributes {
+  public override toPrimitives(): IPlayerUserPhysicalAttributesPrimitives {
     return {
       id: this.id.value,
       speed: this.#speed.value,

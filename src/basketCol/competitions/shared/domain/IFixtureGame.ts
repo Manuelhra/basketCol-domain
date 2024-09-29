@@ -1,6 +1,6 @@
-import { IAggregateRoot } from '../../../shared/domain/IAggregateRoot';
+import { IAggregateRootPrimitives } from '../../../shared/domain/IAggregateRootPrimitives';
 
-export interface IFixtureGame extends IAggregateRoot {
+export interface IFixtureGame extends IAggregateRootPrimitives {
   startTime: string;
   endTime: string | undefined;
   homeTeamId: string;

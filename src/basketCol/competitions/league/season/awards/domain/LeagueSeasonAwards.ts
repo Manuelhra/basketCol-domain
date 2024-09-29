@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { ILeagueSeasonAwards } from './ILeagueSeasonAwards';
+import { ILeagueSeasonAwardsPrimitives } from './ILeagueSeasonAwardsPrimitives';
 import { LeagueSeasonAwardsId } from './value-objects/LeagueSeasonAwardsId';
 import { LSABestAssistProviderId } from './value-objects/LSABestAssistProviderId';
 import { LSABestDefensiveRebounderId } from './value-objects/LSABestDefensiveRebounderId';
@@ -12,7 +12,7 @@ import { LSACreatedAt } from './value-objects/LSACreatedAt';
 import { LSAReferencedLeagueSeasonId } from './value-objects/LSAReferencedLeagueSeasonId';
 import { LSAUpdatedAt } from './value-objects/LSAUpdatedAt';
 
-export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwards> {
+export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimitives> {
   readonly #bestThreePointShooterId: LSABestThreePointShooterId;
 
   readonly #bestTwoPointShooterId: LSABestTwoPointShooterId;
@@ -58,7 +58,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwards> {
     this.#leagueSeasonId = LSAReferencedLeagueSeasonId.create(leagueSeasonId);
   }
 
-  public override toPrimitives(): ILeagueSeasonAwards {
+  public override toPrimitives(): ILeagueSeasonAwardsPrimitives {
     return {
       id: this.id.value,
       bestThreePointShooterId: this.#bestThreePointShooterId.playerUserIdAsString,

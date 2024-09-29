@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
-import { IFacility } from './IFacility';
+import { IFacilityPrimitives } from './IFacilityPrimitives';
 import { FacilityCreatedAt } from './value-objects/FacilityCreatedAt';
 import { FacilityEstablishmentDate } from './value-objects/FacilityEstablishmentDate';
 import { FacilityId } from './value-objects/FacilityId';
@@ -8,7 +8,7 @@ import { FacilityOfficialName } from './value-objects/FacilityOfficialName';
 import { FacilityRegisteredBy } from './value-objects/FacilityRegisteredBy';
 import { FacilityUpdatedAt } from './value-objects/FacilityUpdatedAt';
 
-export abstract class Facility<I extends IFacility> extends AggregateRoot<I> {
+export abstract class Facility<I extends IFacilityPrimitives> extends AggregateRoot<I> {
   protected readonly officialName: FacilityOfficialName;
 
   protected readonly location: FacilityLocation;

@@ -1,4 +1,4 @@
-import { IAggregateRoot } from '../../../shared/domain/IAggregateRoot';
+import { IAggregateRootPrimitives } from '../../../shared/domain/IAggregateRootPrimitives';
 
 interface IFixtureGameBoxScoreBasic {
   points: number;
@@ -20,6 +20,6 @@ interface IFixtureGameBoxScoreShooting {
   fieldGoalsMade: number;
 }
 
-export interface IFixtureGameBoxScore extends IAggregateRoot, IFixtureGameBoxScoreBasic, IFixtureGameBoxScoreShooting {
+export interface IFixtureGameBoxScorePrimitives extends IAggregateRootPrimitives, IFixtureGameBoxScoreBasic, IFixtureGameBoxScoreShooting {
   fixtureGameId: string;
 }

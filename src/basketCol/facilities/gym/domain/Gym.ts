@@ -1,6 +1,6 @@
 import { ILocationValueObjectProps } from '../../../shared/domain/value-objects/LocationValueObject';
 import { Facility } from '../../shared/domain/Facility';
-import { IGym } from './IGym';
+import { IGymPrimitives } from './IGymPrimitives';
 import { GymCreatedAt } from './value-objects/GymCreatedAt';
 import { GymEstablishmentDate } from './value-objects/GymEstablishmentDate';
 import { GymId } from './value-objects/GymId';
@@ -9,7 +9,7 @@ import { GymOfficialName } from './value-objects/GymOfficialName';
 import { GymRegisteredById } from './value-objects/GymRegisteredById';
 import { GymUpdatedAt } from './value-objects/GymUpdatedAt';
 
-export class Gym extends Facility<IGym> {
+export class Gym extends Facility<IGymPrimitives> {
   constructor(
     id: string,
     officialName: string,
@@ -30,7 +30,7 @@ export class Gym extends Facility<IGym> {
     );
   }
 
-  public override toPrimitives(): IGym {
+  public override toPrimitives(): IGymPrimitives {
     return {
       id: this.id.value,
       officialName: this.officialName.value,

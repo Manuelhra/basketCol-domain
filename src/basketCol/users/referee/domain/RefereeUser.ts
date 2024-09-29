@@ -1,5 +1,5 @@
 import { User } from '../../shared/domain/User';
-import { IRefereeUser } from './IRefereeUser';
+import { IRefereeUserPrimitives } from './IRefereeUserPrimitives';
 import { RefereeUserAccountState } from './value-objects/RefereeUserAccountState';
 import { RefereeUserBiography } from './value-objects/RefereeUserBiography';
 import { RefereeUserCreatedAt } from './value-objects/RefereeUserCreatedAt';
@@ -11,7 +11,7 @@ import { RefereeUserSubscriptionType } from './value-objects/RefereeUserSubscrip
 import { RefereeUserType } from './value-objects/RefereeUserType';
 import { RefereeUserUpdatedAt } from './value-objects/RefereeUserUpdatedAt';
 
-export class RefereeUser extends User<IRefereeUser> {
+export class RefereeUser extends User<IRefereeUserPrimitives> {
   constructor(
     id: string,
     name: { firstName: string; lastName: string; },
@@ -37,7 +37,7 @@ export class RefereeUser extends User<IRefereeUser> {
     );
   }
 
-  public override toPrimitives(): IRefereeUser {
+  public override toPrimitives(): IRefereeUserPrimitives {
     return {
       id: this.id.value,
       name: this.name.value,

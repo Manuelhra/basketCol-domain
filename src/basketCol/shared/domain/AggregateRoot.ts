@@ -1,9 +1,9 @@
 import { CreateMethodNotImplementedError } from './exceptions/CreateMethodNotImplementedError';
-import { IAggregateRoot } from './IAggregateRoot';
+import { IAggregateRootPrimitives } from './IAggregateRootPrimitives';
 import { DateValueObject } from './value-objects/DateValueObject';
 import { UuidValueObject } from './value-objects/UuidValueObject';
 
-export abstract class AggregateRoot<I extends IAggregateRoot> {
+export abstract class AggregateRoot<I extends IAggregateRootPrimitives> {
   protected readonly _id: UuidValueObject;
 
   protected readonly createdAt: DateValueObject;

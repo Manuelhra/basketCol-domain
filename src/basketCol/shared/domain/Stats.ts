@@ -1,5 +1,5 @@
 import { AggregateRoot } from './AggregateRoot';
-import { IStats } from './IStats';
+import { IStatsPrimitives } from './IStatsPrimitives';
 import { StatsCreatedAt } from './value-objects/StatsCreatedAt';
 import { StatsId } from './value-objects/StatsId';
 import { StatsTotalAssists } from './value-objects/StatsTotalAssists';
@@ -22,7 +22,7 @@ import { StatsTotalThreePointersMade } from './value-objects/StatsTotalThreePoin
 import { StatsTotalTurnovers } from './value-objects/StatsTotalTurnovers';
 import { StatsUpdatedAt } from './value-objects/StatsUpdatedAt';
 
-export abstract class Stats<I extends IStats> extends AggregateRoot<I> {
+export abstract class Stats<I extends IStatsPrimitives> extends AggregateRoot<I> {
   protected readonly totalGamesPlayed: StatsTotalGamesPlayed;
 
   protected readonly totalGamesWon: StatsTotalGamesWon;

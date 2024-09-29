@@ -1,5 +1,5 @@
 import { User } from '../../shared/domain/User';
-import { ITeamFounderUser } from './ITeamFounderUser';
+import { ITeamFounderUserPrimitives } from './ITeamFounderUserPrimitives';
 import { TeamFounderUserId } from './value-objects/TeamFounderUserId';
 import { TeamFounderUserBiography } from './value-objects/TeamFounderUserBiography';
 import { TeamFounderUserCreatedAt } from './value-objects/TeamFounderUserCreatedAt';
@@ -11,7 +11,7 @@ import { TeamFounderUserUpdatedAt } from './value-objects/TeamFounderUserUpdated
 import { TeamFounderUserAccountState } from './value-objects/TeamFounderUserAccountState';
 import { TeamFounderUserSubscriptionType } from './value-objects/TeamFounderUserSubscriptionType';
 
-export class TeamFounderUser extends User<ITeamFounderUser> {
+export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
   constructor(
     id: string,
     name: { firstName: string; lastName: string; },
@@ -37,7 +37,7 @@ export class TeamFounderUser extends User<ITeamFounderUser> {
     );
   }
 
-  public override toPrimitives(): ITeamFounderUser {
+  public override toPrimitives(): ITeamFounderUserPrimitives {
     return {
       id: this.id.value,
       name: this.name.value,

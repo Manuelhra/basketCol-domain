@@ -1,5 +1,5 @@
 import { Stats } from '../../../shared/domain/Stats';
-import { ITeamAllTimeStats } from './ITeamAllTimeStats';
+import { ITeamAllTimeStatsPrimitives } from './ITeamAllTimeStatsPrimitives';
 import { TATStatsCreatedAt } from './value-objects/TATStatsCreatedAt';
 import { TATStatsId } from './value-objects/TATStatsId';
 import { TATStatsTeamId } from './value-objects/TATStatsTeamId';
@@ -23,7 +23,7 @@ import { TATStatsTotalThreePointersMade } from './value-objects/TATStatsTotalThr
 import { TATStatsTotalTurnovers } from './value-objects/TATStatsTotalTurnovers';
 import { TATStatsUpdatedAt } from './value-objects/TATStatsUpdatedAt';
 
-export class TeamAllTimeStats extends Stats<ITeamAllTimeStats> {
+export class TeamAllTimeStats extends Stats<ITeamAllTimeStatsPrimitives> {
   readonly #teamId: TATStatsTeamId;
 
   public constructor(
@@ -77,7 +77,7 @@ export class TeamAllTimeStats extends Stats<ITeamAllTimeStats> {
     this.#teamId = TATStatsTeamId.create(teamId);
   }
 
-  public override toPrimitives(): ITeamAllTimeStats {
+  public override toPrimitives(): ITeamAllTimeStatsPrimitives {
     return {
       id: this.id.value,
       totalGamesPlayed: this.totalGamesPlayed.value,

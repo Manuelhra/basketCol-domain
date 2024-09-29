@@ -1,5 +1,5 @@
 import { Stats } from '../../../../shared/domain/Stats';
-import { IPlayerUserCareerStats } from './IPlayerUserCareerStats';
+import { IPlayerUserCareerStatsPrimitives } from './IPlayerUserCareerStatsPrimitives';
 import { PUCStatsCreatedAt } from './value-objects/PUCStatsCreatedAt';
 import { PUCStatsId } from './value-objects/PUCStatsId';
 import { PUCStatsPlayerUserId } from './value-objects/PUCStatsPlayerUserId';
@@ -23,7 +23,7 @@ import { PUCStatsTotalThreePointersMade } from './value-objects/PUCStatsTotalThr
 import { PUCStatsTotalTurnovers } from './value-objects/PUCStatsTotalTurnovers';
 import { PUCStatsUpdatedAt } from './value-objects/PUCStatsUpdatedAt';
 
-export class PlayerUserCareerStats extends Stats<IPlayerUserCareerStats> {
+export class PlayerUserCareerStats extends Stats<IPlayerUserCareerStatsPrimitives> {
   readonly #playerUserId: PUCStatsPlayerUserId;
 
   public constructor(
@@ -77,7 +77,7 @@ export class PlayerUserCareerStats extends Stats<IPlayerUserCareerStats> {
     this.#playerUserId = PUCStatsPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserCareerStats {
+  public override toPrimitives(): IPlayerUserCareerStatsPrimitives {
     return {
       id: this.id.value,
       totalGamesPlayed: this.totalGamesPlayed.value,

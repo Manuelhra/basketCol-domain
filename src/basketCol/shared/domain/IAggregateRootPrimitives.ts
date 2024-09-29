@@ -3,6 +3,6 @@ interface IAuditableEntity {
   updatedAt: string;
 }
 
-export interface IAggregateRoot extends IAuditableEntity {
+export interface IAggregateRootPrimitives extends IAuditableEntity {
   id: string;
 }

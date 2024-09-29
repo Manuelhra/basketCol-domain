@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
-import { IPlayerUserSkillAttributes } from './IPlayerUserSkillAttributes';
+import { IPlayerUserSkillAttributesPrimitives } from './IPlayerUserSkillAttributesPrimitives';
 import { PUSABallHandle } from './value-objects/PUSABallHandle';
 import { PUSACreatedAt } from './value-objects/PUSACreatedAt';
 import { PUSAPassAccuracy } from './value-objects/PUSAPassAccuracy';
@@ -8,7 +8,7 @@ import { PUSAReferencedPlayerUserId } from './value-objects/PUSAReferencedPlayer
 import { PUSAUpdatedAt } from './value-objects/PUSAUpdatedAt';
 import { PUSAId } from './value-objects/PUSAId';
 
-export class PlayerUserSkillAttributes extends AggregateRoot<IPlayerUserSkillAttributes> {
+export class PlayerUserSkillAttributes extends AggregateRoot<IPlayerUserSkillAttributesPrimitives> {
   readonly #passAccuracy: PUSAPassAccuracy;
 
   readonly #ballHandle: PUSABallHandle;
@@ -38,7 +38,7 @@ export class PlayerUserSkillAttributes extends AggregateRoot<IPlayerUserSkillAtt
     this.#playerUserId = PUSAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserSkillAttributes {
+  public override toPrimitives(): IPlayerUserSkillAttributesPrimitives {
     return {
       id: this.id.value,
       passAccuracy: this.#passAccuracy.value,

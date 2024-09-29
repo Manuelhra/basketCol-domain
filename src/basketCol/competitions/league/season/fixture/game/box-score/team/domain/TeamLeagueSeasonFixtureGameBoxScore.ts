@@ -1,5 +1,5 @@
 import { FixtureGameBoxScore } from '../../../../../../../shared/domain/FixtureGameBoxScore';
-import { ITeamLeagueSeasonFixtureGameBoxScore } from './ITeamLeagueSeasonFixtureGameBoxScore';
+import { ITeamLeagueSeasonFixtureGameBoxScorePrimitives } from './ITeamLeagueSeasonFixtureGameBoxScorePrimitives';
 import { TLSFGBoxScoreAssists } from './value-objects/TLSFGBoxScoreAssists';
 import { TLSFGBoxScoreBlocks } from './value-objects/TLSFGBoxScoreBlocks';
 import { TLSFGBoxScoreCreatedAt } from './value-objects/TLSFGBoxScoreCreatedAt';
@@ -20,7 +20,7 @@ import { TLSFGBoxScoreThreePointersMade } from './value-objects/TLSFGBoxScoreThr
 import { TLSFGBoxScoreTurnovers } from './value-objects/TLSFGBoxScoreTurnovers';
 import { TLSFGBoxScoreUpdatedAt } from './value-objects/TLSFGBoxScoreUpdatedAt';
 
-export class TeamLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<ITeamLeagueSeasonFixtureGameBoxScore> {
+export class TeamLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<ITeamLeagueSeasonFixtureGameBoxScorePrimitives> {
   readonly #teamId: TLSFGBoxScoreTeamId;
 
   public constructor(
@@ -68,7 +68,7 @@ export class TeamLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<ITe
     this.#teamId = TLSFGBoxScoreTeamId.create(teamId);
   }
 
-  public override toPrimitives(): ITeamLeagueSeasonFixtureGameBoxScore {
+  public override toPrimitives(): ITeamLeagueSeasonFixtureGameBoxScorePrimitives {
     return {
       id: this.id.value,
       points: this.points.value,
