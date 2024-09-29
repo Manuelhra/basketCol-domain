@@ -157,7 +157,7 @@ export {
 export { Fixture } from '../basketCol/competitions/shared/domain/Fixture';
 export { IFixturePrimitives } from '../basketCol/competitions/shared/domain/IFixturePrimitives';
 export { FixtureGame } from '../basketCol/competitions/shared/domain/FixtureGame';
-export { IFixtureGame } from '../basketCol/competitions/shared/domain/IFixtureGame';
+export { IFixtureGamePrimitives } from '../basketCol/competitions/shared/domain/IFixtureGamePrimitives';
 export { FixtureGameBoxScore } from '../basketCol/competitions/shared/domain/FixtureGameBoxScore';
 export { IFixtureGameBoxScorePrimitives } from '../basketCol/competitions/shared/domain/IFixtureGameBoxScorePrimitives';
 export {
@@ -634,6 +634,7 @@ export {
 export { User } from '../basketCol/users/shared/domain/User';
 export { IUserPrimitives } from '../basketCol/users/shared/domain/IUserPrimitives';
 export { AnySystemUserType } from '../basketCol/users/shared/domain/AnySystemUserType';
+export { AnySystemUserTypePrimitives } from '../basketCol/users/shared/domain/AnySystemUserTypePrimitives';
 export {
   EmailAlreadyExistsError,
   InvalidEmailPolicyError,

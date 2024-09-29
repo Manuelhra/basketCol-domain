@@ -1,6 +1,6 @@
 import { IAggregateRootPrimitives } from '../../../shared/domain/IAggregateRootPrimitives';
 
-export interface IFixtureGame extends IAggregateRootPrimitives {
+export interface IFixtureGamePrimitives extends IAggregateRootPrimitives {
   startTime: string;
   endTime: string | undefined;
   homeTeamId: string;

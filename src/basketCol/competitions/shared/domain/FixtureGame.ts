@@ -1,7 +1,7 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
 import { SameRefereeError } from './exceptions/SameRefereeError';
 import { SameTeamError } from './exceptions/SameTeamError';
-import { IFixtureGame } from './IFixtureGame';
+import { IFixtureGamePrimitives } from './IFixtureGamePrimitives';
 import { FGameAssistantRefereeId } from './value-objects/FGameAssistantRefereeId';
 import { FGameAwayScore } from './value-objects/FGameAwayScore';
 import { FGameAwayTeamId } from './value-objects/FGameAwayTeamId';
@@ -18,7 +18,7 @@ import { FGameStartTime } from './value-objects/FGameStartTime';
 import { FGameType } from './value-objects/FGameType';
 import { FGameUpdatedAt } from './value-objects/FGameUpdatedAt';
 
-export abstract class FixtureGame<I extends IFixtureGame> extends AggregateRoot<I> {
+export abstract class FixtureGame<I extends IFixtureGamePrimitives> extends AggregateRoot<I> {
   protected readonly startTime: FGameStartTime;
 
   protected readonly endTime: FGameEndTime;

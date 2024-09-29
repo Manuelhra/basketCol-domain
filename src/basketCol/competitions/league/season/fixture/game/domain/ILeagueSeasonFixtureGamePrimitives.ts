@@ -1,3 +1,3 @@
-import { IFixtureGame } from '../../../../../shared/domain/IFixtureGame';
+import { IFixtureGamePrimitives } from '../../../../../shared/domain/IFixtureGamePrimitives';
 
-export interface ILeagueSeasonFixtureGamePrimitives extends IFixtureGame {}
+export interface ILeagueSeasonFixtureGamePrimitives extends IFixtureGamePrimitives {}
