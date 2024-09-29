@@ -1,7 +1,7 @@
-import { IDomainError } from '../IDomainError';
+import { DomainError } from '../DomainError';
 import { Either } from './Either';
 
 export type Result<T> = Either<
-{ type: 'single'; error: IDomainError } | { type: 'multiple'; errors: IDomainError[] },
+{ type: 'single'; error: DomainError } | { type: 'multiple'; errors: DomainError[] },
 T
 >;
