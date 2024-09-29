@@ -2,6 +2,10 @@ import { DateGreaterThanError } from '../exceptions/DateGreaterThanError';
 import { DateValueObject } from '../value-objects/DateValueObject';
 
 export class BusinessDateService {
+  public static create(): BusinessDateService {
+    return new BusinessDateService();
+  }
+
   public getCurrentDate(): DateValueObject {
     return DateValueObject.getCurrentDate();
   }
