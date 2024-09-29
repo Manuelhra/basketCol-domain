@@ -4,20 +4,26 @@ import { LeagueSeasonFixtureGame } from '../LeagueSeasonFixtureGame';
 import { ILeagueSeasonFixtureGameRepository } from '../repository/ILeagueSeasonFixtureGameRepository';
 import { LSFGameId } from '../value-objects/LSFGameId';
 
+type Dependencies = {
+  leagueSeasonFixtureGameRepository: ILeagueSeasonFixtureGameRepository;
+};
+
 export class LeagueSeasonFixtureGameValidationService {
   readonly #leagueSeasonFixtureGameRepository: ILeagueSeasonFixtureGameRepository;
 
-  constructor(dependencies: {
-    leagueSeasonFixtureGameRepository: ILeagueSeasonFixtureGameRepository;
-  }) {
+  private constructor(dependencies: Dependencies) {
     this.#leagueSeasonFixtureGameRepository = dependencies.leagueSeasonFixtureGameRepository;
+  }
+
+  public static create(dependencies: Dependencies): LeagueSeasonFixtureGameValidationService {
+    return new LeagueSeasonFixtureGameValidationService(dependencies);
   }
 
   public async ensureLeagueSeasonFixtureGameExists(leagueSeasonFixtureGameId: LSFGameId): Promise<void> {
     const leagueSeasonFixtureGameFound: Nullable<LeagueSeasonFixtureGame> = await this.#leagueSeasonFixtureGameRepository.searchById(leagueSeasonFixtureGameId);
 
     if (leagueSeasonFixtureGameFound === undefined || leagueSeasonFixtureGameFound === null) {
-      throw new LeagueSeasonFixtureGameNotFoundError(leagueSeasonFixtureGameId);
+      throw LeagueSeasonFixtureGameNotFoundError.create(leagueSeasonFixtureGameId);
     }
   }
 }

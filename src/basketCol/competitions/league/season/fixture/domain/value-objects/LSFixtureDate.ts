@@ -2,7 +2,7 @@ import { FixtureDate } from '../../../../../shared/domain/value-objects/FixtureD
 import { FixtureDateTooSoonError } from '../exceptions/FixtureDateTooSoonError';
 
 export class LSFixtureDate extends FixtureDate {
-  public constructor(value: string) {
+  private constructor(value: string) {
     super(value);
 
     this.ensureFixtureDateIsAtLeast12HoursInAdvance();
@@ -21,7 +21,7 @@ export class LSFixtureDate extends FixtureDate {
     const formattedMinimumDate = FixtureDate.fromDate(minimumDate);
 
     if (formattedFixtureDate.value <= formattedMinimumDate.value) {
-      throw new FixtureDateTooSoonError(this.value);
+      throw FixtureDateTooSoonError.create(this.value);
     }
   }
 }

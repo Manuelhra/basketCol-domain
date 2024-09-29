@@ -5,12 +5,12 @@ export abstract class StringValueObject extends PrimitiveValueObject<string> {
   protected constructor(value: string, propertyName: string) {
     super(value, propertyName, 'string');
 
-    StringValueObject.ensureValueTypeIsCorrect(value, propertyName);
+    StringValueObject.#ensureValueTypeIsCorrect(value, propertyName);
   }
 
-  private static ensureValueTypeIsCorrect(value: any, propertyName: string): void {
+  static #ensureValueTypeIsCorrect(value: any, propertyName: string): void {
     if (typeof value !== 'string') {
-      throw new InvalidPropertyTypeError(propertyName, 'string', typeof value);
+      throw InvalidPropertyTypeError.create(propertyName, 'string', typeof value);
     }
   }
 }

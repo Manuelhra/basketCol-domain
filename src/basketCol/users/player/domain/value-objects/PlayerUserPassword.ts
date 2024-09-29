@@ -1,11 +1,11 @@
 import { UserPassword } from '../../../shared/domain/value-objects/UserPassword';
 
 export class PlayerUserPassword extends UserPassword {
-  public constructor(value: string) {
-    super(value);
+  private constructor(value: string, skipValidation: boolean = false) {
+    super(value, skipValidation);
   }
 
-  public static create(value: string): PlayerUserPassword {
-    return new PlayerUserPassword(value);
+  public static create(value: string, skipValidation: boolean = false): PlayerUserPassword {
+    return new PlayerUserPassword(value, skipValidation);
   }
 }

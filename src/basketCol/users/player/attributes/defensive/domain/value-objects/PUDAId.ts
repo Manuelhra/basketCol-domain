@@ -1,7 +1,7 @@
 import { IdValueObject } from '../../../../../../shared/domain/value-objects/IdValueObject';
 
 export class PUDAId extends IdValueObject {
-  public constructor(value: string, propertyName: string = 'id') {
+  private constructor(value: string, propertyName: string = 'id') {
     super(value, propertyName);
   }
 

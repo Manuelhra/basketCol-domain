@@ -7,11 +7,15 @@ export class PositiveIntegerValueObject extends ValueObject<number> {
 
   static readonly #MIN_ALLOWED_VALUE: number = 0 as const;
 
-  constructor(value: number, propertyName: string) {
+  protected constructor(value: number, propertyName: string) {
     super(value, propertyName, PositiveIntegerValueObject.EXPECTED_TYPE);
 
-    PositiveIntegerValueObject.ensureIsInteger(value, propertyName);
-    PositiveIntegerValueObject.ensureIsPositive(value, propertyName);
+    PositiveIntegerValueObject.#ensureIsInteger(value, propertyName);
+    PositiveIntegerValueObject.#ensureIsPositive(value, propertyName);
+  }
+
+  public static create(value: number, propertyName: string): PositiveIntegerValueObject {
+    return new PositiveIntegerValueObject(value, propertyName);
   }
 
   public add(other: PositiveIntegerValueObject, propertyName: string): PositiveIntegerValueObject {
@@ -27,15 +31,15 @@ export class PositiveIntegerValueObject extends ValueObject<number> {
     return super.isValueEqual(otherValue) && Number.isInteger(otherValue as number) && (otherValue as number) >= 0;
   }
 
-  private static ensureIsInteger(value: number, propertyName: string): void {
+  static #ensureIsInteger(value: number, propertyName: string): void {
     if (!Number.isInteger(value)) {
-      throw new NotIntegerError(propertyName, value);
+      throw NotIntegerError.create(propertyName, value);
     }
   }
 
-  private static ensureIsPositive(value: number, propertyName: string): void {
+  static #ensureIsPositive(value: number, propertyName: string): void {
     if (value < PositiveIntegerValueObject.#MIN_ALLOWED_VALUE) {
-      throw new MinimumValueViolationError(
+      throw MinimumValueViolationError.create(
         propertyName,
         PositiveIntegerValueObject.#MIN_ALLOWED_VALUE,
         value,

@@ -20,7 +20,7 @@ export class PlayerUserShootingAttributes extends AggregateRoot<IPlayerUserShoot
 
   readonly #playerUserId: PUSAReferencedPlayerUserId;
 
-  constructor(
+  private constructor(
     id: string,
     closeShot: number,
     midRangeShot: number,

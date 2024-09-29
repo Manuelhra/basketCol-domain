@@ -2,7 +2,7 @@ import { ILocationValueObjectProps } from '../../../../shared/domain/value-objec
 import { FacilityLocation } from '../../../shared/domain/value-objects/FacilityLocation';
 
 export class CourtLocation extends FacilityLocation {
-  public constructor(value: ILocationValueObjectProps) {
+  private constructor(value: ILocationValueObjectProps) {
     super(value);
   }
 

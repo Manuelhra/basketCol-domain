@@ -12,7 +12,7 @@ import { RefereeUserType } from './value-objects/RefereeUserType';
 import { RefereeUserUpdatedAt } from './value-objects/RefereeUserUpdatedAt';
 
 export class RefereeUser extends User<IRefereeUserPrimitives> {
-  constructor(
+  private constructor(
     id: string,
     name: { firstName: string; lastName: string; },
     biography: string,
@@ -22,13 +22,14 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     subscriptionType: string,
     createdAt: string,
     updatedAt: string,
+    options?: { skipPasswordValidation: boolean; },
   ) {
     super(
       RefereeUserId.create(id),
       RefereeUserName.create(name),
       RefereeUserBiography.create(biography),
       RefereeUserEmail.create(email),
-      RefereeUserPassword.create(password),
+      RefereeUserPassword.create(password, options && options.skipPasswordValidation),
       RefereeUserType.create(),
       RefereeUserAccountState.create(accountState),
       RefereeUserSubscriptionType.create(subscriptionType),
@@ -73,6 +74,31 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
       subscriptionType,
       createdAt,
       updatedAt,
+    );
+  }
+
+  public static createWithoutPassword(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    email: { value: string; verified: boolean },
+    password: string,
+    accountState: string,
+    subscriptionType: string,
+    createdAt: string,
+    updatedAt: string,
+  ): RefereeUser {
+    return new RefereeUser(
+      id,
+      name,
+      biography,
+      email,
+      password,
+      accountState,
+      subscriptionType,
+      createdAt,
+      updatedAt,
+      { skipPasswordValidation: true },
     );
   }
 }

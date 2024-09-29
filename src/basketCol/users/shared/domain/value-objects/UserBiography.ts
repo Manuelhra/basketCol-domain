@@ -13,11 +13,11 @@ export abstract class UserBiography extends StringValueObject {
 
   private ensureIsValidBiography(value: string): void {
     if (value.length < this.#LENGTH.min) {
-      throw new PropertyLengthTooShortError('biography', this.#LENGTH.min, value.length);
+      throw PropertyLengthTooShortError.create('biography', this.#LENGTH.min, value.length);
     }
 
     if (value.length > this.#LENGTH.max) {
-      throw new PropertyLengthExceededError('biography', this.#LENGTH.max, value.length);
+      throw PropertyLengthExceededError.create('biography', this.#LENGTH.max, value.length);
     }
   }
 }

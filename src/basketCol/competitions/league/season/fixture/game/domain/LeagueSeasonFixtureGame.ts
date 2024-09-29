@@ -17,7 +17,7 @@ import { LSFGameType } from './value-objects/LSFGameType';
 import { LSFGameUpdatedAt } from './value-objects/LSFGameUpdatedAt';
 
 export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGamePrimitives> {
-  constructor(
+  private constructor(
     id: string,
     startTime: string,
     endTime: string | undefined,

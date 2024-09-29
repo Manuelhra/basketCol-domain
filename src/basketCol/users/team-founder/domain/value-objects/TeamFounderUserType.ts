@@ -3,7 +3,7 @@ import { UserType } from '../../../shared/domain/value-objects/UserType';
 export class TeamFounderUserType extends UserType {
   protected static override readonly TYPE: string = 'TEAM_FOUNDER_USER';
 
-  constructor() {
+  private constructor() {
     super(TeamFounderUserType.TYPE);
   }
 

@@ -23,7 +23,7 @@ export class PlayerUserPhysicalAttributes extends AggregateRoot<IPlayerUserPhysi
 
   readonly #playerUserId: PUPAReferencedPlayerUserId;
 
-  constructor(
+  private constructor(
     id: string,
     speed: number,
     acceleration: number,

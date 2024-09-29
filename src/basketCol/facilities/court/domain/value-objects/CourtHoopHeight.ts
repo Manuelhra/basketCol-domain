@@ -8,18 +8,18 @@ export class CourtHoopHeight extends CentimeterHeightValueObject {
 
   static readonly STANDARD_HEIGHT = 305 as const;
 
-  constructor(value: number) {
+  private constructor(value: number) {
     super(value, 'hoopHeight');
-    this.ensureIsValidHoopHeight(value);
+    this.#ensureIsValidHoopHeight(value);
   }
 
   public static create(height: number): CourtHoopHeight {
     return new CourtHoopHeight(height);
   }
 
-  private ensureIsValidHoopHeight(height: number): void {
+  #ensureIsValidHoopHeight(height: number): void {
     if (height < CourtHoopHeight.MIN_HEIGHT || height > CourtHoopHeight.MAX_HEIGHT) {
-      throw new InvalidCourtHoopHeightError(height, CourtHoopHeight.MIN_HEIGHT, CourtHoopHeight.MAX_HEIGHT);
+      throw InvalidCourtHoopHeightError.create(height, CourtHoopHeight.MIN_HEIGHT, CourtHoopHeight.MAX_HEIGHT);
     }
   }
 

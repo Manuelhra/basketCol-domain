@@ -43,7 +43,7 @@ export abstract class FixtureGame<I extends IFixtureGamePrimitives> extends Aggr
 
   protected readonly fixtureId: FGameFixtureId;
 
-  constructor(
+  protected constructor(
     id: FGameId,
     startTime: FGameStartTime,
     endTime: FGameEndTime,
@@ -75,19 +75,19 @@ export abstract class FixtureGame<I extends IFixtureGamePrimitives> extends Aggr
     this.courtId = courtId;
     this.fixtureId = fixtureId;
 
-    FixtureGame.ensureDifferentReferees(headRefereeId, assistantRefereeId);
-    FixtureGame.ensureDifferentTeams(homeTeamId, awayTeamId);
+    FixtureGame.#ensureDifferentReferees(headRefereeId, assistantRefereeId);
+    FixtureGame.#ensureDifferentTeams(homeTeamId, awayTeamId);
   }
 
-  private static ensureDifferentReferees(headRefereeId: FGameHeadRefereeId, assistantRefereeId: FGameAssistantRefereeId): void {
+  static #ensureDifferentReferees(headRefereeId: FGameHeadRefereeId, assistantRefereeId: FGameAssistantRefereeId): void {
     if (headRefereeId.refereeUserIdAsString === assistantRefereeId.refereeUserIdAsString) {
-      throw new SameRefereeError(headRefereeId.refereeUserIdAsString, assistantRefereeId.refereeUserIdAsString);
+      throw SameRefereeError.create(headRefereeId.refereeUserIdAsString, assistantRefereeId.refereeUserIdAsString);
     }
   }
 
-  private static ensureDifferentTeams(homeTeamId: FGameHomeTeamId, awayTeamId: FGameAwayTeamId): void {
+  static #ensureDifferentTeams(homeTeamId: FGameHomeTeamId, awayTeamId: FGameAwayTeamId): void {
     if (homeTeamId.teamIdAsString === awayTeamId.teamIdAsString) {
-      throw new SameTeamError(homeTeamId.teamIdAsString, awayTeamId.teamIdAsString);
+      throw SameTeamError.create(homeTeamId.teamIdAsString, awayTeamId.teamIdAsString);
     }
   }
 }

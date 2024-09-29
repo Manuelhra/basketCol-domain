@@ -13,7 +13,7 @@ export class CourtSurface extends StringValueObject {
     'TERRAZZO',
   ] as const;
 
-  constructor(value: string) {
+  private constructor(value: string) {
     const upperCaseValue = value.toUpperCase();
     super(upperCaseValue, 'surface');
 
@@ -31,7 +31,7 @@ export class CourtSurface extends StringValueObject {
   private static ensureIsValidSurface(surface: string): void {
     const upperCaseSurface = surface.toUpperCase();
     if (!CourtSurface.#VALID_SURFACES.includes(upperCaseSurface)) {
-      throw new InvalidCourtSurfaceError(surface, CourtSurface.#VALID_SURFACES);
+      throw InvalidCourtSurfaceError.create(surface, CourtSurface.#VALID_SURFACES);
     }
   }
 }

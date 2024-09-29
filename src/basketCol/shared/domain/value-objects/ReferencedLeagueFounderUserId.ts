@@ -17,7 +17,7 @@ export abstract class ReferencedLeagueFounderUserId extends ValueObject<LeagueFo
 
   private ensureIsLeagueFounderUserId(value: LeagueFounderUserId): void {
     if (!(value instanceof LeagueFounderUserId)) {
-      throw new InvalidLeagueFounderUserIdInstanceError();
+      throw InvalidLeagueFounderUserIdInstanceError.create();
     }
   }
 }

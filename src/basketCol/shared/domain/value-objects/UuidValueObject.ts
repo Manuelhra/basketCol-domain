@@ -12,7 +12,7 @@ export abstract class UuidValueObject extends StringValueObject {
 
   private static ensureIsValidUuid(id: string): void {
     if (!validate(id)) {
-      throw new InvalidDomainIdError(id);
+      throw InvalidDomainIdError.create(id);
     }
   }
 }

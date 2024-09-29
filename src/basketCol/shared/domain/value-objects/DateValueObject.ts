@@ -32,7 +32,7 @@ export abstract class DateValueObject extends StringValueObject {
 
   private static ensureIsValidDate(value: string) {
     if (DateValueObject.#dataRegex.test(value) === false) {
-      throw new InvalidDateFormatError(value, DateValueObject.#DATE_FORMAT);
+      throw InvalidDateFormatError.create(value, DateValueObject.#DATE_FORMAT);
     }
   }
 }

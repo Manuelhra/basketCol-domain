@@ -14,32 +14,32 @@ export class LeagueName extends ObjectValueObject<{ short: string; official: str
     max: 100,
   } as const;
 
-  constructor(value: { short: string; official: string; }) {
+  private constructor(value: { short: string; official: string; }) {
     super(value, 'name', '{ short: string; official: string; }');
 
-    LeagueName.ensureIsValidValue(value.short, { min: LeagueName.#SHORT_NAME_LENGTH.min, max: LeagueName.#SHORT_NAME_LENGTH.max }, 'short');
-    LeagueName.ensureIsValidValue(value.official, { min: LeagueName.#OFFICIAL_NAME_LENGTH.min, max: LeagueName.#OFFICIAL_NAME_LENGTH.max }, 'official');
+    LeagueName.#ensureIsValidValue(value.short, { min: LeagueName.#SHORT_NAME_LENGTH.min, max: LeagueName.#SHORT_NAME_LENGTH.max }, 'short');
+    LeagueName.#ensureIsValidValue(value.official, { min: LeagueName.#OFFICIAL_NAME_LENGTH.min, max: LeagueName.#OFFICIAL_NAME_LENGTH.max }, 'official');
   }
 
   public static create(value: { short: string; official: string; }): LeagueName {
     return new LeagueName(value);
   }
 
-  private static ensureIsValidValue(
+  static #ensureIsValidValue(
     value: string,
     length: { min:number; max: number; },
     propertyName: string,
   ): void {
     if (value === null || value === undefined || typeof value !== 'string') {
-      throw new InvalidPropertyTypeError(`name.${propertyName}`, 'string', typeof value);
+      throw InvalidPropertyTypeError.create(`name.${propertyName}`, 'string', typeof value);
     }
 
     if (value.length < length.min) {
-      throw new PropertyLengthTooShortError(`name.${propertyName}`, length.min, value.length);
+      throw PropertyLengthTooShortError.create(`name.${propertyName}`, length.min, value.length);
     }
 
     if (value.length > length.max) {
-      throw new PropertyLengthExceededError(`name.${propertyName}`, length.max, value.length);
+      throw PropertyLengthExceededError.create(`name.${propertyName}`, length.max, value.length);
     }
   }
 }

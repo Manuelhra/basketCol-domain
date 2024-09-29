@@ -2,12 +2,14 @@ import { LeagueSeasonNotFoundError } from '../exceptions/LeagueSeasonNotFoundErr
 import { ILeagueSeasonRepository } from '../repository/ILeagueSeasonRepository';
 import { LeagueSeasonId } from '../value-objects/LeagueSeasonId';
 
+type Dependencies = {
+  leagueSeasonRepository: ILeagueSeasonRepository;
+};
+
 export class LeagueSeasonValidationService {
   readonly #leagueSeasonRepository: ILeagueSeasonRepository;
 
-  constructor(dependencies: {
-    leagueSeasonRepository: ILeagueSeasonRepository;
-  }) {
+  private constructor(dependencies: Dependencies) {
     this.#leagueSeasonRepository = dependencies.leagueSeasonRepository;
   }
 
@@ -15,7 +17,7 @@ export class LeagueSeasonValidationService {
     const leagueSeasonFound = await this.#leagueSeasonRepository.searchById(leagueSeasonId);
 
     if (leagueSeasonFound === undefined || leagueSeasonFound === null) {
-      throw new LeagueSeasonNotFoundError(leagueSeasonId);
+      throw LeagueSeasonNotFoundError.create(leagueSeasonId);
     }
   }
 }

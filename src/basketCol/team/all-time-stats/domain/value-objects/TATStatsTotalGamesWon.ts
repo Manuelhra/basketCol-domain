@@ -1,7 +1,7 @@
 import { StatsTotalGamesWon } from '../../../../shared/domain/value-objects/StatsTotalGamesWon';
 
 export class TATStatsTotalGamesWon extends StatsTotalGamesWon {
-  public constructor(value: number) {
+  private constructor(value: number) {
     super(value);
   }
 

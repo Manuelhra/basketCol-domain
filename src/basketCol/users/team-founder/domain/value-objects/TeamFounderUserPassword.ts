@@ -1,11 +1,11 @@
 import { UserPassword } from '../../../shared/domain/value-objects/UserPassword';
 
 export class TeamFounderUserPassword extends UserPassword {
-  public constructor(value: string) {
-    super(value);
+  private constructor(value: string, skipValidation: boolean = false) {
+    super(value, skipValidation);
   }
 
-  public static create(value: string): TeamFounderUserPassword {
-    return new TeamFounderUserPassword(value);
+  public static create(value: string, skipValidation: boolean = false): TeamFounderUserPassword {
+    return new TeamFounderUserPassword(value, skipValidation);
   }
 }

@@ -10,7 +10,7 @@ import { LSFixtureUpdatedAt } from './value-objects/LSFixtureUpdatedAt';
 export class LeagueSeasonFixture extends Fixture<ILeagueSeasonFixturePrimitives> {
   readonly #leagueSeasonId: LSFixtureLeagueSeasonId;
 
-  constructor(
+  private constructor(
     id: string,
     date: string,
     name: string | null,

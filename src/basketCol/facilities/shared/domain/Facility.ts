@@ -17,7 +17,7 @@ export abstract class Facility<I extends IFacilityPrimitives> extends AggregateR
 
   protected readonly registeredById: FacilityRegisteredBy;
 
-  constructor(
+  protected constructor(
     id: FacilityId,
     officialName: FacilityOfficialName,
     location: FacilityLocation,

@@ -17,7 +17,7 @@ export abstract class ReferencedTeamFounderUserId extends ValueObject<TeamFounde
 
   private ensureIsTeamFounderUserId(value: TeamFounderUserId): void {
     if (!(value instanceof TeamFounderUserId)) {
-      throw new InvalidTeamFounderUserIdInstanceError();
+      throw InvalidTeamFounderUserIdInstanceError.create();
     }
   }
 }

@@ -22,7 +22,7 @@ export class PlayerUserDefensiveAttributes extends AggregateRoot<IPlayerUserDefe
 
   readonly #playerUserId: PUDAReferencedPlayerUserId;
 
-  constructor(
+  private constructor(
     id: string,
     interiorDefense: number,
     perimeterDefense: number,

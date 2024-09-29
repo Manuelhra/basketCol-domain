@@ -14,7 +14,7 @@ export class PlayerUserReboundingAttributes extends AggregateRoot<IPlayerUserReb
 
   readonly #playerUserId: PURAReferencedPlayerUserId;
 
-  constructor(
+  private constructor(
     id: string,
     offensiveRebound: number,
     defensiveRebound: number,

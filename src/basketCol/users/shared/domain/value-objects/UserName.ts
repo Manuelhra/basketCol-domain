@@ -16,7 +16,7 @@ export abstract class UserName extends ValueObject<{ firstName: string; lastName
 
   private ensureIsValidValue(value: string, propertyName: string): void {
     if (value === null || value === undefined || typeof value !== 'string') {
-      throw new InvalidPropertyTypeError(propertyName, 'string', typeof value);
+      throw InvalidPropertyTypeError.create(propertyName, 'string', typeof value);
     }
   }
 }

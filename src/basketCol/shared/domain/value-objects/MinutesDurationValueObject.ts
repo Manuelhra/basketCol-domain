@@ -13,7 +13,7 @@ export abstract class MinutesDurationValueObject extends ObjectValueObject<IMinu
 
   private static ensureValidDuration(value: number): number {
     if (value < 0 || !Number.isInteger(value)) {
-      throw new InvalidMinutesDurationError(value);
+      throw InvalidMinutesDurationError.create(value);
     }
     return value;
   }

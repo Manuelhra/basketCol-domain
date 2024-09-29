@@ -5,11 +5,19 @@ import { ILeagueSeasonFixtureRepository } from '../repository/ILeagueSeasonFixtu
 import { LSFixtureDate } from '../value-objects/LSFixtureDate';
 import { LSFixtureLeagueSeasonId } from '../value-objects/LSFixtureLeagueSeasonId';
 
+type Dependencies = {
+  leagueSeasonFixtureRepository: ILeagueSeasonFixtureRepository;
+};
+
 export class LeagueSeasonFixtureValidationService {
   readonly #leagueSeasonFixtureRepository: ILeagueSeasonFixtureRepository;
 
-  constructor(leagueSeasonFixtureRepository: ILeagueSeasonFixtureRepository) {
-    this.#leagueSeasonFixtureRepository = leagueSeasonFixtureRepository;
+  private constructor(dependencies: Dependencies) {
+    this.#leagueSeasonFixtureRepository = dependencies.leagueSeasonFixtureRepository;
+  }
+
+  public static create(dependencies: Dependencies): LeagueSeasonFixtureValidationService {
+    return new LeagueSeasonFixtureValidationService(dependencies);
   }
 
   public async ensureNoFixtureExistsForDateAndLeagueSeason(
@@ -19,7 +27,7 @@ export class LeagueSeasonFixtureValidationService {
     const leagueSeasonFixtureFound: Nullable<LeagueSeasonFixture> = await this.#leagueSeasonFixtureRepository.findByLeagueSeasonIdAndDate(leagueSeasonId, date);
 
     if (leagueSeasonFixtureFound !== null && leagueSeasonFixtureFound !== undefined) {
-      throw new FixtureAlreadyExistsForDateInLeagueSeasonError(leagueSeasonId.leagueSeasonIdAsString, date.dateAsString);
+      throw FixtureAlreadyExistsForDateInLeagueSeasonError.create(leagueSeasonId.leagueSeasonIdAsString, date.dateAsString);
     }
   }
 }

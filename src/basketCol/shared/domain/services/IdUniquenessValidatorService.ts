@@ -4,6 +4,10 @@ import { Nullable } from '../Nullable';
 import { IdAlreadyExistsError } from '../exceptions/IdAlreadyExistsError';
 import { UuidValueObject } from '../value-objects/UuidValueObject';
 
+type Dependencies = {
+  repository: IRepository;
+};
+
 export interface IRepository {
   searchById<T extends UuidValueObject, IES extends IAggregateRootPrimitives, ES extends AggregateRoot<IES>>(idValueObject: T): Promise<Nullable<ES>>;
 }
@@ -11,17 +15,19 @@ export interface IRepository {
 export class IdUniquenessValidatorService {
   readonly #repository: IRepository;
 
-  constructor(dependencies: {
-    repository: IRepository;
-  }) {
+  private constructor(dependencies: Dependencies) {
     this.#repository = dependencies.repository;
+  }
+
+  public static create(dependencies: Dependencies): IdUniquenessValidatorService {
+    return new IdUniquenessValidatorService(dependencies);
   }
 
   public async ensureUniqueId<T extends UuidValueObject, IES extends IAggregateRootPrimitives, ES extends AggregateRoot<IES>>(idValueObject: T): Promise<void> {
     const itemFound: Nullable<ES> = await this.#repository.searchById<T, IES, ES>(idValueObject);
 
     if (itemFound) {
-      throw new IdAlreadyExistsError(idValueObject);
+      throw IdAlreadyExistsError.create(idValueObject);
     }
   }
 }

@@ -47,7 +47,7 @@ export abstract class UserAccountState extends StringValueObject {
 
   private ensureIsValidAccountState(value: string): void {
     if (!UserAccountState.#VALID_STATES.includes(value as any)) {
-      throw new InvalidEnumValueError('accountState', value, UserAccountState.#VALID_STATES);
+      throw InvalidEnumValueError.create('accountState', value, UserAccountState.#VALID_STATES);
     }
   }
 }

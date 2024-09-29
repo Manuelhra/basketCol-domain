@@ -4,20 +4,26 @@ import { GymsNotFoundError } from '../exceptions/GymsNotFoundError';
 import { IGymRepository } from '../repository/IGymRepository';
 import { GymId } from '../value-objects/GymId';
 
+type Dependencies = {
+  gymRepository: IGymRepository;
+};
+
 export class GymValidationService {
   readonly #gymRepository: IGymRepository;
 
-  constructor(dependencies: {
-    gymRepository: IGymRepository;
-  }) {
+  private constructor(dependencies: Dependencies) {
     this.#gymRepository = dependencies.gymRepository;
+  }
+
+  public static create(dependencies: Dependencies): GymValidationService {
+    return new GymValidationService(dependencies);
   }
 
   public async ensureGymExists(gymId: GymId): Promise<void> {
     const gymFound = await this.#gymRepository.searchById(gymId);
 
     if (gymFound === undefined || gymFound === null) {
-      throw new GymNotFoundError(gymId);
+      throw GymNotFoundError.create(gymId);
     }
   }
 
@@ -25,7 +31,7 @@ export class GymValidationService {
     const { allGymsExist, nonExistentGymIds } = await this.#gymRepository.areAllGymsExistingByIds<T>(gymIdList);
 
     if (allGymsExist === false && nonExistentGymIds.length > 0) {
-      throw new GymsNotFoundError(nonExistentGymIds);
+      throw GymsNotFoundError.create(nonExistentGymIds);
     }
   }
 }

@@ -16,8 +16,8 @@ export abstract class ValueObject<T> {
     expectedType: string,
     options: ValueObjectOptions = {},
   ) {
-    this.validateOptions(options);
-    this.validateValue(value, propertyName, expectedType, options);
+    this.#validateOptions(options);
+    this.#validateValue(value, propertyName, expectedType, options);
     this.#value = value;
   }
 
@@ -37,19 +37,19 @@ export abstract class ValueObject<T> {
     return `${this.constructor.name}(${JSON.stringify(this.value)})`;
   }
 
-  private validateOptions(options: ValueObjectOptions): void {
+  #validateOptions(options: ValueObjectOptions): void {
     if (options.allowNull && options.allowUndefined) {
-      throw new InvalidValueObjectConfigurationError();
+      throw InvalidValueObjectConfigurationError.create();
     }
   }
 
-  private validateValue(value: T, propertyName: string, expectedType: string, options: ValueObjectOptions): void {
+  #validateValue(value: T, propertyName: string, expectedType: string, options: ValueObjectOptions): void {
     if (value === null && !options.allowNull) {
-      throw new NullValueError(propertyName, expectedType);
+      throw NullValueError.create(propertyName, expectedType);
     }
 
     if (value === undefined && !options.allowUndefined) {
-      throw new UndefinedValueError(propertyName, expectedType);
+      throw UndefinedValueError.create(propertyName, expectedType);
     }
   }
 

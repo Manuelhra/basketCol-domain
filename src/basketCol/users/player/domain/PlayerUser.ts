@@ -15,7 +15,7 @@ import { PlayerUserSubscriptionType } from './value-objects/PlayerUserSubscripti
 export class PlayerUser extends User<IPlayerUserPrimitives> {
   readonly #nickname: PlayerUserNickname;
 
-  constructor(
+  private constructor(
     id: string,
     name: { firstName: string; lastName: string; },
     biography: string,
@@ -26,13 +26,14 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     subscriptionType: string,
     createdAt: string,
     updatedAt: string,
+    options?: { skipPasswordValidation: boolean; },
   ) {
     super(
       PlayerUserId.create(id),
       PlayerUserName.create(name),
       PlayerUserBiography.create(biography),
       PlayerUserEmail.create(email),
-      PlayerUserPassword.create(password),
+      PlayerUserPassword.create(password, options && options.skipPasswordValidation),
       PlayerUserType.create(),
       PlayerUserAccountState.create(accountState),
       PlayerUserSubscriptionType.create(subscriptionType),
@@ -82,6 +83,33 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
       subscriptionType,
       createdAt,
       updatedAt,
+    );
+  }
+
+  public static createWithoutPassword(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    nickname: string,
+    email: { value: string; verified: boolean },
+    password: string,
+    accountState: string,
+    subscriptionType: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUser {
+    return new PlayerUser(
+      id,
+      name,
+      biography,
+      nickname,
+      email,
+      password,
+      accountState,
+      subscriptionType,
+      createdAt,
+      updatedAt,
+      { skipPasswordValidation: true },
     );
   }
 }

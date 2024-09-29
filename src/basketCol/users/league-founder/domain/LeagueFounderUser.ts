@@ -12,7 +12,7 @@ import { LeagueFounderUserType } from './value-objects/LeagueFounderUserType';
 import { LeagueFounderUserUpdatedAt } from './value-objects/LeagueFounderUserUpdatedAt';
 
 export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
-  constructor(
+  private constructor(
     id: string,
     name: { firstName: string; lastName: string; },
     biography: string,
@@ -22,13 +22,14 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
     subscriptionType: string,
     createdAt: string,
     updatedAt: string,
+    options?: { skipPasswordValidation: boolean; },
   ) {
     super(
       LeagueFounderUserId.create(id),
       LeagueFounderUserName.create(name),
       LeagueFounderUserBiography.create(biography),
       LeagueFounderUserEmail.create(email),
-      LeagueFounderUserPassword.create(password),
+      LeagueFounderUserPassword.create(password, options && options.skipPasswordValidation),
       LeagueFounderUserType.create(),
       LeagueFounderUserAccountState.create(accountState),
       LeagueFounderUserSubscriptionType.create(subscriptionType),
@@ -73,6 +74,31 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
       subscriptionType,
       createdAt,
       updatedAt,
+    );
+  }
+
+  public static createWithoutPassword(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    email: { value: string; verified: boolean; },
+    password: string,
+    accountState: string,
+    subscriptionType: string,
+    createdAt: string,
+    updatedAt: string,
+  ): LeagueFounderUser {
+    return new LeagueFounderUser(
+      id,
+      name,
+      biography,
+      email,
+      password,
+      accountState,
+      subscriptionType,
+      createdAt,
+      updatedAt,
+      { skipPasswordValidation: true },
     );
   }
 }

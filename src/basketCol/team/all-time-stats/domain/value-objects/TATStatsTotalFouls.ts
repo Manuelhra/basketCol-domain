@@ -1,7 +1,7 @@
 import { StatsTotalFouls } from '../../../../shared/domain/value-objects/StatsTotalFouls';
 
 export class TATStatsTotalFouls extends StatsTotalFouls {
-  public constructor(value: number) {
+  private constructor(value: number) {
     super(value);
   }
 

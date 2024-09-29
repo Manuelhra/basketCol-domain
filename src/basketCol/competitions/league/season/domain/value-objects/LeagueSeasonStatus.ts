@@ -4,10 +4,10 @@ import { InvalidLeagueSeasonStatusError } from '../exceptions/InvalidLeagueSeaso
 export class LeagueSeasonStatus extends StringValueObject {
   static readonly #VALID_STATUSES: string[] = ['UPCOMING', 'ONGOING', 'COMPLETED', 'CANCELLED', 'POSTPONED', 'SUSPENDED', 'RESCHEDULED'] as const;
 
-  constructor(value: string) {
+  private constructor(value: string) {
     super(value, 'status');
 
-    LeagueSeasonStatus.ensureIsValidStatus(value);
+    LeagueSeasonStatus.#ensureIsValidStatus(value);
   }
 
   public static create(value: string): LeagueSeasonStatus {
@@ -18,9 +18,9 @@ export class LeagueSeasonStatus extends StringValueObject {
     return new LeagueSeasonStatus('UPCOMING');
   }
 
-  private static ensureIsValidStatus(status: string): void {
+  static #ensureIsValidStatus(status: string): void {
     if (!LeagueSeasonStatus.#VALID_STATUSES.includes(status)) {
-      throw new InvalidLeagueSeasonStatusError(status, LeagueSeasonStatus.#VALID_STATUSES);
+      throw InvalidLeagueSeasonStatusError.create(status, LeagueSeasonStatus.#VALID_STATUSES);
     }
   }
 }

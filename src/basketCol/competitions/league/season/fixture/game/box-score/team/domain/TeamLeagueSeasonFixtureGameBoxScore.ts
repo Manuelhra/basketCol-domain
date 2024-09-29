@@ -23,7 +23,7 @@ import { TLSFGBoxScoreUpdatedAt } from './value-objects/TLSFGBoxScoreUpdatedAt';
 export class TeamLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<ITeamLeagueSeasonFixtureGameBoxScorePrimitives> {
   readonly #teamId: TLSFGBoxScoreTeamId;
 
-  public constructor(
+  private constructor(
     id: string,
     points: number,
     offensiveRebounds: number,

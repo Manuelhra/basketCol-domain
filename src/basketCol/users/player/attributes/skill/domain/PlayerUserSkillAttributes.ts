@@ -17,7 +17,7 @@ export class PlayerUserSkillAttributes extends AggregateRoot<IPlayerUserSkillAtt
 
   readonly #playerUserId: PUSAReferencedPlayerUserId;
 
-  constructor(
+  private constructor(
     id: string,
     passAccuracy: number,
     ballHandle: number,

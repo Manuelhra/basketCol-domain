@@ -30,7 +30,7 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
 
   readonly #isActive: LeagueIsActive;
 
-  constructor(
+  private constructor(
     id: string,
     name: { short: string; official: string; },
     description: { short: string; complete: string; },

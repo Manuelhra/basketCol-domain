@@ -34,7 +34,7 @@ export abstract class TimeValueObject extends StringValueObject {
 
   public static ensureIsValidTime(value: string) {
     if (TimeValueObject.#timeRegex.test(value) === false) {
-      throw new InvalidTimeFormatError(value, TimeValueObject.#TIME_FORMAT);
+      throw InvalidTimeFormatError.create(value, TimeValueObject.#TIME_FORMAT);
     }
   }
 }

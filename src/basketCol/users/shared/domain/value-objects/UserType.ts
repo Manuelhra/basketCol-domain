@@ -12,12 +12,12 @@ export abstract class UserType extends StringValueObject {
   }
 
   public static get value(): string {
-    throw new MethodNotImplementedError('This method should be overridden in derived classes');
+    throw MethodNotImplementedError.create('This method should be overridden in derived classes');
   }
 
   private ensureUserTypeIsCorrect(type: string): void {
     if (type !== (this.constructor as typeof UserType).TYPE) {
-      throw new InvalidUserTypeError(type);
+      throw InvalidUserTypeError.create(type);
     }
   }
 }

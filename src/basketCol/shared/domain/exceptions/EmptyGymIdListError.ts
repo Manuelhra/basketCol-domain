@@ -1,10 +1,14 @@
 import { RootError } from './RootError';
 
 export class EmptyGymIdListError extends RootError {
-  constructor() {
+  private constructor() {
     const message = 'GymIdList cannot be empty';
     super(message);
     this.name = 'EmptyGymIdListError';
+  }
+
+  public static create(): EmptyGymIdListError {
+    return new EmptyGymIdListError();
   }
 
   public override logError(): string {

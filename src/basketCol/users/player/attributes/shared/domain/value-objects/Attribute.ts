@@ -12,7 +12,7 @@ export abstract class Attribute extends PositiveIntegerValueObject {
 
   private static ensureNotExceedingMaximum(value: number, propertyName: string): void {
     if (value > Attribute.#maxAllowedValue) {
-      throw new MaximumValueExceededError(propertyName, Attribute.#maxAllowedValue, value);
+      throw MaximumValueExceededError.create(propertyName, Attribute.#maxAllowedValue, value);
     }
   }
 }

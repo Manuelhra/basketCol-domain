@@ -1,12 +1,16 @@
 import { RootError } from '../../../../shared/domain/exceptions/RootError';
 
 export class InvalidGameTypeError extends RootError {
-  constructor(
+  private constructor(
     private readonly invalidType: string,
     private readonly validTypes: readonly string[],
   ) {
     super(`Invalid game type: '${invalidType}'. Valid types are: ${validTypes.join(', ')}.`);
     this.name = 'InvalidGameTypeError';
+  }
+
+  public static create(invalidType: string, validTypes: readonly string[]): InvalidGameTypeError {
+    return new InvalidGameTypeError(invalidType, validTypes);
   }
 
   public getInvalidType(): string {

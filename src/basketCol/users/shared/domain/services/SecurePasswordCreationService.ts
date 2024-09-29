@@ -2,17 +2,23 @@ import { UserPassword } from '../value-objects/UserPassword';
 import { IPasswordHashingService } from './IPasswordHashingService';
 import { IPasswordValueObjectCreationService } from './IPasswordValueObjectCreationService';
 
+type Dependencies = {
+  passwordHashingService: IPasswordHashingService;
+  passwordValueObjectCreationService: IPasswordValueObjectCreationService;
+};
+
 export class SecurePasswordCreationService {
   readonly #passwordHashingService: IPasswordHashingService;
 
   readonly #passwordValueObjectCreationService: IPasswordValueObjectCreationService;
 
-  constructor(dependencies: {
-    passwordHashingService: IPasswordHashingService;
-    passwordValueObjectCreationService: IPasswordValueObjectCreationService;
-  }) {
+  private constructor(dependencies: Dependencies) {
     this.#passwordHashingService = dependencies.passwordHashingService;
     this.#passwordValueObjectCreationService = dependencies.passwordValueObjectCreationService;
+  }
+
+  public static create(dependencies: Dependencies): SecurePasswordCreationService {
+    return new SecurePasswordCreationService(dependencies);
   }
 
   public async createFromPlainText<T extends UserPassword>(userPassword: T): Promise<T> {

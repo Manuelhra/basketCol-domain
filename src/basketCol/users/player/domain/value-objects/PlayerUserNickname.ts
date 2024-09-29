@@ -5,7 +5,7 @@ import { StringValueObject } from '../../../../shared/domain/value-objects/Strin
 export class PlayerUserNickname extends StringValueObject {
   readonly #LENGTH: { min: number; max: number; } = { min: 2, max: 20 };
 
-  public constructor(value: string) {
+  private constructor(value: string) {
     super(value, 'nickname');
 
     this.ensureIsValidNickname(value);
@@ -17,11 +17,11 @@ export class PlayerUserNickname extends StringValueObject {
 
   private ensureIsValidNickname(value: string): void {
     if (value.length < this.#LENGTH.min) {
-      throw new PropertyLengthTooShortError('nickname', this.#LENGTH.min, value.length);
+      throw PropertyLengthTooShortError.create('nickname', this.#LENGTH.min, value.length);
     }
 
     if (value.length > this.#LENGTH.max) {
-      throw new PropertyLengthExceededError('nickname', this.#LENGTH.max, value.length);
+      throw PropertyLengthExceededError.create('nickname', this.#LENGTH.max, value.length);
     }
   }
 }

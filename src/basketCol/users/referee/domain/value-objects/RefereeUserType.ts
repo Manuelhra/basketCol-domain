@@ -3,7 +3,7 @@ import { UserType } from '../../../shared/domain/value-objects/UserType';
 export class RefereeUserType extends UserType {
   protected static override readonly TYPE: string = 'REFEREE_USER';
 
-  constructor() {
+  private constructor() {
     super(RefereeUserType.TYPE);
   }
 

@@ -20,7 +20,7 @@ export class PlayerUserFinishingAttributes extends AggregateRoot<IPlayerUserFini
 
   readonly #playerUserId: PUFAReferencedPlayerUserId;
 
-  constructor(
+  private constructor(
     id: string,
     drivingLayup: number,
     drivingDunk: number,

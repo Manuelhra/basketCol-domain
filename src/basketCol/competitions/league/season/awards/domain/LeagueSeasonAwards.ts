@@ -29,7 +29,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
 
   readonly #leagueSeasonId: LSAReferencedLeagueSeasonId;
 
-  constructor(
+  private constructor(
     id: string,
     bestThreePointShooterId: string,
     bestTwoPointShooterId: string,

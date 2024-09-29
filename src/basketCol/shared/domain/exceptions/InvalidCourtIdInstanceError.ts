@@ -1,9 +1,13 @@
 import { RootError } from './RootError';
 
 export class InvalidCourtIdInstanceError extends RootError {
-  constructor() {
+  private constructor() {
     super('The provided value is not a valid instance of CourtId.');
     this.name = 'InvalidCourtIdInstanceError';
+  }
+
+  public static create(): InvalidCourtIdInstanceError {
+    return new InvalidCourtIdInstanceError();
   }
 
   public override logError(): string {

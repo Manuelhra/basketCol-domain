@@ -13,7 +13,7 @@ export abstract class CentimeterHeightValueObject extends ObjectValueObject<ICen
 
   private static ensureValidHeight(value: number): number {
     if (value < 0 || !Number.isInteger(value)) {
-      throw new InvalidCentimeterHeightError(value);
+      throw InvalidCentimeterHeightError.create(value);
     }
     return value;
   }

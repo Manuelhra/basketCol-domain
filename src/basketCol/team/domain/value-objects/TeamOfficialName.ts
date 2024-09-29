@@ -4,19 +4,19 @@ import { TeamOfficialNameLengthError } from '../exceptions/TeamOfficialNameLengt
 export class TeamOfficialName extends StringValueObject {
   static readonly #LENGTH: { min: number; max: number; } = { min: 5, max: 30 } as const;
 
-  constructor(value: string) {
+  private constructor(value: string) {
     super(value, 'officialName');
 
-    TeamOfficialName.ensureValidLength(value);
+    TeamOfficialName.#ensureValidLength(value);
   }
 
   public static create(value: string): TeamOfficialName {
     return new TeamOfficialName(value);
   }
 
-  private static ensureValidLength(value: string): void {
+  static #ensureValidLength(value: string): void {
     if (value.length < TeamOfficialName.#LENGTH.min || value.length > TeamOfficialName.#LENGTH.max) {
-      throw new TeamOfficialNameLengthError(value, TeamOfficialName.#LENGTH.min, TeamOfficialName.#LENGTH.max);
+      throw TeamOfficialNameLengthError.create(value, TeamOfficialName.#LENGTH.min, TeamOfficialName.#LENGTH.max);
     }
   }
 }

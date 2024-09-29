@@ -6,13 +6,13 @@ import { ValueObject } from './ValueObject';
 type FACILITY_ID_TYPE = GymId | null;
 
 export class NullableFacilityId extends ValueObject<FACILITY_ID_TYPE> {
-  constructor(value: string | null) {
+  protected constructor(value: string | null) {
     const facilityId: FACILITY_ID_TYPE = value === null ? null : FacilityId.create(value);
 
     super(facilityId, 'facilityId', 'string | null', { allowNull: true });
 
     if (facilityId !== null) {
-      this.ensureIsFacilityId(facilityId);
+      this.#ensureIsFacilityId(facilityId);
     }
   }
 
@@ -32,9 +32,9 @@ export class NullableFacilityId extends ValueObject<FACILITY_ID_TYPE> {
     return super.isValueEqual(otherValue);
   }
 
-  private ensureIsFacilityId(value: FacilityId): void {
+  #ensureIsFacilityId(value: FacilityId): void {
     if (!(value instanceof FacilityId)) {
-      throw new InvalidFacilityIdInstanceError();
+      throw InvalidFacilityIdInstanceError.create();
     }
   }
 }

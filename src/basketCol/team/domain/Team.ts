@@ -11,7 +11,7 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
 
   readonly #teamFounderUserId: TReferencedTeamFounderUserId;
 
-  constructor(
+  private constructor(
     id: string,
     officialName: string,
     teamFounderUserId: string,

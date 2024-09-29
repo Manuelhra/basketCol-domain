@@ -31,7 +31,7 @@ export abstract class UserSubscriptionType extends StringValueObject {
 
   private ensureIsValidSubscriptionType(value: string): void {
     if (!UserSubscriptionType.#VALID_TYPES.includes(value as any)) {
-      throw new InvalidEnumValueError('subscriptionType', value, UserSubscriptionType.#VALID_TYPES);
+      throw InvalidEnumValueError.create('subscriptionType', value, UserSubscriptionType.#VALID_TYPES);
     }
   }
 }

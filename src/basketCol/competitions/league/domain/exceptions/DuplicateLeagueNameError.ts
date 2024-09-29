@@ -2,7 +2,7 @@ import { RootError } from '../../../../shared/domain/exceptions/RootError';
 import { LeagueName } from '../value-objects/LeagueName';
 
 export class DuplicateLeagueNameError extends RootError {
-  constructor(leagueName: LeagueName, label: 'SHORT_NAME' | 'OFFICIAL_NAME') {
+  private constructor(leagueName: LeagueName, label: 'SHORT_NAME' | 'OFFICIAL_NAME') {
     let feedback: string;
     const { short, official } = leagueName.value;
 
@@ -20,6 +20,10 @@ export class DuplicateLeagueNameError extends RootError {
 
     super(feedback);
     this.name = 'DuplicateLeagueNameError';
+  }
+
+  public static create(leagueName: LeagueName, label: 'SHORT_NAME' | 'OFFICIAL_NAME'): DuplicateLeagueNameError {
+    return new DuplicateLeagueNameError(leagueName, label);
   }
 
   public logError(): string {

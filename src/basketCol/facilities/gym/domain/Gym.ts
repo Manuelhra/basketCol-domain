@@ -10,7 +10,7 @@ import { GymRegisteredById } from './value-objects/GymRegisteredById';
 import { GymUpdatedAt } from './value-objects/GymUpdatedAt';
 
 export class Gym extends Facility<IGymPrimitives> {
-  constructor(
+  private constructor(
     id: string,
     officialName: string,
     location: ILocationValueObjectProps,

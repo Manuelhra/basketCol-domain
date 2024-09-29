@@ -12,7 +12,7 @@ import { HostUserType } from './value-objects/HostUserType';
 import { HostUserUpdatedAt } from './value-objects/HostUserUpdatedAt';
 
 export class HostUser extends User<IHostUserPrimitives> {
-  constructor(
+  private constructor(
     id: string,
     name: { firstName: string; lastName: string; },
     biography: string,
@@ -22,13 +22,14 @@ export class HostUser extends User<IHostUserPrimitives> {
     subscriptionType: string,
     createdAt: string,
     updatedAt: string,
+    options?: { skipPasswordValidation: boolean; },
   ) {
     super(
       HostUserId.create(id),
       HostUserName.create(name),
       HostUserBiography.create(biography),
       HostUserEmail.create(email),
-      HostUserPassword.create(password),
+      HostUserPassword.create(password, options && options.skipPasswordValidation),
       HostUserType.create(),
       HostUserAccountState.create(accountState),
       HostUserSubscriptionType.create(subscriptionType),
@@ -73,6 +74,31 @@ export class HostUser extends User<IHostUserPrimitives> {
       subscriptionType,
       createdAt,
       updatedAt,
+    );
+  }
+
+  public static createWithoutPassword(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    email: { value: string; verified: boolean },
+    password: string,
+    accountState: string,
+    subscriptionType: string,
+    createdAt: string,
+    updatedAt: string,
+  ): HostUser {
+    return new HostUser(
+      id,
+      name,
+      biography,
+      email,
+      password,
+      accountState,
+      subscriptionType,
+      createdAt,
+      updatedAt,
+      { skipPasswordValidation: true },
     );
   }
 }

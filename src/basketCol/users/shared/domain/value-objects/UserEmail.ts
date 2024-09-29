@@ -21,17 +21,17 @@ export abstract class UserEmail extends ObjectValueObject<{ value: string; verif
 
   private static ensureIsValidEmailValue(value: string): void {
     if (value === null || value === undefined) {
-      throw new InvalidPropertyTypeError('email.value', 'string', typeof value);
+      throw InvalidPropertyTypeError.create('email.value', 'string', typeof value);
     }
 
     if (!UserEmail.#EMAIL_REG_EXP.test(value)) {
-      throw new InvalidEmailPolicyError(value);
+      throw InvalidEmailPolicyError.create(value);
     }
   }
 
   private static ensureVerifiedIsDefined(verified: boolean): void {
     if (verified === null || verified === undefined) {
-      throw new InvalidPropertyTypeError('email.active', 'boolean', typeof verified);
+      throw InvalidPropertyTypeError.create('email.active', 'boolean', typeof verified);
     }
   }
 }

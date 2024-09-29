@@ -4,7 +4,7 @@ import { ValueObject } from './ValueObject';
 
 export abstract class ReferencedCourtId extends ValueObject<CourtId> {
   protected constructor(value: string, propertyName: string = 'courtId') {
-    const courtId: CourtId = new CourtId(value);
+    const courtId: CourtId = CourtId.create(value);
 
     super(courtId, propertyName, 'string');
 
@@ -17,7 +17,7 @@ export abstract class ReferencedCourtId extends ValueObject<CourtId> {
 
   private static ensureIsCourtId(value: CourtId): void {
     if (!(value instanceof CourtId)) {
-      throw new InvalidCourtIdInstanceError();
+      throw InvalidCourtIdInstanceError.create();
     }
   }
 }

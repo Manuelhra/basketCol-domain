@@ -1,7 +1,7 @@
 import { StatsTotalSteals } from '../../../../../shared/domain/value-objects/StatsTotalSteals';
 
 export class PUCStatsTotalSteals extends StatsTotalSteals {
-  public constructor(value: number) {
+  private constructor(value: number) {
     super(value);
   }
 

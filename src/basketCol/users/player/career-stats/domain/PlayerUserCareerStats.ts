@@ -26,7 +26,7 @@ import { PUCStatsUpdatedAt } from './value-objects/PUCStatsUpdatedAt';
 export class PlayerUserCareerStats extends Stats<IPlayerUserCareerStatsPrimitives> {
   readonly #playerUserId: PUCStatsPlayerUserId;
 
-  public constructor(
+  private constructor(
     id: string,
     totalGamesPlayed: number,
     totalGamesWon: number,

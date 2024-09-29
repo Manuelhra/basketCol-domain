@@ -1,11 +1,15 @@
 import { RootError } from './RootError';
 
 export class ElementAlreadyDisabledError extends RootError {
-  constructor(elementType: string) {
+  private constructor(elementType: string) {
     const message = `Invalid operation: ${elementType} is already in a disabled state.`;
     super(message);
 
     this.name = 'ElementAlreadyDisabledError';
+  }
+
+  public static create(elementType: string): ElementAlreadyDisabledError {
+    return new ElementAlreadyDisabledError(elementType);
   }
 
   public override logError(): string {

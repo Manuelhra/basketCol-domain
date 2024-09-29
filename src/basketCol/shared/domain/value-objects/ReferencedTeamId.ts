@@ -17,7 +17,7 @@ export abstract class ReferencedTeamId extends ValueObject<TeamId> {
 
   private ensureIsTeamId(value: TeamId): void {
     if (!(value instanceof TeamId)) {
-      throw new InvalidTeamIdInstanceError();
+      throw InvalidTeamIdInstanceError.create();
     }
   }
 }

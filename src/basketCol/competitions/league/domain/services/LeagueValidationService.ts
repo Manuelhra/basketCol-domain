@@ -4,20 +4,26 @@ import { League } from '../League';
 import { ILeagueRepository } from '../repository/ILeagueRepository';
 import { LeagueId } from '../value-objects/LeagueId';
 
+type Dependencies = {
+  leagueRepository: ILeagueRepository,
+};
+
 export class LeagueValidationService {
   readonly #leagueRepository: ILeagueRepository;
 
-  constructor(dependencies: {
-    leagueRepository: ILeagueRepository,
-  }) {
+  private constructor(dependencies: Dependencies) {
     this.#leagueRepository = dependencies.leagueRepository;
+  }
+
+  public static create(dependencies: Dependencies): LeagueValidationService {
+    return new LeagueValidationService(dependencies);
   }
 
   public async ensureLeagueExist(leagueId: LeagueId): Promise<void> {
     const leagueFound: Nullable<League> = await this.#leagueRepository.searchById(leagueId);
 
     if (leagueFound === undefined || leagueFound === null) {
-      throw new LeagueNotFoundError(leagueId);
+      throw LeagueNotFoundError.create(leagueId);
     }
   }
 }

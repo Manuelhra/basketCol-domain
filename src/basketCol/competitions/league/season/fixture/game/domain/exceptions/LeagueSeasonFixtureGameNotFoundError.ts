@@ -2,10 +2,14 @@ import { RootError } from '../../../../../../../shared/domain/exceptions/RootErr
 import { LSFGameId } from '../value-objects/LSFGameId';
 
 export class LeagueSeasonFixtureGameNotFoundError extends RootError {
-  constructor(lSFGameId: LSFGameId) {
+  private constructor(lSFGameId: LSFGameId) {
     super(`LeagueSeasonFixtureGame not found: The league season fixture game with ID '${lSFGameId.value}' does not exist in the system.`);
 
     this.name = 'LeagueSeasonFixtureGameNotFoundError';
+  }
+
+  public static create(lSFGameId: LSFGameId): LeagueSeasonFixtureGameNotFoundError {
+    return new LeagueSeasonFixtureGameNotFoundError(lSFGameId);
   }
 
   public override logError(): string {

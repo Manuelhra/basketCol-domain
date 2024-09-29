@@ -4,20 +4,26 @@ import { PlayerUser } from '../PlayerUser';
 import { IPlayerUserRepository } from '../repository/IPlayerUserRepository';
 import { PlayerUserId } from '../value-objects/PlayerUserId';
 
+type Dependencies = {
+  playerUserRepository: IPlayerUserRepository;
+};
+
 export class PlayerUserValidationService {
   readonly #playerUserRepository: IPlayerUserRepository;
 
-  constructor(dependencies: {
-    playerUserRepository: IPlayerUserRepository;
-  }) {
+  private constructor(dependencies: Dependencies) {
     this.#playerUserRepository = dependencies.playerUserRepository;
+  }
+
+  public static create(dependencies: Dependencies): PlayerUserValidationService {
+    return new PlayerUserValidationService(dependencies);
   }
 
   public async ensurePlayerUserExists(playerUserId: PlayerUserId): Promise<void> {
     const playerUserFound: Nullable<PlayerUser> = await this.#playerUserRepository.searchById(playerUserId);
 
     if (playerUserFound === undefined || playerUserFound === null) {
-      throw new PlayerUserNotFoundError(playerUserId);
+      throw PlayerUserNotFoundError.create(playerUserId);
     }
   }
 }

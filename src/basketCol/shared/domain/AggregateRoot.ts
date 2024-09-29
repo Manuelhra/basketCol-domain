@@ -28,6 +28,6 @@ export abstract class AggregateRoot<I extends IAggregateRootPrimitives> {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public static create(..._args: any[]): AggregateRoot<any> {
-    throw new CreateMethodNotImplementedError(this.name);
+    throw CreateMethodNotImplementedError.create(this.name);
   }
 }

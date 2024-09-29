@@ -7,7 +7,7 @@ export class DomainError {
 
   readonly #field?: string;
 
-  constructor(name: string, message: string, field?: string) {
+  private constructor(name: string, message: string, field?: string) {
     this.#name = name;
     this.#message = message;
     this.#field = field;

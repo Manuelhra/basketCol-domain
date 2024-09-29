@@ -4,10 +4,14 @@ import { InvalidGameTypeError } from '../exceptions/InvalidGameTypeError';
 export class FGameType extends StringValueObject {
   static readonly #VALID_TYPES: readonly string[] = ['REGULAR', 'PLAYOFFS', 'FINALS', 'ALL_STAR', 'PRE_SEASON', 'FRIENDLY'] as const;
 
-  constructor(value: string) {
+  protected constructor(value: string) {
     super(value, 'gameType');
 
-    FGameType.ensureIsValidType(value);
+    FGameType.#ensureIsValidType(value);
+  }
+
+  public static create(value: string): FGameType {
+    return new FGameType(value);
   }
 
   public static createRegular(): FGameType {
@@ -30,9 +34,9 @@ export class FGameType extends StringValueObject {
     return new FGameType('PRE_SEASON');
   }
 
-  private static ensureIsValidType(type: string): void {
+  static #ensureIsValidType(type: string): void {
     if (!FGameType.#VALID_TYPES.includes(type)) {
-      throw new InvalidGameTypeError(type, FGameType.#VALID_TYPES);
+      throw InvalidGameTypeError.create(type, FGameType.#VALID_TYPES);
     }
   }
 

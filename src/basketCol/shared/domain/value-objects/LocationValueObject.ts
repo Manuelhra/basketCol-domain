@@ -25,29 +25,29 @@ export abstract class LocationValueObject extends ObjectValueObject<ILocationVal
 
   private static ensurePropIsDefined(propertyValue: IItem, propertyName: string): void {
     if (propertyValue === null || propertyValue === undefined) {
-      throw new InvalidPropertyTypeError(propertyName, '{ code: string; label: string }', typeof propertyValue);
+      throw InvalidPropertyTypeError.create(propertyName, '{ code: string; label: string }', typeof propertyValue);
     }
 
     if (propertyValue.code === null || propertyValue.code === undefined || typeof propertyValue.code !== 'string') {
-      throw new InvalidPropertyTypeError(`${propertyName}.code`, 'string', typeof propertyValue);
+      throw InvalidPropertyTypeError.create(`${propertyName}.code`, 'string', typeof propertyValue);
     }
 
     if (propertyValue.label === null || propertyValue.label === undefined || typeof propertyValue.label !== 'string') {
-      throw new InvalidPropertyTypeError(`${propertyName}.label`, 'string', typeof propertyValue);
+      throw InvalidPropertyTypeError.create(`${propertyName}.label`, 'string', typeof propertyValue);
     }
   }
 
   private static ensureCoordsIsDefined(coords: { lat: number; lng: number; }): void {
     if (coords === null || coords === undefined) {
-      throw new InvalidPropertyTypeError('coords', '{ lat: number; lng: number; }', typeof coords);
+      throw InvalidPropertyTypeError.create('coords', '{ lat: number; lng: number; }', typeof coords);
     }
 
     if (coords.lat === null || coords.lat === undefined || typeof coords.lat !== 'number') {
-      throw new InvalidPropertyTypeError('coords.lat', 'number', typeof coords.lat);
+      throw InvalidPropertyTypeError.create('coords.lat', 'number', typeof coords.lat);
     }
 
     if (coords.lng === null || coords.lng === undefined || typeof coords.lng !== 'number') {
-      throw new InvalidPropertyTypeError('coords.lng', 'number', typeof coords.lng);
+      throw InvalidPropertyTypeError.create('coords.lng', 'number', typeof coords.lng);
     }
   }
 }

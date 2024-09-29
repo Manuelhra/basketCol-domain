@@ -17,7 +17,7 @@ export abstract class ReferencedLeagueSeasonId extends ValueObject<LeagueSeasonI
 
   private ensureIsLeagueSeasonId(value: LeagueSeasonId): void {
     if (!(value instanceof LeagueSeasonId)) {
-      throw new InvalidLeagueSeasonIdInstanceError();
+      throw InvalidLeagueSeasonIdInstanceError.create();
     }
   }
 }

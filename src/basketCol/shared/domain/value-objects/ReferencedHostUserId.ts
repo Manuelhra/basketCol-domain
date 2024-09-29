@@ -17,7 +17,7 @@ export abstract class ReferencedHostUserId extends ValueObject<HostUserId> {
 
   private ensureIsHostUserId(value: HostUserId): void {
     if (!(value instanceof HostUserId)) {
-      throw new InvalidHostUserIdInstanceError();
+      throw InvalidHostUserIdInstanceError.create();
     }
   }
 }

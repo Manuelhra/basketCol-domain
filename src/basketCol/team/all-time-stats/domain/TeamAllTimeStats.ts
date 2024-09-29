@@ -26,7 +26,7 @@ import { TATStatsUpdatedAt } from './value-objects/TATStatsUpdatedAt';
 export class TeamAllTimeStats extends Stats<ITeamAllTimeStatsPrimitives> {
   readonly #teamId: TATStatsTeamId;
 
-  public constructor(
+  private constructor(
     id: string,
     totalGamesPlayed: number,
     totalGamesWon: number,

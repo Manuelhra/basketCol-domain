@@ -4,20 +4,26 @@ import { LeagueFounderUserNotFoundError } from '../exceptions/LeagueFounderUserN
 import { ILeagueFounderUserRepository } from '../repository/ILeagueFounderUserRepository';
 import { LeagueFounderUserId } from '../value-objects/LeagueFounderUserId';
 
+type Dependencies = {
+  leagueFounderUserRepository: ILeagueFounderUserRepository;
+};
+
 export class LeagueFounderUserValidationService {
   readonly #leagueFounderUserRepository: ILeagueFounderUserRepository;
 
-  constructor(dependencies: {
-    leagueFounderUserRepository: ILeagueFounderUserRepository;
-  }) {
+  private constructor(dependencies: Dependencies) {
     this.#leagueFounderUserRepository = dependencies.leagueFounderUserRepository;
+  }
+
+  public static create(dependencies: Dependencies): LeagueFounderUserValidationService {
+    return new LeagueFounderUserValidationService(dependencies);
   }
 
   public async ensureFounderUserExists(leagueFounderUserId: LeagueFounderUserId): Promise<void> {
     const leagueFounderUserFound: Nullable<LeagueFounderUser> = await this.#leagueFounderUserRepository.searchById(leagueFounderUserId);
 
     if (leagueFounderUserFound === undefined || leagueFounderUserFound === null) {
-      throw new LeagueFounderUserNotFoundError(leagueFounderUserId);
+      throw LeagueFounderUserNotFoundError.create(leagueFounderUserId);
     }
   }
 }

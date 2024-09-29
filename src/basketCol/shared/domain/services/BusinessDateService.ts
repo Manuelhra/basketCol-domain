@@ -12,7 +12,7 @@ export class BusinessDateService {
 
   public ensureNotGreaterThan<T extends DateValueObject, U extends DateValueObject>(date1: T, date2: U): void {
     if (date1.toDate().getTime() > date2.toDate().getTime()) {
-      throw new DateGreaterThanError(date1, date2);
+      throw DateGreaterThanError.create(date1, date2);
     }
   }
 }

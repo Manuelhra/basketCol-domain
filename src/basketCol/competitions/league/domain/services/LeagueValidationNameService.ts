@@ -4,20 +4,26 @@ import { DuplicateLeagueNameError } from '../exceptions/DuplicateLeagueNameError
 import { ILeagueRepository } from '../repository/ILeagueRepository';
 import { LeagueName } from '../value-objects/LeagueName';
 
+type Dependencies = {
+  leagueRepository: ILeagueRepository
+};
+
 export class LeagueValidationNameService {
   readonly #leagueRepository: ILeagueRepository;
 
-  constructor(dependencies: {
-    leagueRepository: ILeagueRepository
-  }) {
+  private constructor(dependencies: Dependencies) {
     this.#leagueRepository = dependencies.leagueRepository;
+  }
+
+  public static create(dependencies: Dependencies): LeagueValidationNameService {
+    return new LeagueValidationNameService(dependencies);
   }
 
   public async validateUniqueShortName(leagueName: LeagueName): Promise<void> {
     const leagueFound: Nullable<League> = await this.#leagueRepository.searchByShortName(leagueName);
 
     if (leagueFound) {
-      throw new DuplicateLeagueNameError(leagueName, 'SHORT_NAME');
+      throw DuplicateLeagueNameError.create(leagueName, 'SHORT_NAME');
     }
   }
 
@@ -25,7 +31,7 @@ export class LeagueValidationNameService {
     const leagueFound: Nullable<League> = await this.#leagueRepository.searchByOfficialName(leagueName);
 
     if (leagueFound) {
-      throw new DuplicateLeagueNameError(leagueName, 'OFFICIAL_NAME');
+      throw DuplicateLeagueNameError.create(leagueName, 'OFFICIAL_NAME');
     }
   }
 }

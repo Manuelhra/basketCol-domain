@@ -1,7 +1,7 @@
 import { StringValueObject } from '../../../../shared/domain/value-objects/StringValueObject';
 
 export class LeagueLevel extends StringValueObject {
-  constructor(value: string) {
+  private constructor(value: string) {
     super(value, 'level');
   }
 

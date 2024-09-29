@@ -10,7 +10,7 @@ export abstract class IntegerValueObject extends PrimitiveValueObject<number> {
 
   private ensureIsInteger(value: number, propertyName: string): void {
     if (!Number.isInteger(value)) {
-      throw new NotIntegerError(propertyName, value);
+      throw NotIntegerError.create(propertyName, value);
     }
   }
 }

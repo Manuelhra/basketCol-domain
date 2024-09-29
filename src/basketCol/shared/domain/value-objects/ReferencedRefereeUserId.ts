@@ -17,7 +17,7 @@ export abstract class ReferencedRefereeUserId extends ValueObject<RefereeUserId>
 
   private static ensureIsRefereeUserId(value: RefereeUserId): void {
     if (!(value instanceof RefereeUserId)) {
-      throw new InvalidRefereeUserIdInstanceError();
+      throw InvalidRefereeUserIdInstanceError.create();
     }
   }
 }

@@ -1,10 +1,14 @@
 import { RootError } from './RootError';
 
 export class InvalidLeagueIdInstanceError extends RootError {
-  constructor() {
+  private constructor() {
     const message = 'Value is not an instance of LeagueId';
     super(message);
     this.name = 'InvalidLeagueIdError';
+  }
+
+  public static create(): InvalidLeagueIdInstanceError {
+    return new InvalidLeagueIdInstanceError();
   }
 
   public override logError(): string {

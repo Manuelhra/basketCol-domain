@@ -19,7 +19,7 @@ export class Court extends Facility<ICourtPrimitives> {
 
   readonly #facilityId: CourtNullableFacilityId;
 
-  constructor(
+  private constructor(
     id: string,
     officialName: string,
     establishmentDate: string,

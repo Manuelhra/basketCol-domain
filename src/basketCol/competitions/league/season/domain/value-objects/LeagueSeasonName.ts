@@ -5,23 +5,23 @@ import { StringValueObject } from '../../../../../shared/domain/value-objects/St
 export class LeagueSeasonName extends StringValueObject {
   static readonly #LENGTH: { min: number; max: number } = { min: 8, max: 20 } as const;
 
-  constructor(value: string) {
+  private constructor(value: string) {
     super(value, 'name');
 
-    LeagueSeasonName.ensureIsValidName(value, 'name');
+    LeagueSeasonName.#ensureIsValidName(value, 'name');
   }
 
   public static create(value: string): LeagueSeasonName {
     return new LeagueSeasonName(value);
   }
 
-  private static ensureIsValidName(value: string, propertyName: string): void {
+  static #ensureIsValidName(value: string, propertyName: string): void {
     if (value.length < LeagueSeasonName.#LENGTH.min) {
-      throw new PropertyLengthTooShortError(propertyName, LeagueSeasonName.#LENGTH.min, value.length);
+      throw PropertyLengthTooShortError.create(propertyName, LeagueSeasonName.#LENGTH.min, value.length);
     }
 
     if (value.length > LeagueSeasonName.#LENGTH.max) {
-      throw new PropertyLengthExceededError(propertyName, LeagueSeasonName.#LENGTH.max, value.length);
+      throw PropertyLengthExceededError.create(propertyName, LeagueSeasonName.#LENGTH.max, value.length);
     }
   }
 }

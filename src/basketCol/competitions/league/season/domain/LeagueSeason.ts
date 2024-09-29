@@ -32,7 +32,7 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeasonPrimitives> {
 
   readonly #leagueId: LSReferencedLeagueId;
 
-  constructor(
+  private constructor(
     id: string,
     name: string,
     startDate: string,
@@ -56,7 +56,7 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeasonPrimitives> {
     this.#courtIdList = LSReferencedCourtIdList.create(courtIdList);
     this.#leagueId = LSReferencedLeagueId.create(leagueId);
 
-    this.validateDates();
+    this.#validateDates();
   }
 
   public override toPrimitives(): ILeagueSeasonPrimitives {
@@ -97,49 +97,49 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeasonPrimitives> {
     );
   }
 
-  private validateDates(): void {
-    const now = this.getCurrentDateString();
+  #validateDates(): void {
+    const now = this.#getCurrentDateString();
 
-    this.validateStartDateAfterPresent(now);
-    this.validateEndDateAfterPresent(now);
-    this.validateStartDateHasPreparationTime(now);
-    this.validateEndDateAfterStartDate();
-    this.validateMinimumSeasonDuration();
+    this.#validateStartDateAfterPresent(now);
+    this.#validateEndDateAfterPresent(now);
+    this.#validateStartDateHasPreparationTime(now);
+    this.#validateEndDateAfterStartDate();
+    this.#validateMinimumSeasonDuration();
   }
 
-  private validateStartDateAfterPresent(now: string): void {
-    if (this.compareDates(this.#startDate.value, now) <= 0) {
-      throw new LeagueSeasonStartDateInPastError(this.#startDate.value, now);
+  #validateStartDateAfterPresent(now: string): void {
+    if (this.#compareDates(this.#startDate.value, now) <= 0) {
+      throw LeagueSeasonStartDateInPastError.create(this.#startDate.value, now);
     }
   }
 
-  private validateEndDateAfterPresent(now: string): void {
-    if (this.compareDates(this.#endDate.value, now) <= 0) {
-      throw new LeagueSeasonEndDateInPastError(this.#endDate.value, now);
+  #validateEndDateAfterPresent(now: string): void {
+    if (this.#compareDates(this.#endDate.value, now) <= 0) {
+      throw LeagueSeasonEndDateInPastError.create(this.#endDate.value, now);
     }
   }
 
-  private validateStartDateHasPreparationTime(now: string): void {
-    const minimumStartDate = this.addDaysToDateString(now, LeagueSeason.#MINIMUM_PREPARATION_DAYS);
-    if (this.compareDates(this.#startDate.value, minimumStartDate) < 0) {
-      throw new LeagueSeasonInsufficientPreparationTimeError(this.#startDate.value, minimumStartDate, LeagueSeason.#MINIMUM_PREPARATION_DAYS);
+  #validateStartDateHasPreparationTime(now: string): void {
+    const minimumStartDate = this.#addDaysToDateString(now, LeagueSeason.#MINIMUM_PREPARATION_DAYS);
+    if (this.#compareDates(this.#startDate.value, minimumStartDate) < 0) {
+      throw LeagueSeasonInsufficientPreparationTimeError.create(this.#startDate.value, minimumStartDate, LeagueSeason.#MINIMUM_PREPARATION_DAYS);
     }
   }
 
-  private validateEndDateAfterStartDate(): void {
-    if (this.compareDates(this.#endDate.value, this.#startDate.value) <= 0) {
-      throw new LeagueSeasonEndDateBeforeStartDateError(this.#startDate.value, this.#endDate.value);
+  #validateEndDateAfterStartDate(): void {
+    if (this.#compareDates(this.#endDate.value, this.#startDate.value) <= 0) {
+      throw LeagueSeasonEndDateBeforeStartDateError.create(this.#startDate.value, this.#endDate.value);
     }
   }
 
-  private validateMinimumSeasonDuration(): void {
-    const minimumEndDate = this.addDaysToDateString(this.#startDate.value, LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS);
-    if (this.compareDates(this.#endDate.value, minimumEndDate) < 0) {
-      throw new LeagueSeasonInsufficientDurationError(this.#startDate.value, this.#endDate.value, LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS);
+  #validateMinimumSeasonDuration(): void {
+    const minimumEndDate = this.#addDaysToDateString(this.#startDate.value, LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS);
+    if (this.#compareDates(this.#endDate.value, minimumEndDate) < 0) {
+      throw LeagueSeasonInsufficientDurationError.create(this.#startDate.value, this.#endDate.value, LeagueSeason.#MINIMUM_SEASON_DURATION_DAYS);
     }
   }
 
-  private getCurrentDateString(): string {
+  #getCurrentDateString(): string {
     const now = new Date();
     const day = String(now.getDate()).padStart(2, '0');
     const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -147,21 +147,21 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeasonPrimitives> {
     return `${day}/${month}/${year}`;
   }
 
-  private addDaysToDateString(dateString: string, days: number): string {
+  #addDaysToDateString(dateString: string, days: number): string {
     const [day, month, year] = dateString.split('/').map(Number);
     const date = new Date(year, month - 1, day);
     date.setDate(date.getDate() + days);
-    return this.formatDate(date);
+    return this.#formatDate(date);
   }
 
-  private formatDate(date: Date): string {
+  #formatDate(date: Date): string {
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   }
 
-  private compareDates(date1: string, date2: string): number {
+  #compareDates(date1: string, date2: string): number {
     const [day1, month1, year1] = date1.split('/').map(Number);
     const [day2, month2, year2] = date2.split('/').map(Number);
 

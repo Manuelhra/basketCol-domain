@@ -5,7 +5,7 @@ import { ValueObject } from './ValueObject';
 
 export abstract class ReferencedCourtIdList extends ValueObject<CourtId[]> {
   protected constructor(value: string[]) {
-    const courtIdList: CourtId[] = value.map((courtId: string) => new CourtId(courtId));
+    const courtIdList: CourtId[] = value.map((courtId: string) => CourtId.create(courtId));
 
     super(courtIdList, 'courtIdList', 'array of CourtId');
 
@@ -19,13 +19,13 @@ export abstract class ReferencedCourtIdList extends ValueObject<CourtId[]> {
 
   private ensureCourtIdListIsNotEmpty(courtIdList: CourtId[]): void {
     if (courtIdList.length === 0) {
-      throw new EmptyCourtIdListError();
+      throw EmptyCourtIdListError.create();
     }
   }
 
   private ensureAllAreCourtIds(courtIdList: CourtId[]): void {
     if (!courtIdList.every((courtId: CourtId) => courtId instanceof CourtId)) {
-      throw new InvalidCourtIdListElementError();
+      throw InvalidCourtIdListElementError.create();
     }
   }
 }

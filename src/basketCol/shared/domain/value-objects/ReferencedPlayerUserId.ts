@@ -17,7 +17,7 @@ export abstract class ReferencedPlayerUserId extends ValueObject<PlayerUserId> {
 
   private ensureIsPlayerUserId(value: PlayerUserId): void {
     if (!(value instanceof PlayerUserId)) {
-      throw new InvalidPlayerUserIdInstanceError();
+      throw InvalidPlayerUserIdInstanceError.create();
     }
   }
 }

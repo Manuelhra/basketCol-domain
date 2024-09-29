@@ -20,13 +20,13 @@ export abstract class ReferencedGymIdList extends ValueObject<GymId[]> {
 
   private ensureGymIdListIsNotEmpty(gymIdList: GymId[]): void {
     if (gymIdList.length === 0) {
-      throw new EmptyGymIdListError();
+      throw EmptyGymIdListError.create();
     }
   }
 
   private ensureAllAreGymIds(gymIdList: GymId[]): void {
     if (!gymIdList.every((gymId: GymId) => gymId instanceof GymId)) {
-      throw new InvalidGymIdListElementError();
+      throw InvalidGymIdListElementError.create();
     }
   }
 }
