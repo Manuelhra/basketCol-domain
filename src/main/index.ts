@@ -259,7 +259,10 @@ export {
 } from '../basketCol/facilities/shared/domain/value-objects';
 
 // Shared
-export { Either } from '../basketCol/shared/domain/Either';
+export { Either } from '../basketCol/shared/domain/either/Either';
+export { Result } from '../basketCol/shared/domain/either/Result';
+export { DomainError } from '../basketCol/shared/domain/DomainError';
+export { IDomainError } from '../basketCol/shared/domain/IDomainError';
 export { AggregateRoot } from '../basketCol/shared/domain/AggregateRoot';
 export { IAggregateRoot } from '../basketCol/shared/domain/IAggregateRoot';
 export { INewableClass } from '../basketCol/shared/domain/INewableClass';
