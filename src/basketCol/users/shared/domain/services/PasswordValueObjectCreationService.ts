@@ -5,6 +5,10 @@ import { IPasswordValueObjectCreationService } from './IPasswordValueObjectCreat
  * Service for creating UserPassword value objects from hashed password values.
  */
 export class PasswordValueObjectCreationService implements IPasswordValueObjectCreationService {
+  public static create(): PasswordValueObjectCreationService {
+    return new PasswordValueObjectCreationService();
+  }
+
   /**
    * Creates a UserPassword value object from a hashed password value.
    * @param hashedPassword The hashed password string.
