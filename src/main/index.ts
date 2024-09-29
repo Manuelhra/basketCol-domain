@@ -259,6 +259,7 @@ export {
 } from '../basketCol/facilities/shared/domain/value-objects';
 
 // Shared
+export { Either } from '../basketCol/shared/domain/Either';
 export { AggregateRoot } from '../basketCol/shared/domain/AggregateRoot';
 export { IAggregateRoot } from '../basketCol/shared/domain/IAggregateRoot';
 export { INewableClass } from '../basketCol/shared/domain/INewableClass';
