@@ -44,8 +44,8 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     this.#nickname = PlayerUserNickname.create(nickname);
   }
 
-  public get nickname(): string {
-    return this.#nickname.value;
+  public get nickname(): PlayerUserNickname {
+    return this.#nickname;
   }
 
   public override toPrimitives(): IPlayerUserPrimitives {
