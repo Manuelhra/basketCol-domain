@@ -4,11 +4,11 @@ import { DateValueObject } from './value-objects/DateValueObject';
 import { UuidValueObject } from './value-objects/UuidValueObject';
 
 export abstract class AggregateRoot<I extends IAggregateRootPrimitives> {
-  protected readonly _id: UuidValueObject;
+  private readonly _id: UuidValueObject;
 
-  protected readonly createdAt: DateValueObject;
+  private readonly _createdAt: DateValueObject;
 
-  protected readonly updatedAt: DateValueObject;
+  private readonly _updatedAt: DateValueObject;
 
   protected constructor(
     id: UuidValueObject,
@@ -16,14 +16,22 @@ export abstract class AggregateRoot<I extends IAggregateRootPrimitives> {
     updatedAt: DateValueObject,
   ) {
     this._id = id;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
+    this._createdAt = createdAt;
+    this._updatedAt = updatedAt;
   }
 
   public abstract toPrimitives(): I;
 
   public get id(): UuidValueObject {
     return this._id;
+  }
+
+  public get createdAt(): DateValueObject {
+    return this._createdAt;
+  }
+
+  public get updatedAt(): DateValueObject {
+    return this._updatedAt;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
