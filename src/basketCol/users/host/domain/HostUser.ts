@@ -82,18 +82,19 @@ export class HostUser extends User<IHostUserPrimitives> {
     name: { firstName: string; lastName: string; },
     biography: string,
     email: { value: string; verified: boolean },
-    password: string,
     accountState: string,
     subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ): HostUser {
+    const defaultPassword = 'defaultPassword';
+
     return new HostUser(
       id,
       name,
       biography,
       email,
-      password,
+      defaultPassword,
       accountState,
       subscriptionType,
       createdAt,

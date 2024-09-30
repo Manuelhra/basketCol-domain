@@ -82,18 +82,19 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
     name: { firstName: string; lastName: string; },
     biography: string,
     email: { value: string; verified: boolean; },
-    password: string,
     accountState: string,
     subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ): LeagueFounderUser {
+    const defaultPassword = 'defaultPassword';
+
     return new LeagueFounderUser(
       id,
       name,
       biography,
       email,
-      password,
+      defaultPassword,
       accountState,
       subscriptionType,
       createdAt,

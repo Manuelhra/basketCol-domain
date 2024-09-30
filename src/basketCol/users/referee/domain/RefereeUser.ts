@@ -82,18 +82,19 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     name: { firstName: string; lastName: string; },
     biography: string,
     email: { value: string; verified: boolean },
-    password: string,
     accountState: string,
     subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ): RefereeUser {
+    const defaultPassword = 'defaultPassword';
+
     return new RefereeUser(
       id,
       name,
       biography,
       email,
-      password,
+      defaultPassword,
       accountState,
       subscriptionType,
       createdAt,

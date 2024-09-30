@@ -92,19 +92,20 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     biography: string,
     nickname: string,
     email: { value: string; verified: boolean },
-    password: string,
     accountState: string,
     subscriptionType: string,
     createdAt: string,
     updatedAt: string,
   ): PlayerUser {
+    const defaultPassword = 'defaultPassword';
+
     return new PlayerUser(
       id,
       name,
       biography,
       nickname,
       email,
-      password,
+      defaultPassword,
       accountState,
       subscriptionType,
       createdAt,
