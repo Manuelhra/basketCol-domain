@@ -20,7 +20,7 @@ export abstract class AggregateRoot<I extends IAggregateRootPrimitives> {
     this._updatedAt = updatedAt;
   }
 
-  public abstract toPrimitives(): I;
+  public abstract get toPrimitives(): I;
 
   public get id(): UuidValueObject {
     return this._id;

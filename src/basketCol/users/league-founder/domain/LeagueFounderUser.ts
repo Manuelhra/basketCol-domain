@@ -38,7 +38,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
     );
   }
 
-  public override toPrimitives(): ILeagueFounderUserPrimitives {
+  public override get toPrimitives(): ILeagueFounderUserPrimitives {
     return {
       id: this.id.value,
       name: this.name.value,

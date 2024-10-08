@@ -38,7 +38,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     );
   }
 
-  public override toPrimitives(): IHostUserPrimitives {
+  public override get toPrimitives(): IHostUserPrimitives {
     return {
       id: this.id.value,
       name: this.name.value,

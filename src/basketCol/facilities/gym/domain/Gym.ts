@@ -30,7 +30,7 @@ export class Gym extends Facility<IGymPrimitives> {
     );
   }
 
-  public override toPrimitives(): IGymPrimitives {
+  public override get toPrimitives(): IGymPrimitives {
     return {
       id: this.id.value,
       officialName: this.officialName.value,

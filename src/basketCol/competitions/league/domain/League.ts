@@ -59,7 +59,7 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
     this.#isActive = LeagueIsActive.create(isActive);
   }
 
-  public override toPrimitives(): ILeaguePrimitives {
+  public override get toPrimitives(): ILeaguePrimitives {
     return {
       id: this.id.value,
       name: this.#name.value,

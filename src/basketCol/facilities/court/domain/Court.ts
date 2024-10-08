@@ -46,7 +46,7 @@ export class Court extends Facility<ICourtPrimitives> {
     this.#facilityId = CourtNullableFacilityId.create(facilityId);
   }
 
-  public override toPrimitives(): ICourtPrimitives {
+  public override get toPrimitives(): ICourtPrimitives {
     return {
       id: this.id.value,
       officialName: this.officialName.value,

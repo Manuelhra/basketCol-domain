@@ -48,7 +48,7 @@ export class PlayerUserPhysicalAttributes extends AggregateRoot<IPlayerUserPhysi
     this.#playerUserId = PUPAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserPhysicalAttributesPrimitives {
+  public override get toPrimitives(): IPlayerUserPhysicalAttributesPrimitives {
     return {
       id: this.id.value,
       speed: this.#speed.value,

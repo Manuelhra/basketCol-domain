@@ -634,7 +634,7 @@ export {
 export { User } from '../basketCol/users/shared/domain/User';
 export { IUserPrimitives } from '../basketCol/users/shared/domain/IUserPrimitives';
 export { AnySystemUserType } from '../basketCol/users/shared/domain/AnySystemUserType';
-export { AnySystemUserTypePrimitives } from '../basketCol/users/shared/domain/AnySystemUserTypePrimitives';
+export { IAnySystemUserTypePrimitives } from '../basketCol/users/shared/domain/IAnySystemUserTypePrimitives';
 export {
   EmailAlreadyExistsError,
   InvalidEmailPolicyError,

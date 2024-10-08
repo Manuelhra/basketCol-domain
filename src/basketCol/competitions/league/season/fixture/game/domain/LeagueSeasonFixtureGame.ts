@@ -53,7 +53,7 @@ export class LeagueSeasonFixtureGame extends FixtureGame<ILeagueSeasonFixtureGam
     );
   }
 
-  public override toPrimitives(): ILeagueSeasonFixtureGamePrimitives {
+  public override get toPrimitives(): ILeagueSeasonFixtureGamePrimitives {
     return {
       id: this.id.value,
       startTime: this.startTime.timeAsString,

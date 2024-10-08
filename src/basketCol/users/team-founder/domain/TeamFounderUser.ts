@@ -38,7 +38,7 @@ export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
     );
   }
 
-  public override toPrimitives(): ITeamFounderUserPrimitives {
+  public override get toPrimitives(): ITeamFounderUserPrimitives {
     return {
       id: this.id.value,
       name: this.name.value,

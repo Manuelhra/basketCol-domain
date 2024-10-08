@@ -45,7 +45,7 @@ export class PlayerUserDefensiveAttributes extends AggregateRoot<IPlayerUserDefe
     this.#playerUserId = PUDAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserDefensiveAttributesPrimitives {
+  public override get toPrimitives(): IPlayerUserDefensiveAttributesPrimitives {
     return {
       id: this.id.value,
       interiorDefense: this.#interiorDefense.value,

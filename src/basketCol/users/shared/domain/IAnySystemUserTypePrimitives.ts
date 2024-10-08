@@ -4,4 +4,4 @@ import { IPlayerUserPrimitives } from '../../player/domain/IPlayerUserPrimitives
 import { IRefereeUserPrimitives } from '../../referee/domain/IRefereeUserPrimitives';
 import { ITeamFounderUserPrimitives } from '../../team-founder/domain/ITeamFounderUserPrimitives';
 
-export type AnySystemUserTypePrimitives = IHostUserPrimitives | IPlayerUserPrimitives | IRefereeUserPrimitives | ILeagueFounderUserPrimitives | ITeamFounderUserPrimitives;
+export type IAnySystemUserTypePrimitives = IHostUserPrimitives | IPlayerUserPrimitives | IRefereeUserPrimitives | ILeagueFounderUserPrimitives | ITeamFounderUserPrimitives;

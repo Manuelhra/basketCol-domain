@@ -59,7 +59,7 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeasonPrimitives> {
     this.#validateDates();
   }
 
-  public override toPrimitives(): ILeagueSeasonPrimitives {
+  public override get toPrimitives(): ILeagueSeasonPrimitives {
     return {
       id: this.id.value,
       name: this.#name.value,

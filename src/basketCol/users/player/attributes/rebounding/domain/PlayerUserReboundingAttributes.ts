@@ -33,7 +33,7 @@ export class PlayerUserReboundingAttributes extends AggregateRoot<IPlayerUserReb
     this.#playerUserId = PURAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserReboundingAttributesPrimitives {
+  public override get toPrimitives(): IPlayerUserReboundingAttributesPrimitives {
     return {
       id: this.id.value,
       offensiveRebound: this.#offensiveRebound.value,
