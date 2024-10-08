@@ -29,7 +29,7 @@ export class LeagueSeasonFixture extends Fixture<ILeagueSeasonFixturePrimitives>
     this.#leagueSeasonId = LSFixtureLeagueSeasonId.create(leagueSeasonId);
   }
 
-  public override toPrimitives(): ILeagueSeasonFixturePrimitives {
+  public override get toPrimitives(): ILeagueSeasonFixturePrimitives {
     return {
       id: this.id.value,
       date: this.date.dateAsString,

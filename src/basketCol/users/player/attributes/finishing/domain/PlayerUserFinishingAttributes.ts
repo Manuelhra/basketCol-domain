@@ -43,7 +43,7 @@ export class PlayerUserFinishingAttributes extends AggregateRoot<IPlayerUserFini
     this.#playerUserId = PUFAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserFinishingAttributesPrimitives {
+  public override get toPrimitives(): IPlayerUserFinishingAttributesPrimitives {
     return {
       id: this.id.value,
       drivingLayup: this.#drivingLayup.value,

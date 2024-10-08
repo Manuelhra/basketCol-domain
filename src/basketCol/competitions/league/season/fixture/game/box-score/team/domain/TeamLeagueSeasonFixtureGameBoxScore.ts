@@ -68,7 +68,7 @@ export class TeamLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<ITe
     this.#teamId = TLSFGBoxScoreTeamId.create(teamId);
   }
 
-  public override toPrimitives(): ITeamLeagueSeasonFixtureGameBoxScorePrimitives {
+  public override get toPrimitives(): ITeamLeagueSeasonFixtureGameBoxScorePrimitives {
     return {
       id: this.id.value,
       points: this.points.value,

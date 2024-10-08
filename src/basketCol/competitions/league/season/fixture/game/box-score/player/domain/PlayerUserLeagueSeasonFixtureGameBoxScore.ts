@@ -68,7 +68,7 @@ export class PlayerUserLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxSco
     this.#playerUserId = PLSFGBoxScorePlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserLeagueSeasonFixtureGameBoxScorePrimitives {
+  public override get toPrimitives(): IPlayerUserLeagueSeasonFixtureGameBoxScorePrimitives {
     return {
       id: this.id.value,
       points: this.points.value,

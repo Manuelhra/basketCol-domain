@@ -43,7 +43,7 @@ export class PlayerUserShootingAttributes extends AggregateRoot<IPlayerUserShoot
     this.#playerUserId = PUSAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserShootingAttributesPrimitives {
+  public override get toPrimitives(): IPlayerUserShootingAttributesPrimitives {
     return {
       id: this.id.value,
       closeShot: this.#closeShot.value,

@@ -77,7 +77,7 @@ export class TeamAllTimeStats extends Stats<ITeamAllTimeStatsPrimitives> {
     this.#teamId = TATStatsTeamId.create(teamId);
   }
 
-  public override toPrimitives(): ITeamAllTimeStatsPrimitives {
+  public override get toPrimitives(): ITeamAllTimeStatsPrimitives {
     return {
       id: this.id.value,
       totalGamesPlayed: this.totalGamesPlayed.value,

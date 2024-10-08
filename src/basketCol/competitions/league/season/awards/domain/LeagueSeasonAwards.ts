@@ -58,7 +58,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
     this.#leagueSeasonId = LSAReferencedLeagueSeasonId.create(leagueSeasonId);
   }
 
-  public override toPrimitives(): ILeagueSeasonAwardsPrimitives {
+  public override get toPrimitives(): ILeagueSeasonAwardsPrimitives {
     return {
       id: this.id.value,
       bestThreePointShooterId: this.#bestThreePointShooterId.playerUserIdAsString,

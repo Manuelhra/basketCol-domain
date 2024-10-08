@@ -38,7 +38,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     );
   }
 
-  public override toPrimitives(): IRefereeUserPrimitives {
+  public override get toPrimitives(): IRefereeUserPrimitives {
     return {
       id: this.id.value,
       name: this.name.value,

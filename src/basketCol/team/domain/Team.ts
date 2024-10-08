@@ -28,7 +28,7 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
     this.#teamFounderUserId = TReferencedTeamFounderUserId.create(teamFounderUserId);
   }
 
-  public override toPrimitives(): ITeamPrimitives {
+  public override get toPrimitives(): ITeamPrimitives {
     return {
       id: this.id.value,
       officialName: this.#officialName.value,

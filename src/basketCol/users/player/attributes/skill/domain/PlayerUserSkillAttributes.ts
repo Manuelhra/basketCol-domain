@@ -38,7 +38,7 @@ export class PlayerUserSkillAttributes extends AggregateRoot<IPlayerUserSkillAtt
     this.#playerUserId = PUSAReferencedPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserSkillAttributesPrimitives {
+  public override get toPrimitives(): IPlayerUserSkillAttributesPrimitives {
     return {
       id: this.id.value,
       passAccuracy: this.#passAccuracy.value,

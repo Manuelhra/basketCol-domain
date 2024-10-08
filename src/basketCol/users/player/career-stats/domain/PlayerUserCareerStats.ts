@@ -77,7 +77,7 @@ export class PlayerUserCareerStats extends Stats<IPlayerUserCareerStatsPrimitive
     this.#playerUserId = PUCStatsPlayerUserId.create(playerUserId);
   }
 
-  public override toPrimitives(): IPlayerUserCareerStatsPrimitives {
+  public override get toPrimitives(): IPlayerUserCareerStatsPrimitives {
     return {
       id: this.id.value,
       totalGamesPlayed: this.totalGamesPlayed.value,
