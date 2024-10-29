@@ -10,6 +10,7 @@ import { TeamFounderUserType } from './value-objects/TeamFounderUserType';
 import { TeamFounderUserUpdatedAt } from './value-objects/TeamFounderUserUpdatedAt';
 import { TeamFounderUserAccountState } from './value-objects/TeamFounderUserAccountState';
 import { TeamFounderUserSubscriptionType } from './value-objects/TeamFounderUserSubscriptionType';
+import { TeamFounderUserProfileImage } from './value-objects/TeamFounderUserProfileImage';
 
 export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
   private constructor(
@@ -20,6 +21,7 @@ export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
     options?: { skipPasswordValidation: boolean; },
@@ -33,6 +35,7 @@ export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
       TeamFounderUserType.create(),
       TeamFounderUserAccountState.create(accountState),
       TeamFounderUserSubscriptionType.create(subscriptionType),
+      TeamFounderUserProfileImage.create(profileImage),
       TeamFounderUserCreatedAt.create(createdAt),
       TeamFounderUserUpdatedAt.create(updatedAt),
     );
@@ -48,6 +51,7 @@ export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
       type: this.type.value,
       accountStatus: this.accountStatus.value,
       subscriptionType: this.subscriptionType.value,
+      profileImage: this.profileImage.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
@@ -61,6 +65,7 @@ export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
   ): TeamFounderUser {
@@ -72,6 +77,7 @@ export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
       password,
       accountState,
       subscriptionType,
+      profileImage,
       createdAt,
       updatedAt,
     );
@@ -84,6 +90,7 @@ export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
     email: { value: string; verified: boolean; },
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
   ): TeamFounderUser {
@@ -97,6 +104,7 @@ export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
       defaultPassword,
       accountState,
       subscriptionType,
+      profileImage,
       createdAt,
       updatedAt,
     );

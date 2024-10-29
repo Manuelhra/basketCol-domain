@@ -472,6 +472,7 @@ export {
   PlayerUserUpdatedAt,
   PlayerUserAccountState,
   PlayerUserSubscriptionType,
+  PlayerUserProfileImage,
 } from '../basketCol/users/player/domain/value-objects';
 
 // Users Player Attributes Defensive
@@ -611,6 +612,7 @@ export {
   RefereeUserAccountState,
   RefereeUserSubscriptionType,
   RefereeUserUpdatedAt,
+  RefereeUserProfileImage,
 } from '../basketCol/users/referee/domain/value-objects';
 
 // Users TeamFounder
@@ -630,6 +632,7 @@ export {
   TeamFounderUserType,
   TeamFounderUserUpdatedAt,
   TeamFounderUserId,
+  TeamFounderUserProfileImage,
 } from '../basketCol/users/team-founder/domain/value-objects';
 
 // Users Shared
