@@ -7,6 +7,7 @@ import { RefereeUserEmail } from './value-objects/RefereeUserEmail';
 import { RefereeUserId } from './value-objects/RefereeUserId';
 import { RefereeUserName } from './value-objects/RefereeUserName';
 import { RefereeUserPassword } from './value-objects/RefereeUserPassword';
+import { RefereeUserProfileImage } from './value-objects/RefereeUserProfileImage';
 import { RefereeUserSubscriptionType } from './value-objects/RefereeUserSubscriptionType';
 import { RefereeUserType } from './value-objects/RefereeUserType';
 import { RefereeUserUpdatedAt } from './value-objects/RefereeUserUpdatedAt';
@@ -20,6 +21,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
     options?: { skipPasswordValidation: boolean; },
@@ -33,6 +35,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
       RefereeUserType.create(),
       RefereeUserAccountState.create(accountState),
       RefereeUserSubscriptionType.create(subscriptionType),
+      RefereeUserProfileImage.create(profileImage),
       RefereeUserCreatedAt.create(createdAt),
       RefereeUserUpdatedAt.create(updatedAt),
     );
@@ -48,6 +51,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
       type: this.type.value,
       accountStatus: this.accountStatus.value,
       subscriptionType: this.subscriptionType.value,
+      profileImage: this.profileImage.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
@@ -61,6 +65,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
   ): RefereeUser {
@@ -72,6 +77,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
       password,
       accountState,
       subscriptionType,
+      profileImage,
       createdAt,
       updatedAt,
     );
@@ -84,6 +90,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     email: { value: string; verified: boolean },
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
   ): RefereeUser {
@@ -97,6 +104,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
       defaultPassword,
       accountState,
       subscriptionType,
+      profileImage,
       createdAt,
       updatedAt,
       { skipPasswordValidation: true },

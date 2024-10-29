@@ -11,6 +11,7 @@ import { PlayerUserType } from './value-objects/PlayerUserType';
 import { PlayerUserUpdatedAt } from './value-objects/PlayerUserUpdatedAt';
 import { PlayerUserAccountState } from './value-objects/PlayerUserAccountState';
 import { PlayerUserSubscriptionType } from './value-objects/PlayerUserSubscriptionType';
+import { PlayerUserProfileImage } from './value-objects/PlayerUserProfileImage';
 
 export class PlayerUser extends User<IPlayerUserPrimitives> {
   readonly #nickname: PlayerUserNickname;
@@ -24,6 +25,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
     options?: { skipPasswordValidation: boolean; },
@@ -37,6 +39,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
       PlayerUserType.create(),
       PlayerUserAccountState.create(accountState),
       PlayerUserSubscriptionType.create(subscriptionType),
+      PlayerUserProfileImage.create(profileImage),
       PlayerUserCreatedAt.create(createdAt),
       PlayerUserUpdatedAt.create(updatedAt),
     );
@@ -59,6 +62,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
       type: this.type.value,
       accountStatus: this.accountStatus.value,
       subscriptionType: this.subscriptionType.value,
+      profileImage: this.profileImage.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
@@ -73,6 +77,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
   ): PlayerUser {
@@ -85,6 +90,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
       password,
       accountState,
       subscriptionType,
+      profileImage,
       createdAt,
       updatedAt,
     );
@@ -98,6 +104,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     email: { value: string; verified: boolean },
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
   ): PlayerUser {
@@ -112,6 +119,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
       defaultPassword,
       accountState,
       subscriptionType,
+      profileImage,
       createdAt,
       updatedAt,
       { skipPasswordValidation: true },

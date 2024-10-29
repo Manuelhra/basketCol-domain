@@ -8,3 +8,4 @@ export { LeagueFounderUserType } from './LeagueFounderUserType';
 export { LeagueFounderUserUpdatedAt } from './LeagueFounderUserUpdatedAt';
 export { LeagueFounderUserAccountState } from './LeagueFounderUserAccountState';
 export { LeagueFounderUserSubscriptionType } from './LeagueFounderUserSubscriptionType';
+export { LeagueFounderUserProfileImage } from './LeagueFounderUserProfileImage';

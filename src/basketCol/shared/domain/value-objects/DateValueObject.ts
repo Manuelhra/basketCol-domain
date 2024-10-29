@@ -30,7 +30,7 @@ export abstract class DateValueObject extends StringValueObject {
     return new Date(year, month - 1, day);
   }
 
-  private static ensureIsValidDate(value: string) {
+  public static ensureIsValidDate(value: string) {
     if (DateValueObject.#dataRegex.test(value) === false) {
       throw InvalidDateFormatError.create(value, DateValueObject.#DATE_FORMAT);
     }

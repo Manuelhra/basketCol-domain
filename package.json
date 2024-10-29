@@ -3,7 +3,7 @@
     "browser": false
   },
   "name": "@basketcol/domain",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "main": "build/main/index.js",
   "types": "build/types/main/index.d.ts",
   "files": [

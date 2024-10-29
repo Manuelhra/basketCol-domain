@@ -430,6 +430,7 @@ export {
   HostUserType,
   HostUserAccountState,
   HostUserSubscriptionType,
+  HostUserProfileImage,
   HostUserUpdatedAt,
 } from '../basketCol/users/host/domain/value-objects';
 
@@ -450,6 +451,7 @@ export {
   LeagueFounderUserUpdatedAt,
   LeagueFounderUserAccountState,
   LeagueFounderUserSubscriptionType,
+  LeagueFounderUserProfileImage,
 } from '../basketCol/users/league-founder/domain/value-objects';
 
 // Users Player
@@ -470,6 +472,7 @@ export {
   PlayerUserUpdatedAt,
   PlayerUserAccountState,
   PlayerUserSubscriptionType,
+  PlayerUserProfileImage,
 } from '../basketCol/users/player/domain/value-objects';
 
 // Users Player Attributes Defensive
@@ -609,6 +612,7 @@ export {
   RefereeUserAccountState,
   RefereeUserSubscriptionType,
   RefereeUserUpdatedAt,
+  RefereeUserProfileImage,
 } from '../basketCol/users/referee/domain/value-objects';
 
 // Users TeamFounder
@@ -628,6 +632,7 @@ export {
   TeamFounderUserType,
   TeamFounderUserUpdatedAt,
   TeamFounderUserId,
+  TeamFounderUserProfileImage,
 } from '../basketCol/users/team-founder/domain/value-objects';
 
 // Users Shared
@@ -659,4 +664,5 @@ export {
   UserPassword,
   UserType,
   UserUpdatedAt,
+  UserProfileImage,
 } from '../basketCol/users/shared/domain/value-objects';

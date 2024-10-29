@@ -1,5 +1,6 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
 import { IUserPrimitives } from './IUserPrimitives';
+import { UserProfileImage } from './value-objects';
 import { UserAccountState } from './value-objects/UserAccountState';
 import { UserBiography } from './value-objects/UserBiography';
 import { UserCreatedAt } from './value-objects/UserCreatedAt';
@@ -26,6 +27,8 @@ export abstract class User<I extends IUserPrimitives> extends AggregateRoot<I> {
 
   protected readonly _subscriptionType: UserSubscriptionType;
 
+  protected readonly _profileImage: UserProfileImage;
+
   protected constructor(
     id: UserId,
     name: UserName,
@@ -35,6 +38,7 @@ export abstract class User<I extends IUserPrimitives> extends AggregateRoot<I> {
     type: UserType,
     accountStatus: UserAccountState,
     subscriptionType: UserSubscriptionType,
+    profileImage: UserProfileImage,
     createdAt: UserCreatedAt,
     updatedAt: UserUpdatedAt,
   ) {
@@ -47,6 +51,7 @@ export abstract class User<I extends IUserPrimitives> extends AggregateRoot<I> {
     this._type = type;
     this._accountStatus = accountStatus;
     this._subscriptionType = subscriptionType;
+    this._profileImage = profileImage;
   }
 
   public get name(): UserName {
@@ -75,5 +80,9 @@ export abstract class User<I extends IUserPrimitives> extends AggregateRoot<I> {
 
   public get subscriptionType(): UserSubscriptionType {
     return this._subscriptionType;
+  }
+
+  public get profileImage(): UserProfileImage {
+    return this._profileImage;
   }
 }

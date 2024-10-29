@@ -7,6 +7,7 @@ import { HostUserEmail } from './value-objects/HostUserEmail';
 import { HostUserId } from './value-objects/HostUserId';
 import { HostUserName } from './value-objects/HostUserName';
 import { HostUserPassword } from './value-objects/HostUserPassword';
+import { HostUserProfileImage } from './value-objects/HostUserProfileImage';
 import { HostUserSubscriptionType } from './value-objects/HostUserSubscriptionType';
 import { HostUserType } from './value-objects/HostUserType';
 import { HostUserUpdatedAt } from './value-objects/HostUserUpdatedAt';
@@ -20,6 +21,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
     options?: { skipPasswordValidation: boolean; },
@@ -33,6 +35,7 @@ export class HostUser extends User<IHostUserPrimitives> {
       HostUserType.create(),
       HostUserAccountState.create(accountState),
       HostUserSubscriptionType.create(subscriptionType),
+      HostUserProfileImage.create(profileImage),
       HostUserCreatedAt.create(createdAt),
       HostUserUpdatedAt.create(updatedAt),
     );
@@ -48,6 +51,7 @@ export class HostUser extends User<IHostUserPrimitives> {
       type: this.type.value,
       accountStatus: this.accountStatus.value,
       subscriptionType: this.subscriptionType.value,
+      profileImage: this.profileImage.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
@@ -61,6 +65,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
   ): HostUser {
@@ -72,6 +77,7 @@ export class HostUser extends User<IHostUserPrimitives> {
       password,
       accountState,
       subscriptionType,
+      profileImage,
       createdAt,
       updatedAt,
     );
@@ -84,6 +90,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     email: { value: string; verified: boolean },
     accountState: string,
     subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
     createdAt: string,
     updatedAt: string,
   ): HostUser {
@@ -97,6 +104,7 @@ export class HostUser extends User<IHostUserPrimitives> {
       defaultPassword,
       accountState,
       subscriptionType,
+      profileImage,
       createdAt,
       updatedAt,
       { skipPasswordValidation: true },
