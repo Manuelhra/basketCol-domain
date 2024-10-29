@@ -8,3 +8,4 @@ export { UserType } from './UserType';
 export { UserUpdatedAt } from './UserUpdatedAt';
 export { UserSubscriptionType } from './UserSubscriptionType';
 export { UserAccountState } from './UserAccountState';
+export { UserProfileImage } from './UserProfileImage';

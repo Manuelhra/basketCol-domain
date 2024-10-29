@@ -10,11 +10,11 @@ export abstract class UserName extends ValueObject<{ firstName: string; lastName
   protected constructor(value: IUserNameProps) {
     super(value, 'name', '{ firstName: string; lastName: string; }');
 
-    this.ensureIsValidValue(value.firstName, 'firstName');
-    this.ensureIsValidValue(value.lastName, 'lastName');
+    this.#ensureIsValidValue(value.firstName, 'firstName');
+    this.#ensureIsValidValue(value.lastName, 'lastName');
   }
 
-  private ensureIsValidValue(value: string, propertyName: string): void {
+  #ensureIsValidValue(value: string, propertyName: string): void {
     if (value === null || value === undefined || typeof value !== 'string') {
       throw InvalidPropertyTypeError.create(propertyName, 'string', typeof value);
     }

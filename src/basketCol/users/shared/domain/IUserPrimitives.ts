@@ -18,4 +18,16 @@ interface IUserIdentity {
   subscriptionType: string;
 }
 
-export interface IUserPrimitives extends IAggregateRootPrimitives, IUserCredentials, IUserIdentity, IUserAccount {}
+interface IUserMedia {
+  profileImage: {
+    url: string;
+    updatedAt: string;
+  };
+}
+
+export interface IUserPrimitives extends
+  IAggregateRootPrimitives,
+  IUserCredentials,
+  IUserIdentity,
+  IUserMedia,
+  IUserAccount {}

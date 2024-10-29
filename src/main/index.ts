@@ -430,6 +430,7 @@ export {
   HostUserType,
   HostUserAccountState,
   HostUserSubscriptionType,
+  HostUserProfileImage,
   HostUserUpdatedAt,
 } from '../basketCol/users/host/domain/value-objects';
 
@@ -450,6 +451,7 @@ export {
   LeagueFounderUserUpdatedAt,
   LeagueFounderUserAccountState,
   LeagueFounderUserSubscriptionType,
+  LeagueFounderUserProfileImage,
 } from '../basketCol/users/league-founder/domain/value-objects';
 
 // Users Player
@@ -659,4 +661,5 @@ export {
   UserPassword,
   UserType,
   UserUpdatedAt,
+  UserProfileImage,
 } from '../basketCol/users/shared/domain/value-objects';
