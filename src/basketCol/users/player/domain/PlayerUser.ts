@@ -96,6 +96,35 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     );
   }
 
+  public static override fromPrimitives(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    nickname: string,
+    email: { value: string; verified: boolean },
+    password: string,
+    accountState: string,
+    subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUser {
+    return new PlayerUser(
+      id,
+      name,
+      biography,
+      nickname,
+      email,
+      password,
+      accountState,
+      subscriptionType,
+      profileImage,
+      createdAt,
+      updatedAt,
+      { skipPasswordValidation: true },
+    );
+  }
+
   public static createWithoutPassword(
     id: string,
     name: { firstName: string; lastName: string; },

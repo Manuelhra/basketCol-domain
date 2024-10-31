@@ -83,6 +83,33 @@ export class TeamFounderUser extends User<ITeamFounderUserPrimitives> {
     );
   }
 
+  public static override fromPrimitives(
+    id: string,
+    name: { firstName: string; lastName: string; },
+    biography: string,
+    email: { value: string; verified: boolean; },
+    password: string,
+    accountState: string,
+    subscriptionType: string,
+    profileImage: { url: string; updatedAt: string; },
+    createdAt: string,
+    updatedAt: string,
+  ): TeamFounderUser {
+    return new TeamFounderUser(
+      id,
+      name,
+      biography,
+      email,
+      password,
+      accountState,
+      subscriptionType,
+      profileImage,
+      createdAt,
+      updatedAt,
+      { skipPasswordValidation: true },
+    );
+  }
+
   public static createWithoutPassword(
     id: string,
     name: { firstName: string; lastName: string; },
