@@ -38,4 +38,9 @@ export abstract class AggregateRoot<I extends IAggregateRootPrimitives> {
   public static create(..._args: any[]): AggregateRoot<any> {
     throw CreateMethodNotImplementedError.create(this.name);
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public static fromPrimitives(..._args: any[]): AggregateRoot<any> {
+    throw CreateMethodNotImplementedError.create(this.name);
+  }
 }
