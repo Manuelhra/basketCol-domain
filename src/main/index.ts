@@ -309,7 +309,7 @@ export {
   InvalidEnumValueError,
 } from '../basketCol/shared/domain/exceptions';
 export { HttpStatus } from '../basketCol/shared/domain/http/HttpStatus';
-export { BusinessDateService, IRepository, IdUniquenessValidatorService } from '../basketCol/shared/domain/services';
+export { BusinessDateService, IIdUniquenessValidatorServiceRepository, IdUniquenessValidatorService } from '../basketCol/shared/domain/services';
 export {
   BooleanValueObject,
   CentimeterHeightValueObject,

@@ -5,18 +5,18 @@ import { IdAlreadyExistsError } from '../exceptions/IdAlreadyExistsError';
 import { UuidValueObject } from '../value-objects/UuidValueObject';
 
 type Dependencies = {
-  repository: IRepository;
+  idUniquenessValidatorServiceRepository: IIdUniquenessValidatorServiceRepository;
 };
 
-export interface IRepository {
+export interface IIdUniquenessValidatorServiceRepository {
   searchById<T extends UuidValueObject, IES extends IAggregateRootPrimitives, ES extends AggregateRoot<IES>>(idValueObject: T): Promise<Nullable<ES>>;
 }
 
 export class IdUniquenessValidatorService {
-  readonly #repository: IRepository;
+  readonly #idUniquenessValidatorServiceRepository: IIdUniquenessValidatorServiceRepository;
 
   private constructor(dependencies: Dependencies) {
-    this.#repository = dependencies.repository;
+    this.#idUniquenessValidatorServiceRepository = dependencies.idUniquenessValidatorServiceRepository;
   }
 
   public static create(dependencies: Dependencies): IdUniquenessValidatorService {
@@ -24,7 +24,7 @@ export class IdUniquenessValidatorService {
   }
 
   public async ensureUniqueId<T extends UuidValueObject, IES extends IAggregateRootPrimitives, ES extends AggregateRoot<IES>>(idValueObject: T): Promise<void> {
-    const itemFound: Nullable<ES> = await this.#repository.searchById<T, IES, ES>(idValueObject);
+    const itemFound: Nullable<ES> = await this.#idUniquenessValidatorServiceRepository.searchById<T, IES, ES>(idValueObject);
 
     if (itemFound) {
       throw IdAlreadyExistsError.create(idValueObject);
