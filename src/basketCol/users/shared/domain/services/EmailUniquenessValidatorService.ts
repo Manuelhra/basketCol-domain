@@ -4,17 +4,17 @@ import { Nullable } from '../../../../shared/domain/Nullable';
 import { EmailAlreadyExistsError } from '../exceptions/EmailAlreadyExistsError';
 import { UserEmail } from '../value-objects/UserEmail';
 
-interface IRepository {
+interface IEmailUniquenessValidatorServiceRepository {
   searchByEmail<N extends UserEmail, IES extends IAggregateRootPrimitives, ES extends AggregateRoot<IES>>(emailValueObject: N): Promise<Nullable<ES>>;
 }
 
-type Dependencies = { repository: IRepository };
+type Dependencies = { repository: IEmailUniquenessValidatorServiceRepository };
 
 export class EmailUniquenessValidatorService {
-  readonly #repository: IRepository;
+  readonly #emailUniquenessValidatorService: IEmailUniquenessValidatorServiceRepository;
 
   private constructor(dependencies: Dependencies) {
-    this.#repository = dependencies.repository;
+    this.#emailUniquenessValidatorService = dependencies.repository;
   }
 
   public static create(dependencies: Dependencies): EmailUniquenessValidatorService {
@@ -22,7 +22,7 @@ export class EmailUniquenessValidatorService {
   }
 
   public async ensureUniqueEmail<T extends UserEmail, IES extends IAggregateRootPrimitives, ES extends AggregateRoot<IES>>(emailValueObject: T): Promise<void> {
-    const itemFound: Nullable<ES> = await this.#repository.searchByEmail<T, IES, ES>(emailValueObject);
+    const itemFound: Nullable<ES> = await this.#emailUniquenessValidatorService.searchByEmail<T, IES, ES>(emailValueObject);
 
     if (itemFound) {
       throw EmailAlreadyExistsError.create(emailValueObject);
