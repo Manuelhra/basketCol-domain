@@ -1,4 +1,3 @@
-import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
 import { IPlayerUserReboundingAttributesPrimitives } from './IPlayerUserReboundingAttributesPrimitives';
 import { PURACreatedAt } from './value-objects/PURACreatedAt';
 import { PURADefensiveRebound } from './value-objects/PURADefensiveRebound';
@@ -6,8 +5,9 @@ import { PURAOffensiveRebound } from './value-objects/PURAOffensiveRebound';
 import { PURAReferencedPlayerUserId } from './value-objects/PURAReferencedPlayerUserId';
 import { PURAUpdatedAt } from './value-objects/PURAUpdatedAt';
 import { PURAId } from './value-objects/PURAId';
+import { AttributeCategory } from '../../shared/domain/value-objects/AttributeCategory';
 
-export class PlayerUserReboundingAttributes extends AggregateRoot<IPlayerUserReboundingAttributesPrimitives> {
+export class PlayerUserReboundingAttributes extends AttributeCategory<IPlayerUserReboundingAttributesPrimitives> {
   readonly #offensiveRebound: PURAOffensiveRebound;
 
   readonly #defensiveRebound: PURADefensiveRebound;

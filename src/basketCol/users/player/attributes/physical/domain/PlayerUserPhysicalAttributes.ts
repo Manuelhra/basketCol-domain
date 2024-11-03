@@ -1,4 +1,3 @@
-import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
 import { IPlayerUserPhysicalAttributesPrimitives } from './IPlayerUserPhysicalAttributesPrimitives';
 import { PUPAAcceleration } from './value-objects/PUPAAcceleration';
 import { PUPACreatedAt } from './value-objects/PUPACreatedAt';
@@ -9,8 +8,9 @@ import { PUPAStrength } from './value-objects/PUPAStrength';
 import { PUPAUpdatedAt } from './value-objects/PUPAUpdatedAt';
 import { PUPAVertical } from './value-objects/PUPAVertical';
 import { PUPAId } from './value-objects/PUPAId';
+import { AttributeCategory } from '../../shared/domain/value-objects/AttributeCategory';
 
-export class PlayerUserPhysicalAttributes extends AggregateRoot<IPlayerUserPhysicalAttributesPrimitives> {
+export class PlayerUserPhysicalAttributes extends AttributeCategory<IPlayerUserPhysicalAttributesPrimitives> {
   readonly #speed: PUPASpeed;
 
   readonly #acceleration: PUPAAcceleration;
