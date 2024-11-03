@@ -69,4 +69,24 @@ export class PlayerUserSkillAttributes extends AggregateRoot<IPlayerUserSkillAtt
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    passAccuracy: number,
+    ballHandle: number,
+    speedWithBall: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserSkillAttributes {
+    return new PlayerUserSkillAttributes(
+      id,
+      passAccuracy,
+      ballHandle,
+      speedWithBall,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }
