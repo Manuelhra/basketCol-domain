@@ -1,4 +1,3 @@
-import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
 import { IPlayerUserShootingAttributesPrimitives } from './IPlayerUserShootingAttributesPrimitives';
 import { PUSACloseShot } from './value-objects/PUSACloseShot';
 import { PUSACreatedAt } from './value-objects/PUSACreatedAt';
@@ -8,8 +7,9 @@ import { PUSAReferencedPlayerUserId } from './value-objects/PUSAReferencedPlayer
 import { PUSAThreePointShot } from './value-objects/PUSAThreePointShot';
 import { PUSAUpdatedAt } from './value-objects/PUSAUpdatedAt';
 import { PUSAId } from './value-objects/PUSAId';
+import { AttributeCategory } from '../../shared/domain/value-objects/AttributeCategory';
 
-export class PlayerUserShootingAttributes extends AggregateRoot<IPlayerUserShootingAttributesPrimitives> {
+export class PlayerUserShootingAttributes extends AttributeCategory<IPlayerUserShootingAttributesPrimitives> {
   readonly #closeShot: PUSACloseShot;
 
   readonly #midRangeShot: PUSAMidRangeShot;

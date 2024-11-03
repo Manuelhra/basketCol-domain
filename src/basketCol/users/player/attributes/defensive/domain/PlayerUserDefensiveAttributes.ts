@@ -1,4 +1,4 @@
-import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
+import { AttributeCategory } from '../../shared/domain/value-objects/AttributeCategory';
 import { IPlayerUserDefensiveAttributesPrimitives } from './IPlayerUserDefensiveAttributesPrimitives';
 import {
   PUDAInteriorDefense,
@@ -11,7 +11,7 @@ import {
   PUDAUpdatedAt,
 } from './value-objects';
 
-export class PlayerUserDefensiveAttributes extends AggregateRoot<IPlayerUserDefensiveAttributesPrimitives> {
+export class PlayerUserDefensiveAttributes extends AttributeCategory<IPlayerUserDefensiveAttributesPrimitives> {
   readonly #interiorDefense: PUDAInteriorDefense;
 
   readonly #perimeterDefense: PUDAPerimeterDefense;

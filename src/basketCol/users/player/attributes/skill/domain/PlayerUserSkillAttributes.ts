@@ -1,4 +1,3 @@
-import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
 import { IPlayerUserSkillAttributesPrimitives } from './IPlayerUserSkillAttributesPrimitives';
 import { PUSABallHandle } from './value-objects/PUSABallHandle';
 import { PUSACreatedAt } from './value-objects/PUSACreatedAt';
@@ -7,8 +6,9 @@ import { PUSASpeedWithBall } from './value-objects/PUSASpeedWithBall';
 import { PUSAReferencedPlayerUserId } from './value-objects/PUSAReferencedPlayerUserId';
 import { PUSAUpdatedAt } from './value-objects/PUSAUpdatedAt';
 import { PUSAId } from './value-objects/PUSAId';
+import { AttributeCategory } from '../../shared/domain/value-objects/AttributeCategory';
 
-export class PlayerUserSkillAttributes extends AggregateRoot<IPlayerUserSkillAttributesPrimitives> {
+export class PlayerUserSkillAttributes extends AttributeCategory<IPlayerUserSkillAttributesPrimitives> {
   readonly #passAccuracy: PUSAPassAccuracy;
 
   readonly #ballHandle: PUSABallHandle;

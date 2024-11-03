@@ -535,7 +535,7 @@ export {
 } from '../basketCol/users/player/attributes/rebounding/domain/value-objects';
 
 // Users Player Attributes Shared
-export { Attribute } from '../basketCol/users/player/attributes/shared/domain/value-objects/Attribute';
+export { AttributeCategory, SubAttribute } from '../basketCol/users/player/attributes/shared/domain/value-objects';
 
 // Users Player Attributes Shooting
 export { PlayerUserShootingAttributes } from '../basketCol/users/player/attributes/shooting/domain/PlayerUserShootingAttributes';

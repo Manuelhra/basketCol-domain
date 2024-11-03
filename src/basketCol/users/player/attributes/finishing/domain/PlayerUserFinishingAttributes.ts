@@ -1,4 +1,3 @@
-import { AggregateRoot } from '../../../../../shared/domain/AggregateRoot';
 import { IPlayerUserFinishingAttributesPrimitives } from './IPlayerUserFinishingAttributesPrimitives';
 import { PUFACreatedAt } from './value-objects/PUFACreatedAt';
 import { PUFADrivingDunk } from './value-objects/PUFADrivingDunk';
@@ -8,8 +7,9 @@ import { PUFAReferencedPlayerUserId } from './value-objects/PUFAReferencedPlayer
 import { PUFAStandingDunk } from './value-objects/PUFAStandingDunk';
 import { PUFAUpdatedAt } from './value-objects/PUFAUpdatedAt';
 import { PUFAId } from './value-objects/PUFAId';
+import { AttributeCategory } from '../../shared/domain/value-objects/AttributeCategory';
 
-export class PlayerUserFinishingAttributes extends AggregateRoot<IPlayerUserFinishingAttributesPrimitives> {
+export class PlayerUserFinishingAttributes extends AttributeCategory<IPlayerUserFinishingAttributesPrimitives> {
   readonly #drivingLayup: PUFADrivingLayup;
 
   readonly #drivingDunk: PUFADrivingDunk;

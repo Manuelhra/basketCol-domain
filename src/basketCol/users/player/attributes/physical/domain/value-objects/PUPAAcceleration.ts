@@ -1,6 +1,6 @@
-import { Attribute } from '../../../shared/domain/value-objects/Attribute';
+import { SubAttribute } from '../../../shared/domain/value-objects/SubAttribute';
 
-export class PUPAAcceleration extends Attribute {
+export class PUPAAcceleration extends SubAttribute {
   private constructor(value: number) {
     super(value, 'acceleration');
   }

@@ -1,6 +1,6 @@
-import { Attribute } from '../../../shared/domain/value-objects/Attribute';
+import { SubAttribute } from '../../../shared/domain/value-objects/SubAttribute';
 
-export class PUDABlock extends Attribute {
+export class PUDABlock extends SubAttribute {
   private constructor(value: number) {
     super(value, 'block');
   }
