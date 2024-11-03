@@ -85,4 +85,28 @@ export class PlayerUserPhysicalAttributes extends AggregateRoot<IPlayerUserPhysi
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    speed: number,
+    acceleration: number,
+    strength: number,
+    vertical: number,
+    stamina: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserPhysicalAttributes {
+    return new PlayerUserPhysicalAttributes(
+      id,
+      speed,
+      acceleration,
+      strength,
+      vertical,
+      stamina,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }

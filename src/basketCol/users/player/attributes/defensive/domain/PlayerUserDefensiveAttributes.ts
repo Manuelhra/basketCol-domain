@@ -79,4 +79,26 @@ export class PlayerUserDefensiveAttributes extends AggregateRoot<IPlayerUserDefe
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    interiorDefense: number,
+    perimeterDefense: number,
+    steal: number,
+    block: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserDefensiveAttributes {
+    return new PlayerUserDefensiveAttributes(
+      id,
+      interiorDefense,
+      perimeterDefense,
+      steal,
+      block,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }

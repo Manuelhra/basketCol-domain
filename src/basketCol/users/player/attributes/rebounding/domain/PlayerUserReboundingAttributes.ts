@@ -61,4 +61,22 @@ export class PlayerUserReboundingAttributes extends AggregateRoot<IPlayerUserReb
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    offensiveRebound: number,
+    defensiveRebound: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserReboundingAttributes {
+    return new PlayerUserReboundingAttributes(
+      id,
+      offensiveRebound,
+      defensiveRebound,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }

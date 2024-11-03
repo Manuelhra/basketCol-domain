@@ -77,4 +77,26 @@ export class PlayerUserFinishingAttributes extends AggregateRoot<IPlayerUserFini
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    drivingLayup: number,
+    drivingDunk: number,
+    standingDunk: number,
+    postControl: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserFinishingAttributes {
+    return new PlayerUserFinishingAttributes(
+      id,
+      drivingLayup,
+      drivingDunk,
+      standingDunk,
+      postControl,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }

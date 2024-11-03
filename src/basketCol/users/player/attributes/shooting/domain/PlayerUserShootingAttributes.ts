@@ -77,4 +77,26 @@ export class PlayerUserShootingAttributes extends AggregateRoot<IPlayerUserShoot
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    closeShot: number,
+    midRangeShot: number,
+    threePointShot: number,
+    freeThrow: number,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserShootingAttributes {
+    return new PlayerUserShootingAttributes(
+      id,
+      closeShot,
+      midRangeShot,
+      threePointShot,
+      freeThrow,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }
