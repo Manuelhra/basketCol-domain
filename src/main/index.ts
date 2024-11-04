@@ -222,11 +222,14 @@ export {
   CourtHoopHeight,
   CourtId,
   CourtLocation,
-  CourtNullableFacilityId,
+  CourtNullableReferencedFacilityId,
   CourtOfficialName,
   CourtRegisteredById,
   CourtSurface,
   CourtUpdatedAt,
+  CourtGallery,
+  CourtImage,
+  CourtMainImage,
 } from '../basketCol/facilities/court/domain/value-objects';
 
 // Facilities Gym
@@ -243,6 +246,9 @@ export {
   GymOfficialName,
   GymRegisteredById,
   GymUpdatedAt,
+  GymGallery,
+  GymImage,
+  GymMainImage,
 } from '../basketCol/facilities/gym/domain/value-objects';
 
 // Facilities Shared
@@ -256,6 +262,9 @@ export {
   FacilityOfficialName,
   FacilityRegisteredBy,
   FacilityUpdatedAt,
+  FacilityGallery,
+  FacilityMainImage,
+  FacilityImage,
 } from '../basketCol/facilities/shared/domain/value-objects';
 
 // Shared
@@ -321,7 +330,7 @@ export {
   LocationValueObject,
   Metric,
   MinutesDurationValueObject,
-  NullableFacilityId,
+  NullableReferencedFacilityId,
   NullableString,
   NumberArrayValueObject,
   ObjectValueObject,
@@ -369,6 +378,8 @@ export {
   UpdatedAtValueObject,
   UuidValueObject,
   ValueObject,
+  ImageArrayValueObject,
+  ImageValueObject,
 } from '../basketCol/shared/domain/value-objects';
 
 // Team

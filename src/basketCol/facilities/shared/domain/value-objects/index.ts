@@ -5,3 +5,6 @@ export { FacilityLocation } from './FacilityLocation';
 export { FacilityOfficialName } from './FacilityOfficialName';
 export { FacilityRegisteredBy } from './FacilityRegisteredBy';
 export { FacilityUpdatedAt } from './FacilityUpdatedAt';
+export { FacilityMainImage } from './FacilityMainImage';
+export { FacilityGallery } from './FacilityGallery';
+export { FacilityImage } from './FacilityImage';

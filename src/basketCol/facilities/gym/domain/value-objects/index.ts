@@ -5,3 +5,6 @@ export { GymLocation } from './GymLocation';
 export { GymOfficialName } from './GymOfficialName';
 export { GymRegisteredById } from './GymRegisteredById';
 export { GymUpdatedAt } from './GymUpdatedAt';
+export { GymMainImage } from './GymMainImage';
+export { GymGallery } from './GymGallery';
+export { GymImage } from './GymImage';

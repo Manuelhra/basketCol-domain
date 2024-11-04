@@ -46,4 +46,9 @@ export class PositiveIntegerValueObject extends ValueObject<number> {
       );
     }
   }
+
+  public static ensureIsIntegerAndPositive(value: number, propertyName: string): void {
+    PositiveIntegerValueObject.#ensureIsInteger(value, propertyName);
+    PositiveIntegerValueObject.#ensureIsPositive(value, propertyName);
+  }
 }

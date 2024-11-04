@@ -1,4 +1,5 @@
 import { IAggregateRootPrimitives } from '../../../shared/domain/IAggregateRootPrimitives';
+import { IImageValueObjectProps } from '../../../shared/domain/value-objects/ImageValueObject';
 
 interface IUserCredentials {
   email: { value: string; verified: boolean; };
@@ -19,10 +20,7 @@ interface IUserIdentity {
 }
 
 interface IUserMedia {
-  profileImage: {
-    url: string;
-    updatedAt: string;
-  };
+  profileImage: IImageValueObjectProps;
 }
 
 export interface IUserPrimitives extends

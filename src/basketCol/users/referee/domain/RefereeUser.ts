@@ -1,3 +1,4 @@
+import { IImageValueObjectProps } from '../../../shared/domain/value-objects/ImageValueObject';
 import { User } from '../../shared/domain/User';
 import { IRefereeUserPrimitives } from './IRefereeUserPrimitives';
 import { RefereeUserAccountState } from './value-objects/RefereeUserAccountState';
@@ -21,7 +22,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
     options?: { skipPasswordValidation: boolean; },
@@ -65,7 +66,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
   ): RefereeUser {
@@ -91,7 +92,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
   ): RefereeUser {
@@ -117,7 +118,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     email: { value: string; verified: boolean },
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
   ): RefereeUser {
