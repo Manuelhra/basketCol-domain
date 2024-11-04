@@ -12,6 +12,7 @@ import { PlayerUserUpdatedAt } from './value-objects/PlayerUserUpdatedAt';
 import { PlayerUserAccountState } from './value-objects/PlayerUserAccountState';
 import { PlayerUserSubscriptionType } from './value-objects/PlayerUserSubscriptionType';
 import { PlayerUserProfileImage } from './value-objects/PlayerUserProfileImage';
+import { IImageValueObjectProps } from '../../../shared/domain/value-objects/ImageValueObject';
 
 export class PlayerUser extends User<IPlayerUserPrimitives> {
   readonly #nickname: PlayerUserNickname;
@@ -25,7 +26,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
     options?: { skipPasswordValidation: boolean; },
@@ -77,7 +78,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
   ): PlayerUser {
@@ -105,7 +106,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
   ): PlayerUser {
@@ -133,7 +134,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     email: { value: string; verified: boolean },
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
   ): PlayerUser {

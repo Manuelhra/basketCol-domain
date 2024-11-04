@@ -1,3 +1,4 @@
+import { IImageValueObjectProps } from '../../../shared/domain/value-objects/ImageValueObject';
 import { User } from '../../shared/domain/User';
 import { IHostUserPrimitives } from './IHostUserPrimitives';
 import { HostUserAccountState } from './value-objects/HostUserAccountState';
@@ -21,7 +22,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
     options?: { skipPasswordValidation: boolean; },
@@ -65,7 +66,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
   ): HostUser {
@@ -91,7 +92,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     password: string,
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
   ): HostUser {
@@ -117,7 +118,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     email: { value: string; verified: boolean },
     accountState: string,
     subscriptionType: string,
-    profileImage: { url: string; updatedAt: string; },
+    profileImage: IImageValueObjectProps,
     createdAt: string,
     updatedAt: string,
   ): HostUser {

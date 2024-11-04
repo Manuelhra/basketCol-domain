@@ -1,11 +1,12 @@
-import { IUserProfileImageProps, UserProfileImage } from '../../../shared/domain/value-objects/UserProfileImage';
+import { IImageValueObjectProps } from '../../../../shared/domain/value-objects/ImageValueObject';
+import { UserProfileImage } from '../../../shared/domain/value-objects/UserProfileImage';
 
 export class LeagueFounderUserProfileImage extends UserProfileImage {
-  private constructor(value: IUserProfileImageProps) {
+  private constructor(value: IImageValueObjectProps) {
     super(value);
   }
 
-  public static create(value: IUserProfileImageProps): LeagueFounderUserProfileImage {
+  public static create(value: IImageValueObjectProps): LeagueFounderUserProfileImage {
     return new LeagueFounderUserProfileImage(value);
   }
 }

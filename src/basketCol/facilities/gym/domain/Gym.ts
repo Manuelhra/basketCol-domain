@@ -1,6 +1,8 @@
+import { IImageValueObjectProps } from '../../../shared/domain/value-objects/ImageValueObject';
 import { ILocationValueObjectProps } from '../../../shared/domain/value-objects/LocationValueObject';
 import { Facility } from '../../shared/domain/Facility';
 import { IGymPrimitives } from './IGymPrimitives';
+import { GymGallery, GymMainImage } from './value-objects';
 import { GymCreatedAt } from './value-objects/GymCreatedAt';
 import { GymEstablishmentDate } from './value-objects/GymEstablishmentDate';
 import { GymId } from './value-objects/GymId';
@@ -16,6 +18,8 @@ export class Gym extends Facility<IGymPrimitives> {
     location: ILocationValueObjectProps,
     establishmentDate: string,
     registeredById: string,
+    mainImage: IImageValueObjectProps,
+    gallery: { images: IImageValueObjectProps[] },
     createdAt: string,
     updatedAt: string,
   ) {
@@ -25,6 +29,8 @@ export class Gym extends Facility<IGymPrimitives> {
       GymLocation.create(location),
       GymEstablishmentDate.create(establishmentDate),
       GymRegisteredById.create(registeredById),
+      GymMainImage.create(mainImage),
+      GymGallery.create(gallery),
       GymCreatedAt.create(createdAt),
       GymUpdatedAt.create(updatedAt),
     );
@@ -37,6 +43,8 @@ export class Gym extends Facility<IGymPrimitives> {
       location: this.location.value,
       establishmentDate: this.establishmentDate.value,
       registeredById: this.registeredById.hostUserIdAsString,
+      mainImage: this.mainImage.value,
+      gallery: this.gallery.galleryAsPrimitives,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };
@@ -48,6 +56,8 @@ export class Gym extends Facility<IGymPrimitives> {
     location: ILocationValueObjectProps,
     establishmentDate: string,
     registeredById: string,
+    mainImage: IImageValueObjectProps,
+    gallery: { images: IImageValueObjectProps[] },
     createdAt: string,
     updatedAt: string,
   ): Gym {
@@ -57,6 +67,8 @@ export class Gym extends Facility<IGymPrimitives> {
       location,
       establishmentDate,
       registeredById,
+      mainImage,
+      gallery,
       createdAt,
       updatedAt,
     );

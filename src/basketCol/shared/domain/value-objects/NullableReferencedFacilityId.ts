@@ -5,7 +5,7 @@ import { ValueObject } from './ValueObject';
 
 type FACILITY_ID_TYPE = GymId | null;
 
-export class NullableFacilityId extends ValueObject<FACILITY_ID_TYPE> {
+export class NullableReferencedFacilityId extends ValueObject<FACILITY_ID_TYPE> {
   protected constructor(value: string | null) {
     const facilityId: FACILITY_ID_TYPE = value === null ? null : FacilityId.create(value);
 
@@ -16,8 +16,8 @@ export class NullableFacilityId extends ValueObject<FACILITY_ID_TYPE> {
     }
   }
 
-  public static create(value: string | null): NullableFacilityId {
-    return new NullableFacilityId(value);
+  public static create(value: string | null): NullableReferencedFacilityId {
+    return new NullableReferencedFacilityId(value);
   }
 
   public get facilityIdAsStringOrNull(): string | null {
