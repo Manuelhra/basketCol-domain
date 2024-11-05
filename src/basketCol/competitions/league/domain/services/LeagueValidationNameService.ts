@@ -5,7 +5,7 @@ import { ILeagueRepository } from '../repository/ILeagueRepository';
 import { LeagueName } from '../value-objects/LeagueName';
 
 type Dependencies = {
-  leagueRepository: ILeagueRepository
+  readonly leagueRepository: ILeagueRepository
 };
 
 export class LeagueValidationNameService {

@@ -102,4 +102,32 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    name: { short: string; official: string },
+    description: { short: string; complete: string },
+    rules: string,
+    level: string,
+    location: ILocationValueObjectProps,
+    leagueFounderUserId: string,
+    establishmentDate: string,
+    isActive: boolean,
+    createdAt: string,
+    updatedAt: string,
+  ): League {
+    return new League(
+      id,
+      name,
+      description,
+      rules,
+      level,
+      location,
+      leagueFounderUserId,
+      establishmentDate,
+      isActive,
+      createdAt,
+      updatedAt,
+    );
+  }
 }
