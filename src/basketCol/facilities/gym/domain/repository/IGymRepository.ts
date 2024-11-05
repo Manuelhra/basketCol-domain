@@ -8,5 +8,5 @@ export interface IGymRepository {
   save(gym: Gym): Promise<void>;
   searchById(gymId: GymId): Promise<Nullable<Gym>>;
   searchByOfficialName(gymOfficialName: GymOfficialName): Promise<Nullable<Gym>>;
-  areAllGymsExistingByIds<T extends ReferencedGymIdList>(gymIdList: T): Promise<{ allGymsExist: boolean, nonExistentGymIds: GymId[] }>;
+  searchByIdList(gymIdList: ReferencedGymIdList): Promise<Gym[]>;
 }

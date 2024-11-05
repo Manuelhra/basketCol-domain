@@ -27,11 +27,11 @@ export class GymValidationService {
     }
   }
 
-  public async ensureGymsExist<T extends ReferencedGymIdList>(gymIdList: T): Promise<void> {
-    const { allGymsExist, nonExistentGymIds } = await this.#gymRepository.areAllGymsExistingByIds<T>(gymIdList);
+  public async ensureGymsExist(gymIdList: ReferencedGymIdList): Promise<void> {
+    const gymFoundList = await this.#gymRepository.searchByIdList(gymIdList);
 
-    if (allGymsExist === false && nonExistentGymIds.length > 0) {
-      throw GymsNotFoundError.create(nonExistentGymIds);
+    if (gymFoundList.length !== gymIdList.gymIdListAsStrings.length) {
+      throw GymsNotFoundError.create(gymIdList.gymIdListAsStrings.map((gymId) => GymId.create(gymId)));
     }
   }
 }
