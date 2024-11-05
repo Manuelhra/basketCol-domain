@@ -98,4 +98,34 @@ export class Court extends Facility<ICourtPrimitives> {
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    officialName: string,
+    establishmentDate: string,
+    surface: string,
+    hoopHeight: number,
+    registeredById: string,
+    location: ILocationValueObjectProps,
+    mainImage: IImageValueObjectProps,
+    gallery: { images: IImageValueObjectProps[] },
+    facilityId: string | null,
+    createdAt: string,
+    updatedAt: string,
+  ): Court {
+    return new Court(
+      id,
+      officialName,
+      establishmentDate,
+      surface,
+      hoopHeight,
+      registeredById,
+      location,
+      mainImage,
+      gallery,
+      facilityId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }

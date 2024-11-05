@@ -73,4 +73,28 @@ export class Gym extends Facility<IGymPrimitives> {
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    officialName: string,
+    location: ILocationValueObjectProps,
+    establishmentDate: string,
+    registeredById: string,
+    mainImage: IImageValueObjectProps,
+    gallery: { images: IImageValueObjectProps[] },
+    createdAt: string,
+    updatedAt: string,
+  ): Gym {
+    return new Gym(
+      id,
+      officialName,
+      location,
+      establishmentDate,
+      registeredById,
+      mainImage,
+      gallery,
+      createdAt,
+      updatedAt,
+    );
+  }
 }
