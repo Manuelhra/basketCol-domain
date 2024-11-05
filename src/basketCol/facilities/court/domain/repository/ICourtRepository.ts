@@ -6,5 +6,5 @@ import { CourtId } from '../value-objects/CourtId';
 export interface ICourtRepository {
   searchById(courtId: CourtId): Promise<Nullable<Court>>;
   save(court: Court): Promise<void>;
-  areAllCourtsExistingByIds<T extends ReferencedCourtIdList>(courtIdList: T): Promise<{ allCourtsExist: boolean, nonExistentCourtIds: CourtId[] }>;
+  searchByIdList(courtIdList: ReferencedCourtIdList): Promise<Court[]>;
 }

@@ -27,11 +27,11 @@ export class CourtValidationService {
     }
   }
 
-  public async ensureCourtsExist<T extends ReferencedCourtIdList>(courtIdList: T): Promise<void> {
-    const { allCourtsExist, nonExistentCourtIds } = await this.#courtRepository.areAllCourtsExistingByIds<T>(courtIdList);
+  public async ensureCourtsExist(courtIdList: ReferencedCourtIdList): Promise<void> {
+    const courtFoundList = await this.#courtRepository.searchByIdList(courtIdList);
 
-    if (allCourtsExist === false && nonExistentCourtIds.length > 0) {
-      throw CourtsNotFoundError.create(nonExistentCourtIds);
+    if (courtFoundList.length !== courtIdList.courtIdListAsStrings.length) {
+      throw CourtsNotFoundError.create(courtIdList.courtIdListAsStrings.map((courtId) => CourtId.create(courtId)));
     }
   }
 }
