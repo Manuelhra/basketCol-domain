@@ -1,3 +1,4 @@
+import { IPaginatedResponse } from '../../../../shared/domain/IPaginatedResponse';
 import { Nullable } from '../../../../shared/domain/Nullable';
 import { League } from '../League';
 import { LeagueId } from '../value-objects/LeagueId';
@@ -8,5 +9,5 @@ export interface ILeagueRepository {
   searchByShortName(leagueName: LeagueName): Promise<Nullable<League>>;
   searchByOfficialName(leagueName: LeagueName): Promise<Nullable<League>>;
   searchById(leagueId: LeagueId): Promise<Nullable<League>>;
-  searchAll(params: { query?: string; page: number; perPage: number; }): Promise<League[]>;
+  searchAll(params: { query?: string; page: number; perPage: number; }): Promise<IPaginatedResponse<League>>;
 }

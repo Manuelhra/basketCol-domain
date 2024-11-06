@@ -1,3 +1,4 @@
+import { IPaginatedResponse } from '../../../../shared/domain/IPaginatedResponse';
 import { Nullable } from '../../../../shared/domain/Nullable';
 import { ReferencedGymIdList } from '../../../../shared/domain/value-objects/ReferencedGymIdList';
 import { Gym } from '../Gym';
@@ -9,5 +10,5 @@ export interface IGymRepository {
   searchById(gymId: GymId): Promise<Nullable<Gym>>;
   searchByOfficialName(gymOfficialName: GymOfficialName): Promise<Nullable<Gym>>;
   searchByIdList(gymIdList: ReferencedGymIdList): Promise<Gym[]>;
-  searchAll(params: { query?: string; page: number; perPage: number; }): Promise<Gym[]>;
+  searchAll(params: { query?: string; page: number; perPage: number; }): Promise<IPaginatedResponse<Gym>>;
 }
