@@ -10,7 +10,7 @@ export class LeagueName extends ObjectValueObject<{ short: string; official: str
   } as const;
 
   static readonly #OFFICIAL_NAME_LENGTH: { min: number; max: number; } = {
-    min: LeagueName.#SHORT_NAME_LENGTH.max + 3,
+    min: LeagueName.#SHORT_NAME_LENGTH.max + 1,
     max: 100,
   } as const;
 

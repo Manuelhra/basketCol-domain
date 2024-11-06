@@ -5,12 +5,12 @@ import { ObjectValueObject } from '../../../../shared/domain/value-objects/Objec
 
 export class LeagueDescription extends ObjectValueObject<{ short: string; complete: string; }> {
   static readonly #SHORT_DESCRIPTION_LENGTH: { min: number; max: number; } = {
-    min: 20,
-    max: 30,
+    min: 10,
+    max: 35,
   } as const;
 
   static readonly #COMPLETE_DESCRIPTION_LENGTH: { min: number; max: number; } = {
-    min: LeagueDescription.#SHORT_DESCRIPTION_LENGTH.max + 10,
+    min: LeagueDescription.#SHORT_DESCRIPTION_LENGTH.max + 1,
     max: 300,
   } as const;
 
