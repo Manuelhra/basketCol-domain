@@ -659,6 +659,7 @@ export {
 } from '../basketCol/users/shared/domain/exceptions';
 export {
   EmailUniquenessValidatorService,
+  IEmailUniquenessValidatorServiceRepository,
   IPasswordHashingService,
   IPasswordValueObjectCreationService,
   PasswordValueObjectCreationService,

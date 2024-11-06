@@ -4,11 +4,13 @@ import { Nullable } from '../../../../shared/domain/Nullable';
 import { EmailAlreadyExistsError } from '../exceptions/EmailAlreadyExistsError';
 import { UserEmail } from '../value-objects/UserEmail';
 
-interface IEmailUniquenessValidatorServiceRepository {
+export interface IEmailUniquenessValidatorServiceRepository {
   searchByEmail<N extends UserEmail, IES extends IAggregateRootPrimitives, ES extends AggregateRoot<IES>>(emailValueObject: N): Promise<Nullable<ES>>;
 }
 
-type Dependencies = { emailUniquenessValidatorServiceRepository: IEmailUniquenessValidatorServiceRepository };
+type Dependencies = {
+  readonly emailUniquenessValidatorServiceRepository: IEmailUniquenessValidatorServiceRepository
+};
 
 export class EmailUniquenessValidatorService {
   readonly #emailUniquenessValidatorServiceRepository: IEmailUniquenessValidatorServiceRepository;
