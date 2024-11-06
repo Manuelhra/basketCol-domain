@@ -9,4 +9,5 @@ export interface IGymRepository {
   searchById(gymId: GymId): Promise<Nullable<Gym>>;
   searchByOfficialName(gymOfficialName: GymOfficialName): Promise<Nullable<Gym>>;
   searchByIdList(gymIdList: ReferencedGymIdList): Promise<Gym[]>;
+  searchAll(params: { query?: string; page: number; perPage: number; }): Promise<Gym[]>;
 }

@@ -9,4 +9,5 @@ export interface IPlayerUserRepository {
   save(playerUser: PlayerUser): Promise<void>;
   searchByNickname(playerUserNickname: PlayerUserNickname): Promise<Nullable<PlayerUser>>;
   searchByEmail(playerUserEmail: PlayerUserEmail): Promise<Nullable<PlayerUser>>;
+  searchAll(params: { query?: string; page: number; perPage: number; }): Promise<PlayerUser[]>;
 }
