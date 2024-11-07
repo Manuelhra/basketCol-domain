@@ -278,7 +278,7 @@ export { INewableClass } from '../basketCol/shared/domain/INewableClass';
 export { IStatsPrimitives } from '../basketCol/shared/domain/IStatsPrimitives';
 export { Nullable } from '../basketCol/shared/domain/Nullable';
 export { Stats } from '../basketCol/shared/domain/Stats';
-export { IPaginatedResponse } from '../basketCol/shared/domain/IPaginatedResponse';
+export { IPaginatedResponse, IPaginationParams } from '../basketCol/shared/domain/IPaginatedResponse';
 export {
   EntityNotFoundError,
   DateGreaterThanError,
