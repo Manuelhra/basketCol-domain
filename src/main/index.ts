@@ -67,7 +67,7 @@ export { LeagueSeasonFixture } from '../basketCol/competitions/league/season/fix
 export { ILeagueSeasonFixturePrimitives } from '../basketCol/competitions/league/season/fixture/domain/ILeagueSeasonFixturePrimitives';
 export { FixtureAlreadyExistsForDateInLeagueSeasonError, FixtureDateTooSoonError } from '../basketCol/competitions/league/season/fixture/domain/exceptions';
 export { ILeagueSeasonFixtureRepository } from '../basketCol/competitions/league/season/fixture/domain/repository/ILeagueSeasonFixtureRepository';
-export { LeagueSeasonFixtureValidationService } from '../basketCol/competitions/league/season/fixture/domain/services';
+export { LeagueSeasonFixtureValidationService, LeagueSeasonFixtureDateValidatorService } from '../basketCol/competitions/league/season/fixture/domain/services';
 export {
   LSFixtureCreatedAt,
   LSFixtureDate,
@@ -214,7 +214,6 @@ export {
   InvalidFGameStatusError,
   DateNotWithinLeagueSeasonError,
 } from '../basketCol/competitions/shared/domain/exceptions';
-export { FixtureDateValidatorService } from '../basketCol/competitions/shared/domain/services';
 
 // Facilities Court
 export { Court } from '../basketCol/facilities/court/domain/Court';
