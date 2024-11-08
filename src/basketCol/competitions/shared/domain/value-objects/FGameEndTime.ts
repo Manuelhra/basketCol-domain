@@ -1,7 +1,7 @@
-import { OptionalTimeValueObject } from '../../../../shared/domain/value-objects/OptionalTimeValueObject';
+import { NullableTimeValueObject } from '../../../../shared/domain/value-objects/NullableTimeValueObject';
 
-export abstract class FGameEndTime extends OptionalTimeValueObject {
-  protected constructor(value: string | undefined) {
+export abstract class FGameEndTime extends NullableTimeValueObject {
+  protected constructor(value: string | null) {
     super(value, 'endTime');
   }
 }

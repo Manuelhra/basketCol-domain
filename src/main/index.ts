@@ -99,6 +99,10 @@ export {
   LSFGameStartTime,
   LSFGameType,
   LSFGameUpdatedAt,
+  LSFGameOvertime,
+  LSFGameOvertimeNumber,
+  LSFGameQuarter,
+  LSFGameStatus,
 } from '../basketCol/competitions/league/season/fixture/game/domain/value-objects';
 
 // Competitions League Season Fixture Game BoxScore Player
@@ -198,11 +202,16 @@ export {
   FixtureId,
   FixtureName,
   FixtureUpdatedAt,
+  FGameStatus,
+  FGameOvertime,
+  FGameOvertimeNumber,
+  FGameQuarter,
 } from '../basketCol/competitions/shared/domain/value-objects';
 export {
   InvalidGameTypeError,
   SameRefereeError,
   SameTeamError,
+  InvalidFGameStatusError,
 } from '../basketCol/competitions/shared/domain/exceptions';
 
 // Facilities Court
@@ -335,8 +344,7 @@ export {
   NullableString,
   NumberArrayValueObject,
   ObjectValueObject,
-  OptionalString,
-  OptionalTimeValueObject,
+  NullableTimeValueObject,
   PositiveIntegerValueObject,
   PrimitiveValueObject,
   ReferencedCourtId,
@@ -381,6 +389,7 @@ export {
   ValueObject,
   ImageArrayValueObject,
   ImageValueObject,
+  NullableNumber,
 } from '../basketCol/shared/domain/value-objects';
 
 // Team

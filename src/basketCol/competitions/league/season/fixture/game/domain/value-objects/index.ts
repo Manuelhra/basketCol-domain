@@ -13,3 +13,7 @@ export { LSFGameId } from './LSFGameId';
 export { LSFGameStartTime } from './LSFGameStartTime';
 export { LSFGameType } from './LSFGameType';
 export { LSFGameUpdatedAt } from './LSFGameUpdatedAt';
+export { LSFGameQuarter } from './LSFGameQuarter';
+export { LSFGameOvertime } from './LSFGameOvertime';
+export { LSFGameOvertimeNumber } from './LSFGameOvertimeNumber';
+export { LSFGameStatus } from './LSFGameStatus';

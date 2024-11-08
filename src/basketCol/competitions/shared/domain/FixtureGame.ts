@@ -13,8 +13,12 @@ import { FGameHeadRefereeId } from './value-objects/FGameHeadRefereeId';
 import { FGameHomeScore } from './value-objects/FGameHomeScore';
 import { FGameHomeTeamId } from './value-objects/FGameHomeTeamId';
 import { FGameId } from './value-objects/FGameId';
+import { FGameOvertime } from './value-objects/FGameOvertime';
+import { FGameOvertimeNumber } from './value-objects/FGameOvertimeNumber';
+import { FGameQuarter } from './value-objects/FGameQuarter';
 import { FGameReferencedCourtId } from './value-objects/FGameReferencedCourtId';
 import { FGameStartTime } from './value-objects/FGameStartTime';
+import { FGameStatus } from './value-objects/FGameStatus';
 import { FGameType } from './value-objects/FGameType';
 import { FGameUpdatedAt } from './value-objects/FGameUpdatedAt';
 
@@ -35,6 +39,14 @@ export abstract class FixtureGame<I extends IFixtureGamePrimitives> extends Aggr
 
   protected readonly gameDuration: FGameDuration;
 
+  protected readonly quarter: FGameQuarter;
+
+  protected readonly overtime: FGameOvertime;
+
+  protected readonly overtimeNumber: FGameOvertimeNumber;
+
+  protected readonly gameStatus: FGameStatus;
+
   protected readonly headRefereeId: FGameHeadRefereeId;
 
   protected readonly assistantRefereeId: FGameAssistantRefereeId;
@@ -53,6 +65,10 @@ export abstract class FixtureGame<I extends IFixtureGamePrimitives> extends Aggr
     awayScore: FGameAwayScore,
     gameType: FGameType,
     gameDuration: FGameDuration,
+    quarter: FGameQuarter,
+    overtime: FGameOvertime,
+    overtimeNumber: FGameOvertimeNumber,
+    gameStatus: FGameStatus,
     headRefereeId: FGameHeadRefereeId,
     assistantRefereeId: FGameAssistantRefereeId,
     courtId: FGameReferencedCourtId,
@@ -70,6 +86,10 @@ export abstract class FixtureGame<I extends IFixtureGamePrimitives> extends Aggr
     this.awayScore = awayScore;
     this.gameType = gameType;
     this.gameDuration = gameDuration;
+    this.quarter = quarter;
+    this.overtime = overtime;
+    this.overtimeNumber = overtimeNumber;
+    this.gameStatus = gameStatus;
     this.headRefereeId = headRefereeId;
     this.assistantRefereeId = assistantRefereeId;
     this.courtId = courtId;
