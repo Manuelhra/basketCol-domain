@@ -35,3 +35,7 @@ export { FixtureCreatedAt } from './FixtureCreatedAt';
 export { FixtureId } from './FixtureId';
 export { FixtureName } from './FixtureName';
 export { FixtureUpdatedAt } from './FixtureUpdatedAt';
+export { FGameStatus } from './FGameStatus';
+export { FGameOvertimeNumber } from './FGameOvertimeNumber';
+export { FGameOvertime } from './FGameOvertime';
+export { FGameQuarter } from './FGameQuarter';
