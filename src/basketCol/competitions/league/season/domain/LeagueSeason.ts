@@ -97,6 +97,30 @@ export class LeagueSeason extends AggregateRoot<ILeagueSeasonPrimitives> {
     );
   }
 
+  public static override fromPrimitives(
+    id: string,
+    name: string,
+    startDate: string,
+    endDate: string,
+    status: string,
+    courtIdList: string[],
+    leagueId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): LeagueSeason {
+    return new LeagueSeason(
+      id,
+      name,
+      startDate,
+      endDate,
+      status,
+      courtIdList,
+      leagueId,
+      createdAt,
+      updatedAt,
+    );
+  }
+
   #validateDates(): void {
     const now = this.#getCurrentDateString();
 
