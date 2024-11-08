@@ -21,9 +21,9 @@ export class FixtureDateValidatorService {
     return new FixtureDateValidatorService(dependencies);
   }
 
-  public async ensureDateWithinLeagueSeason<Date extends FixtureDate>(
-    leagueSeasonId: LeagueSeasonId,
-    date: Date,
+  public async ensureDateWithinLeagueSeason<T extends LeagueSeasonId, K extends FixtureDate>(
+    leagueSeasonId: T,
+    date: K,
   ): Promise<void> {
     const leagueSeasonFound: Nullable<LeagueSeason> = await this.#leagueSeasonRepository.searchById(leagueSeasonId);
 
