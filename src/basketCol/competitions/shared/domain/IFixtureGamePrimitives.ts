@@ -9,7 +9,7 @@ export interface IFixtureGamePrimitives extends IAggregateRootPrimitives {
   awayScore: number;
   gameType: string;
   gameDuration: { value: number; unit: string };
-  quarter: number;
+  quarter: number | null;
   overtime: boolean;
   overtimeNumber: number | null;
   gameStatus: string;
