@@ -212,7 +212,9 @@ export {
   SameRefereeError,
   SameTeamError,
   InvalidFGameStatusError,
+  DateNotWithinLeagueSeasonError,
 } from '../basketCol/competitions/shared/domain/exceptions';
+export { LeagueSeasonDateValidatorService } from '../basketCol/competitions/shared/domain/services';
 
 // Facilities Court
 export { Court } from '../basketCol/facilities/court/domain/Court';
