@@ -6,7 +6,7 @@ export class LeagueSeasonInsufficientPreparationTimeError extends RootError {
   }
 
   public static create(startDate: string, minimumStartDate: string, minimumDays: number): LeagueSeasonInsufficientPreparationTimeError {
-    return LeagueSeasonInsufficientPreparationTimeError.create(startDate, minimumStartDate, minimumDays);
+    return new LeagueSeasonInsufficientPreparationTimeError(startDate, minimumStartDate, minimumDays);
   }
 
   public domainError(): string {
