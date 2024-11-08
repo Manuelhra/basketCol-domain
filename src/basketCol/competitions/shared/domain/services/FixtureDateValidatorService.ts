@@ -10,15 +10,15 @@ type Dependencies = {
   leagueSeasonRepository: ILeagueSeasonRepository;
 };
 
-export class LeagueSeasonDateValidatorService {
+export class FixtureDateValidatorService {
   readonly #leagueSeasonRepository: ILeagueSeasonRepository;
 
   private constructor(dependencies: Dependencies) {
     this.#leagueSeasonRepository = dependencies.leagueSeasonRepository;
   }
 
-  public static create(dependencies: Dependencies): LeagueSeasonDateValidatorService {
-    return new LeagueSeasonDateValidatorService(dependencies);
+  public static create(dependencies: Dependencies): FixtureDateValidatorService {
+    return new FixtureDateValidatorService(dependencies);
   }
 
   public async ensureDateWithinLeagueSeason<Date extends FixtureDate>(

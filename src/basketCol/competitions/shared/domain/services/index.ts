@@ -1,1 +1,1 @@
-export { LeagueSeasonDateValidatorService } from './FixtureDateValidatorService';
+export { FixtureDateValidatorService } from './FixtureDateValidatorService';
