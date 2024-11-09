@@ -34,7 +34,7 @@ export class LeagueSeasonFixtureDateValidatorService {
     const { startDate, endDate } = leagueSeasonFound.toPrimitives;
 
     if (date.dateAsString < startDate || date.dateAsString > endDate) {
-      throw DateNotWithinLeagueSeasonError.create(leagueSeasonId.value, date.dateAsString);
+      throw DateNotWithinLeagueSeasonError.create(leagueSeasonId.value, date.dateAsString, startDate, endDate);
     }
   }
 }
