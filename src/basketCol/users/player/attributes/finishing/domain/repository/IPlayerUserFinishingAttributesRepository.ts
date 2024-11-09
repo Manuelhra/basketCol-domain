@@ -5,6 +5,6 @@ import { PUFAReferencedPlayerUserId } from '../value-objects/PUFAReferencedPlaye
 
 export interface IPlayerUserFinishingAttributesRepository {
   save(playerUserFinishingAttributes: PlayerUserFinishingAttributes): Promise<void>;
-  searchById(playerUserFinishingAttributesId: PUFAId): Promise<Nullable<PlayerUserFinishingAttributes>>;
-  searchByPlayerUserId(pUFAReferencedPlayerUserId: PUFAReferencedPlayerUserId): Promise<Nullable<PlayerUserFinishingAttributes>>;
+  findById(playerUserFinishingAttributesId: PUFAId): Promise<Nullable<PlayerUserFinishingAttributes>>;
+  findByPlayerUserId(pUFAReferencedPlayerUserId: PUFAReferencedPlayerUserId): Promise<Nullable<PlayerUserFinishingAttributes>>;
 }

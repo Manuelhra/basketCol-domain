@@ -5,7 +5,7 @@ import { ILeagueSeasonFixtureGameRepository } from '../repository/ILeagueSeasonF
 import { LSFGameId } from '../value-objects/LSFGameId';
 
 type Dependencies = {
-  leagueSeasonFixtureGameRepository: ILeagueSeasonFixtureGameRepository;
+  readonly leagueSeasonFixtureGameRepository: ILeagueSeasonFixtureGameRepository;
 };
 
 export class LeagueSeasonFixtureGameValidationService {
@@ -20,7 +20,7 @@ export class LeagueSeasonFixtureGameValidationService {
   }
 
   public async ensureLeagueSeasonFixtureGameExists(leagueSeasonFixtureGameId: LSFGameId): Promise<void> {
-    const leagueSeasonFixtureGameFound: Nullable<LeagueSeasonFixtureGame> = await this.#leagueSeasonFixtureGameRepository.searchById(leagueSeasonFixtureGameId);
+    const leagueSeasonFixtureGameFound: Nullable<LeagueSeasonFixtureGame> = await this.#leagueSeasonFixtureGameRepository.findById(leagueSeasonFixtureGameId);
 
     if (leagueSeasonFixtureGameFound === undefined || leagueSeasonFixtureGameFound === null) {
       throw LeagueSeasonFixtureGameNotFoundError.create(leagueSeasonFixtureGameId);

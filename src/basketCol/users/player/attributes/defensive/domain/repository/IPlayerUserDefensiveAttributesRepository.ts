@@ -5,6 +5,6 @@ import { PUDAReferencedPlayerUserId } from '../value-objects/PUDAReferencedPlaye
 
 export interface IPlayerUserDefensiveAttributesRepository {
   save(playerUserDefensiveAttributes: PlayerUserDefensiveAttributes): Promise<void>;
-  searchById(playerUserDefensiveAttributesId: PUDAId): Promise<Nullable<PlayerUserDefensiveAttributes>>;
-  searchByPlayerUserId(pUDAReferencedPlayerUserId: PUDAReferencedPlayerUserId): Promise<Nullable<PlayerUserDefensiveAttributes>>;
+  findById(playerUserDefensiveAttributesId: PUDAId): Promise<Nullable<PlayerUserDefensiveAttributes>>;
+  findByPlayerUserId(pUDAReferencedPlayerUserId: PUDAReferencedPlayerUserId): Promise<Nullable<PlayerUserDefensiveAttributes>>;
 }

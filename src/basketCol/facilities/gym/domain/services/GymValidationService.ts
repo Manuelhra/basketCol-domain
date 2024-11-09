@@ -20,7 +20,7 @@ export class GymValidationService {
   }
 
   public async ensureGymExists(gymId: GymId): Promise<void> {
-    const gymFound = await this.#gymRepository.searchById(gymId);
+    const gymFound = await this.#gymRepository.findById(gymId);
 
     if (gymFound === undefined || gymFound === null) {
       throw GymNotFoundError.create(gymId);
@@ -28,7 +28,7 @@ export class GymValidationService {
   }
 
   public async ensureGymsExist(gymIdList: ReferencedGymIdList): Promise<void> {
-    const gymFoundList = await this.#gymRepository.searchByIdList(gymIdList);
+    const gymFoundList = await this.#gymRepository.findAllByIdList(gymIdList);
 
     if (gymFoundList.length !== gymIdList.gymIdListAsStrings.length) {
       throw GymsNotFoundError.create(gymIdList.gymIdListAsStrings.map((gymId) => GymId.create(gymId)));

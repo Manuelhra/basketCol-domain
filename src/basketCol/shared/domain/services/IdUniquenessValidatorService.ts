@@ -9,7 +9,7 @@ type Dependencies = {
 };
 
 export interface IIdUniquenessValidatorServiceRepository {
-  searchById<T extends UuidValueObject, IES extends IAggregateRootPrimitives, ES extends AggregateRoot<IES>>(idValueObject: T): Promise<Nullable<ES>>;
+  findById<T extends UuidValueObject, IES extends IAggregateRootPrimitives, ES extends AggregateRoot<IES>>(idValueObject: T): Promise<Nullable<ES>>;
 }
 
 export class IdUniquenessValidatorService {
@@ -24,7 +24,7 @@ export class IdUniquenessValidatorService {
   }
 
   public async ensureUniqueId<T extends UuidValueObject, IES extends IAggregateRootPrimitives, ES extends AggregateRoot<IES>>(idValueObject: T): Promise<void> {
-    const itemFound: Nullable<ES> = await this.#idUniquenessValidatorServiceRepository.searchById<T, IES, ES>(idValueObject);
+    const itemFound: Nullable<ES> = await this.#idUniquenessValidatorServiceRepository.findById<T, IES, ES>(idValueObject);
 
     if (itemFound) {
       throw IdAlreadyExistsError.create(idValueObject);

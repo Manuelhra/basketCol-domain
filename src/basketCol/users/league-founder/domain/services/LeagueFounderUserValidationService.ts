@@ -5,7 +5,7 @@ import { ILeagueFounderUserRepository } from '../repository/ILeagueFounderUserRe
 import { LeagueFounderUserId } from '../value-objects/LeagueFounderUserId';
 
 type Dependencies = {
-  leagueFounderUserRepository: ILeagueFounderUserRepository;
+  readonly leagueFounderUserRepository: ILeagueFounderUserRepository;
 };
 
 export class LeagueFounderUserValidationService {
@@ -20,7 +20,7 @@ export class LeagueFounderUserValidationService {
   }
 
   public async ensureFounderUserExists(leagueFounderUserId: LeagueFounderUserId): Promise<void> {
-    const leagueFounderUserFound: Nullable<LeagueFounderUser> = await this.#leagueFounderUserRepository.searchById(leagueFounderUserId);
+    const leagueFounderUserFound: Nullable<LeagueFounderUser> = await this.#leagueFounderUserRepository.findById(leagueFounderUserId);
 
     if (leagueFounderUserFound === undefined || leagueFounderUserFound === null) {
       throw LeagueFounderUserNotFoundError.create(leagueFounderUserId);

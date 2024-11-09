@@ -5,7 +5,7 @@ import { IRefereeUserRepository } from '../repository/IRefereeUserRepository';
 import { RefereeUserId } from '../value-objects/RefereeUserId';
 
 type Dependencies = {
-  refereeUserRepository: IRefereeUserRepository;
+  readonly refereeUserRepository: IRefereeUserRepository;
 };
 
 export class RefereeUserValidationService {
@@ -20,7 +20,7 @@ export class RefereeUserValidationService {
   }
 
   public async ensureRefereeUserExists(refereeUserId: RefereeUserId): Promise<void> {
-    const refereeUserFound: Nullable<RefereeUser> = await this.#refereeUserRepository.searchById(refereeUserId);
+    const refereeUserFound: Nullable<RefereeUser> = await this.#refereeUserRepository.findById(refereeUserId);
 
     if (refereeUserFound === undefined || refereeUserFound === null) {
       throw RefereeUserNotFoundError.create(refereeUserId);

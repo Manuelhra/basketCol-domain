@@ -4,7 +4,7 @@ import { TeamFounderUserEmail } from '../value-objects/TeamFounderUserEmail';
 import { TeamFounderUserId } from '../value-objects/TeamFounderUserId';
 
 export interface ITeamFounderUserRepository {
-  searchById(teamFounderUserId: TeamFounderUserId): Promise<Nullable<TeamFounderUser>>;
   save(teamFounderUser: TeamFounderUser): Promise<void>;
-  searchByEmail(teamFounderUserEmail: TeamFounderUserEmail): Promise<Nullable<TeamFounderUser>>;
+  findById(teamFounderUserId: TeamFounderUserId): Promise<Nullable<TeamFounderUser>>;
+  findByEmail(teamFounderUserEmail: TeamFounderUserEmail): Promise<Nullable<TeamFounderUser>>;
 }

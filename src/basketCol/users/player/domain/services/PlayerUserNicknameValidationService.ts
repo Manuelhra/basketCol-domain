@@ -5,7 +5,7 @@ import { IPlayerUserRepository } from '../repository/IPlayerUserRepository';
 import { PlayerUserNickname } from '../value-objects/PlayerUserNickname';
 
 type Dependencies = {
-  playerUserRepository: IPlayerUserRepository;
+  readonly playerUserRepository: IPlayerUserRepository;
 };
 
 export class PlayerUserNicknameValidationService {
@@ -20,7 +20,7 @@ export class PlayerUserNicknameValidationService {
   }
 
   public async ensureNicknameIsUnique(nickname: PlayerUserNickname): Promise<void> {
-    const existingPlayer: Nullable<PlayerUser> = await this.#playerUserRepository.searchByNickname(nickname);
+    const existingPlayer: Nullable<PlayerUser> = await this.#playerUserRepository.findByNickname(nickname);
 
     if (existingPlayer !== undefined && existingPlayer !== null) {
       throw PlayerUserNicknameAlreadyExistsError.create(nickname);

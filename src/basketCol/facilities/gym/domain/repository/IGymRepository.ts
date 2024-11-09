@@ -7,8 +7,8 @@ import { GymOfficialName } from '../value-objects/GymOfficialName';
 
 export interface IGymRepository {
   save(gym: Gym): Promise<void>;
-  searchById(gymId: GymId): Promise<Nullable<Gym>>;
-  searchByOfficialName(gymOfficialName: GymOfficialName): Promise<Nullable<Gym>>;
-  searchByIdList(gymIdList: ReferencedGymIdList): Promise<Gym[]>;
+  findById(gymId: GymId): Promise<Nullable<Gym>>;
+  findByOfficialName(gymOfficialName: GymOfficialName): Promise<Nullable<Gym>>;
+  findAllByIdList(gymIdList: ReferencedGymIdList): Promise<Gym[]>;
   searchAll(params: { query?: string; page: number; perPage: number; }): Promise<IPaginatedResponse<Gym>>;
 }

@@ -5,8 +5,8 @@ import { Court } from '../Court';
 import { CourtId } from '../value-objects/CourtId';
 
 export interface ICourtRepository {
-  searchById(courtId: CourtId): Promise<Nullable<Court>>;
   save(court: Court): Promise<void>;
-  searchByIdList(courtIdList: ReferencedCourtIdList): Promise<Court[]>;
+  findById(courtId: CourtId): Promise<Nullable<Court>>;
+  findAllByIdList(courtIdList: ReferencedCourtIdList): Promise<Court[]>;
   searchAll(params: { query?: string; page: number; perPage: number; }): Promise<IPaginatedResponse<Court>>;
 }

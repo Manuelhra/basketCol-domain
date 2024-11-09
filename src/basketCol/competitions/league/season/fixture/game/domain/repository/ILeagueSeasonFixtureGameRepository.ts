@@ -4,5 +4,5 @@ import { LSFGameId } from '../value-objects/LSFGameId';
 
 export interface ILeagueSeasonFixtureGameRepository {
   save(leagueSeasonFixtureGame: LeagueSeasonFixtureGame): Promise<void>;
-  searchById(leagueSeasonFixtureGameId: LSFGameId): Promise<Nullable<LeagueSeasonFixtureGame>>;
+  findById(leagueSeasonFixtureGameId: LSFGameId): Promise<Nullable<LeagueSeasonFixtureGame>>;
 }

@@ -6,8 +6,8 @@ import { LeagueName } from '../value-objects/LeagueName';
 
 export interface ILeagueRepository {
   save(league: League): Promise<void>;
-  searchByShortName(leagueName: LeagueName): Promise<Nullable<League>>;
-  searchByOfficialName(leagueName: LeagueName): Promise<Nullable<League>>;
-  searchById(leagueId: LeagueId): Promise<Nullable<League>>;
+  findByShortName(leagueName: LeagueName): Promise<Nullable<League>>;
+  findByOfficialName(leagueName: LeagueName): Promise<Nullable<League>>;
+  findById(leagueId: LeagueId): Promise<Nullable<League>>;
   searchAll(params: { query?: string; page: number; perPage: number; }): Promise<IPaginatedResponse<League>>;
 }

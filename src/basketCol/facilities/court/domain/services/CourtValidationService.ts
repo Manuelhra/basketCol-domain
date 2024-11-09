@@ -5,7 +5,7 @@ import { ICourtRepository } from '../repository/ICourtRepository';
 import { CourtId } from '../value-objects/CourtId';
 
 type Dependencies = {
-  courtRepository: ICourtRepository;
+  readonly courtRepository: ICourtRepository;
 };
 
 export class CourtValidationService {
@@ -20,7 +20,7 @@ export class CourtValidationService {
   }
 
   public async ensureCourtExists(courtId: CourtId): Promise<void> {
-    const courtFound = await this.#courtRepository.searchById(courtId);
+    const courtFound = await this.#courtRepository.findById(courtId);
 
     if (courtFound === undefined || courtFound === null) {
       throw CourtNotFoundError.create(courtId);
@@ -28,7 +28,7 @@ export class CourtValidationService {
   }
 
   public async ensureCourtsExist(courtIdList: ReferencedCourtIdList): Promise<void> {
-    const courtFoundList = await this.#courtRepository.searchByIdList(courtIdList);
+    const courtFoundList = await this.#courtRepository.findAllByIdList(courtIdList);
 
     if (courtFoundList.length !== courtIdList.courtIdListAsStrings.length) {
       throw CourtsNotFoundError.create(courtIdList.courtIdListAsStrings.map((courtId) => CourtId.create(courtId)));

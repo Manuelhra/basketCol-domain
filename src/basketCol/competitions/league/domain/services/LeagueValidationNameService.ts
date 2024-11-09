@@ -20,7 +20,7 @@ export class LeagueValidationNameService {
   }
 
   public async validateUniqueShortName(leagueName: LeagueName): Promise<void> {
-    const leagueFound: Nullable<League> = await this.#leagueRepository.searchByShortName(leagueName);
+    const leagueFound: Nullable<League> = await this.#leagueRepository.findByShortName(leagueName);
 
     if (leagueFound) {
       throw DuplicateLeagueNameError.create(leagueName, 'SHORT_NAME');
@@ -28,7 +28,7 @@ export class LeagueValidationNameService {
   }
 
   public async validateUniqueOfficialName(leagueName: LeagueName): Promise<void> {
-    const leagueFound: Nullable<League> = await this.#leagueRepository.searchByOfficialName(leagueName);
+    const leagueFound: Nullable<League> = await this.#leagueRepository.findByOfficialName(leagueName);
 
     if (leagueFound) {
       throw DuplicateLeagueNameError.create(leagueName, 'OFFICIAL_NAME');

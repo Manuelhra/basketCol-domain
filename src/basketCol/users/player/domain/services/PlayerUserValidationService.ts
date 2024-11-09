@@ -5,7 +5,7 @@ import { IPlayerUserRepository } from '../repository/IPlayerUserRepository';
 import { PlayerUserId } from '../value-objects/PlayerUserId';
 
 type Dependencies = {
-  playerUserRepository: IPlayerUserRepository;
+  readonly playerUserRepository: IPlayerUserRepository;
 };
 
 export class PlayerUserValidationService {
@@ -20,7 +20,7 @@ export class PlayerUserValidationService {
   }
 
   public async ensurePlayerUserExists(playerUserId: PlayerUserId): Promise<void> {
-    const playerUserFound: Nullable<PlayerUser> = await this.#playerUserRepository.searchById(playerUserId);
+    const playerUserFound: Nullable<PlayerUser> = await this.#playerUserRepository.findById(playerUserId);
 
     if (playerUserFound === undefined || playerUserFound === null) {
       throw PlayerUserNotFoundError.create(playerUserId);

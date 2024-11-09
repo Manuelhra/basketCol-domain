@@ -18,7 +18,7 @@ export class LeagueSeasonValidationService {
   }
 
   public async ensureLeagueSeasonExists(leagueSeasonId: LeagueSeasonId): Promise<void> {
-    const leagueSeasonFound = await this.#leagueSeasonRepository.searchById(leagueSeasonId);
+    const leagueSeasonFound = await this.#leagueSeasonRepository.findById(leagueSeasonId);
 
     if (leagueSeasonFound === undefined || leagueSeasonFound === null) {
       throw LeagueSeasonNotFoundError.create(leagueSeasonId);

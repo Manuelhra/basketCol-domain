@@ -5,6 +5,6 @@ import { PUSAReferencedPlayerUserId } from '../value-objects/PUSAReferencedPlaye
 
 export interface IPlayerUserShootingAttributesRepository {
   save(playerUserShootingAttributes: PlayerUserShootingAttributes): Promise<void>;
-  searchById(playerUserShootingAttributesId: PUSAId): Promise<Nullable<PlayerUserShootingAttributes>>;
-  searchByPlayerUserId(pUSAReferencedPlayerUserId: PUSAReferencedPlayerUserId): Promise<Nullable<PlayerUserShootingAttributes>>;
+  findById(playerUserShootingAttributesId: PUSAId): Promise<Nullable<PlayerUserShootingAttributes>>;
+  findByPlayerUserId(pUSAReferencedPlayerUserId: PUSAReferencedPlayerUserId): Promise<Nullable<PlayerUserShootingAttributes>>;
 }

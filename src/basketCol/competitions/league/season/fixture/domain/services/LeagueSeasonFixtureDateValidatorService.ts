@@ -7,7 +7,7 @@ import { LSFixtureDate } from '../value-objects/LSFixtureDate';
 import { LSFixtureLeagueSeasonId } from '../value-objects/LSFixtureLeagueSeasonId';
 
 type Dependencies = {
-  leagueSeasonRepository: ILeagueSeasonRepository;
+  readonly leagueSeasonRepository: ILeagueSeasonRepository;
 };
 
 export class LeagueSeasonFixtureDateValidatorService {
@@ -25,7 +25,7 @@ export class LeagueSeasonFixtureDateValidatorService {
     leagueSeasonId: LSFixtureLeagueSeasonId,
     date: LSFixtureDate,
   ): Promise<void> {
-    const leagueSeasonFound: Nullable<LeagueSeason> = await this.#leagueSeasonRepository.searchById(leagueSeasonId.value);
+    const leagueSeasonFound: Nullable<LeagueSeason> = await this.#leagueSeasonRepository.findById(leagueSeasonId.value);
 
     if (leagueSeasonFound === null || leagueSeasonFound === undefined) {
       throw LeagueSeasonNotFoundError.create(leagueSeasonId.value);

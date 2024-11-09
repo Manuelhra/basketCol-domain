@@ -4,7 +4,7 @@ import { RefereeUserEmail } from '../value-objects/RefereeUserEmail';
 import { RefereeUserId } from '../value-objects/RefereeUserId';
 
 export interface IRefereeUserRepository {
-  searchById(refereeUserId: RefereeUserId): Promise<Nullable<RefereeUser>>;
   save(refereeUser: RefereeUser): Promise<void>;
-  searchByEmail(refereeUserEmail: RefereeUserEmail): Promise<Nullable<RefereeUser>>;
+  findById(refereeUserId: RefereeUserId): Promise<Nullable<RefereeUser>>;
+  findByEmail(refereeUserEmail: RefereeUserEmail): Promise<Nullable<RefereeUser>>;
 }

@@ -4,5 +4,5 @@ import { PUCStatsId } from '../value-objects/PUCStatsId';
 
 export interface IPlayerUserCareerStatsRepository {
   save(playerUserCareerStats: PlayerUserCareerStats): Promise<void>;
-  searchById(pUCStatsId: PUCStatsId): Promise<Nullable<PlayerUserCareerStats>>;
+  findById(pUCStatsId: PUCStatsId): Promise<Nullable<PlayerUserCareerStats>>;
 }

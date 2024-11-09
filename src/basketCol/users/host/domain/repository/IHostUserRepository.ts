@@ -5,7 +5,7 @@ import { HostUserId } from '../value-objects/HostUserId';
 
 export interface IHostUserRepository {
   save(hostUser: HostUser): Promise<void>;
-  search(): Promise<Nullable<HostUser>>;
-  searchById(hostUserId: HostUserId): Promise<Nullable<HostUser>>;
-  searchByEmail(hostUserEmail: HostUserEmail): Promise<Nullable<HostUser>>;
+  find(): Promise<Nullable<HostUser>>;
+  findById(hostUserId: HostUserId): Promise<Nullable<HostUser>>;
+  findByEmail(hostUserEmail: HostUserEmail): Promise<Nullable<HostUser>>;
 }

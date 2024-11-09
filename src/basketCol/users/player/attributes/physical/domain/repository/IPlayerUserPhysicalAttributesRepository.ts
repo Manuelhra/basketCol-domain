@@ -5,6 +5,6 @@ import { PUPAReferencedPlayerUserId } from '../value-objects/PUPAReferencedPlaye
 
 export interface IPlayerUserPhysicalAttributesRepository {
   save(playerUserPhysicalAttributes: PlayerUserPhysicalAttributes): Promise<void>;
-  searchById(playerUserPhysicalAttributesId: PUPAId): Promise<Nullable<PlayerUserPhysicalAttributes>>;
-  searchByPlayerUserId(pUPAReferencedPlayerUserId: PUPAReferencedPlayerUserId): Promise<Nullable<PlayerUserPhysicalAttributes>>;
+  findById(playerUserPhysicalAttributesId: PUPAId): Promise<Nullable<PlayerUserPhysicalAttributes>>;
+  findByPlayerUserId(pUPAReferencedPlayerUserId: PUPAReferencedPlayerUserId): Promise<Nullable<PlayerUserPhysicalAttributes>>;
 }

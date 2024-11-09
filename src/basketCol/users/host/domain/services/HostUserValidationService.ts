@@ -18,7 +18,7 @@ export class HostUserValidationService {
   }
 
   public async ensureHostUserExists(hostUserId: HostUserId): Promise<void> {
-    const hostUserFound = await this.#hostUserRepository.searchById(hostUserId);
+    const hostUserFound = await this.#hostUserRepository.findById(hostUserId);
 
     if (hostUserFound === undefined || hostUserFound === null) {
       throw HostUserNotFoundError.create(hostUserId);

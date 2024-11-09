@@ -1,3 +1,4 @@
+import { IPaginatedResponse } from '../../../../../../shared/domain/IPaginatedResponse';
 import { Nullable } from '../../../../../../shared/domain/Nullable';
 import { LeagueSeasonFixture } from '../LeagueSeasonFixture';
 import { LSFixtureDate } from '../value-objects/LSFixtureDate';
@@ -6,6 +7,8 @@ import { LSFixtureLeagueSeasonId } from '../value-objects/LSFixtureLeagueSeasonI
 
 export interface ILeagueSeasonFixtureRepository {
   save(leagueSeasonFixture: LeagueSeasonFixture): Promise<void>;
-  searchByLeagueSeasonIdAndDate(leagueSeasonId: LSFixtureLeagueSeasonId, date: LSFixtureDate): Promise<Nullable<LeagueSeasonFixture>>;
-  searchById(leagueSeasonFixtureId: LSFixtureId): Promise<Nullable<LeagueSeasonFixture>>;
+  findByLeagueSeasonIdAndDate(leagueSeasonId: LSFixtureLeagueSeasonId, date: LSFixtureDate): Promise<Nullable<LeagueSeasonFixture>>;
+  findById(leagueSeasonFixtureId: LSFixtureId): Promise<Nullable<LeagueSeasonFixture>>;
+  findAllByLeagueSeasonId(leagueSeasonId: LSFixtureLeagueSeasonId): Promise<LeagueSeasonFixture[]>;
+  searchAll(params: { query?: string; page: number; perPage: number; }): Promise<IPaginatedResponse<LeagueSeasonFixture>>;
 }

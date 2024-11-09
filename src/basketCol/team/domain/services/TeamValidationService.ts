@@ -20,7 +20,7 @@ export class TeamValidationService {
   }
 
   public async ensureTeamExists(teamId: TeamId): Promise<void> {
-    const teamFound: Nullable<Team> = await this.#teamRepository.searchById(teamId);
+    const teamFound: Nullable<Team> = await this.#teamRepository.findById(teamId);
 
     if (teamFound === undefined || teamFound === null) {
       throw TeamNotFoundError.create(teamId);

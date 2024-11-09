@@ -5,6 +5,6 @@ import { LeagueFounderUserId } from '../value-objects/LeagueFounderUserId';
 
 export interface ILeagueFounderUserRepository {
   save(LeagueFounderUser: LeagueFounderUser): Promise<void>;
-  searchById(leagueFounderUserId: LeagueFounderUserId): Promise<Nullable<LeagueFounderUser>>;
-  searchByEmail(leagueFounderUserEmail: LeagueFounderUserEmail): Promise<Nullable<LeagueFounderUser>>;
+  findById(leagueFounderUserId: LeagueFounderUserId): Promise<Nullable<LeagueFounderUser>>;
+  findByEmail(leagueFounderUserEmail: LeagueFounderUserEmail): Promise<Nullable<LeagueFounderUser>>;
 }

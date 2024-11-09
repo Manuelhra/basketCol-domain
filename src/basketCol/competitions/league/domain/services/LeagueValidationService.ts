@@ -5,7 +5,7 @@ import { ILeagueRepository } from '../repository/ILeagueRepository';
 import { LeagueId } from '../value-objects/LeagueId';
 
 type Dependencies = {
-  leagueRepository: ILeagueRepository,
+  readonly leagueRepository: ILeagueRepository,
 };
 
 export class LeagueValidationService {
@@ -20,7 +20,7 @@ export class LeagueValidationService {
   }
 
   public async ensureLeagueExist(leagueId: LeagueId): Promise<void> {
-    const leagueFound: Nullable<League> = await this.#leagueRepository.searchById(leagueId);
+    const leagueFound: Nullable<League> = await this.#leagueRepository.findById(leagueId);
 
     if (leagueFound === undefined || leagueFound === null) {
       throw LeagueNotFoundError.create(leagueId);

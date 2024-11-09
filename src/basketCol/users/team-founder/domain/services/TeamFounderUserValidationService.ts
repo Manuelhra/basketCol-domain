@@ -5,7 +5,7 @@ import { TeamFounderUser } from '../TeamFounderUser';
 import { TeamFounderUserId } from '../value-objects/TeamFounderUserId';
 
 type Dependencies = {
-  tFURepository: ITeamFounderUserRepository;
+  readonly tFURepository: ITeamFounderUserRepository;
 };
 
 export class TeamFounderUserValidationService {
@@ -20,7 +20,7 @@ export class TeamFounderUserValidationService {
   }
 
   public async ensureTeamFounderUserExists(teamFounderUserId: TeamFounderUserId): Promise<void> {
-    const teamFounderUserFound: Nullable<TeamFounderUser> = await this.#tFURepository.searchById(teamFounderUserId);
+    const teamFounderUserFound: Nullable<TeamFounderUser> = await this.#tFURepository.findById(teamFounderUserId);
 
     if (teamFounderUserFound === undefined || teamFounderUserFound === null) {
       throw TeamFounderUserNotFoundError.create(teamFounderUserId);
