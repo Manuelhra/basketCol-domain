@@ -3,7 +3,7 @@ import { ILeagueSeasonRepository } from '../repository/ILeagueSeasonRepository';
 import { LeagueSeasonId } from '../value-objects/LeagueSeasonId';
 
 type Dependencies = {
-  leagueSeasonRepository: ILeagueSeasonRepository;
+  readonly leagueSeasonRepository: ILeagueSeasonRepository;
 };
 
 export class LeagueSeasonValidationService {
@@ -11,6 +11,10 @@ export class LeagueSeasonValidationService {
 
   private constructor(dependencies: Dependencies) {
     this.#leagueSeasonRepository = dependencies.leagueSeasonRepository;
+  }
+
+  public static create(dependencies: Dependencies): LeagueSeasonValidationService {
+    return new LeagueSeasonValidationService(dependencies);
   }
 
   public async ensureLeagueSeasonExists(leagueSeasonId: LeagueSeasonId): Promise<void> {
