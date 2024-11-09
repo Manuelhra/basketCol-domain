@@ -57,4 +57,22 @@ export class LeagueSeasonFixture extends Fixture<ILeagueSeasonFixturePrimitives>
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    date: string,
+    name: string | null,
+    leagueSeasonId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): LeagueSeasonFixture {
+    return new LeagueSeasonFixture(
+      id,
+      date,
+      name,
+      leagueSeasonId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }
