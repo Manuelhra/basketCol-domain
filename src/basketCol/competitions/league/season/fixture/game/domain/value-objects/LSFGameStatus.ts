@@ -8,4 +8,8 @@ export class LSFGameStatus extends FGameStatus {
   public static create(value: string): LSFGameStatus {
     return new LSFGameStatus(value);
   }
+
+  public static createUpcoming(): LSFGameStatus {
+    return new LSFGameStatus('UPCOMING');
+  }
 }
