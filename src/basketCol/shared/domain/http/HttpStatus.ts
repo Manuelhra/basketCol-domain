@@ -19,6 +19,8 @@ export class HttpStatus {
 
   public static readonly NOT_IMPLEMENTED = 501;
 
+  public static readonly SERVICE_UNAVAILABLE = 503;
+
   private static readonly statusMessages: { [key: number]: string } = {
     200: 'OK',
     201: 'Created',
@@ -30,9 +32,18 @@ export class HttpStatus {
     409: 'Conflict',
     500: 'Internal Server Error',
     501: 'Not Implemented',
+    503: 'Service Unavailable',
   };
 
   public static getMessage(statusCode: number): string {
     return this.statusMessages[statusCode] || 'Unknown Status';
+  }
+
+  public static isError(statusCode: number): boolean {
+    return statusCode >= 400;
+  }
+
+  public static isSuccess(statusCode: number): boolean {
+    return statusCode >= 200 && statusCode < 300;
   }
 }
