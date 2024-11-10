@@ -53,4 +53,20 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    officialName: string,
+    teamFounderUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): Team {
+    return new Team(
+      id,
+      officialName,
+      teamFounderUserId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }
