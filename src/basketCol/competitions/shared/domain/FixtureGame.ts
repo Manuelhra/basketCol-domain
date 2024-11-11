@@ -16,7 +16,7 @@ import { FGameId } from './value-objects/FGameId';
 import { FGameOvertime } from './value-objects/FGameOvertime';
 import { FGameOvertimeNumber } from './value-objects/FGameOvertimeNumber';
 import { FGameQuarter } from './value-objects/FGameQuarter';
-import { FGameReferencedCourtId } from './value-objects/FGameReferencedCourtId';
+import { FGameCourtId } from './value-objects/FGameCourtId';
 import { FGameStartTime } from './value-objects/FGameStartTime';
 import { FGameStatus } from './value-objects/FGameStatus';
 import { FGameType } from './value-objects/FGameType';
@@ -51,7 +51,7 @@ export abstract class FixtureGame<I extends IFixtureGamePrimitives> extends Aggr
 
   protected readonly assistantRefereeId: FGameAssistantRefereeId;
 
-  protected readonly courtId: FGameReferencedCourtId;
+  protected readonly courtId: FGameCourtId;
 
   protected readonly fixtureId: FGameFixtureId;
 
@@ -71,7 +71,7 @@ export abstract class FixtureGame<I extends IFixtureGamePrimitives> extends Aggr
     gameStatus: FGameStatus,
     headRefereeId: FGameHeadRefereeId,
     assistantRefereeId: FGameAssistantRefereeId,
-    courtId: FGameReferencedCourtId,
+    courtId: FGameCourtId,
     fixtureId: FGameFixtureId,
     createdAt: FGameCreatedAt,
     updatedAt: FGameUpdatedAt,

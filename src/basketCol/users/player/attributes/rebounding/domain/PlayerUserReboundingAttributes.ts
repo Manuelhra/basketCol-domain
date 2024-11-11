@@ -2,7 +2,7 @@ import { IPlayerUserReboundingAttributesPrimitives } from './IPlayerUserReboundi
 import { PURACreatedAt } from './value-objects/PURACreatedAt';
 import { PURADefensiveRebound } from './value-objects/PURADefensiveRebound';
 import { PURAOffensiveRebound } from './value-objects/PURAOffensiveRebound';
-import { PURAReferencedPlayerUserId } from './value-objects/PURAReferencedPlayerUserId';
+import { PURAPlayerUserId } from './value-objects/PURAPlayerUserId';
 import { PURAUpdatedAt } from './value-objects/PURAUpdatedAt';
 import { PURAId } from './value-objects/PURAId';
 import { AttributeCategory } from '../../shared/domain/value-objects/AttributeCategory';
@@ -12,7 +12,7 @@ export class PlayerUserReboundingAttributes extends AttributeCategory<IPlayerUse
 
   readonly #defensiveRebound: PURADefensiveRebound;
 
-  readonly #playerUserId: PURAReferencedPlayerUserId;
+  readonly #playerUserId: PURAPlayerUserId;
 
   private constructor(
     id: string,
@@ -30,7 +30,7 @@ export class PlayerUserReboundingAttributes extends AttributeCategory<IPlayerUse
 
     this.#offensiveRebound = PURAOffensiveRebound.create(offensiveRebound);
     this.#defensiveRebound = PURADefensiveRebound.create(defensiveRebound);
-    this.#playerUserId = PURAReferencedPlayerUserId.create(playerUserId);
+    this.#playerUserId = PURAPlayerUserId.create(playerUserId);
   }
 
   public override get toPrimitives(): IPlayerUserReboundingAttributesPrimitives {

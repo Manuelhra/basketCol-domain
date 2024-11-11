@@ -6,6 +6,6 @@ export { LSABestThreePointShooterId } from './LSABestThreePointShooterId';
 export { LSABestTwoPointShooterId } from './LSABestTwoPointShooterId';
 export { LSAChampionTeamId } from './LSAChampionTeamId';
 export { LSACreatedAt } from './LSACreatedAt';
-export { LSAReferencedLeagueSeasonId } from './LSAReferencedLeagueSeasonId';
+export { LSALeagueSeasonId } from './LSALeagueSeasonId';
 export { LSAUpdatedAt } from './LSAUpdatedAt';
 export { LeagueSeasonAwardsId } from './LeagueSeasonAwardsId';

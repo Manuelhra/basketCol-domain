@@ -7,12 +7,12 @@ import { LeagueDescription } from './value-objects/LeagueDescription';
 import { LeagueEstablishmentDate } from './value-objects/LeagueEstablishmentDate';
 import { LeagueId } from './value-objects/LeagueId';
 import { LeagueIsActive } from './value-objects/LeagueIsActive';
+import { LeagueLeagueFounderUserId } from './value-objects/LeagueLeagueFounderUserId';
 import { LeagueLevel } from './value-objects/LeagueLevel';
 import { LeagueLocation } from './value-objects/LeagueLocation';
 import { LeagueName } from './value-objects/LeagueName';
 import { LeagueRules } from './value-objects/LeagueRules';
 import { LeagueUpdatedAt } from './value-objects/LeagueUpdatedAt';
-import { LReferencedLeagueFounderUserId } from './value-objects/LReferencedLeagueFounderUserId';
 
 export class League extends AggregateRoot<ILeaguePrimitives> {
   readonly #name: LeagueName;
@@ -27,7 +27,7 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
 
   readonly #location: LeagueLocation;
 
-  readonly #leagueFounderUserId: LReferencedLeagueFounderUserId;
+  readonly #leagueFounderUserId: LeagueLeagueFounderUserId;
 
   readonly #establishmentDate: LeagueEstablishmentDate;
 
@@ -59,7 +59,7 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
     this.#rules = LeagueRules.create(rules);
     this.#level = LeagueLevel.create(level);
     this.#location = LeagueLocation.create(location);
-    this.#leagueFounderUserId = LReferencedLeagueFounderUserId.create(leagueFounderUserId);
+    this.#leagueFounderUserId = LeagueLeagueFounderUserId.create(leagueFounderUserId);
     this.#establishmentDate = LeagueEstablishmentDate.create(establishmentDate);
     this.#isActive = LeagueIsActive.create(isActive);
   }

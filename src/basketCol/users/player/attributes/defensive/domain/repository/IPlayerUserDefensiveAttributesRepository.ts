@@ -1,10 +1,10 @@
 import { Nullable } from '../../../../../../shared/domain/Nullable';
 import { PlayerUserDefensiveAttributes } from '../PlayerUserDefensiveAttributes';
 import { PUDAId } from '../value-objects/PUDAId';
-import { PUDAReferencedPlayerUserId } from '../value-objects/PUDAReferencedPlayerUserId';
+import { PUDAPlayerUserId } from '../value-objects/PUDAPlayerUserId';
 
 export interface IPlayerUserDefensiveAttributesRepository {
   save(playerUserDefensiveAttributes: PlayerUserDefensiveAttributes): Promise<void>;
   findById(playerUserDefensiveAttributesId: PUDAId): Promise<Nullable<PlayerUserDefensiveAttributes>>;
-  findByPlayerUserId(pUDAReferencedPlayerUserId: PUDAReferencedPlayerUserId): Promise<Nullable<PlayerUserDefensiveAttributes>>;
+  findByPlayerUserId(pUDAPlayerUserId: PUDAPlayerUserId): Promise<Nullable<PlayerUserDefensiveAttributes>>;
 }

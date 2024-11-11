@@ -5,7 +5,6 @@ export { DuplicateLeagueNameError, LeagueNotFoundError } from '../basketCol/comp
 export { ILeagueRepository } from '../basketCol/competitions/league/domain/repository/ILeagueRepository';
 export { LeagueValidationNameService, LeagueValidationService } from '../basketCol/competitions/league/domain/services';
 export {
-  LReferencedLeagueFounderUserId,
   LeagueCreatedAt,
   LeagueDescription,
   LeagueEstablishmentDate,
@@ -17,6 +16,7 @@ export {
   LeagueRules,
   LeagueUpdatedAt,
   LeagueGender,
+  LeagueLeagueFounderUserId,
 } from '../basketCol/competitions/league/domain/value-objects';
 
 // Competitions League Season
@@ -58,7 +58,7 @@ export {
   LSABestTwoPointShooterId,
   LSAChampionTeamId,
   LSACreatedAt,
-  LSAReferencedLeagueSeasonId,
+  LSALeagueSeasonId,
   LSAUpdatedAt,
   LeagueSeasonAwardsId,
 } from '../basketCol/competitions/league/season/awards/domain/value-objects';
@@ -195,7 +195,7 @@ export {
   FGameHomeScore,
   FGameHomeTeamId,
   FGameId,
-  FGameReferencedCourtId,
+  FGameCourtId,
   FGameStartTime,
   FGameType,
   FixtureCreatedAt,
@@ -233,7 +233,7 @@ export {
   CourtHoopHeight,
   CourtId,
   CourtLocation,
-  CourtNullableReferencedFacilityId,
+  CourtFacilityId,
   CourtOfficialName,
   CourtRegisteredById,
   CourtSurface,
@@ -343,7 +343,6 @@ export {
   LocationValueObject,
   Metric,
   MinutesDurationValueObject,
-  NullableReferencedFacilityId,
   NullableString,
   NumberArrayValueObject,
   ObjectValueObject,
@@ -383,6 +382,7 @@ export {
   GenderValueObject,
   IdListValueObject,
   NullableDate,
+  NullableIdValueObject,
 } from '../basketCol/shared/domain/value-objects';
 
 // Team
@@ -392,7 +392,6 @@ export { TeamNotFoundError, TeamOfficialNameLengthError } from '../basketCol/tea
 export { ITeamRepository } from '../basketCol/team/domain/repository/ITeamRepository';
 export { TeamValidationService } from '../basketCol/team/domain/services';
 export {
-  TReferencedTeamFounderUserId,
   TeamCreatedAt,
   TeamId,
   TeamOfficialName,
@@ -401,6 +400,7 @@ export {
   TeamGender,
   TeamImage,
   TeamMainImage,
+  TeamTeamFounderUserId,
 } from '../basketCol/team/domain/value-objects';
 
 // Team AllTimeStats
@@ -525,7 +525,7 @@ export {
   PUDAId,
   PUDAInteriorDefense,
   PUDAPerimeterDefense,
-  PUDAReferencedPlayerUserId,
+  PUDAPlayerUserId,
   PUDASteal,
   PUDAUpdatedAt,
 } from '../basketCol/users/player/attributes/defensive/domain/value-objects';
@@ -540,7 +540,7 @@ export {
   PUFADrivingLayup,
   PUFAId,
   PUFAPostControl,
-  PUFAReferencedPlayerUserId,
+  PUFAPlayerUserId,
   PUFAStandingDunk,
   PUFAUpdatedAt,
 } from '../basketCol/users/player/attributes/finishing/domain/value-objects';
@@ -553,7 +553,7 @@ export {
   PUPAAcceleration,
   PUPACreatedAt,
   PUPAId,
-  PUPAReferencedPlayerUserId,
+  PUPAPlayerUserId,
   PUPASpeed,
   PUPAStamina,
   PUPAStrength,
@@ -570,7 +570,7 @@ export {
   PURADefensiveRebound,
   PURAId,
   PURAOffensiveRebound,
-  PURAReferencedPlayerUserId,
+  PURAPlayerUserId,
   PURAUpdatedAt,
 } from '../basketCol/users/player/attributes/rebounding/domain/value-objects';
 
@@ -587,7 +587,7 @@ export {
   PUSACreatedAt as PUShootingAttributesCreatedAt,
   PUSAFreeThrow,
   PUSAMidRangeShot,
-  PUSAReferencedPlayerUserId as PUShootingAttributesReferencedPlayerUserId,
+  PUSAPlayerUserId as PUShootingAttributesPlayerUserId,
   PUSAThreePointShot,
   PUSAUpdatedAt as PUShootingAttributesUpdatedAt,
 } from '../basketCol/users/player/attributes/shooting/domain/value-objects';
@@ -601,7 +601,7 @@ export {
   PUSACreatedAt as PUSASkillAttributesCreatedAt,
   PUSAId as PUSASkillAttributesId,
   PUSAPassAccuracy,
-  PUSAReferencedPlayerUserId as PUSASkillAttributesReferencedPlayerUserId,
+  PUSAPlayerUserId as PUSASkillAttributesPlayerUserId,
   PUSASpeedWithBall,
   PUSAUpdatedAt as PUSASkillAttributesUpdatedAt,
 } from '../basketCol/users/player/attributes/skill/domain/value-objects';

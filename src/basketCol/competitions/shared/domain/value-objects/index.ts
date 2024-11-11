@@ -27,7 +27,7 @@ export { FGameHeadRefereeId } from './FGameHeadRefereeId';
 export { FGameHomeScore } from './FGameHomeScore';
 export { FGameHomeTeamId } from './FGameHomeTeamId';
 export { FGameId } from './FGameId';
-export { FGameReferencedCourtId } from './FGameReferencedCourtId';
+export { FGameCourtId } from './FGameCourtId';
 export { FGameStartTime } from './FGameStartTime';
 export { FGameType } from './FGameType';
 export { FixtureDate } from './FixtureDate';

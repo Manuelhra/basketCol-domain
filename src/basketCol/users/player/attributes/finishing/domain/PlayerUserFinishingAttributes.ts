@@ -3,7 +3,7 @@ import { PUFACreatedAt } from './value-objects/PUFACreatedAt';
 import { PUFADrivingDunk } from './value-objects/PUFADrivingDunk';
 import { PUFADrivingLayup } from './value-objects/PUFADrivingLayup';
 import { PUFAPostControl } from './value-objects/PUFAPostControl';
-import { PUFAReferencedPlayerUserId } from './value-objects/PUFAReferencedPlayerUserId';
+import { PUFAPlayerUserId } from './value-objects/PUFAPlayerUserId';
 import { PUFAStandingDunk } from './value-objects/PUFAStandingDunk';
 import { PUFAUpdatedAt } from './value-objects/PUFAUpdatedAt';
 import { PUFAId } from './value-objects/PUFAId';
@@ -18,7 +18,7 @@ export class PlayerUserFinishingAttributes extends AttributeCategory<IPlayerUser
 
   readonly #postControl: PUFAPostControl;
 
-  readonly #playerUserId: PUFAReferencedPlayerUserId;
+  readonly #playerUserId: PUFAPlayerUserId;
 
   private constructor(
     id: string,
@@ -40,7 +40,7 @@ export class PlayerUserFinishingAttributes extends AttributeCategory<IPlayerUser
     this.#drivingDunk = PUFADrivingDunk.create(drivingDunk);
     this.#standingDunk = PUFAStandingDunk.create(standingDunk);
     this.#postControl = PUFAPostControl.create(postControl);
-    this.#playerUserId = PUFAReferencedPlayerUserId.create(playerUserId);
+    this.#playerUserId = PUFAPlayerUserId.create(playerUserId);
   }
 
   public override get toPrimitives(): IPlayerUserFinishingAttributesPrimitives {

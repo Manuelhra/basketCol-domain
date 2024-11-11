@@ -8,12 +8,12 @@ import { TeamId } from './value-objects/TeamId';
 import { TeamMainImage } from './value-objects/TeamMainImage';
 import { TeamOfficialName } from './value-objects/TeamOfficialName';
 import { TeamUpdatedAt } from './value-objects/TeamUpdatedAt';
-import { TReferencedTeamFounderUserId } from './value-objects/TReferencedTeamFounderUserId';
+import { TeamTeamFounderUserId } from './value-objects/TeamTeamFounderUserId';
 
 export class Team extends AggregateRoot<ITeamPrimitives> {
   readonly #officialName: TeamOfficialName;
 
-  readonly #teamFounderUserId: TReferencedTeamFounderUserId;
+  readonly #teamFounderUserId: TeamTeamFounderUserId;
 
   readonly #gender: TeamGender;
 
@@ -41,7 +41,7 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
     this.#gender = TeamGender.create(gender);
     this.#mainImage = TeamMainImage.create(mainImage);
     this.#gallery = TeamGallery.create(gallery);
-    this.#teamFounderUserId = TReferencedTeamFounderUserId.create(teamFounderUserId);
+    this.#teamFounderUserId = TeamTeamFounderUserId.create(teamFounderUserId);
   }
 
   public override get toPrimitives(): ITeamPrimitives {

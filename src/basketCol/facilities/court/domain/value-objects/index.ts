@@ -3,7 +3,7 @@ export { CourtEstablishmentDate } from './CourtEstablishmentDate';
 export { CourtHoopHeight } from './CourtHoopHeight';
 export { CourtId } from './CourtId';
 export { CourtLocation } from './CourtLocation';
-export { CourtNullableReferencedFacilityId } from './CourtNullableReferencedFacilityId';
+export { CourtFacilityId } from './CourtFacilityId';
 export { CourtOfficialName } from './CourtOfficialName';
 export { CourtRegisteredById } from './CourtRegisteredById';
 export { CourtSurface } from './CourtSurface';

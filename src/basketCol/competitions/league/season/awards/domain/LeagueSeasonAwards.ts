@@ -9,7 +9,7 @@ import { LSABestThreePointShooterId } from './value-objects/LSABestThreePointSho
 import { LSABestTwoPointShooterId } from './value-objects/LSABestTwoPointShooterId';
 import { LSAChampionTeamId } from './value-objects/LSAChampionTeamId';
 import { LSACreatedAt } from './value-objects/LSACreatedAt';
-import { LSAReferencedLeagueSeasonId } from './value-objects/LSAReferencedLeagueSeasonId';
+import { LSALeagueSeasonId } from './value-objects/LSALeagueSeasonId';
 import { LSAUpdatedAt } from './value-objects/LSAUpdatedAt';
 
 export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimitives> {
@@ -27,7 +27,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
 
   readonly #championTeamId: LSAChampionTeamId;
 
-  readonly #leagueSeasonId: LSAReferencedLeagueSeasonId;
+  readonly #leagueSeasonId: LSALeagueSeasonId;
 
   private constructor(
     id: string,
@@ -55,7 +55,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
     this.#bestOffensiveRebounderId = LSABestOffensiveRebounderId.create(bestOffensiveRebounderId);
     this.#bestDefensiveRebounderId = LSABestDefensiveRebounderId.create(bestDefensiveRebounderId);
     this.#championTeamId = LSAChampionTeamId.create(championTeamId);
-    this.#leagueSeasonId = LSAReferencedLeagueSeasonId.create(leagueSeasonId);
+    this.#leagueSeasonId = LSALeagueSeasonId.create(leagueSeasonId);
   }
 
   public override get toPrimitives(): ILeagueSeasonAwardsPrimitives {

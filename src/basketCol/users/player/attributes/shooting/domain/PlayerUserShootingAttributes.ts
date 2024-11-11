@@ -3,7 +3,7 @@ import { PUSACloseShot } from './value-objects/PUSACloseShot';
 import { PUSACreatedAt } from './value-objects/PUSACreatedAt';
 import { PUSAFreeThrow } from './value-objects/PUSAFreeThrow';
 import { PUSAMidRangeShot } from './value-objects/PUSAMidRangeShot';
-import { PUSAReferencedPlayerUserId } from './value-objects/PUSAReferencedPlayerUserId';
+import { PUSAPlayerUserId } from './value-objects/PUSAPlayerUserId';
 import { PUSAThreePointShot } from './value-objects/PUSAThreePointShot';
 import { PUSAUpdatedAt } from './value-objects/PUSAUpdatedAt';
 import { PUSAId } from './value-objects/PUSAId';
@@ -18,7 +18,7 @@ export class PlayerUserShootingAttributes extends AttributeCategory<IPlayerUserS
 
   readonly #freeThrow: PUSAFreeThrow;
 
-  readonly #playerUserId: PUSAReferencedPlayerUserId;
+  readonly #playerUserId: PUSAPlayerUserId;
 
   private constructor(
     id: string,
@@ -40,7 +40,7 @@ export class PlayerUserShootingAttributes extends AttributeCategory<IPlayerUserS
     this.#midRangeShot = PUSAMidRangeShot.create(midRangeShot);
     this.#threePointShot = PUSAThreePointShot.create(threePointShot);
     this.#freeThrow = PUSAFreeThrow.create(freeThrow);
-    this.#playerUserId = PUSAReferencedPlayerUserId.create(playerUserId);
+    this.#playerUserId = PUSAPlayerUserId.create(playerUserId);
   }
 
   public override get toPrimitives(): IPlayerUserShootingAttributesPrimitives {
