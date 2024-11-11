@@ -27,7 +27,7 @@ export class LeagueSeasonFixtureValidationService {
     const leagueSeasonFixtureFound: Nullable<LeagueSeasonFixture> = await this.#leagueSeasonFixtureRepository.findByLeagueSeasonIdAndDate(leagueSeasonId, date);
 
     if (leagueSeasonFixtureFound !== null && leagueSeasonFixtureFound !== undefined) {
-      throw FixtureAlreadyExistsForDateInLeagueSeasonError.create(leagueSeasonId.leagueSeasonIdAsString, date.dateAsString);
+      throw FixtureAlreadyExistsForDateInLeagueSeasonError.create(leagueSeasonId.value, date.dateAsString);
     }
   }
 }

@@ -1,6 +1,6 @@
-import { FGameReferencedCourtId } from '../../../../../../shared/domain/value-objects/FGameReferencedCourtId';
+import { FGameCourtId } from '../../../../../../shared/domain/value-objects/FGameCourtId';
 
-export class LSFGameCourtId extends FGameReferencedCourtId {
+export class LSFGameCourtId extends FGameCourtId {
   private constructor(value: string) {
     super(value);
   }

@@ -1,6 +1,6 @@
-import { ReferencedRefereeUserId } from '../../../../shared/domain/value-objects/ReferencedRefereeUserId';
+import { IdValueObject } from '../../../../shared/domain/value-objects/IdValueObject';
 
-export abstract class FGameHeadRefereeId extends ReferencedRefereeUserId {
+export abstract class FGameHeadRefereeId extends IdValueObject {
   protected constructor(value: string) {
     super(value, 'headRefereeId');
   }

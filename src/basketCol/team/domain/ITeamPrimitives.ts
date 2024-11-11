@@ -1,6 +1,21 @@
 import { IAggregateRootPrimitives } from '../../shared/domain/IAggregateRootPrimitives';
+import { IImageValueObjectProps } from '../../shared/domain/value-objects/ImageValueObject';
 
-export interface ITeamPrimitives extends IAggregateRootPrimitives {
+interface ITeamMainMedia {
+  mainImage: IImageValueObjectProps
+}
+
+interface ITeamGallery {
+  gallery: {
+    images: Array<IImageValueObjectProps>;
+  };
+}
+
+export interface ITeamPrimitives extends
+  IAggregateRootPrimitives,
+  ITeamMainMedia,
+  ITeamGallery {
   officialName: string;
   teamFounderUserId: string;
+  gender: string;
 }

@@ -5,6 +5,7 @@ import { RefereeUserAccountState } from './value-objects/RefereeUserAccountState
 import { RefereeUserBiography } from './value-objects/RefereeUserBiography';
 import { RefereeUserCreatedAt } from './value-objects/RefereeUserCreatedAt';
 import { RefereeUserEmail } from './value-objects/RefereeUserEmail';
+import { RefereeUserGender } from './value-objects/RefereeUserGender';
 import { RefereeUserId } from './value-objects/RefereeUserId';
 import { RefereeUserName } from './value-objects/RefereeUserName';
 import { RefereeUserPassword } from './value-objects/RefereeUserPassword';
@@ -21,6 +22,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     email: { value: string; verified: boolean },
     password: string,
     accountState: string,
+    gender: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
     createdAt: string,
@@ -33,6 +35,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
       RefereeUserBiography.create(biography),
       RefereeUserEmail.create(email),
       RefereeUserPassword.create(password, options && options.skipPasswordValidation),
+      RefereeUserGender.create(gender),
       RefereeUserType.create(),
       RefereeUserAccountState.create(accountState),
       RefereeUserSubscriptionType.create(subscriptionType),
@@ -49,6 +52,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
       biography: this.biography.value,
       email: this.email.value,
       password: this.password.value,
+      gender: this.gender.value,
       type: this.type.value,
       accountStatus: this.accountStatus.value,
       subscriptionType: this.subscriptionType.value,
@@ -64,6 +68,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     biography: string,
     email: { value: string; verified: boolean },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -76,6 +81,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
       biography,
       email,
       password,
+      gender,
       accountState,
       subscriptionType,
       profileImage,
@@ -90,6 +96,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     biography: string,
     email: { value: string; verified: boolean },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -102,6 +109,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
       biography,
       email,
       password,
+      gender,
       accountState,
       subscriptionType,
       profileImage,
@@ -116,6 +124,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
     name: { firstName: string; lastName: string; },
     biography: string,
     email: { value: string; verified: boolean },
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -130,6 +139,7 @@ export class RefereeUser extends User<IRefereeUserPrimitives> {
       biography,
       email,
       defaultPassword,
+      gender,
       accountState,
       subscriptionType,
       profileImage,

@@ -85,8 +85,8 @@ export class PlayerUserLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxSco
       freeThrowsMade: this.freeThrowsMade.value,
       fieldGoalsAttempted: this.fieldGoalsAttempted.value,
       fieldGoalsMade: this.fieldGoalsMade.value,
-      fixtureGameId: this.fixtureGameId.fixtureGameIdAsString,
-      playerUserId: this.#playerUserId.playerUserIdAsString,
+      fixtureGameId: this.fixtureGameId.value,
+      playerUserId: this.#playerUserId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

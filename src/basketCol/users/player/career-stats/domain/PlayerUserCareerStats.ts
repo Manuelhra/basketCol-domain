@@ -98,7 +98,7 @@ export class PlayerUserCareerStats extends Stats<IPlayerUserCareerStatsPrimitive
       totalFreeThrowsMade: this.totalFreeThrowsMade.value,
       totalFieldGoalsAttempted: this.totalFieldGoalsAttempted.value,
       totalFieldGoalsMade: this.totalFieldGoalsMade.value,
-      playerUserId: this.#playerUserId.playerUserIdAsString,
+      playerUserId: this.#playerUserId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

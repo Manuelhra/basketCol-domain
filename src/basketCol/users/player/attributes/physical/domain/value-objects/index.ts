@@ -1,7 +1,7 @@
 export { PUPAAcceleration } from './PUPAAcceleration';
 export { PUPACreatedAt } from './PUPACreatedAt';
 export { PUPAId } from './PUPAId';
-export { PUPAReferencedPlayerUserId } from './PUPAReferencedPlayerUserId';
+export { PUPAPlayerUserId } from './PUPAPlayerUserId';
 export { PUPASpeed } from './PUPASpeed';
 export { PUPAStamina } from './PUPAStamina';
 export { PUPAStrength } from './PUPAStrength';

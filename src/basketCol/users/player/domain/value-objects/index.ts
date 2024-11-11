@@ -10,3 +10,4 @@ export { PlayerUserNickname } from './PlayerUserNickname';
 export { PlayerUserAccountState } from './PlayerUserAccountState';
 export { PlayerUserSubscriptionType } from './PlayerUserSubscriptionType';
 export { PlayerUserProfileImage } from './PlayerUserProfileImage';
+export { PlayerUserGender } from './PlayerUserGender';

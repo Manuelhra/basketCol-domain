@@ -9,3 +9,4 @@ export { RefereeUserUpdatedAt } from './RefereeUserUpdatedAt';
 export { RefereeUserAccountState } from './RefereeUserAccountState';
 export { RefereeUserSubscriptionType } from './RefereeUserSubscriptionType';
 export { RefereeUserProfileImage } from './RefereeUserProfileImage';
+export { RefereeUserGender } from './RefereeUserGender';

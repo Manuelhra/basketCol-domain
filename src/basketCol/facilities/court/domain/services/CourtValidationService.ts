@@ -1,4 +1,4 @@
-import { ReferencedCourtIdList } from '../../../../shared/domain/value-objects/ReferencedCourtIdList';
+import { IdListValueObject } from '../../../../shared/domain/value-objects/IdListValueObject';
 import { CourtNotFoundError } from '../exceptions/CourtNotFoundError';
 import { CourtsNotFoundError } from '../exceptions/CourtsNotFoundError';
 import { ICourtRepository } from '../repository/ICourtRepository';
@@ -27,11 +27,11 @@ export class CourtValidationService {
     }
   }
 
-  public async ensureCourtsExist(courtIdList: ReferencedCourtIdList): Promise<void> {
+  public async ensureCourtsExist(courtIdList: IdListValueObject): Promise<void> {
     const courtFoundList = await this.#courtRepository.findAllByIdList(courtIdList);
 
-    if (courtFoundList.length !== courtIdList.courtIdListAsStrings.length) {
-      throw CourtsNotFoundError.create(courtIdList.courtIdListAsStrings.map((courtId) => CourtId.create(courtId)));
+    if (courtFoundList.length !== courtIdList.value.length) {
+      throw CourtsNotFoundError.create(courtIdList.value.map((courtId) => CourtId.create(courtId)));
     }
   }
 }

@@ -3,7 +3,7 @@ import { PUSABallHandle } from './value-objects/PUSABallHandle';
 import { PUSACreatedAt } from './value-objects/PUSACreatedAt';
 import { PUSAPassAccuracy } from './value-objects/PUSAPassAccuracy';
 import { PUSASpeedWithBall } from './value-objects/PUSASpeedWithBall';
-import { PUSAReferencedPlayerUserId } from './value-objects/PUSAReferencedPlayerUserId';
+import { PUSAPlayerUserId } from './value-objects/PUSAPlayerUserId';
 import { PUSAUpdatedAt } from './value-objects/PUSAUpdatedAt';
 import { PUSAId } from './value-objects/PUSAId';
 import { AttributeCategory } from '../../shared/domain/value-objects/AttributeCategory';
@@ -15,7 +15,7 @@ export class PlayerUserSkillAttributes extends AttributeCategory<IPlayerUserSkil
 
   readonly #speedWithBall: PUSASpeedWithBall;
 
-  readonly #playerUserId: PUSAReferencedPlayerUserId;
+  readonly #playerUserId: PUSAPlayerUserId;
 
   private constructor(
     id: string,
@@ -35,7 +35,7 @@ export class PlayerUserSkillAttributes extends AttributeCategory<IPlayerUserSkil
     this.#passAccuracy = PUSAPassAccuracy.create(passAccuracy);
     this.#ballHandle = PUSABallHandle.create(ballHandle);
     this.#speedWithBall = PUSASpeedWithBall.create(speedWithBall);
-    this.#playerUserId = PUSAReferencedPlayerUserId.create(playerUserId);
+    this.#playerUserId = PUSAPlayerUserId.create(playerUserId);
   }
 
   public override get toPrimitives(): IPlayerUserSkillAttributesPrimitives {
@@ -44,7 +44,7 @@ export class PlayerUserSkillAttributes extends AttributeCategory<IPlayerUserSkil
       passAccuracy: this.#passAccuracy.value,
       ballHandle: this.#ballHandle.value,
       speedWithBall: this.#speedWithBall.value,
-      playerUserId: this.#playerUserId.playerUserIdAsString,
+      playerUserId: this.#playerUserId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

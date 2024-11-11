@@ -1,5 +1,4 @@
-export { LSReferencedCourtIdList } from './LSReferencedCourtIdList';
-export { LSReferencedLeagueId } from './LSReferencedLeagueId';
+export { LeagueSeasonLeagueId } from './LeagueSeasonLeagueId';
 export { LeagueSeasonCreatedAt } from './LeagueSeasonCreatedAt';
 export { LeagueSeasonEndDate } from './LeagueSeasonEndDate';
 export { LeagueSeasonId } from './LeagueSeasonId';
@@ -7,3 +6,4 @@ export { LeagueSeasonName } from './LeagueSeasonName';
 export { LeagueSeasonStartDate } from './LeagueSeasonStartDate';
 export { LeagueSeasonStatus } from './LeagueSeasonStatus';
 export { LeagueSeasonUpdatedAt } from './LeagueSeasonUpdatedAt';
+export { LeagueSeasonCourtIdList } from './LeagueSeasonCourtIdList';

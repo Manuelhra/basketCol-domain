@@ -1,6 +1,6 @@
-import { ReferencedPlayerUserId } from '../../../../../../shared/domain/value-objects/ReferencedPlayerUserId';
+import { IdValueObject } from '../../../../../../shared/domain/value-objects/IdValueObject';
 
-export class LSABestThreePointShooterId extends ReferencedPlayerUserId {
+export class LSABestThreePointShooterId extends IdValueObject {
   private constructor(value: string) {
     super(value, 'bestThreePointShooterId');
   }

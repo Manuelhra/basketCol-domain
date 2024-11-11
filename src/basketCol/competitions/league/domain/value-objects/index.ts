@@ -1,4 +1,3 @@
-export { LReferencedLeagueFounderUserId } from './LReferencedLeagueFounderUserId';
 export { LeagueCreatedAt } from './LeagueCreatedAt';
 export { LeagueDescription } from './LeagueDescription';
 export { LeagueEstablishmentDate } from './LeagueEstablishmentDate';
@@ -9,3 +8,5 @@ export { LeagueLocation } from './LeagueLocation';
 export { LeagueName } from './LeagueName';
 export { LeagueRules } from './LeagueRules';
 export { LeagueUpdatedAt } from './LeagueUpdatedAt';
+export { LeagueGender } from './LeagueGender';
+export { LeagueLeagueFounderUserId } from './LeagueLeagueFounderUserId';

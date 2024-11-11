@@ -8,7 +8,7 @@ import { CourtEstablishmentDate } from './value-objects/CourtEstablishmentDate';
 import { CourtHoopHeight } from './value-objects/CourtHoopHeight';
 import { CourtId } from './value-objects/CourtId';
 import { CourtLocation } from './value-objects/CourtLocation';
-import { CourtNullableReferencedFacilityId } from './value-objects/CourtNullableReferencedFacilityId';
+import { CourtFacilityId } from './value-objects/CourtFacilityId';
 import { CourtOfficialName } from './value-objects/CourtOfficialName';
 import { CourtRegisteredById } from './value-objects/CourtRegisteredById';
 import { CourtSurface } from './value-objects/CourtSurface';
@@ -19,7 +19,7 @@ export class Court extends Facility<ICourtPrimitives> {
 
   readonly #hoopHeight: CourtHoopHeight;
 
-  readonly #facilityId: CourtNullableReferencedFacilityId;
+  readonly #facilityId: CourtFacilityId;
 
   private constructor(
     id: string,
@@ -49,7 +49,7 @@ export class Court extends Facility<ICourtPrimitives> {
 
     this.#surface = CourtSurface.create(surface);
     this.#hoopHeight = CourtHoopHeight.create(hoopHeight);
-    this.#facilityId = CourtNullableReferencedFacilityId.create(facilityId);
+    this.#facilityId = CourtFacilityId.create(facilityId);
   }
 
   public override get toPrimitives(): ICourtPrimitives {
@@ -59,11 +59,11 @@ export class Court extends Facility<ICourtPrimitives> {
       establishmentDate: this.establishmentDate.value,
       surface: this.#surface.value,
       hoopHeight: this.#hoopHeight.value,
-      registeredById: this.registeredById.hostUserIdAsString,
+      registeredById: this.registeredById.value,
       mainImage: this.mainImage.value,
       gallery: this.gallery.galleryAsPrimitives,
       location: this.location.value,
-      facilityId: this.#facilityId.facilityIdAsStringOrNull,
+      facilityId: this.#facilityId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

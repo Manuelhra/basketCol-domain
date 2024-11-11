@@ -98,7 +98,7 @@ export class TeamAllTimeStats extends Stats<ITeamAllTimeStatsPrimitives> {
       totalFreeThrowsMade: this.totalFreeThrowsMade.value,
       totalFieldGoalsAttempted: this.totalFieldGoalsAttempted.value,
       totalFieldGoalsMade: this.totalFieldGoalsMade.value,
-      teamId: this.#teamId.teamIdAsString,
+      teamId: this.#teamId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

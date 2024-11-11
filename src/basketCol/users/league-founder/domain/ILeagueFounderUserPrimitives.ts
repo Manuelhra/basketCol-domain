@@ -1,3 +1,5 @@
 import { IUserPrimitives } from '../../shared/domain/IUserPrimitives';
 
-export interface ILeagueFounderUserPrimitives extends IUserPrimitives {}
+export interface ILeagueFounderUserPrimitives extends IUserPrimitives {
+  gender: string;
+}

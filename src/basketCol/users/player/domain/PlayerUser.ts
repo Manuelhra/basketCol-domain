@@ -13,6 +13,7 @@ import { PlayerUserAccountState } from './value-objects/PlayerUserAccountState';
 import { PlayerUserSubscriptionType } from './value-objects/PlayerUserSubscriptionType';
 import { PlayerUserProfileImage } from './value-objects/PlayerUserProfileImage';
 import { IImageValueObjectProps } from '../../../shared/domain/value-objects/ImageValueObject';
+import { PlayerUserGender } from './value-objects/PlayerUserGender';
 
 export class PlayerUser extends User<IPlayerUserPrimitives> {
   readonly #nickname: PlayerUserNickname;
@@ -24,6 +25,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     nickname: string,
     email: { value: string; verified: boolean },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -37,6 +39,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
       PlayerUserBiography.create(biography),
       PlayerUserEmail.create(email),
       PlayerUserPassword.create(password, options && options.skipPasswordValidation),
+      PlayerUserGender.create(gender),
       PlayerUserType.create(),
       PlayerUserAccountState.create(accountState),
       PlayerUserSubscriptionType.create(subscriptionType),
@@ -60,6 +63,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
       nickname: this.#nickname.value,
       email: this.email.value,
       password: this.password.value,
+      gender: this.gender.value,
       type: this.type.value,
       accountStatus: this.accountStatus.value,
       subscriptionType: this.subscriptionType.value,
@@ -76,6 +80,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     nickname: string,
     email: { value: string; verified: boolean },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -89,6 +94,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
       nickname,
       email,
       password,
+      gender,
       accountState,
       subscriptionType,
       profileImage,
@@ -104,6 +110,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     nickname: string,
     email: { value: string; verified: boolean },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -117,6 +124,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
       nickname,
       email,
       password,
+      gender,
       accountState,
       subscriptionType,
       profileImage,
@@ -132,6 +140,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
     biography: string,
     nickname: string,
     email: { value: string; verified: boolean },
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -147,6 +156,7 @@ export class PlayerUser extends User<IPlayerUserPrimitives> {
       nickname,
       email,
       defaultPassword,
+      gender,
       accountState,
       subscriptionType,
       profileImage,

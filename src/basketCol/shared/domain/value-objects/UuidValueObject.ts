@@ -10,7 +10,7 @@ export abstract class UuidValueObject extends StringValueObject {
     UuidValueObject.ensureIsValidUuid(value);
   }
 
-  private static ensureIsValidUuid(id: string): void {
+  public static ensureIsValidUuid(id: string): void {
     if (!UuidValueObject.UUID_REGEX.test(id)) {
       throw InvalidDomainIdError.create(id);
     }

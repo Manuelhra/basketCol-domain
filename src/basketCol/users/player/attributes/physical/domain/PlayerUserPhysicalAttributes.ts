@@ -1,7 +1,7 @@
 import { IPlayerUserPhysicalAttributesPrimitives } from './IPlayerUserPhysicalAttributesPrimitives';
 import { PUPAAcceleration } from './value-objects/PUPAAcceleration';
 import { PUPACreatedAt } from './value-objects/PUPACreatedAt';
-import { PUPAReferencedPlayerUserId } from './value-objects/PUPAReferencedPlayerUserId';
+import { PUPAPlayerUserId } from './value-objects/PUPAPlayerUserId';
 import { PUPASpeed } from './value-objects/PUPASpeed';
 import { PUPAStamina } from './value-objects/PUPAStamina';
 import { PUPAStrength } from './value-objects/PUPAStrength';
@@ -21,7 +21,7 @@ export class PlayerUserPhysicalAttributes extends AttributeCategory<IPlayerUserP
 
   readonly #stamina: PUPAStamina;
 
-  readonly #playerUserId: PUPAReferencedPlayerUserId;
+  readonly #playerUserId: PUPAPlayerUserId;
 
   private constructor(
     id: string,
@@ -45,7 +45,7 @@ export class PlayerUserPhysicalAttributes extends AttributeCategory<IPlayerUserP
     this.#strength = PUPAStrength.create(strength);
     this.#vertical = PUPAVertical.create(vertical);
     this.#stamina = PUPAStamina.create(stamina);
-    this.#playerUserId = PUPAReferencedPlayerUserId.create(playerUserId);
+    this.#playerUserId = PUPAPlayerUserId.create(playerUserId);
   }
 
   public override get toPrimitives(): IPlayerUserPhysicalAttributesPrimitives {
@@ -56,7 +56,7 @@ export class PlayerUserPhysicalAttributes extends AttributeCategory<IPlayerUserP
       strength: this.#strength.value,
       vertical: this.#vertical.value,
       stamina: this.#stamina.value,
-      playerUserId: this.#playerUserId.playerUserIdAsString,
+      playerUserId: this.#playerUserId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

@@ -35,3 +35,4 @@ export { MethodNotImplementedError } from './MethodNotImplementedError';
 export { CreateMethodNotImplementedError } from './CreateMethodNotImplementedError';
 export { InvalidTeamFounderUserIdInstanceError } from './InvalidTeamFounderUserIdInstanceError';
 export { InvalidEnumValueError } from './InvalidEnumValueError';
+export { InvalidGenderError } from './InvalidGenderError';

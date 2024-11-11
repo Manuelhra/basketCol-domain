@@ -9,3 +9,4 @@ export { TeamFounderUserId } from './TeamFounderUserId';
 export { TeamFounderUserAccountState } from './TeamFounderUserAccountState';
 export { TeamFounderUserSubscriptionType } from './TeamFounderUserSubscriptionType';
 export { TeamFounderUserProfileImage } from './TeamFounderUserProfileImage';
+export { TeamFounderUserGender } from './TeamFounderUserGender';

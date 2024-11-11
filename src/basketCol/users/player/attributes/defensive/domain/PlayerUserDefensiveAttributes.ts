@@ -1,15 +1,13 @@
 import { AttributeCategory } from '../../shared/domain/value-objects/AttributeCategory';
 import { IPlayerUserDefensiveAttributesPrimitives } from './IPlayerUserDefensiveAttributesPrimitives';
-import {
-  PUDAInteriorDefense,
-  PUDAPerimeterDefense,
-  PUDASteal,
-  PUDABlock,
-  PUDAReferencedPlayerUserId,
-  PUDAId,
-  PUDACreatedAt,
-  PUDAUpdatedAt,
-} from './value-objects';
+import { PUDABlock } from './value-objects/PUDABlock';
+import { PUDACreatedAt } from './value-objects/PUDACreatedAt';
+import { PUDAId } from './value-objects/PUDAId';
+import { PUDAInteriorDefense } from './value-objects/PUDAInteriorDefense';
+import { PUDAPerimeterDefense } from './value-objects/PUDAPerimeterDefense';
+import { PUDAPlayerUserId } from './value-objects/PUDAPlayerUserId';
+import { PUDASteal } from './value-objects/PUDASteal';
+import { PUDAUpdatedAt } from './value-objects/PUDAUpdatedAt';
 
 export class PlayerUserDefensiveAttributes extends AttributeCategory<IPlayerUserDefensiveAttributesPrimitives> {
   readonly #interiorDefense: PUDAInteriorDefense;
@@ -20,7 +18,7 @@ export class PlayerUserDefensiveAttributes extends AttributeCategory<IPlayerUser
 
   readonly #block: PUDABlock;
 
-  readonly #playerUserId: PUDAReferencedPlayerUserId;
+  readonly #playerUserId: PUDAPlayerUserId;
 
   private constructor(
     id: string,
@@ -42,7 +40,7 @@ export class PlayerUserDefensiveAttributes extends AttributeCategory<IPlayerUser
     this.#perimeterDefense = PUDAPerimeterDefense.create(perimeterDefense);
     this.#steal = PUDASteal.create(steal);
     this.#block = PUDABlock.create(block);
-    this.#playerUserId = PUDAReferencedPlayerUserId.create(playerUserId);
+    this.#playerUserId = PUDAPlayerUserId.create(playerUserId);
   }
 
   public override get toPrimitives(): IPlayerUserDefensiveAttributesPrimitives {
@@ -52,7 +50,7 @@ export class PlayerUserDefensiveAttributes extends AttributeCategory<IPlayerUser
       perimeterDefense: this.#perimeterDefense.value,
       steal: this.#steal.value,
       block: this.#block.value,
-      playerUserId: this.#playerUserId.playerUserIdAsString,
+      playerUserId: this.#playerUserId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

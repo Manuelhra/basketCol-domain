@@ -1,4 +1,4 @@
-import { ReferencedGymIdList } from '../../../../shared/domain/value-objects/ReferencedGymIdList';
+import { IdListValueObject } from '../../../../shared/domain/value-objects/IdListValueObject';
 import { GymNotFoundError } from '../exceptions/GymNotFoundError';
 import { GymsNotFoundError } from '../exceptions/GymsNotFoundError';
 import { IGymRepository } from '../repository/IGymRepository';
@@ -27,11 +27,11 @@ export class GymValidationService {
     }
   }
 
-  public async ensureGymsExist(gymIdList: ReferencedGymIdList): Promise<void> {
+  public async ensureGymsExist(gymIdList: IdListValueObject): Promise<void> {
     const gymFoundList = await this.#gymRepository.findAllByIdList(gymIdList);
 
-    if (gymFoundList.length !== gymIdList.gymIdListAsStrings.length) {
-      throw GymsNotFoundError.create(gymIdList.gymIdListAsStrings.map((gymId) => GymId.create(gymId)));
+    if (gymFoundList.length !== gymIdList.value.length) {
+      throw GymsNotFoundError.create(gymIdList.value.map((gymId) => GymId.create(gymId)));
     }
   }
 }

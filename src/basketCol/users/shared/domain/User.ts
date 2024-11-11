@@ -1,13 +1,14 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
 import { IUserPrimitives } from './IUserPrimitives';
-import { UserProfileImage } from './value-objects';
 import { UserAccountState } from './value-objects/UserAccountState';
 import { UserBiography } from './value-objects/UserBiography';
 import { UserCreatedAt } from './value-objects/UserCreatedAt';
 import { UserEmail } from './value-objects/UserEmail';
+import { UserGender } from './value-objects/UserGender';
 import { UserId } from './value-objects/UserId';
 import { UserName } from './value-objects/UserName';
 import { UserPassword } from './value-objects/UserPassword';
+import { UserProfileImage } from './value-objects/UserProfileImage';
 import { UserSubscriptionType } from './value-objects/UserSubscriptionType';
 import { UserType } from './value-objects/UserType';
 import { UserUpdatedAt } from './value-objects/UserUpdatedAt';
@@ -29,12 +30,15 @@ export abstract class User<I extends IUserPrimitives> extends AggregateRoot<I> {
 
   protected readonly _profileImage: UserProfileImage;
 
+  protected readonly _gender: UserGender;
+
   protected constructor(
     id: UserId,
     name: UserName,
     biography: UserBiography,
     email: UserEmail,
     password: UserPassword,
+    gender: UserGender,
     type: UserType,
     accountStatus: UserAccountState,
     subscriptionType: UserSubscriptionType,
@@ -48,6 +52,7 @@ export abstract class User<I extends IUserPrimitives> extends AggregateRoot<I> {
     this._biography = biography;
     this._email = email;
     this._password = password;
+    this._gender = gender;
     this._type = type;
     this._accountStatus = accountStatus;
     this._subscriptionType = subscriptionType;
@@ -68,6 +73,10 @@ export abstract class User<I extends IUserPrimitives> extends AggregateRoot<I> {
 
   public get password(): UserPassword {
     return this._password;
+  }
+
+  public get gender(): UserGender {
+    return this._gender;
   }
 
   public get type(): UserType {
