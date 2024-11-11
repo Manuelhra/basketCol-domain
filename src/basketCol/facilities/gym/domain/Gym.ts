@@ -42,7 +42,7 @@ export class Gym extends Facility<IGymPrimitives> {
       officialName: this.officialName.value,
       location: this.location.value,
       establishmentDate: this.establishmentDate.value,
-      registeredById: this.registeredById.hostUserIdAsString,
+      registeredById: this.registeredById.value,
       mainImage: this.mainImage.value,
       gallery: this.gallery.galleryAsPrimitives,
       createdAt: this.createdAt.value,

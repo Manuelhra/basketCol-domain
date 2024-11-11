@@ -9,3 +9,4 @@ export { HostUserUpdatedAt } from './HostUserUpdatedAt';
 export { HostUserAccountState } from './HostUserAccountState';
 export { HostUserSubscriptionType } from './HostUserSubscriptionType';
 export { HostUserProfileImage } from './HostUserProfileImage';
+export { HostUserGender } from './HostUserGender';

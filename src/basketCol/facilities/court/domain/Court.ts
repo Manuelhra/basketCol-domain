@@ -59,7 +59,7 @@ export class Court extends Facility<ICourtPrimitives> {
       establishmentDate: this.establishmentDate.value,
       surface: this.#surface.value,
       hoopHeight: this.#hoopHeight.value,
-      registeredById: this.registeredById.hostUserIdAsString,
+      registeredById: this.registeredById.value,
       mainImage: this.mainImage.value,
       gallery: this.gallery.galleryAsPrimitives,
       location: this.location.value,

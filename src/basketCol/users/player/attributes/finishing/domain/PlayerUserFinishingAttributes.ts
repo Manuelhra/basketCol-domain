@@ -50,7 +50,7 @@ export class PlayerUserFinishingAttributes extends AttributeCategory<IPlayerUser
       drivingDunk: this.#drivingDunk.value,
       standingDunk: this.#standingDunk.value,
       postControl: this.#postControl.value,
-      playerUserId: this.#playerUserId.playerUserIdAsString,
+      playerUserId: this.#playerUserId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

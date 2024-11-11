@@ -1,6 +1,6 @@
-import { ReferencedHostUserId } from '../../../../shared/domain/value-objects/ReferencedHostUserId';
+import { IdValueObject } from '../../../../shared/domain/value-objects/IdValueObject';
 
-export abstract class FacilityRegisteredBy extends ReferencedHostUserId {
+export abstract class FacilityRegisteredBy extends IdValueObject {
   protected constructor(value: string) {
     super(value, 'registeredById');
   }

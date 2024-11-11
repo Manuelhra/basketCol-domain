@@ -13,6 +13,7 @@ interface IUserAccount {
 
 interface IUserIdentity {
   name: { firstName: string; lastName: string; };
+  gender: string;
   biography: string;
   type: string;
   accountStatus: string;

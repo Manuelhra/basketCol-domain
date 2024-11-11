@@ -1,3 +1,3 @@
-import { ReferencedFixtureGameId } from '../../../../shared/domain/value-objects/ReferencedFixtureGameId';
+import { IdValueObject } from '../../../../shared/domain/value-objects/IdValueObject';
 
-export abstract class FGBoxScoreFixtureGameId extends ReferencedFixtureGameId {}
+export abstract class FGBoxScoreFixtureGameId extends IdValueObject {}

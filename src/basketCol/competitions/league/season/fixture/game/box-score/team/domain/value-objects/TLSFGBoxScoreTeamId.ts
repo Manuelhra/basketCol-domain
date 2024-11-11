@@ -1,6 +1,6 @@
-import { ReferencedTeamId } from '../../../../../../../../../shared/domain/value-objects/ReferencedTeamId';
+import { IdValueObject } from '../../../../../../../../../shared/domain/value-objects/IdValueObject';
 
-export class TLSFGBoxScoreTeamId extends ReferencedTeamId {
+export class TLSFGBoxScoreTeamId extends IdValueObject {
   private constructor(value: string) {
     super(value);
   }

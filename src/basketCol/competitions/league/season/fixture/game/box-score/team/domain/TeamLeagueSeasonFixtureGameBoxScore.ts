@@ -85,8 +85,8 @@ export class TeamLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxScore<ITe
       freeThrowsMade: this.freeThrowsMade.value,
       fieldGoalsAttempted: this.fieldGoalsAttempted.value,
       fieldGoalsMade: this.fieldGoalsMade.value,
-      fixtureGameId: this.fixtureGameId.fixtureGameIdAsString,
-      teamId: this.#teamId.teamIdAsString,
+      fixtureGameId: this.fixtureGameId.value,
+      teamId: this.#teamId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

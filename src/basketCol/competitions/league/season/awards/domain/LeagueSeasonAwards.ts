@@ -61,14 +61,14 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
   public override get toPrimitives(): ILeagueSeasonAwardsPrimitives {
     return {
       id: this.id.value,
-      bestThreePointShooterId: this.#bestThreePointShooterId.playerUserIdAsString,
-      bestTwoPointShooterId: this.#bestTwoPointShooterId.playerUserIdAsString,
-      bestFreeThrowShooterId: this.#bestFreeThrowShooterId.playerUserIdAsString,
-      bestAssistProviderId: this.#bestAssistProviderId.playerUserIdAsString,
-      bestOffensiveRebounderId: this.#bestOffensiveRebounderId.playerUserIdAsString,
-      bestDefensiveRebounderId: this.#bestDefensiveRebounderId.playerUserIdAsString,
-      championTeamId: this.#championTeamId.teamIdAsString,
-      leagueSeasonId: this.#leagueSeasonId.leagueSeasonIdAsString,
+      bestThreePointShooterId: this.#bestThreePointShooterId.value,
+      bestTwoPointShooterId: this.#bestTwoPointShooterId.value,
+      bestFreeThrowShooterId: this.#bestFreeThrowShooterId.value,
+      bestAssistProviderId: this.#bestAssistProviderId.value,
+      bestOffensiveRebounderId: this.#bestOffensiveRebounderId.value,
+      bestDefensiveRebounderId: this.#bestDefensiveRebounderId.value,
+      championTeamId: this.#championTeamId.value,
+      leagueSeasonId: this.#leagueSeasonId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

@@ -5,6 +5,7 @@ import { HostUserAccountState } from './value-objects/HostUserAccountState';
 import { HostUserBiography } from './value-objects/HostUserBiography';
 import { HostUserCreatedAt } from './value-objects/HostUserCreatedAt';
 import { HostUserEmail } from './value-objects/HostUserEmail';
+import { HostUserGender } from './value-objects/HostUserGender';
 import { HostUserId } from './value-objects/HostUserId';
 import { HostUserName } from './value-objects/HostUserName';
 import { HostUserPassword } from './value-objects/HostUserPassword';
@@ -20,6 +21,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     biography: string,
     email: { value: string; verified: boolean },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -33,6 +35,7 @@ export class HostUser extends User<IHostUserPrimitives> {
       HostUserBiography.create(biography),
       HostUserEmail.create(email),
       HostUserPassword.create(password, options && options.skipPasswordValidation),
+      HostUserGender.create(gender),
       HostUserType.create(),
       HostUserAccountState.create(accountState),
       HostUserSubscriptionType.create(subscriptionType),
@@ -49,6 +52,7 @@ export class HostUser extends User<IHostUserPrimitives> {
       biography: this.biography.value,
       email: this.email.value,
       password: this.password.value,
+      gender: this.gender.value,
       type: this.type.value,
       accountStatus: this.accountStatus.value,
       subscriptionType: this.subscriptionType.value,
@@ -64,6 +68,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     biography: string,
     email: { value: string; verified: boolean },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -76,6 +81,7 @@ export class HostUser extends User<IHostUserPrimitives> {
       biography,
       email,
       password,
+      gender,
       accountState,
       subscriptionType,
       profileImage,
@@ -90,6 +96,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     biography: string,
     email: { value: string; verified: boolean },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -102,6 +109,7 @@ export class HostUser extends User<IHostUserPrimitives> {
       biography,
       email,
       password,
+      gender,
       accountState,
       subscriptionType,
       profileImage,
@@ -116,6 +124,7 @@ export class HostUser extends User<IHostUserPrimitives> {
     name: { firstName: string; lastName: string; },
     biography: string,
     email: { value: string; verified: boolean },
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -130,6 +139,7 @@ export class HostUser extends User<IHostUserPrimitives> {
       biography,
       email,
       defaultPassword,
+      gender,
       accountState,
       subscriptionType,
       profileImage,

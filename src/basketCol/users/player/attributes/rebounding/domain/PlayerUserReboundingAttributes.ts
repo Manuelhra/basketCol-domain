@@ -38,7 +38,7 @@ export class PlayerUserReboundingAttributes extends AttributeCategory<IPlayerUse
       id: this.id.value,
       offensiveRebound: this.#offensiveRebound.value,
       defensiveRebound: this.#defensiveRebound.value,
-      playerUserId: this.#playerUserId.playerUserIdAsString,
+      playerUserId: this.#playerUserId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

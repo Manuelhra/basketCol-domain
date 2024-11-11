@@ -3,3 +3,7 @@ export { TeamCreatedAt } from './TeamCreatedAt';
 export { TeamId } from './TeamId';
 export { TeamOfficialName } from './TeamOfficialName';
 export { TeamUpdatedAt } from './TeamUpdatedAt';
+export { TeamGender } from './TeamGender';
+export { TeamImage } from './TeamImage';
+export { TeamMainImage } from './TeamMainImage';
+export { TeamGallery } from './TeamGallery';

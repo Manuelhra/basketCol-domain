@@ -44,7 +44,7 @@ export class PlayerUserSkillAttributes extends AttributeCategory<IPlayerUserSkil
       passAccuracy: this.#passAccuracy.value,
       ballHandle: this.#ballHandle.value,
       speedWithBall: this.#speedWithBall.value,
-      playerUserId: this.#playerUserId.playerUserIdAsString,
+      playerUserId: this.#playerUserId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

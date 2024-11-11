@@ -34,7 +34,7 @@ export class LeagueSeasonFixture extends Fixture<ILeagueSeasonFixturePrimitives>
       id: this.id.value,
       date: this.date.dateAsString,
       name: this.name.value,
-      leagueSeasonId: this.#leagueSeasonId.leagueSeasonIdAsString,
+      leagueSeasonId: this.#leagueSeasonId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

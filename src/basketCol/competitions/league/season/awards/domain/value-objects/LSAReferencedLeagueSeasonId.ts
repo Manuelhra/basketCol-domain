@@ -1,6 +1,6 @@
-import { ReferencedLeagueSeasonId } from '../../../../../../shared/domain/value-objects/ReferencedLeagueSeasonId';
+import { IdValueObject } from '../../../../../../shared/domain/value-objects/IdValueObject';
 
-export class LSAReferencedLeagueSeasonId extends ReferencedLeagueSeasonId {
+export class LSAReferencedLeagueSeasonId extends IdValueObject {
   private constructor(value: string) {
     super(value);
   }

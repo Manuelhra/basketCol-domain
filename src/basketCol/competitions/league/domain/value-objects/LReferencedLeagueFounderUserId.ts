@@ -1,6 +1,6 @@
-import { ReferencedLeagueFounderUserId } from '../../../../shared/domain/value-objects/ReferencedLeagueFounderUserId';
+import { IdValueObject } from '../../../../shared/domain/value-objects/IdValueObject';
 
-export class LReferencedLeagueFounderUserId extends ReferencedLeagueFounderUserId {
+export class LReferencedLeagueFounderUserId extends IdValueObject {
   private constructor(value: string) {
     super(value);
   }

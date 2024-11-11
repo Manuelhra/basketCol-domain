@@ -5,6 +5,7 @@ import { LeagueFounderUserAccountState } from './value-objects/LeagueFounderUser
 import { LeagueFounderUserBiography } from './value-objects/LeagueFounderUserBiography';
 import { LeagueFounderUserCreatedAt } from './value-objects/LeagueFounderUserCreatedAt';
 import { LeagueFounderUserEmail } from './value-objects/LeagueFounderUserEmail';
+import { LeagueFounderUserGender } from './value-objects/LeagueFounderUserGender';
 import { LeagueFounderUserId } from './value-objects/LeagueFounderUserId';
 import { LeagueFounderUserName } from './value-objects/LeagueFounderUserName';
 import { LeagueFounderUserPassword } from './value-objects/LeagueFounderUserPassword';
@@ -20,6 +21,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
     biography: string,
     email: { value: string; verified: boolean; },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -33,6 +35,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
       LeagueFounderUserBiography.create(biography),
       LeagueFounderUserEmail.create(email),
       LeagueFounderUserPassword.create(password, options && options.skipPasswordValidation),
+      LeagueFounderUserGender.create(gender),
       LeagueFounderUserType.create(),
       LeagueFounderUserAccountState.create(accountState),
       LeagueFounderUserSubscriptionType.create(subscriptionType),
@@ -49,6 +52,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
       biography: this.biography.value,
       email: this.email.value,
       password: this.password.value,
+      gender: this.gender.value,
       type: this.type.value,
       accountStatus: this.accountStatus.value,
       subscriptionType: this.subscriptionType.value,
@@ -64,6 +68,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
     biography: string,
     email: { value: string; verified: boolean; },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -76,6 +81,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
       biography,
       email,
       password,
+      gender,
       accountState,
       subscriptionType,
       profileImage,
@@ -90,6 +96,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
     biography: string,
     email: { value: string; verified: boolean; },
     password: string,
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -102,6 +109,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
       biography,
       email,
       password,
+      gender,
       accountState,
       subscriptionType,
       profileImage,
@@ -116,6 +124,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
     name: { firstName: string; lastName: string; },
     biography: string,
     email: { value: string; verified: boolean; },
+    gender: string,
     accountState: string,
     subscriptionType: string,
     profileImage: IImageValueObjectProps,
@@ -130,6 +139,7 @@ export class LeagueFounderUser extends User<ILeagueFounderUserPrimitives> {
       biography,
       email,
       defaultPassword,
+      gender,
       accountState,
       subscriptionType,
       profileImage,

@@ -100,14 +100,14 @@ export abstract class FixtureGame<I extends IFixtureGamePrimitives> extends Aggr
   }
 
   static #ensureDifferentReferees(headRefereeId: FGameHeadRefereeId, assistantRefereeId: FGameAssistantRefereeId): void {
-    if (headRefereeId.refereeUserIdAsString === assistantRefereeId.refereeUserIdAsString) {
-      throw SameRefereeError.create(headRefereeId.refereeUserIdAsString, assistantRefereeId.refereeUserIdAsString);
+    if (headRefereeId.value === assistantRefereeId.value) {
+      throw SameRefereeError.create(headRefereeId.value, assistantRefereeId.value);
     }
   }
 
   static #ensureDifferentTeams(homeTeamId: FGameHomeTeamId, awayTeamId: FGameAwayTeamId): void {
-    if (homeTeamId.teamIdAsString === awayTeamId.teamIdAsString) {
-      throw SameTeamError.create(homeTeamId.teamIdAsString, awayTeamId.teamIdAsString);
+    if (homeTeamId.value === awayTeamId.value) {
+      throw SameTeamError.create(homeTeamId.value, awayTeamId.value);
     }
   }
 }

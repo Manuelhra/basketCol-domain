@@ -1,6 +1,7 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
 import { ILocationValueObjectProps } from '../../../shared/domain/value-objects/LocationValueObject';
 import { ILeaguePrimitives } from './ILeaguePrimitives';
+import { LeagueGender } from './value-objects';
 import { LeagueCreatedAt } from './value-objects/LeagueCreatedAt';
 import { LeagueDescription } from './value-objects/LeagueDescription';
 import { LeagueEstablishmentDate } from './value-objects/LeagueEstablishmentDate';
@@ -18,6 +19,8 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
 
   readonly #description: LeagueDescription;
 
+  readonly #gender: LeagueGender;
+
   readonly #rules: LeagueRules;
 
   readonly #level: LeagueLevel;
@@ -34,6 +37,7 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
     id: string,
     name: { short: string; official: string; },
     description: { short: string; complete: string; },
+    gender: string,
     rules: string,
     level: string,
     location: ILocationValueObjectProps,
@@ -51,6 +55,7 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
 
     this.#name = LeagueName.create(name);
     this.#description = LeagueDescription.create(description);
+    this.#gender = LeagueGender.create(gender);
     this.#rules = LeagueRules.create(rules);
     this.#level = LeagueLevel.create(level);
     this.#location = LeagueLocation.create(location);
@@ -64,10 +69,11 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
       id: this.id.value,
       name: this.#name.value,
       description: this.#description.value,
+      gender: this.#gender.value,
       rules: this.#rules.value,
       level: this.#level.value,
       location: this.#location.value,
-      leagueFounderUserId: this.#leagueFounderUserId.leagueFounderUserIdAsString,
+      leagueFounderUserId: this.#leagueFounderUserId.value,
       establishmentDate: this.#establishmentDate.value,
       isActive: this.#isActive.value,
       createdAt: this.createdAt.value,
@@ -79,6 +85,7 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
     id: string,
     name: { short: string; official: string },
     description: { short: string; complete: string },
+    gender: string,
     rules: string,
     level: string,
     location: ILocationValueObjectProps,
@@ -92,6 +99,7 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
       id,
       name,
       description,
+      gender,
       rules,
       level,
       location,
@@ -107,6 +115,7 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
     id: string,
     name: { short: string; official: string },
     description: { short: string; complete: string },
+    gender: string,
     rules: string,
     level: string,
     location: ILocationValueObjectProps,
@@ -120,6 +129,7 @@ export class League extends AggregateRoot<ILeaguePrimitives> {
       id,
       name,
       description,
+      gender,
       rules,
       level,
       location,

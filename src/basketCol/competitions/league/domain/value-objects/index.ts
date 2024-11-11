@@ -9,3 +9,4 @@ export { LeagueLocation } from './LeagueLocation';
 export { LeagueName } from './LeagueName';
 export { LeagueRules } from './LeagueRules';
 export { LeagueUpdatedAt } from './LeagueUpdatedAt';
+export { LeagueGender } from './LeagueGender';

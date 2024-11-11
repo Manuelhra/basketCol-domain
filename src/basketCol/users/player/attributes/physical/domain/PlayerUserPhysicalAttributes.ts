@@ -56,7 +56,7 @@ export class PlayerUserPhysicalAttributes extends AttributeCategory<IPlayerUserP
       strength: this.#strength.value,
       vertical: this.#vertical.value,
       stamina: this.#stamina.value,
-      playerUserId: this.#playerUserId.playerUserIdAsString,
+      playerUserId: this.#playerUserId.value,
       createdAt: this.createdAt.value,
       updatedAt: this.updatedAt.value,
     };

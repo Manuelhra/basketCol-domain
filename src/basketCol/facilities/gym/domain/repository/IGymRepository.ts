@@ -1,6 +1,6 @@
 import { IPaginatedResponse } from '../../../../shared/domain/IPaginatedResponse';
 import { Nullable } from '../../../../shared/domain/Nullable';
-import { ReferencedGymIdList } from '../../../../shared/domain/value-objects/ReferencedGymIdList';
+import { IdListValueObject } from '../../../../shared/domain/value-objects/IdListValueObject';
 import { Gym } from '../Gym';
 import { GymId } from '../value-objects/GymId';
 import { GymOfficialName } from '../value-objects/GymOfficialName';
@@ -9,6 +9,6 @@ export interface IGymRepository {
   save(gym: Gym): Promise<void>;
   findById(gymId: GymId): Promise<Nullable<Gym>>;
   findByOfficialName(gymOfficialName: GymOfficialName): Promise<Nullable<Gym>>;
-  findAllByIdList(gymIdList: ReferencedGymIdList): Promise<Gym[]>;
+  findAllByIdList(gymIdList: IdListValueObject): Promise<Gym[]>;
   searchAll(params: { query?: string; page: number; perPage: number; }): Promise<IPaginatedResponse<Gym>>;
 }

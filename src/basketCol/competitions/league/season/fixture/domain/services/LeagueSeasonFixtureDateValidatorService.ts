@@ -25,10 +25,10 @@ export class LeagueSeasonFixtureDateValidatorService {
     leagueSeasonId: LSFixtureLeagueSeasonId,
     date: LSFixtureDate,
   ): Promise<void> {
-    const leagueSeasonFound: Nullable<LeagueSeason> = await this.#leagueSeasonRepository.findById(leagueSeasonId.value);
+    const leagueSeasonFound: Nullable<LeagueSeason> = await this.#leagueSeasonRepository.findById(leagueSeasonId);
 
     if (leagueSeasonFound === null || leagueSeasonFound === undefined) {
-      throw LeagueSeasonNotFoundError.create(leagueSeasonId.value);
+      throw LeagueSeasonNotFoundError.create(leagueSeasonId);
     }
 
     const { startDate, endDate } = leagueSeasonFound.toPrimitives;
@@ -38,7 +38,7 @@ export class LeagueSeasonFixtureDateValidatorService {
     const seasonEndDate = new Date(endDate);
 
     if (dateToValidate < seasonStartDate || dateToValidate > seasonEndDate) {
-      throw DateNotWithinLeagueSeasonError.create(leagueSeasonId.value, date.dateAsString, startDate, endDate);
+      throw DateNotWithinLeagueSeasonError.create(leagueSeasonId, date.dateAsString, startDate, endDate);
     }
   }
 }
