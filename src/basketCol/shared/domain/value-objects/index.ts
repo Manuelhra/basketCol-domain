@@ -48,3 +48,4 @@ export { GenderValueObject } from './GenderValueObject';
 export { NullableDate } from './NullableDate';
 export { IdListValueObject } from './IdListValueObject';
 export { NullableIdValueObject } from './NullableIdValueObject';
+export { NullablePositiveIntegerValueObject } from './NullablePositiveIntegerValueObject';

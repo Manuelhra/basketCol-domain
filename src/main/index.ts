@@ -19,6 +19,25 @@ export {
   LeagueLeagueFounderUserId,
 } from '../basketCol/competitions/league/domain/value-objects';
 
+// Competitions League Team
+export { LeagueTeam } from '../basketCol/competitions/league/league-team/domain/LeagueTeam';
+export { ILeagueTeamPrimitives } from '../basketCol/competitions/league/league-team/domain/ILeagueTeamPrimitives';
+export { InvalidLeagueTeamStatusError } from '../basketCol/competitions/league/league-team/domain/exceptions';
+export { ILeagueTeamRepository } from '../basketCol/competitions/league/league-team/domain/repository/ILeagueTeamRepository';
+export {
+  LeagueTeamCreatedAt,
+  LeagueTeamDivisionLevel,
+  LeagueTeamId,
+  LeagueTeamJoinedAt,
+  LeagueTeamLastPromotionDate,
+  LeagueTeamLastRelegationDate,
+  LeagueTeamLeagueId,
+  LeagueTeamLeftAt,
+  LeagueTeamStatus,
+  LeagueTeamTeamId,
+  LeagueTeamUpdatedAt,
+} from '../basketCol/competitions/league/league-team/domain/value-objects';
+
 // Competitions League Season
 export { LeagueSeason } from '../basketCol/competitions/league/season/domain/LeagueSeason';
 export { ILeagueSeasonPrimitives } from '../basketCol/competitions/league/season/domain/ILeagueSeasonPrimitives';
@@ -383,6 +402,7 @@ export {
   IdListValueObject,
   NullableDate,
   NullableIdValueObject,
+  NullablePositiveIntegerValueObject,
 } from '../basketCol/shared/domain/value-objects';
 
 // Team
@@ -402,6 +422,24 @@ export {
   TeamMainImage,
   TeamTeamFounderUserId,
 } from '../basketCol/team/domain/value-objects';
+
+// Team Player
+export { TeamPlayer } from '../basketCol/team/team-player/domain/TeamPlayer';
+export { ITeamPlayerPrimitives } from '../basketCol/team/team-player/domain/ITeamPlayerPrimitives';
+export { InvalidTeamPlayerStatusError } from '../basketCol/team/team-player/domain/exceptions';
+export { ITeamPlayerRepository } from '../basketCol/team/team-player/domain/repository/ITeamPlayerRepository';
+export {
+  TeamPlayerCreatedAt,
+  TeamPlayerId,
+  TeamPlayerJerseyNumber,
+  TeamPlayerJoinedAt,
+  TeamPlayerLeftAt,
+  TeamPlayerPlayerUserId,
+  TeamPlayerPosition,
+  TeamPlayerStatus,
+  TeamPlayerTeamId,
+  TeamPlayerUpdatedAt,
+} from '../basketCol/team/team-player/domain/value-objects';
 
 // Team AllTimeStats
 export { TeamAllTimeStats } from '../basketCol/team/all-time-stats/domain/TeamAllTimeStats';
@@ -431,25 +469,6 @@ export {
   TATStatsTotalTurnovers,
   TATStatsUpdatedAt,
 } from '../basketCol/team/all-time-stats/domain/value-objects';
-
-// Team League
-export { TeamLeague } from '../basketCol/team/team-league/domain/TeamLeague';
-export { ITeamLeaguePrimitives } from '../basketCol/team/team-league/domain/ITeamLeaguePrimitives';
-export { InvalidTeamLeagueStatusError } from '../basketCol/team/team-league/domain/exceptions';
-export { ITeamLeagueRepository } from '../basketCol/team/team-league/domain/repository/ITeamLeagueRepository';
-export {
-  TeamLeagueCreatedAt,
-  TeamLeagueDivisionLevel,
-  TeamLeagueId,
-  TeamLeagueJoinedAt,
-  TeamLeagueLastPromotionDate,
-  TeamLeagueLastRelegationDate,
-  TeamLeagueLeagueId,
-  TeamLeagueLeftAt,
-  TeamLeagueStatus,
-  TeamLeagueTeamId,
-  TeamLeagueUpdatedAt,
-} from '../basketCol/team/team-league/domain/value-objects';
 
 // Users Host
 export { HostUser } from '../basketCol/users/host/domain/HostUser';

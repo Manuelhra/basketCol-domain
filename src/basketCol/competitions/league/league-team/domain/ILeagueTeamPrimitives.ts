@@ -1,6 +1,6 @@
-import { IAggregateRootPrimitives } from '../../../shared/domain/IAggregateRootPrimitives';
+import { IAggregateRootPrimitives } from '../../../../shared/domain/IAggregateRootPrimitives';
 
-export interface ITeamLeaguePrimitives extends IAggregateRootPrimitives {
+export interface ILeagueTeamPrimitives extends IAggregateRootPrimitives {
   teamId: string;
   leagueId: string;
   status: string;

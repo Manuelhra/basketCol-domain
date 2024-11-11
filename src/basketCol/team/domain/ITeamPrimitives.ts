@@ -16,6 +16,6 @@ export interface ITeamPrimitives extends
   ITeamMainMedia,
   ITeamGallery {
   officialName: string;
-  teamFounderUserId: string;
   gender: string;
+  teamFounderUserId: string;
 }

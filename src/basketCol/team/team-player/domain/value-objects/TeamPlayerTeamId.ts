@@ -1,11 +1,11 @@
 import { IdValueObject } from '../../../../shared/domain/value-objects/IdValueObject';
 
-export class TeamLeagueTeamId extends IdValueObject {
+export class TeamPlayerTeamId extends IdValueObject {
   private constructor(value: string) {
     super(value, 'teamId');
   }
 
-  public static create(value: string): TeamLeagueTeamId {
-    return new TeamLeagueTeamId(value);
+  public static create(value: string): TeamPlayerTeamId {
+    return new TeamPlayerTeamId(value);
   }
 }
