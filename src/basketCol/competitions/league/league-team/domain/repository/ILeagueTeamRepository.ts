@@ -4,7 +4,7 @@ import { LeagueTeam } from '../LeagueTeam';
 import { LeagueTeamId } from '../value-objects/LeagueTeamId';
 
 export interface ILeagueTeamRepository {
-  save(teamLeague: LeagueTeam): Promise<void>;
-  findById(teamLeagueId: LeagueTeamId): Promise<Nullable<LeagueTeam>>;
+  save(leagueTeam: LeagueTeam): Promise<void>;
+  findById(leagueTeamId: LeagueTeamId): Promise<Nullable<LeagueTeam>>;
   searchAll(params: { query?: string; page: number; perPage: number; }): Promise<IPaginatedResponse<LeagueTeam>>;
 }
