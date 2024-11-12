@@ -19,7 +19,7 @@ export class LeagueValidationService {
     return new LeagueValidationService(dependencies);
   }
 
-  public async ensureLeagueExist(leagueId: LeagueId): Promise<void> {
+  public async ensureLeagueExists(leagueId: LeagueId): Promise<void> {
     const leagueFound: Nullable<League> = await this.#leagueRepository.findById(leagueId);
 
     if (leagueFound === undefined || leagueFound === null) {
