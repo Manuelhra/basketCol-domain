@@ -1,1 +1,1 @@
-export { CourtValidationService } from './CourtValidationService';
+export { CourtValidationDomainService } from './CourtValidationDomainService';

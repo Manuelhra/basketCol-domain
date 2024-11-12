@@ -8,15 +8,15 @@ type Dependencies = {
   gymRepository: IGymRepository;
 };
 
-export class GymValidationService {
+export class GymValidationDomainService {
   readonly #gymRepository: IGymRepository;
 
   private constructor(dependencies: Dependencies) {
     this.#gymRepository = dependencies.gymRepository;
   }
 
-  public static create(dependencies: Dependencies): GymValidationService {
-    return new GymValidationService(dependencies);
+  public static create(dependencies: Dependencies): GymValidationDomainService {
+    return new GymValidationDomainService(dependencies);
   }
 
   public async ensureGymExists(gymId: GymId): Promise<void> {

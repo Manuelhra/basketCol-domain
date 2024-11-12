@@ -1,2 +1,2 @@
-export { BusinessDateService } from './BusinessDateService';
-export { IIdUniquenessValidatorServiceRepository, IdUniquenessValidatorService } from './IdUniquenessValidatorService';
+export { BusinessDateDomainService } from './BusinessDateDomainService';
+export { IIdUniquenessValidatorDomainServiceRepository, IdUniquenessValidatorDomainService } from './IdUniquenessValidatorDomainService';

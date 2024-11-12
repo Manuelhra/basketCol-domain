@@ -1,2 +1,1 @@
-export { LeagueValidationNameService } from './LeagueValidationNameService';
-export { LeagueValidationService } from './LeagueValidationService';
+export { LeagueValidationDomainService } from './LeagueValidationDomainService';

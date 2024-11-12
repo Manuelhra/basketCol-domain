@@ -8,15 +8,15 @@ type Dependencies = {
   readonly tFURepository: ITeamFounderUserRepository;
 };
 
-export class TeamFounderUserValidationService {
+export class TeamFounderUserValidationDomainService {
   readonly #tFURepository: ITeamFounderUserRepository;
 
   private constructor(dependencies: Dependencies) {
     this.#tFURepository = dependencies.tFURepository;
   }
 
-  public static create(dependencies: Dependencies): TeamFounderUserValidationService {
-    return new TeamFounderUserValidationService(dependencies);
+  public static create(dependencies: Dependencies): TeamFounderUserValidationDomainService {
+    return new TeamFounderUserValidationDomainService(dependencies);
   }
 
   public async ensureTeamFounderUserExists(teamFounderUserId: TeamFounderUserId): Promise<void> {

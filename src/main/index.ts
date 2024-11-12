@@ -3,7 +3,7 @@ export { League } from '../basketCol/competitions/league/domain/League';
 export { ILeaguePrimitives } from '../basketCol/competitions/league/domain/ILeaguePrimitives';
 export { DuplicateLeagueNameError, LeagueNotFoundError } from '../basketCol/competitions/league/domain/exceptions';
 export { ILeagueRepository } from '../basketCol/competitions/league/domain/repository/ILeagueRepository';
-export { LeagueValidationNameService, LeagueValidationService } from '../basketCol/competitions/league/domain/services';
+export { LeagueValidationDomainService } from '../basketCol/competitions/league/domain/services';
 export {
   LeagueCreatedAt,
   LeagueDescription,
@@ -22,8 +22,9 @@ export {
 // Competitions League Team
 export { LeagueTeam } from '../basketCol/competitions/league/league-team/domain/LeagueTeam';
 export { ILeagueTeamPrimitives } from '../basketCol/competitions/league/league-team/domain/ILeagueTeamPrimitives';
-export { InvalidLeagueTeamStatusError } from '../basketCol/competitions/league/league-team/domain/exceptions';
+export { InvalidLeagueTeamStatusError, LeagueTeamAlreadyRegisteredError } from '../basketCol/competitions/league/league-team/domain/exceptions';
 export { ILeagueTeamRepository } from '../basketCol/competitions/league/league-team/domain/repository/ILeagueTeamRepository';
+export { LeagueTeamValidationDomainService } from '../basketCol/competitions/league/league-team/domain/services';
 export {
   LeagueTeamCreatedAt,
   LeagueTeamDivisionLevel,
@@ -51,7 +52,7 @@ export {
   LeagueSeasonStartDateInPastError,
 } from '../basketCol/competitions/league/season/domain/exceptions';
 export { ILeagueSeasonRepository } from '../basketCol/competitions/league/season/domain/repository/ILeagueSeasonRepository';
-export { LeagueSeasonValidationService } from '../basketCol/competitions/league/season/domain/services';
+export { LeagueSeasonValidationDomainService } from '../basketCol/competitions/league/season/domain/services';
 export {
   LeagueSeasonLeagueId,
   LeagueSeasonCreatedAt,
@@ -87,7 +88,7 @@ export { LeagueSeasonFixture } from '../basketCol/competitions/league/season/fix
 export { ILeagueSeasonFixturePrimitives } from '../basketCol/competitions/league/season/fixture/domain/ILeagueSeasonFixturePrimitives';
 export { FixtureAlreadyExistsForDateInLeagueSeasonError, FixtureDateTooSoonError } from '../basketCol/competitions/league/season/fixture/domain/exceptions';
 export { ILeagueSeasonFixtureRepository } from '../basketCol/competitions/league/season/fixture/domain/repository/ILeagueSeasonFixtureRepository';
-export { LeagueSeasonFixtureValidationService, LeagueSeasonFixtureDateValidatorService } from '../basketCol/competitions/league/season/fixture/domain/services';
+export { LeagueSeasonFixtureValidationDomainService } from '../basketCol/competitions/league/season/fixture/domain/services';
 export {
   LSFixtureCreatedAt,
   LSFixtureDate,
@@ -102,7 +103,7 @@ export { LeagueSeasonFixtureGame } from '../basketCol/competitions/league/season
 export { ILeagueSeasonFixtureGamePrimitives } from '../basketCol/competitions/league/season/fixture/game/domain/ILeagueSeasonFixtureGamePrimitives';
 export { LeagueSeasonFixtureGameNotFoundError } from '../basketCol/competitions/league/season/fixture/game/domain/exceptions';
 export { ILeagueSeasonFixtureGameRepository } from '../basketCol/competitions/league/season/fixture/game/domain/repository/ILeagueSeasonFixtureGameRepository';
-export { LeagueSeasonFixtureGameValidationService } from '../basketCol/competitions/league/season/fixture/game/domain/services';
+export { LeagueSeasonFixtureGameValidationDomainService } from '../basketCol/competitions/league/season/fixture/game/domain/services';
 export {
   LSFGameAssistantRefereeId,
   LSFGameAwayScore,
@@ -245,7 +246,7 @@ export {
   InvalidCourtSurfaceError,
 } from '../basketCol/facilities/court/domain/exceptions';
 export { ICourtRepository } from '../basketCol/facilities/court/domain/repository/ICourtRepository';
-export { CourtValidationService } from '../basketCol/facilities/court/domain/services';
+export { CourtValidationDomainService } from '../basketCol/facilities/court/domain/services';
 export {
   CourtCreatedAt,
   CourtEstablishmentDate,
@@ -267,7 +268,7 @@ export { Gym } from '../basketCol/facilities/gym/domain/Gym';
 export { IGymPrimitives } from '../basketCol/facilities/gym/domain/IGymPrimitives';
 export { GymNotFoundError, GymsNotFoundError } from '../basketCol/facilities/gym/domain/exceptions';
 export { IGymRepository } from '../basketCol/facilities/gym/domain/repository/IGymRepository';
-export { GymValidationService } from '../basketCol/facilities/gym/domain/services';
+export { GymValidationDomainService } from '../basketCol/facilities/gym/domain/services';
 export {
   GymCreatedAt,
   GymEstablishmentDate,
@@ -350,7 +351,7 @@ export {
   InvalidGenderError,
 } from '../basketCol/shared/domain/exceptions';
 export { HttpStatus } from '../basketCol/shared/domain/http/HttpStatus';
-export { BusinessDateService, IIdUniquenessValidatorServiceRepository, IdUniquenessValidatorService } from '../basketCol/shared/domain/services';
+export { BusinessDateDomainService, IIdUniquenessValidatorDomainServiceRepository, IdUniquenessValidatorDomainService } from '../basketCol/shared/domain/services';
 export {
   BooleanValueObject,
   CentimeterHeightValueObject,
@@ -410,7 +411,7 @@ export { Team } from '../basketCol/team/domain/Team';
 export { ITeamPrimitives } from '../basketCol/team/domain/ITeamPrimitives';
 export { TeamNotFoundError, TeamOfficialNameLengthError } from '../basketCol/team/domain/exceptions';
 export { ITeamRepository } from '../basketCol/team/domain/repository/ITeamRepository';
-export { TeamValidationService } from '../basketCol/team/domain/services';
+export { TeamValidationDomainService } from '../basketCol/team/domain/services';
 export {
   TeamCreatedAt,
   TeamId,
@@ -475,7 +476,7 @@ export { HostUser } from '../basketCol/users/host/domain/HostUser';
 export { IHostUserPrimitives } from '../basketCol/users/host/domain/IHostUserPrimitives';
 export { HostUserNotFoundError } from '../basketCol/users/host/domain/exceptions';
 export { IHostUserRepository } from '../basketCol/users/host/domain/repository/IHostUserRepository';
-export { HostUserValidationService } from '../basketCol/users/host/domain/services';
+export { HostUserValidationDomainService } from '../basketCol/users/host/domain/services';
 export {
   HostUserBiography,
   HostUserCreatedAt,
@@ -496,7 +497,7 @@ export { LeagueFounderUser } from '../basketCol/users/league-founder/domain/Leag
 export { ILeagueFounderUserPrimitives } from '../basketCol/users/league-founder/domain/ILeagueFounderUserPrimitives';
 export { LeagueFounderUserNotFoundError } from '../basketCol/users/league-founder/domain/exceptions';
 export { ILeagueFounderUserRepository } from '../basketCol/users/league-founder/domain/repository/ILeagueFounderUserRepository';
-export { LeagueFounderUserValidationService } from '../basketCol/users/league-founder/domain/services';
+export { LeagueFounderUserValidationDomainService } from '../basketCol/users/league-founder/domain/services';
 export {
   LeagueFounderUserBiography,
   LeagueFounderUserCreatedAt,
@@ -517,7 +518,7 @@ export { PlayerUser } from '../basketCol/users/player/domain/PlayerUser';
 export { IPlayerUserPrimitives } from '../basketCol/users/player/domain/IPlayerUserPrimitives';
 export { PlayerUserNotFoundError, PlayerUserNicknameAlreadyExistsError } from '../basketCol/users/player/domain/exceptions';
 export { IPlayerUserRepository } from '../basketCol/users/player/domain/repository/IPlayerUserRepository';
-export { PlayerUserValidationService, PlayerUserNicknameValidationService } from '../basketCol/users/player/domain/services';
+export { PlayerUserValidationDomainService } from '../basketCol/users/player/domain/services';
 export {
   PlayerUserBiography,
   PlayerUserCreatedAt,
@@ -659,7 +660,7 @@ export { RefereeUser } from '../basketCol/users/referee/domain/RefereeUser';
 export { IRefereeUserPrimitives } from '../basketCol/users/referee/domain/IRefereeUserPrimitives';
 export { RefereeUserNotFoundError } from '../basketCol/users/referee/domain/exceptions';
 export { IRefereeUserRepository } from '../basketCol/users/referee/domain/repository/IRefereeUserRepository';
-export { RefereeUserValidationService } from '../basketCol/users/referee/domain/services';
+export { RefereeUserValidationDomainService } from '../basketCol/users/referee/domain/services';
 export {
   RefereeUserBiography,
   RefereeUserCreatedAt,
@@ -680,7 +681,7 @@ export { TeamFounderUser } from '../basketCol/users/team-founder/domain/TeamFoun
 export { ITeamFounderUserPrimitives } from '../basketCol/users/team-founder/domain/ITeamFounderUserPrimitives';
 export { TeamFounderUserNotFoundError } from '../basketCol/users/team-founder/domain/exceptions';
 export { ITeamFounderUserRepository } from '../basketCol/users/team-founder/domain/repository/ITeamFounderUserRepository';
-export { TeamFounderUserValidationService } from '../basketCol/users/team-founder/domain/services';
+export { TeamFounderUserValidationDomainService } from '../basketCol/users/team-founder/domain/services';
 export {
   TeamFounderUserAccountState,
   TeamFounderUserBiography,
@@ -708,12 +709,12 @@ export {
   PasswordPolicyViolationError,
 } from '../basketCol/users/shared/domain/exceptions';
 export {
-  EmailUniquenessValidatorService,
-  IEmailUniquenessValidatorServiceRepository,
-  IPasswordHashingService,
-  IPasswordValueObjectCreationService,
-  PasswordValueObjectCreationService,
-  SecurePasswordCreationService,
+  EmailUniquenessValidatorDomainService,
+  IEmailUniquenessValidatorDomainServiceRepository,
+  IPasswordHashingDomainService,
+  IPasswordValueObjectCreationDomainService,
+  PasswordValueObjectCreationDomainService,
+  SecurePasswordCreationDomainService,
 } from '../basketCol/users/shared/domain/services';
 export {
   UserAccountState,

@@ -8,15 +8,15 @@ type Dependencies = {
   teamRepository: ITeamRepository;
 };
 
-export class TeamValidationService {
+export class TeamValidationDomainService {
   readonly #teamRepository: ITeamRepository;
 
   private constructor(dependencies: Dependencies) {
     this.#teamRepository = dependencies.teamRepository;
   }
 
-  public static create(dependencies: Dependencies): TeamValidationService {
-    return new TeamValidationService(dependencies);
+  public static create(dependencies: Dependencies): TeamValidationDomainService {
+    return new TeamValidationDomainService(dependencies);
   }
 
   public async ensureTeamExists(teamId: TeamId): Promise<void> {

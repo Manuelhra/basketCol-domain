@@ -8,15 +8,15 @@ type Dependencies = {
   readonly courtRepository: ICourtRepository;
 };
 
-export class CourtValidationService {
+export class CourtValidationDomainService {
   readonly #courtRepository: ICourtRepository;
 
   private constructor(dependencies: Dependencies) {
     this.#courtRepository = dependencies.courtRepository;
   }
 
-  public static create(dependencies: Dependencies): CourtValidationService {
-    return new CourtValidationService(dependencies);
+  public static create(dependencies: Dependencies): CourtValidationDomainService {
+    return new CourtValidationDomainService(dependencies);
   }
 
   public async ensureCourtExists(courtId: CourtId): Promise<void> {

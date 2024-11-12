@@ -1,2 +1,1 @@
-export { LeagueSeasonFixtureValidationService } from './LeagueSeasonFixtureValidationService';
-export { LeagueSeasonFixtureDateValidatorService } from './LeagueSeasonFixtureDateValidatorService';
+export { LeagueSeasonFixtureValidationDomainService } from './LeagueSeasonFixtureValidationDomainService';

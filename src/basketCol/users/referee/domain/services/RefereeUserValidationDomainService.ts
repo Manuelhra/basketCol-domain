@@ -8,15 +8,15 @@ type Dependencies = {
   readonly refereeUserRepository: IRefereeUserRepository;
 };
 
-export class RefereeUserValidationService {
+export class RefereeUserValidationDomainService {
   readonly #refereeUserRepository: IRefereeUserRepository;
 
   private constructor(dependencies: Dependencies) {
     this.#refereeUserRepository = dependencies.refereeUserRepository;
   }
 
-  public static create(dependencies: Dependencies): RefereeUserValidationService {
-    return new RefereeUserValidationService(dependencies);
+  public static create(dependencies: Dependencies): RefereeUserValidationDomainService {
+    return new RefereeUserValidationDomainService(dependencies);
   }
 
   public async ensureRefereeUserExists(refereeUserId: RefereeUserId): Promise<void> {

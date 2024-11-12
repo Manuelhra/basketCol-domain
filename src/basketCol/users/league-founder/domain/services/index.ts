@@ -1,1 +1,1 @@
-export { LeagueFounderUserValidationService } from './LeagueFounderUserValidationService';
+export { LeagueFounderUserValidationDomainService } from './LeagueFounderUserValidationDomainService';

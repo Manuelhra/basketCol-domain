@@ -1,1 +1,1 @@
-export { TeamFounderUserValidationService } from './TeamFounderUserValidationService';
+export { TeamFounderUserValidationDomainService } from './TeamFounderUserValidationDomainService';

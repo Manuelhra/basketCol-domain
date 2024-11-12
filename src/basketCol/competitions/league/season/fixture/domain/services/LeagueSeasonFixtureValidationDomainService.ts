@@ -3,22 +3,40 @@ import { DateNotWithinLeagueSeasonError } from '../../../../../shared/domain/exc
 import { LeagueSeasonNotFoundError } from '../../../domain/exceptions/LeagueSeasonNotFoundError';
 import { LeagueSeason } from '../../../domain/LeagueSeason';
 import { ILeagueSeasonRepository } from '../../../domain/repository/ILeagueSeasonRepository';
+import { FixtureAlreadyExistsForDateInLeagueSeasonError } from '../exceptions/FixtureAlreadyExistsForDateInLeagueSeasonError';
+import { LeagueSeasonFixture } from '../LeagueSeasonFixture';
+import { ILeagueSeasonFixtureRepository } from '../repository/ILeagueSeasonFixtureRepository';
 import { LSFixtureDate } from '../value-objects/LSFixtureDate';
 import { LSFixtureLeagueSeasonId } from '../value-objects/LSFixtureLeagueSeasonId';
 
 type Dependencies = {
+  readonly leagueSeasonFixtureRepository: ILeagueSeasonFixtureRepository;
   readonly leagueSeasonRepository: ILeagueSeasonRepository;
 };
 
-export class LeagueSeasonFixtureDateValidatorService {
+export class LeagueSeasonFixtureValidationDomainService {
+  readonly #leagueSeasonFixtureRepository: ILeagueSeasonFixtureRepository;
+
   readonly #leagueSeasonRepository: ILeagueSeasonRepository;
 
   private constructor(dependencies: Dependencies) {
+    this.#leagueSeasonFixtureRepository = dependencies.leagueSeasonFixtureRepository;
     this.#leagueSeasonRepository = dependencies.leagueSeasonRepository;
   }
 
-  public static create(dependencies: Dependencies): LeagueSeasonFixtureDateValidatorService {
-    return new LeagueSeasonFixtureDateValidatorService(dependencies);
+  public static create(dependencies: Dependencies): LeagueSeasonFixtureValidationDomainService {
+    return new LeagueSeasonFixtureValidationDomainService(dependencies);
+  }
+
+  public async ensureNoFixtureExistsForDateAndLeagueSeason(
+    leagueSeasonId: LSFixtureLeagueSeasonId,
+    date: LSFixtureDate,
+  ): Promise<void> {
+    const leagueSeasonFixtureFound: Nullable<LeagueSeasonFixture> = await this.#leagueSeasonFixtureRepository.findByLeagueSeasonIdAndDate(leagueSeasonId, date);
+
+    if (leagueSeasonFixtureFound !== null && leagueSeasonFixtureFound !== undefined) {
+      throw FixtureAlreadyExistsForDateInLeagueSeasonError.create(leagueSeasonId.value, date.dateAsString);
+    }
   }
 
   public async ensureDateWithinLeagueSeason(

@@ -6,15 +6,15 @@ type Dependencies = {
   readonly leagueSeasonRepository: ILeagueSeasonRepository;
 };
 
-export class LeagueSeasonValidationService {
+export class LeagueSeasonValidationDomainService {
   readonly #leagueSeasonRepository: ILeagueSeasonRepository;
 
   private constructor(dependencies: Dependencies) {
     this.#leagueSeasonRepository = dependencies.leagueSeasonRepository;
   }
 
-  public static create(dependencies: Dependencies): LeagueSeasonValidationService {
-    return new LeagueSeasonValidationService(dependencies);
+  public static create(dependencies: Dependencies): LeagueSeasonValidationDomainService {
+    return new LeagueSeasonValidationDomainService(dependencies);
   }
 
   public async ensureLeagueSeasonExists(leagueSeasonId: LeagueSeasonId): Promise<void> {

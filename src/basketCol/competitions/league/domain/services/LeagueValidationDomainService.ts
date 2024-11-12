@@ -1,22 +1,32 @@
 import { Nullable } from '../../../../shared/domain/Nullable';
-import { League } from '../League';
 import { DuplicateLeagueNameError } from '../exceptions/DuplicateLeagueNameError';
+import { LeagueNotFoundError } from '../exceptions/LeagueNotFoundError';
+import { League } from '../League';
 import { ILeagueRepository } from '../repository/ILeagueRepository';
+import { LeagueId } from '../value-objects/LeagueId';
 import { LeagueName } from '../value-objects/LeagueName';
 
 type Dependencies = {
-  readonly leagueRepository: ILeagueRepository
+  readonly leagueRepository: ILeagueRepository,
 };
 
-export class LeagueValidationNameService {
+export class LeagueValidationDomainService {
   readonly #leagueRepository: ILeagueRepository;
 
   private constructor(dependencies: Dependencies) {
     this.#leagueRepository = dependencies.leagueRepository;
   }
 
-  public static create(dependencies: Dependencies): LeagueValidationNameService {
-    return new LeagueValidationNameService(dependencies);
+  public static create(dependencies: Dependencies): LeagueValidationDomainService {
+    return new LeagueValidationDomainService(dependencies);
+  }
+
+  public async ensureLeagueExists(leagueId: LeagueId): Promise<void> {
+    const leagueFound: Nullable<League> = await this.#leagueRepository.findById(leagueId);
+
+    if (leagueFound === undefined || leagueFound === null) {
+      throw LeagueNotFoundError.create(leagueId);
+    }
   }
 
   public async validateUniqueShortName(leagueName: LeagueName): Promise<void> {

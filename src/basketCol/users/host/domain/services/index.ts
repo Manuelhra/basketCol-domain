@@ -1,1 +1,1 @@
-export { HostUserValidationService } from './HostUserValidationService';
+export { HostUserValidationDomainService } from './HostUserValidationDomainService';

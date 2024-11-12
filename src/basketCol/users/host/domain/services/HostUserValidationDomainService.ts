@@ -6,15 +6,15 @@ type Dependencies = {
   hostUserRepository: IHostUserRepository;
 };
 
-export class HostUserValidationService {
+export class HostUserValidationDomainService {
   readonly #hostUserRepository: IHostUserRepository;
 
   private constructor(dependencies: Dependencies) {
     this.#hostUserRepository = dependencies.hostUserRepository;
   }
 
-  public static create(dependencies: Dependencies): HostUserValidationService {
-    return new HostUserValidationService(dependencies);
+  public static create(dependencies: Dependencies): HostUserValidationDomainService {
+    return new HostUserValidationDomainService(dependencies);
   }
 
   public async ensureHostUserExists(hostUserId: HostUserId): Promise<void> {

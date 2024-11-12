@@ -1,1 +1,1 @@
-export { GymValidationService } from './GymValidationService';
+export { GymValidationDomainService } from './GymValidationDomainService';

@@ -1,5 +1,5 @@
-export { EmailUniquenessValidatorService, IEmailUniquenessValidatorServiceRepository } from './EmailUniquenessValidatorService';
-export { IPasswordHashingService } from './IPasswordHashingService';
-export { IPasswordValueObjectCreationService } from './IPasswordValueObjectCreationService';
-export { PasswordValueObjectCreationService } from './PasswordValueObjectCreationService';
-export { SecurePasswordCreationService } from './SecurePasswordCreationService';
+export { EmailUniquenessValidatorDomainService, IEmailUniquenessValidatorDomainServiceRepository } from './EmailUniquenessValidatorDomainService';
+export { IPasswordHashingDomainService } from './IPasswordHashingDomainService';
+export { IPasswordValueObjectCreationDomainService } from './IPasswordValueObjectCreationDomainService';
+export { PasswordValueObjectCreationDomainService } from './PasswordValueObjectCreationDomainService';
+export { SecurePasswordCreationDomainService } from './SecurePasswordCreationDomainService';

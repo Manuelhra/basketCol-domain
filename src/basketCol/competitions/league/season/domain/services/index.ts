@@ -1,1 +1,1 @@
-export { LeagueSeasonValidationService } from './LeagueSeasonValidationService';
+export { LeagueSeasonValidationDomainService } from './LeagueSeasonValidationDomainService';

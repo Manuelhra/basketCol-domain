@@ -8,15 +8,15 @@ type Dependencies = {
   readonly leagueFounderUserRepository: ILeagueFounderUserRepository;
 };
 
-export class LeagueFounderUserValidationService {
+export class LeagueFounderUserValidationDomainService {
   readonly #leagueFounderUserRepository: ILeagueFounderUserRepository;
 
   private constructor(dependencies: Dependencies) {
     this.#leagueFounderUserRepository = dependencies.leagueFounderUserRepository;
   }
 
-  public static create(dependencies: Dependencies): LeagueFounderUserValidationService {
-    return new LeagueFounderUserValidationService(dependencies);
+  public static create(dependencies: Dependencies): LeagueFounderUserValidationDomainService {
+    return new LeagueFounderUserValidationDomainService(dependencies);
   }
 
   public async ensureFounderUserExists(leagueFounderUserId: LeagueFounderUserId): Promise<void> {

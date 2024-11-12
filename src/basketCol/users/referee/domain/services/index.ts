@@ -1,1 +1,1 @@
-export { RefereeUserValidationService } from './RefereeUserValidationService';
+export { RefereeUserValidationDomainService } from './RefereeUserValidationDomainService';
