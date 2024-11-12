@@ -27,7 +27,7 @@ export class CourtValidationService {
     }
   }
 
-  public async ensureCourtsExist(courtIdList: IdListValueObject): Promise<void> {
+  public async ensureCourtsExists(courtIdList: IdListValueObject): Promise<void> {
     const courtFoundList = await this.#courtRepository.findAllByIdList(courtIdList);
 
     if (courtFoundList.length !== courtIdList.value.length) {

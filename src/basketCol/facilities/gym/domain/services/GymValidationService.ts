@@ -27,7 +27,7 @@ export class GymValidationService {
     }
   }
 
-  public async ensureGymsExist(gymIdList: IdListValueObject): Promise<void> {
+  public async ensureGymsExists(gymIdList: IdListValueObject): Promise<void> {
     const gymFoundList = await this.#gymRepository.findAllByIdList(gymIdList);
 
     if (gymFoundList.length !== gymIdList.value.length) {
