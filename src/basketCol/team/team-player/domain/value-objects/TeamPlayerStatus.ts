@@ -14,6 +14,10 @@ export class TeamPlayerStatus extends StringValueObject {
     return new TeamPlayerStatus(value);
   }
 
+  public static createActive(): TeamPlayerStatus {
+    return new TeamPlayerStatus('ACTIVE');
+  }
+
   static #ensureIsValidStatus(status: string): void {
     if (!TeamPlayerStatus.#VALID_STATUSES.includes(status)) {
       throw InvalidTeamPlayerStatusError.create(status, TeamPlayerStatus.#VALID_STATUSES);
