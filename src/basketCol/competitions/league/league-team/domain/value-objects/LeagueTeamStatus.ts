@@ -14,6 +14,10 @@ export class LeagueTeamStatus extends StringValueObject {
     return new LeagueTeamStatus(value);
   }
 
+  public static createActive(): LeagueTeamStatus {
+    return new LeagueTeamStatus('ACTIVE');
+  }
+
   #ensureIsValidStatus(status: string): void {
     if (!this.#VALID_STATUSES.includes(status)) {
       throw InvalidLeagueTeamStatusError.create(status, this.#VALID_STATUSES);
