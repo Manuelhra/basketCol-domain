@@ -427,8 +427,9 @@ export {
 // Team Player
 export { TeamPlayer } from '../basketCol/team/team-player/domain/TeamPlayer';
 export { ITeamPlayerPrimitives } from '../basketCol/team/team-player/domain/ITeamPlayerPrimitives';
-export { InvalidTeamPlayerStatusError } from '../basketCol/team/team-player/domain/exceptions';
+export { InvalidTeamPlayerStatusError, TeamPlayerAlreadyRegisteredError } from '../basketCol/team/team-player/domain/exceptions';
 export { ITeamPlayerRepository } from '../basketCol/team/team-player/domain/repository/ITeamPlayerRepository';
+export { TeamPlayerValidationDomainService } from '../basketCol/team/team-player/domain/services';
 export {
   TeamPlayerCreatedAt,
   TeamPlayerId,

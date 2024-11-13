@@ -1,0 +1,1 @@
+export { TeamPlayerValidationDomainService } from './TeamPlayerValidationDomainService';
