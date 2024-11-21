@@ -17,7 +17,7 @@ export class TeamPlayerValidationDomainService {
   public async ensurePlayerIsRegistered(playerUserId: TeamPlayerPlayerUserId, teamId: TeamPlayerTeamId): Promise<void> {
     const teamPlayerFound = await this.dependencies.teamPlayerRepository.findByTeamIdAndPlayerUserId(teamId, playerUserId);
 
-    if (teamPlayerFound === undefined || teamPlayerFound === null) {
+    if (teamPlayerFound !== undefined && teamPlayerFound !== null) {
       throw TeamPlayerAlreadyRegisteredError.create(playerUserId, teamId);
     }
   }
