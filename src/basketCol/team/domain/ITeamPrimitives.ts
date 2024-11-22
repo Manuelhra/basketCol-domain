@@ -2,7 +2,8 @@ import { IAggregateRootPrimitives } from '../../shared/domain/IAggregateRootPrim
 import { IImageValueObjectProps } from '../../shared/domain/value-objects/ImageValueObject';
 
 interface ITeamMainMedia {
-  mainImage: IImageValueObjectProps
+  mainImage: IImageValueObjectProps;
+  logo: IImageValueObjectProps;
 }
 
 interface ITeamGallery {

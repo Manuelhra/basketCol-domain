@@ -9,6 +9,7 @@ import { TeamMainImage } from './value-objects/TeamMainImage';
 import { TeamOfficialName } from './value-objects/TeamOfficialName';
 import { TeamUpdatedAt } from './value-objects/TeamUpdatedAt';
 import { TeamTeamFounderUserId } from './value-objects/TeamTeamFounderUserId';
+import { TeamLogo } from './value-objects/TeamLogo';
 
 export class Team extends AggregateRoot<ITeamPrimitives> {
   readonly #officialName: TeamOfficialName;
@@ -16,6 +17,8 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
   readonly #teamFounderUserId: TeamTeamFounderUserId;
 
   readonly #gender: TeamGender;
+
+  readonly #logo: TeamLogo;
 
   readonly #mainImage: TeamMainImage;
 
@@ -25,6 +28,7 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
     id: string,
     officialName: string,
     gender: string,
+    logo: IImageValueObjectProps,
     mainImage: IImageValueObjectProps,
     gallery: { images: Array<IImageValueObjectProps> },
     teamFounderUserId: string,
@@ -39,6 +43,7 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
 
     this.#officialName = TeamOfficialName.create(officialName);
     this.#gender = TeamGender.create(gender);
+    this.#logo = TeamLogo.create(logo);
     this.#mainImage = TeamMainImage.create(mainImage);
     this.#gallery = TeamGallery.create(gallery);
     this.#teamFounderUserId = TeamTeamFounderUserId.create(teamFounderUserId);
@@ -49,6 +54,7 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
       id: this.id.value,
       officialName: this.#officialName.value,
       gender: this.#gender.value,
+      logo: this.#logo.value,
       mainImage: this.#mainImage.value,
       gallery: this.#gallery.galleryAsPrimitives,
       teamFounderUserId: this.#teamFounderUserId.value,
@@ -61,6 +67,7 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
     id: string,
     officialName: string,
     gender: string,
+    logo: IImageValueObjectProps,
     mainImage: IImageValueObjectProps,
     gallery: { images: Array<IImageValueObjectProps> },
     teamFounderUserId: string,
@@ -71,6 +78,7 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
       id,
       officialName,
       gender,
+      logo,
       mainImage,
       gallery,
       teamFounderUserId,
@@ -83,6 +91,7 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
     id: string,
     officialName: string,
     gender: string,
+    logo: IImageValueObjectProps,
     mainImage: IImageValueObjectProps,
     gallery: { images: Array<IImageValueObjectProps> },
     teamFounderUserId: string,
@@ -93,6 +102,7 @@ export class Team extends AggregateRoot<ITeamPrimitives> {
       id,
       officialName,
       gender,
+      logo,
       mainImage,
       gallery,
       teamFounderUserId,

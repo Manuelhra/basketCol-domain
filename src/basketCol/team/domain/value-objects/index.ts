@@ -7,3 +7,4 @@ export { TeamGender } from './TeamGender';
 export { TeamImage } from './TeamImage';
 export { TeamMainImage } from './TeamMainImage';
 export { TeamGallery } from './TeamGallery';
+export { TeamLogo } from './TeamLogo';

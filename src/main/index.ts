@@ -419,6 +419,7 @@ export {
   TeamUpdatedAt,
   TeamGallery,
   TeamGender,
+  TeamLogo,
   TeamImage,
   TeamMainImage,
   TeamTeamFounderUserId,
