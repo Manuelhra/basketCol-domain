@@ -22,6 +22,10 @@ export class TeamPlayerStatus extends StringValueObject {
     return new TeamPlayerStatus('TRANSFERRED');
   }
 
+  public static get active(): string {
+    return this.#VALID_STATUSES[0];
+  }
+
   static #ensureIsValidStatus(status: string): void {
     if (!TeamPlayerStatus.#VALID_STATUSES.includes(status)) {
       throw InvalidTeamPlayerStatusError.create(status, TeamPlayerStatus.#VALID_STATUSES);
