@@ -9,5 +9,5 @@ export interface ITeamPlayerRepository {
   findById(teamPlayerId: TeamPlayerId): Promise<Nullable<TeamPlayer>>;
   findByTeamIdAndPlayerUserId(teamId: TeamPlayerTeamId, playerUserId: TeamPlayerPlayerUserId): Promise<Nullable<TeamPlayer>>;
   findAllActivePlayersByTeamId(teamId: TeamPlayerTeamId): Promise<TeamPlayer[]>;
-  findActivePlayerByPlayerUserId(playerUserId: TeamPlayerPlayerUserId): Promise<Nullable<TeamPlayer>>;
+  findTeamActivePlayerByPlayerUserId(playerUserId: TeamPlayerPlayerUserId): Promise<Nullable<TeamPlayer>>;
 }
