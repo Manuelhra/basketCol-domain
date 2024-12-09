@@ -20,7 +20,9 @@ export class LeagueTeamValidationDomainService {
     const leagueTeamFound: Nullable<LeagueTeam> = await this.dependencies.leagueTeamRepository.findByLeagueIdAndTeamId(leagueId, teamId);
 
     if (leagueTeamFound === undefined || leagueTeamFound === null) {
-      throw LeagueTeamAlreadyRegisteredError.create(leagueId, teamId);
+      return;
     }
+
+    throw LeagueTeamAlreadyRegisteredError.create(leagueId, teamId);
   }
 }
