@@ -7,8 +7,7 @@ export interface ILeagueSeasonAwardsPrimitives extends IAggregateRootPrimitives 
   bestAssistProviderId: string;
   bestOffensiveRebounderId: string;
   bestDefensiveRebounderId: string;
+  mostValuablePlayerId: string;
   championTeamId: string;
   leagueSeasonId: string;
 }
-
-// TODO: Crear la key de MVP o mejor jugador de la temporada

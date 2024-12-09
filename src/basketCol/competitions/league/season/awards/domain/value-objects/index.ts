@@ -9,3 +9,4 @@ export { LSACreatedAt } from './LSACreatedAt';
 export { LSALeagueSeasonId } from './LSALeagueSeasonId';
 export { LSAUpdatedAt } from './LSAUpdatedAt';
 export { LeagueSeasonAwardsId } from './LeagueSeasonAwardsId';
+export { LSAMostValuablePlayerId } from './LSAMostValuablePlayerId';

@@ -10,6 +10,7 @@ import { LSABestTwoPointShooterId } from './value-objects/LSABestTwoPointShooter
 import { LSAChampionTeamId } from './value-objects/LSAChampionTeamId';
 import { LSACreatedAt } from './value-objects/LSACreatedAt';
 import { LSALeagueSeasonId } from './value-objects/LSALeagueSeasonId';
+import { LSAMostValuablePlayerId } from './value-objects/LSAMostValuablePlayerId';
 import { LSAUpdatedAt } from './value-objects/LSAUpdatedAt';
 
 export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimitives> {
@@ -25,6 +26,8 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
 
   readonly #bestDefensiveRebounderId: LSABestDefensiveRebounderId;
 
+  readonly #mostValuablePlayerId: LSAMostValuablePlayerId;
+
   readonly #championTeamId: LSAChampionTeamId;
 
   readonly #leagueSeasonId: LSALeagueSeasonId;
@@ -37,6 +40,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
     bestAssistProviderId: string,
     bestOffensiveRebounderId: string,
     bestDefensiveRebounderId: string,
+    mostValuablePlayerId: string,
     championTeamId: string,
     leagueSeasonId: string,
     createdAt: string,
@@ -54,6 +58,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
     this.#bestAssistProviderId = LSABestAssistProviderId.create(bestAssistProviderId);
     this.#bestOffensiveRebounderId = LSABestOffensiveRebounderId.create(bestOffensiveRebounderId);
     this.#bestDefensiveRebounderId = LSABestDefensiveRebounderId.create(bestDefensiveRebounderId);
+    this.#mostValuablePlayerId = LSAMostValuablePlayerId.create(mostValuablePlayerId);
     this.#championTeamId = LSAChampionTeamId.create(championTeamId);
     this.#leagueSeasonId = LSALeagueSeasonId.create(leagueSeasonId);
   }
@@ -67,6 +72,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
       bestAssistProviderId: this.#bestAssistProviderId.value,
       bestOffensiveRebounderId: this.#bestOffensiveRebounderId.value,
       bestDefensiveRebounderId: this.#bestDefensiveRebounderId.value,
+      mostValuablePlayerId: this.#mostValuablePlayerId.value,
       championTeamId: this.#championTeamId.value,
       leagueSeasonId: this.#leagueSeasonId.value,
       createdAt: this.createdAt.value,
@@ -82,6 +88,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
     bestAssistProviderId: string,
     bestOffensiveRebounderId: string,
     bestDefensiveRebounderId: string,
+    mostValuablePlayerId: string,
     championTeamId: string,
     leagueSeasonId: string,
     createdAt: string,
@@ -95,6 +102,7 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
       bestAssistProviderId,
       bestOffensiveRebounderId,
       bestDefensiveRebounderId,
+      mostValuablePlayerId,
       championTeamId,
       leagueSeasonId,
       createdAt,
