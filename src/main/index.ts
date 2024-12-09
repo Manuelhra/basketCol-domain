@@ -406,6 +406,7 @@ export {
   NullableIdValueObject,
   NullablePositiveIntegerValueObject,
   IImageValueObjectProps,
+  ILocationValueObjectProps,
 } from '../basketCol/shared/domain/value-objects';
 
 // Team

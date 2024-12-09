@@ -5,7 +5,7 @@ export { DateValueObject } from './DateValueObject';
 export { EstablishmentDateValueObject } from './EstablishmentDateValueObject';
 export { IdValueObject } from './IdValueObject';
 export { IntegerValueObject } from './IntegerValueObject';
-export { LocationValueObject } from './LocationValueObject';
+export { LocationValueObject, ILocationValueObjectProps } from './LocationValueObject';
 export { Metric } from './Metric';
 export { MinutesDurationValueObject } from './MinutesDurationValueObject';
 export { NullableString } from './NullableString';
