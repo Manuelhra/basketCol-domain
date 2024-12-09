@@ -109,4 +109,34 @@ export class LeagueSeasonAwards extends AggregateRoot<ILeagueSeasonAwardsPrimiti
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    bestThreePointShooterId: string,
+    bestTwoPointShooterId: string,
+    bestFreeThrowShooterId: string,
+    bestAssistProviderId: string,
+    bestOffensiveRebounderId: string,
+    bestDefensiveRebounderId: string,
+    mostValuablePlayerId: string,
+    championTeamId: string,
+    leagueSeasonId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): LeagueSeasonAwards {
+    return new LeagueSeasonAwards(
+      id,
+      bestThreePointShooterId,
+      bestTwoPointShooterId,
+      bestFreeThrowShooterId,
+      bestAssistProviderId,
+      bestOffensiveRebounderId,
+      bestDefensiveRebounderId,
+      mostValuablePlayerId,
+      championTeamId,
+      leagueSeasonId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }
