@@ -81,6 +81,7 @@ export {
   LSALeagueSeasonId,
   LSAUpdatedAt,
   LeagueSeasonAwardsId,
+  LSAMostValuablePlayerId,
 } from '../basketCol/competitions/league/season/awards/domain/value-objects';
 
 // Competitions League Season Fixture
@@ -404,6 +405,7 @@ export {
   NullableDate,
   NullableIdValueObject,
   NullablePositiveIntegerValueObject,
+  IImageValueObjectProps,
 } from '../basketCol/shared/domain/value-objects';
 
 // Team

@@ -41,7 +41,7 @@ export { TimeValueObject } from './TimeValueObject';
 export { UpdatedAtValueObject } from './UpdatedAtValueObject';
 export { UuidValueObject } from './UuidValueObject';
 export { ValueObject } from './ValueObject';
-export { ImageValueObject } from './ImageValueObject';
+export { ImageValueObject, IImageValueObjectProps } from './ImageValueObject';
 export { ImageArrayValueObject } from './ImageArrayValueObject';
 export { NullableNumber } from './NullableNumber';
 export { GenderValueObject } from './GenderValueObject';
