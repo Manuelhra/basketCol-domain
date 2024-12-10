@@ -4,8 +4,10 @@ import { LeagueSeasonNotFoundError } from '../../../domain/exceptions/LeagueSeas
 import { LeagueSeason } from '../../../domain/LeagueSeason';
 import { ILeagueSeasonRepository } from '../../../domain/repository/ILeagueSeasonRepository';
 import { FixtureAlreadyExistsForDateInLeagueSeasonError } from '../exceptions/FixtureAlreadyExistsForDateInLeagueSeasonError';
+import { LeagueSeasonFixtureNotFoundError } from '../exceptions/LeagueSeasonFixtureNotFoundError';
 import { LeagueSeasonFixture } from '../LeagueSeasonFixture';
 import { ILeagueSeasonFixtureRepository } from '../repository/ILeagueSeasonFixtureRepository';
+import { LSFixtureId } from '../value-objects';
 import { LSFixtureDate } from '../value-objects/LSFixtureDate';
 import { LSFixtureLeagueSeasonId } from '../value-objects/LSFixtureLeagueSeasonId';
 
@@ -57,6 +59,14 @@ export class LeagueSeasonFixtureValidationDomainService {
 
     if (dateToValidate < seasonStartDate || dateToValidate > seasonEndDate) {
       throw DateNotWithinLeagueSeasonError.create(leagueSeasonId, date.dateAsString, startDate, endDate);
+    }
+  }
+
+  public async ensureLeagueSeasonFixtureExists(leagueSeasonFixtureId: LSFixtureId): Promise<void> {
+    const leagueSeasonFixtureFound: Nullable<LeagueSeasonFixture> = await this.#leagueSeasonFixtureRepository.findById(leagueSeasonFixtureId);
+
+    if (leagueSeasonFixtureFound === undefined || leagueSeasonFixtureFound === null) {
+      throw LeagueSeasonFixtureNotFoundError.create(leagueSeasonFixtureId);
     }
   }
 }

@@ -87,7 +87,11 @@ export {
 // Competitions League Season Fixture
 export { LeagueSeasonFixture } from '../basketCol/competitions/league/season/fixture/domain/LeagueSeasonFixture';
 export { ILeagueSeasonFixturePrimitives } from '../basketCol/competitions/league/season/fixture/domain/ILeagueSeasonFixturePrimitives';
-export { FixtureAlreadyExistsForDateInLeagueSeasonError, FixtureDateTooSoonError } from '../basketCol/competitions/league/season/fixture/domain/exceptions';
+export {
+  FixtureAlreadyExistsForDateInLeagueSeasonError,
+  FixtureDateTooSoonError,
+  LeagueSeasonFixtureNotFoundError,
+} from '../basketCol/competitions/league/season/fixture/domain/exceptions';
 export { ILeagueSeasonFixtureRepository } from '../basketCol/competitions/league/season/fixture/domain/repository/ILeagueSeasonFixtureRepository';
 export { LeagueSeasonFixtureValidationDomainService } from '../basketCol/competitions/league/season/fixture/domain/services';
 export {
