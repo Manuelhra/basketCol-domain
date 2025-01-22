@@ -19,11 +19,13 @@ export class LeagueSeasonFixtureGameValidationDomainService {
     return new LeagueSeasonFixtureGameValidationDomainService(dependencies);
   }
 
-  public async ensureLeagueSeasonFixtureGameExists(leagueSeasonFixtureGameId: LSFGameId): Promise<void> {
+  public async ensureLeagueSeasonFixtureGameExists(leagueSeasonFixtureGameId: LSFGameId): Promise<LeagueSeasonFixtureGame> {
     const leagueSeasonFixtureGameFound: Nullable<LeagueSeasonFixtureGame> = await this.#leagueSeasonFixtureGameRepository.findById(leagueSeasonFixtureGameId);
 
     if (leagueSeasonFixtureGameFound === undefined || leagueSeasonFixtureGameFound === null) {
       throw LeagueSeasonFixtureGameNotFoundError.create(leagueSeasonFixtureGameId);
     }
+
+    return leagueSeasonFixtureGameFound;
   }
 }
