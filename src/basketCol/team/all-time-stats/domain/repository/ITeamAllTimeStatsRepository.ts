@@ -5,6 +5,7 @@ import { TATStatsId } from '../value-objects/TATStatsId';
 
 export interface ITeamAllTimeStatsRepository {
   save(teamAllTimeStats: TeamAllTimeStats): Promise<void>;
+  update(teamAllTimeStats: TeamAllTimeStats): Promise<void>;
   findById(teamAllTimeStatsId: TATStatsId): Promise<Nullable<TeamAllTimeStats>>;
   findByTeamId(teamId: TATStatsTeamId): Promise<Nullable<TeamAllTimeStats>>;
 }
