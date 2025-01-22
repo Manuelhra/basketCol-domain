@@ -170,6 +170,7 @@ export class PlayerUserCareerStats extends Stats<IPlayerUserCareerStatsPrimitive
     totalFreeThrowsMade: number,
     totalFieldGoalsAttempted: number,
     totalFieldGoalsMade: number,
+    updatedAt: string,
   ): PlayerUserCareerStats {
     return PlayerUserCareerStats.create(
       this.id.value,
@@ -193,7 +194,7 @@ export class PlayerUserCareerStats extends Stats<IPlayerUserCareerStatsPrimitive
       this.totalFieldGoalsMade.value + totalFieldGoalsMade,
       this.#playerUserId.value,
       this.createdAt.value,
-      this.updatedAt.value,
+      updatedAt,
     );
   }
 

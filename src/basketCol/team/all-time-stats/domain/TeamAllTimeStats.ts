@@ -170,6 +170,7 @@ export class TeamAllTimeStats extends Stats<ITeamAllTimeStatsPrimitives> {
     totalFreeThrowsMade: number,
     totalFieldGoalsAttempted: number,
     totalFieldGoalsMade: number,
+    updatedAt: string,
   ): TeamAllTimeStats {
     return TeamAllTimeStats.create(
       this.id.value,
@@ -193,7 +194,7 @@ export class TeamAllTimeStats extends Stats<ITeamAllTimeStatsPrimitives> {
       this.totalFieldGoalsMade.value + totalFieldGoalsMade,
       this.#teamId.value,
       this.createdAt.value,
-      this.updatedAt.value,
+      updatedAt,
     );
   }
 
