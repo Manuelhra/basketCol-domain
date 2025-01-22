@@ -154,6 +154,33 @@ export class PlayerUserCareerStats extends Stats<IPlayerUserCareerStatsPrimitive
     );
   }
 
+  public incrementStatsAfterGame(gameStats: PlayerUserCareerStats): PlayerUserCareerStats {
+    return PlayerUserCareerStats.create(
+      this.id.value,
+      this.totalGamesPlayed.value + 1,
+      this.totalGamesWon.value + gameStats.totalGamesWon.value,
+      this.totalSeasonsLeaguePlayed.value,
+      this.totalSeasonsLeagueWon.value + gameStats.totalSeasonsLeagueWon.value,
+      this.totalPoints.value + gameStats.totalPoints.value,
+      this.totalOffensiveRebounds.value + gameStats.totalOffensiveRebounds.value,
+      this.totalDefensiveRebounds.value + gameStats.totalDefensiveRebounds.value,
+      this.totalAssists.value + gameStats.totalAssists.value,
+      this.totalSteals.value + gameStats.totalSteals.value,
+      this.totalBlocks.value + gameStats.totalBlocks.value,
+      this.totalFouls.value + gameStats.totalFouls.value,
+      this.totalTurnovers.value + gameStats.totalTurnovers.value,
+      this.totalThreePointersAttempted.value + gameStats.totalThreePointersAttempted.value,
+      this.totalThreePointersMade.value + gameStats.totalThreePointersMade.value,
+      this.totalFreeThrowsAttempted.value + gameStats.totalFreeThrowsAttempted.value,
+      this.totalFreeThrowsMade.value + gameStats.totalFreeThrowsMade.value,
+      this.totalFieldGoalsAttempted.value + gameStats.totalFieldGoalsAttempted.value,
+      this.totalFieldGoalsMade.value + gameStats.totalFieldGoalsMade.value,
+      this.#playerUserId.value,
+      this.createdAt.value,
+      this.updatedAt.value,
+    );
+  }
+
   public static override fromPrimitives(
     id: string,
     totalGamesPlayed: number,
