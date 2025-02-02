@@ -4,5 +4,6 @@ import { PLSFGBoxScoreFixtureGameId } from '../value-objects/PLSFGBoxScoreFixtur
 
 export interface IPlayerUserLeagueSeasonFixtureGameBoxScoreRepository {
   save(playerUserLeagueSeasonFixtureGameBoxScore: PlayerUserLeagueSeasonFixtureGameBoxScore): Promise<void>;
+  find(): Promise<Nullable<PlayerUserLeagueSeasonFixtureGameBoxScore>>;
   findById(pLSFGBoxScoreFixtureGameId: PLSFGBoxScoreFixtureGameId): Promise<Nullable<PlayerUserLeagueSeasonFixtureGameBoxScore>>;
 }

@@ -4,5 +4,6 @@ import { TLSFGBoxScoreFixtureGameId } from '../value-objects/TLSFGBoxScoreFixtur
 
 export interface ITeamLeagueSeasonFixtureGameBoxScoreRepository {
   save(teamLeagueSeasonFixtureGameBoxScore: TeamLeagueSeasonFixtureGameBoxScore): Promise<void>;
+  find(): Promise<Nullable<TeamLeagueSeasonFixtureGameBoxScore>>;
   findById(tLSFGBoxScoreFixtureGameId: TLSFGBoxScoreFixtureGameId): Promise<Nullable<TeamLeagueSeasonFixtureGameBoxScore>>;
 }
