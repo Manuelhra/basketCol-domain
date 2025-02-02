@@ -135,4 +135,48 @@ export class PlayerUserLeagueSeasonFixtureGameBoxScore extends FixtureGameBoxSco
       updatedAt,
     );
   }
+
+  public static override fromPrimitives(
+    id: string,
+    points: number,
+    offensiveRebounds: number,
+    defensiveRebounds: number,
+    assists: number,
+    steals: number,
+    blocks: number,
+    fouls: number,
+    turnovers: number,
+    threePointersAttempted: number,
+    threePointersMade: number,
+    freeThrowsAttempted: number,
+    freeThrowsMade: number,
+    fieldGoalsAttempted: number,
+    fieldGoalsMade: number,
+    fixtureGameId: string,
+    playerUserId: string,
+    createdAt: string,
+    updatedAt: string,
+  ): PlayerUserLeagueSeasonFixtureGameBoxScore {
+    return new PlayerUserLeagueSeasonFixtureGameBoxScore(
+      id,
+      points,
+      offensiveRebounds,
+      defensiveRebounds,
+      assists,
+      steals,
+      blocks,
+      fouls,
+      turnovers,
+      threePointersAttempted,
+      threePointersMade,
+      freeThrowsAttempted,
+      freeThrowsMade,
+      fieldGoalsAttempted,
+      fieldGoalsMade,
+      fixtureGameId,
+      playerUserId,
+      createdAt,
+      updatedAt,
+    );
+  }
 }
