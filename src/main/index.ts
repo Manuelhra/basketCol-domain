@@ -1,3 +1,19 @@
+// Authentication IPasswordResetTokenPrimitives
+export { PasswordResetToken } from '../basketCol/authentication/domain/PasswordResetToken';
+export { IPasswordResetTokenPrimitives } from '../basketCol/authentication/domain/IPasswordResetTokenPrimitives';
+export { IPasswordResetTokenRepository } from '../basketCol/authentication/domain/repository/IPasswordResetTokenRepository';
+export {
+  PasswordResetTokenCode,
+  PasswordResetTokenCreatedAt,
+  PasswordResetTokenExpiresAtDate,
+  PasswordResetTokenExpiresAtTime,
+  PasswordResetTokenId,
+  PasswordResetTokenIsUsed,
+  PasswordResetTokenUpdatedAt,
+  PasswordResetTokenUserId,
+  PasswordResetTokenUserType,
+} from '../basketCol/authentication/domain/value-objects';
+
 // Competitions League
 export { League } from '../basketCol/competitions/league/domain/League';
 export { ILeaguePrimitives } from '../basketCol/competitions/league/domain/ILeaguePrimitives';
