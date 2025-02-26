@@ -14,6 +14,12 @@ export class BusinessTimeDomainService {
     return TimeValueObject.fromDate(date);
   }
 
+  public addMinutes(time: TimeValueObject, minutes: number): TimeValueObject {
+    const date = time.toDate();
+    date.setMinutes(date.getMinutes() + minutes);
+    return TimeValueObject.fromDate(date);
+  }
+
   public ensureNotGreaterThan<T extends TimeValueObject, U extends TimeValueObject>(time1: T, time2: U): void {
     if (time1.toDate().getTime() > time2.toDate().getTime()) {
       throw TimeGreaterThanError.create(time1, time2);
