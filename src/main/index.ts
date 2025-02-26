@@ -372,7 +372,12 @@ export {
   InvalidGenderError,
 } from '../basketCol/shared/domain/exceptions';
 export { HttpStatus } from '../basketCol/shared/domain/http/HttpStatus';
-export { BusinessDateDomainService, IIdUniquenessValidatorDomainServiceRepository, IdUniquenessValidatorDomainService } from '../basketCol/shared/domain/services';
+export {
+  BusinessDateDomainService,
+  BusinessTimeDomainService,
+  IIdUniquenessValidatorDomainServiceRepository,
+  IdUniquenessValidatorDomainService,
+} from '../basketCol/shared/domain/services';
 export {
   BooleanValueObject,
   CentimeterHeightValueObject,
