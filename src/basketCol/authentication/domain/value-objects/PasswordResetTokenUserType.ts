@@ -8,11 +8,11 @@ import { TeamFounderUserType } from '../../../users/team-founder/domain/value-ob
 
 export class PasswordResetTokenUserType extends StringValueObject {
   private static readonly TYPE_LIST: string[] = [
-    HostUserType.create().value,
-    PlayerUserType.create().value,
-    LeagueFounderUserType.create().value,
-    TeamFounderUserType.create().value,
-    RefereeUserType.create().value,
+    HostUserType.value,
+    PlayerUserType.value,
+    LeagueFounderUserType.value,
+    TeamFounderUserType.value,
+    RefereeUserType.value,
   ];
 
   private constructor(value: string) {
