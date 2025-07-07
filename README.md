@@ -5,71 +5,71 @@
 [![Domain-Driven Design](https://img.shields.io/badge/Architecture-DDD-orange.svg)](https://martinfowler.com/bliki/DomainDrivenDesign.html)
 [![Hexagonal Architecture](https://img.shields.io/badge/Architecture-Hexagonal-purple.svg)](https://alistair.cockburn.us/hexagonal-architecture/)
 
-A TypeScript domain library for basketball competition management system following Domain-Driven Design (DDD) principles and hexagonal architecture.
+Una biblioteca de dominio TypeScript para un sistema de gestión de competiciones de baloncesto que sigue los principios del Diseño Dirigido por Dominio (DDD) y arquitectura hexagonal.
 
-## Overview
+## Descripción General
 
-BasketCol Domain is the core business logic layer of a comprehensive basketball competition management system. It provides domain entities, value objects, services, and repository interfaces for managing basketball leagues, teams, players, facilities, and competitions.
+BasketCol Domain es la capa de lógica de negocio central de un sistema integral de gestión de competiciones de baloncesto. Proporciona entidades de dominio, objetos de valor, servicios e interfaces de repositorio para gestionar ligas de baloncesto, equipos, jugadores, instalaciones y competiciones.
 
-## Architecture
+## Arquitectura
 
-### Domain-Driven Design (DDD)
+### Diseño Dirigido por Dominio (DDD)
 
-The library follows DDD principles with clear separation of concerns:
+La biblioteca sigue los principios de DDD con clara separación de responsabilidades:
 
-- **Domain Entities**: Core business objects that encapsulate state and behavior
-- **Value Objects**: Immutable objects that describe characteristics of domain entities
-- **Aggregate Roots**: Entity clusters with defined boundaries and consistency rules
-- **Domain Services**: Business logic that doesn't naturally fit within entities
-- **Repository Interfaces**: Contracts for data persistence without implementation details
+- **Entidades de Dominio**: Objetos de negocio centrales que encapsulan estado y comportamiento
+- **Objetos de Valor**: Objetos inmutables que describen características de las entidades de dominio
+- **Raíces de Agregado**: Clústeres de entidades con límites definidos y reglas de consistencia
+- **Servicios de Dominio**: Lógica de negocio que no encaja naturalmente dentro de las entidades
+- **Interfaces de Repositorio**: Contratos para persistencia de datos sin detalles de implementación
 
-### Hexagonal Architecture
+### Arquitectura Hexagonal
 
-The codebase implements hexagonal architecture (ports and adapters):
+El código implementa arquitectura hexagonal (puertos y adaptadores):
 
-- **Domain Layer**: Pure business logic with no external dependencies
-- **Repository Interfaces**: Ports for data access
-- **Domain Services**: Application-specific business rules
-- **Value Objects**: Encapsulated validation and business rules
+- **Capa de Dominio**: Lógica de negocio pura sin dependencias externas
+- **Interfaces de Repositorio**: Puertos para acceso a datos
+- **Servicios de Dominio**: Reglas de negocio específicas de la aplicación
+- **Objetos de Valor**: Validación encapsulada y reglas de negocio
 
-## Bounded Contexts
+## Contextos Delimitados
 
-The domain is organized into the following bounded contexts:
+El dominio está organizado en los siguientes contextos delimitados:
 
-### 🔐 Authentication
-- Password reset token management
-- User authentication primitives
+### 🔐 Autenticación
+- Gestión de tokens de restablecimiento de contraseña
+- Primitivas de autenticación de usuario
 
-### 🏆 Competitions
-- **League Management**: League creation, configuration, and administration
-- **Season Management**: League seasons with start/end dates and court assignments
-- **Fixture Management**: Game scheduling and fixture organization
-- **Game Management**: Individual game tracking with scores and statistics
-- **Awards System**: Season-end awards and recognition
+### 🏆 Competiciones
+- **Gestión de Ligas**: Creación, configuración y administración de ligas
+- **Gestión de Temporadas**: Temporadas de liga con fechas de inicio/fin y asignación de canchas
+- **Gestión de Jornadas**: Programación de partidos y organización de jornadas
+- **Gestión de Partidos**: Seguimiento de partidos individuales con puntuaciones y estadísticas
+- **Sistema de Premios**: Premios de fin de temporada y reconocimientos
 
-### 🏢 Facilities
-- **Courts**: Basketball court registration and management
-- **Gyms**: Gymnasium facilities and specifications
-- **Shared Facility Logic**: Common facility attributes and behaviors
+### 🏢 Instalaciones
+- **Canchas**: Registro y gestión de canchas de baloncesto
+- **Gimnasios**: Instalaciones de gimnasios y especificaciones
+- **Lógica Compartida de Instalaciones**: Atributos y comportamientos comunes de instalaciones
 
-### 👥 Teams
-- **Team Management**: Team creation, configuration, and administration
-- **Player Registration**: Team-player relationships and roster management
-- **Statistics Tracking**: All-time team performance statistics
+### 👥 Equipos
+- **Gestión de Equipos**: Creación, configuración y administración de equipos
+- **Registro de Jugadores**: Relaciones equipo-jugador y gestión de plantillas
+- **Seguimiento de Estadísticas**: Estadísticas de rendimiento de toda la historia del equipo
 
-### 👤 Users
-- **Player Users**: Player profiles, attributes, and career statistics
-- **Host Users**: Event and facility host management
-- **League Founder Users**: League creation and administration
-- **Team Founder Users**: Team creation and management
-- **Referee Users**: Game officiating and referee management
-- **Shared User Logic**: Common user attributes and authentication
+### 👤 Usuarios
+- **Usuarios Jugadores**: Perfiles de jugadores, atributos y estadísticas de carrera
+- **Usuarios Anfitriones**: Gestión de anfitriones de eventos e instalaciones
+- **Usuarios Fundadores de Liga**: Creación y administración de ligas
+- **Usuarios Fundadores de Equipo**: Creación y gestión de equipos
+- **Usuarios Árbitros**: Arbitraje de partidos y gestión de árbitros
+- **Lógica Compartida de Usuarios**: Atributos comunes de usuarios y autenticación
 
-## Core Domain Patterns
+## Patrones de Dominio Fundamentales
 
-### Aggregate Root Pattern
+### Patrón Raíz de Agregado
 
-All domain entities extend the `AggregateRoot` base class:
+Todas las entidades de dominio extienden la clase base `AggregateRoot`:
 
 ```typescript
 export abstract class AggregateRoot<I extends IAggregateRootPrimitives> {
@@ -83,9 +83,9 @@ export abstract class AggregateRoot<I extends IAggregateRootPrimitives> {
 }
 ```
 
-### Value Object Pattern
+### Patrón Objeto de Valor
 
-All value objects extend the `ValueObject` base class with validation:
+Todos los objetos de valor extienden la clase base `ValueObject` con validación:
 
 ```typescript
 export abstract class ValueObject<T> {
@@ -103,217 +103,217 @@ export abstract class ValueObject<T> {
 }
 ```
 
-### Repository Pattern
+### Patrón Repositorio
 
-Data access follows the repository pattern with interfaces:
+El acceso a datos sigue el patrón repositorio con interfaces:
 
 ```typescript
 export interface IEntityRepository {
   save(entity: Entity): Promise<void>;
   findById(id: EntityId): Promise<Entity | null>;
-  // Domain-specific query methods
+  // Métodos de consulta específicos del dominio
 }
 ```
 
-## Directory Structure
+## Estructura de Directorios
 
 ```
 src/
 ├── basketCol/
-│   ├── authentication/           # Authentication domain
-│   ├── competitions/            # Competition management
-│   │   ├── league/             # League management
-│   │   │   ├── season/         # Season management
-│   │   │   └── league-team/    # Team-league relationships
-│   │   └── shared/             # Shared competition logic
-│   ├── facilities/             # Facility management
-│   │   ├── court/             # Basketball courts
-│   │   ├── gym/               # Gymnasium facilities
-│   │   └── shared/            # Shared facility logic
-│   ├── team/                  # Team management
-│   │   ├── team-player/       # Player-team relationships
-│   │   └── all-time-stats/    # Team statistics
-│   ├── users/                 # User management
-│   │   ├── player/            # Player users
-│   │   ├── host/              # Host users
-│   │   ├── league-founder/    # League founder users
-│   │   ├── team-founder/      # Team founder users
-│   │   ├── referee/           # Referee users
-│   │   └── shared/            # Shared user logic
-│   └── shared/                # Shared domain logic
-│       ├── domain/            # Base classes and common logic
-│       ├── exceptions/        # Domain exceptions
-│       ├── services/          # Domain services
-│       └── value-objects/     # Common value objects
+│   ├── authentication/           # Dominio de autenticación
+│   ├── competitions/            # Gestión de competiciones
+│   │   ├── league/             # Gestión de ligas
+│   │   │   ├── season/         # Gestión de temporadas
+│   │   │   └── league-team/    # Relaciones equipo-liga
+│   │   └── shared/             # Lógica compartida de competiciones
+│   ├── facilities/             # Gestión de instalaciones
+│   │   ├── court/             # Canchas de baloncesto
+│   │   ├── gym/               # Instalaciones de gimnasios
+│   │   └── shared/            # Lógica compartida de instalaciones
+│   ├── team/                  # Gestión de equipos
+│   │   ├── team-player/       # Relaciones jugador-equipo
+│   │   └── all-time-stats/    # Estadísticas de equipos
+│   ├── users/                 # Gestión de usuarios
+│   │   ├── player/            # Usuarios jugadores
+│   │   ├── host/              # Usuarios anfitriones
+│   │   ├── league-founder/    # Usuarios fundadores de liga
+│   │   ├── team-founder/      # Usuarios fundadores de equipo
+│   │   ├── referee/           # Usuarios árbitros
+│   │   └── shared/            # Lógica compartida de usuarios
+│   └── shared/                # Lógica de dominio compartida
+│       ├── domain/            # Clases base y lógica común
+│       ├── exceptions/        # Excepciones de dominio
+│       ├── services/          # Servicios de dominio
+│       └── value-objects/     # Objetos de valor comunes
 └── main/
-    └── index.ts              # Main export file
+    └── index.ts              # Archivo principal de exportación
 ```
 
-### Entity Structure Pattern
+### Patrón de Estructura de Entidad
 
-Each domain entity follows a consistent structure:
+Cada entidad de dominio sigue una estructura consistente:
 
 ```
 entity/
 ├── domain/
-│   ├── Entity.ts                    # Main aggregate root
-│   ├── IEntityPrimitives.ts         # Data transfer interface
-│   ├── exceptions/                  # Domain-specific errors
+│   ├── Entity.ts                    # Raíz de agregado principal
+│   ├── IEntityPrimitives.ts         # Interfaz de transferencia de datos
+│   ├── exceptions/                  # Errores específicos del dominio
 │   │   ├── SpecificError.ts
 │   │   └── index.ts
-│   ├── repository/                  # Data access interfaces
+│   ├── repository/                  # Interfaces de acceso a datos
 │   │   └── IEntityRepository.ts
-│   ├── services/                    # Domain business logic
+│   ├── services/                    # Lógica de negocio del dominio
 │   │   ├── EntityValidationDomainService.ts
 │   │   └── index.ts
-│   └── value-objects/               # Entity-specific value objects
+│   └── value-objects/               # Objetos de valor específicos de la entidad
 │       ├── EntityProperty.ts
 │       └── index.ts
 ```
 
-## Key Features
+## Características Clave
 
-### Type Safety
-- Full TypeScript support with strict type checking
-- Generic type parameters for entity primitives
-- Comprehensive error handling with typed exceptions
+### Seguridad de Tipos
+- Soporte completo de TypeScript con verificación estricta de tipos
+- Parámetros de tipo genérico para primitivas de entidad
+- Manejo integral de errores con excepciones tipadas
 
-### Validation
-- Value object validation on construction
-- Domain service validation for complex business rules
-- Type-safe primitive validation
+### Validación
+- Validación de objetos de valor en la construcción
+- Validación de servicios de dominio para reglas de negocio complejas
+- Validación de primitivas con seguridad de tipos
 
-### Error Handling
-- Structured domain errors with field-specific information
-- Either/Result types for operation results
-- Comprehensive exception hierarchy
+### Manejo de Errores
+- Errores de dominio estructurados con información específica de campo
+- Tipos Either/Result para resultados de operaciones
+- Jerarquía integral de excepciones
 
-### Extensibility
-- Interface-based repository pattern
-- Pluggable domain services
-- Modular bounded context design
+### Extensibilidad
+- Patrón repositorio basado en interfaces
+- Servicios de dominio conectables
+- Diseño modular de contextos delimitados
 
-## Installation
+## Instalación
 
 ```bash
 npm install @basketcol/domain
 ```
 
-## Usage
+## Uso
 
-### Creating Domain Entities
+### Creación de Entidades de Dominio
 
 ```typescript
 import { League, LeagueName, LeagueLocation } from '@basketcol/domain';
 
-// Create a new league
+// Crear una nueva liga
 const league = League.create(
-  LeagueName.create('Professional Basketball League'),
-  LeagueLocation.create('New York, NY'),
-  // ... other required parameters
+  LeagueName.create('Liga Profesional de Baloncesto'),
+  LeagueLocation.create('Madrid, España'),
+  // ... otros parámetros requeridos
 );
 
-// Convert to primitives for serialization
+// Convertir a primitivas para serialización
 const primitives = league.toPrimitives();
 
-// Recreate from primitives
+// Recrear desde primitivas
 const recreatedLeague = League.fromPrimitives(primitives);
 ```
 
-### Using Value Objects
+### Uso de Objetos de Valor
 
 ```typescript
 import { TeamOfficialName, TeamId } from '@basketcol/domain';
 
-// Value objects provide validation
-const teamName = TeamOfficialName.create('Los Angeles Lakers');
+// Los objetos de valor proporcionan validación
+const teamName = TeamOfficialName.create('Real Madrid Baloncesto');
 const teamId = TeamId.create('550e8400-e29b-41d4-a716-446655440000');
 
-// Value objects are immutable and comparable
-const sameName = TeamOfficialName.create('Los Angeles Lakers');
+// Los objetos de valor son inmutables y comparables
+const sameName = TeamOfficialName.create('Real Madrid Baloncesto');
 console.log(teamName.equals(sameName)); // true
 ```
 
-### Implementing Repositories
+### Implementación de Repositorios
 
 ```typescript
 import { ITeamRepository, Team, TeamId } from '@basketcol/domain';
 
 class TeamRepository implements ITeamRepository {
   async save(team: Team): Promise<void> {
-    // Implementation details
+    // Detalles de implementación
   }
 
   async findById(id: TeamId): Promise<Team | null> {
-    // Implementation details
+    // Detalles de implementación
   }
 }
 ```
 
-## Development
+## Desarrollo
 
-### Prerequisites
+### Prerrequisitos
 - Node.js 18+
 - TypeScript 5.4.5+
 
 ### Scripts
 
 ```bash
-# Compile TypeScript in watch mode
+# Compilar TypeScript en modo watch
 npm run tsc
 
-# Single build compilation
+# Compilación de una sola vez
 tsc --build
 
 # Linting
 npx eslint src/
 ```
 
-### Build Configuration
+### Configuración de Build
 
-The project uses TypeScript with the following key settings:
+El proyecto usa TypeScript con las siguientes configuraciones clave:
 
 - **Target**: ES2021
 - **Module**: CommonJS
-- **Strict Mode**: Enabled
-- **Experimental Decorators**: Enabled
-- **Output Directory**: `./build/`
-- **Types Directory**: `./build/types/`
+- **Modo Estricto**: Habilitado
+- **Decoradores Experimentales**: Habilitado
+- **Directorio de Salida**: `./build/`
+- **Directorio de Tipos**: `./build/types/`
 
-## Testing
+## Pruebas
 
-The project structure supports comprehensive testing:
+La estructura del proyecto soporta pruebas integrales:
 
-- Unit tests for value objects and entities
-- Integration tests for domain services
-- Repository interface testing
+- Pruebas unitarias para objetos de valor y entidades
+- Pruebas de integración para servicios de dominio
+- Pruebas de interfaces de repositorio
 
-## Contributing
+## Contribución
 
-1. Follow the established directory structure
-2. Maintain DDD and hexagonal architecture principles
-3. Implement proper validation in value objects
-4. Add comprehensive error handling
-5. Update index.ts exports appropriately
-6. Follow TypeScript best practices
+1. Sigue la estructura de directorios establecida
+2. Mantén los principios de DDD y arquitectura hexagonal
+3. Implementa validación apropiada en objetos de valor
+4. Agrega manejo integral de errores
+5. Actualiza las exportaciones index.ts apropiadamente
+6. Sigue las mejores prácticas de TypeScript
 
-## Naming Conventions
+## Convenciones de Nomenclatura
 
-- **Interfaces**: Prefixed with `I` (e.g., `ITeamRepository`)
-- **Value Objects**: Suffixed with property name (e.g., `TeamOfficialName`)
-- **Domain Services**: Suffixed with `DomainService` (e.g., `TeamValidationDomainService`)
-- **Exceptions**: Suffixed with `Error` (e.g., `TeamNotFoundError`)
-- **Primitives**: Suffixed with `Primitives` (e.g., `ITeamPrimitives`)
+- **Interfaces**: Prefijadas con `I` (ej., `ITeamRepository`)
+- **Objetos de Valor**: Sufijadas con el nombre de la propiedad (ej., `TeamOfficialName`)
+- **Servicios de Dominio**: Sufijadas con `DomainService` (ej., `TeamValidationDomainService`)
+- **Excepciones**: Sufijadas con `Error` (ej., `TeamNotFoundError`)
+- **Primitivas**: Sufijadas con `Primitives` (ej., `ITeamPrimitives`)
 
-## Package Information
+## Información del Paquete
 
-- **Package**: `@basketcol/domain`
-- **Version**: 10.5.26
-- **Author**: Manuel Rivera (manuelh_ra)
+- **Paquete**: `@basketcol/domain`
+- **Versión**: 10.5.26
+- **Autor**: Manuel Rivera (manuelh_ra)
 - **Email**: manuelhra.dev@gmail.com
 - **Main**: `build/main/index.js`
 - **Types**: `build/types/main/index.d.ts`
 
-## License
+## Licencia
 
-This project is part of the BasketCol basketball competition management system.
+Este proyecto es parte del sistema de gestión de competiciones de baloncesto BasketCol.
